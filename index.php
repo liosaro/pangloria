@@ -102,8 +102,7 @@
               <input type="text" name="pass" id="pass" />
             </p>
             <p>
-              <input type="submit" name="ingres" id="ingres" value="Ingresar" />
-  <label for="pass"></label>
+              <label for="pass"></label>
             </p>
           </form>
           <p>&nbsp;</p>
