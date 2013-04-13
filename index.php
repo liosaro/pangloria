@@ -7,19 +7,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-<p>hola mundo que tal esta la prueba </p>
-<p>&nbsp;</p>
-<p>TA todo ben aca y ahi?</p>
-<p>&nbsp;</p>
-<p>exelente bro como vamos a salir en la nota?</p>
-<p>&nbsp;</p>
-<p>excelente!!!!!</p>
-<p>&nbsp;</p>
-<p>Confiamos que todo salga bien y que pase JULIO</p>
-<p>&nbsp;</p>
-<p>Esta todo bien?????????????????????????</p>
-=======
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td align="center" valign="top"><table width="1024px" border="0" cellpadding="0" cellspacing="0">
@@ -133,6 +120,5 @@
     </table></td>
   </tr>
 </table>
->>>>>>> sitio completo inicial
 </body>
 </html>
