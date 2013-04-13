@@ -1,0 +1,66 @@
+/*
+Web dise–ada y programada por Emenia
+www.emenia.es
+jbustamante@emenia.es
+*/
+
+/* 
+	R E S E T (Por Eric Meyer)
+*/
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, font, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td {	margin: 0;	padding: 0;	border: 0;	outline: 0;	font-size: 100%;
+														vertical-align: top;	background: transparent;}
+	body 											{	line-height: 1;}
+	ol, ul 											{	list-style: none;}
+	blockquote, q 									{	quotes: none;}
+	:focus 											{	outline: 0;}
+	ins 											{	text-decoration: none;}
+	del 											{	text-decoration: line-through;}
+	table 											{	border-collapse: collapse;	border-spacing: 0; }
+
+	a img 											{	border:none } 
+
+/* 
+	C L A S E S   P R E S E N T A C I O N A L E S
+*/
+	.aligncenter 			{	display:block; margin:0 auto }
+	.alignleft 				{	float:left }
+	.alignright 			{	float:right }
+	br.clear 				{	clear:both; display:block; height:1px; margin:-1px 0 0 0 } 
+/*
+	E S T I L O S    G E N E R A L E S
+*/
+	html, body 				{ 	margin: 0; padding: 0; text-align: center; width: 100%; }
+	body					{	color: #333; font-family: Verdana, Tahoma, Geneva, sans-serif; font-size: 62.5%; line-height: 1.7em; text-align: center;}
+	h1						{	font-size: 2em; line-height: 1em;}
+	h2						{	font-size: 1.3em; line-height: 1em; margin-top: 10px;}
+	p						{	margin-top: 20px;}
+	a:link, a:visited		{	color: #000; text-decoration: underline; }
+	a:hover					{	color: #f4A774;}
+	a:active				{	color: #000; text-decoration: underline; }
+/*
+	C A B E C E R A
+*/	
+	#cabecera				{	margin: 0 auto; width: 100%; height: 178px; background: #202020 url(http://emenia.es/wp-content/themes/starkers/images/fondo_header_inicio.gif) repeat-x bottom left;}
+	#contenido-cabecera		{	width: 960px; margin: 0 auto;}
+	#cabecera #logo			{	float: left; background: url(http://emenia.es/wp-content/themes/starkers/images/logo.png) no-repeat top left; width: 353px; height: 76px; margin: 51px 0;}
+	#cabecera #logo a	    {	display: block; width: 353px; height: 76px; text-indent: -9000px; }
+	#contenido-cabecera img	{	margin-top: 51px; float: right;}
+/*
+	C O N T E N I D O    D E M O
+*/
+	#contenido-demo			{	width: 960px; margin: 50px auto 0;}
+    form                    {   margin-top: 30px;}
+
+
+	
+
+
+
