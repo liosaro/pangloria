@@ -31,6 +31,27 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+// *** Redirect if username exists
+$MM_flag="MM_insert";
+if (isset($_POST[$MM_flag])) {
+  $MM_dupKeyRedirect="ingresaproducto.php";
+  $loginUsername = $_POST['DESCRIPCIONPRODUC'];
+  $LoginRS__query = sprintf("SELECT DESCRIPCIONPRODUC FROM CATPRODUCTO WHERE DESCRIPCIONPRODUC=%s", GetSQLValueString($loginUsername, "text"));
+  mysql_select_db($database_basepangloria, $basepangloria);
+  $LoginRS=mysql_query($LoginRS__query, $basepangloria) or die(mysql_error());
+  $loginFoundUser = mysql_num_rows($LoginRS);
+
+  //if there is a row in the database, the username was found - can not add the requested username
+  if($loginFoundUser){
+    $MM_qsChar = "?";
+    //append the username to the redirect page
+	if (substr_count($MM_dupKeyRedirect,"?") >=1) $MM_qsChar = "&";
+    $MM_dupKeyRedirect = $MM_dupKeyRedirect . $MM_qsChar ."requsername=".$loginUsername;
+    header ("Location: $MM_dupKeyRedirect");
+    exit;
+  }
+}
+
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
