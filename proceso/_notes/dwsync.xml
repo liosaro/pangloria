@@ -7,6 +7,10 @@
 <file name="PedidoMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="3448731115" remote="318763443841564572" />
 <file name="SalidaMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="3448731116" remote="318763443841564572" />
 <file name="conproduccion.php" server="www.liosarpc.info//public_html/pan/" local="3448731116" remote="318763443841564572" />
-<file name="base.php" server="www.liosarpc.info//public_html/pan/" local="3448731116" remote="318763443841564572" />
-<file name="ingresaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130106923109254723" remote="130106994600000000" />
+<file name="base.php" server="www.liosarpc.info//public_html/pan/" local="130107318629262814" remote="130107390600000000" />
+<file name="ingresaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107317350932319" remote="130107389400000000" />
+<file name="eliminarproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107138708138006" remote="130107210600000000" />
+<file name="modificarproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107321010000000" remote="130107393000000000" />
+<file name="lisproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107092207879263" remote="130107307200000000" />
+<file name="cmodproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107272533724154" remote="130107365400000000" />
 </dwsync>

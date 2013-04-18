@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Control de Empleados</title>
+<title>Control d Producto en Proceso y Terminado</title>
 <link href="../style.css" rel="stylesheet" type="text/css" />
 <script src="../SpryAssets/SpryAccordion.js" type="text/javascript"></script>
 <script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
@@ -47,7 +47,12 @@
             </li>
             <li><a href="#" class="MenuBarItemSubmenu MenuBarItemSubmenu">Producto</a>
               <ul>
-                <li><a href="#">Administrar Productos</a></li>
+                <li><a href="#" class="MenuBarItemSubmenu">Administrar Productos</a>
+                  <ul>
+                    <li><a href="ingresaproducto.php" target="contenedor">Ingresar Producto</a></li>
+                    <li><a href="modificarproducto.php" target="contenedor">Modificar Producto</a></li>
+                  </ul>
+                </li>
                 <li><a href="#">Justificar Perdida Productos</a></li>
               </ul>
             </li>
@@ -114,7 +119,7 @@
           </div>
           <div class="content" id="contenidoadminphp2"><table width="1024" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td width="184" bgcolor="#006CA7"><div class="menuiz" id="menuizquierdo">
+    <td width="184" bgcolor="#999999"><div class="menuiz" id="menuizquierdo">
       <div id="Accordion1" class="Accordion" tabindex="0">
         <div class="AccordionPanel">
           <div class="AccordionPanelTab">Ubicaciones</div>
@@ -190,16 +195,7 @@
         </div>
 </div>
     </div></td>
-    <td width="840" align="center" valign="middle"><div class="cont">
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p><img src="../imagenes/logotipo.png" alt="" width="242" height="114" /></p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-    </div></td>
+    <td align="center" valign="middle"><div class="contido" id="contido"><iframe src="../dibujo.html" name="contenedor" width="835" marginwidth="0" height="580" marginheight="0" align="left" scrolling="no" frameborder="0"></iframe></div></td>
   </tr>
 </table>
 </div>
