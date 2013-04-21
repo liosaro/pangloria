@@ -49,8 +49,8 @@
               <ul>
                 <li><a href="#" class="MenuBarItemSubmenu">Administrar Productos</a>
                   <ul>
-                    <li><a href="ingresaproducto.php" target="contenedor">Ingresar Producto</a></li>
-                    <li><a href="modificarproducto.php" target="contenedor">Modificar Producto</a></li>
+                    <li><a href="producto/ingresaproducto.php" target="contenedor">Ingresar Producto</a></li>
+                    <li><a href="producto/modificarproducto.php" target="contenedor">Modificar Producto</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Justificar Perdida Productos</a></li>
@@ -195,7 +195,7 @@
         </div>
 </div>
     </div></td>
-    <td align="center" valign="middle"><div class="contido" id="contido"><iframe src="../dibujo.html" name="contenedor" width="835" marginwidth="0" height="580" marginheight="0" align="left" scrolling="no" frameborder="0"></iframe></div></td>
+    <td align="center" valign="middle"><div class="contido" id="contido"><iframe src="../dibujo.html" name="contenedor" width="835" marginwidth="0" height="675" marginheight="0" align="left" scrolling="no" frameborder="0"></iframe></div></td>
   </tr>
 </table>
 </div>

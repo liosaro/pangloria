@@ -1,4 +1,4 @@
-<?php require_once('../Connections/basepangloria.php'); ?>
+<?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -33,7 +33,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 $currentPage = $_SERVER["PHP_SELF"];
 
-$maxRows_consultaproducto = 10;
+$maxRows_consultaproducto = 5;
 $pageNum_consultaproducto = 0;
 if (isset($_GET['pageNum_consultaproducto'])) {
   $pageNum_consultaproducto = $_GET['pageNum_consultaproducto'];
@@ -41,7 +41,7 @@ if (isset($_GET['pageNum_consultaproducto'])) {
 $startRow_consultaproducto = $pageNum_consultaproducto * $maxRows_consultaproducto;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_consultaproducto = "SELECT * FROM CATPRODUCTO";
+$query_consultaproducto = "SELECT * FROM CATPRODUCTO ORDER BY IDPRODUCTO DESC";
 $query_limit_consultaproducto = sprintf("%s LIMIT %d, %d", $query_consultaproducto, $startRow_consultaproducto, $maxRows_consultaproducto);
 $consultaproducto = mysql_query($query_limit_consultaproducto, $basepangloria) or die(mysql_error());
 $row_consultaproducto = mysql_fetch_assoc($consultaproducto);
@@ -91,7 +91,7 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Control de Empleados</title>
-<link href="../style.css" rel="stylesheet" type="text/css" />
+<link href="../../style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -99,12 +99,22 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
   <table width="844" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="844" align="center"><div class="cont">
-        <form id="envioproductomodifica" name="envioproductomodifica" method="post">
-          <table width="820px" border="0" cellspacing="0" cellpadding="0">
+        <form action="filtromodificaproducto.php" method="post" name="envioproductomodifica" target="modiprodu" id="envioproductomodifica">
+          <table width="1026" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td colspan="5">&nbsp;
-                <iframe src="cmodproducto.php" name="modiprodu" width="780" height="250" align="middle" scrolling="No" frameborder="0" id="modiprodu"></iframe>
-                <table width="100%" border="1">
+              <td width="800" colspan="6" align="left">&nbsp;
+                <iframe src="../cmodproducto.php" name="modiprodu" width="830" height="400" align="middle" scrolling="auto" frameborder="0" id="modiprodu"></iframe>
+                <p><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, 0, $queryString_consultaproducto); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, max(0, $pageNum_consultaproducto - 1), $queryString_consultaproducto); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, min($totalPages_consultaproducto, $pageNum_consultaproducto + 1), $queryString_consultaproducto); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, $totalPages_consultaproducto, $queryString_consultaproducto); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></p>
+                <table width="830" border="1">
+                  <tr>
+                    <td colspan="2"><input type="text" name="filtroprod" id="filtroprod" />
+                      <input type="submit" name="filtrar" id="filtrar" value="Filtrar" /></td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
                   <tr>
                     <td>Modificar</td>
                     <td>Id del producto</td>
@@ -113,28 +123,21 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
                     <td>Precio Mayoreo</td>
                     <td>Precio Menudeo</td>
                     <td>Dias Caducidad</td>
-                  </tr>
+                    </tr>
                   <?php do { ?>
-                  <tr>
-                    <td><a href="cmodproducto.php?root=<?php echo $row_consultaproducto['IDPRODUCTO']; ?>" target="modiprodu">Modificar</a></td>
-                    <td><?php echo $row_consultaproducto['IDPRODUCTO']; ?></td>
-                    <td><?php echo $row_consultaproducto['DESCRIPCIONPRODUC']; ?></td>
-                    <td><?php echo $row_consultaproducto['PRECIO_COSTO']; ?></td>
-                    <td><?php echo $row_consultaproducto['PRECIO_VENTAMAYOREO']; ?></td>
-                    <td><?php echo $row_consultaproducto['PRECIO_VENTAMENOR']; ?></td>
-                    <td><?php echo $row_consultaproducto['DIAS_CADUCIDAD']; ?></td>
-                  </tr>
-                  <?php } while ($row_consultaproducto = mysql_fetch_assoc($consultaproducto)); ?>
+                    <tr>
+                      <td><a href="cmodproducto.php?root=<?php echo $row_consultaproducto['IDPRODUCTO']; ?>" target="modiprodu">Modificar</a></td>
+                      <td><?php echo $row_consultaproducto['IDPRODUCTO']; ?></td>
+                      <td><?php echo $row_consultaproducto['DESCRIPCIONPRODUC']; ?></td>
+                      <td><?php echo $row_consultaproducto['PRECIO_COSTO']; ?></td>
+                      <td><?php echo $row_consultaproducto['PRECIO_VENTAMAYOREO']; ?></td>
+                      <td><?php echo $row_consultaproducto['PRECIO_VENTAMENOR']; ?></td>
+                      <td><?php echo $row_consultaproducto['DIAS_CADUCIDAD']; ?></td>
+                      </tr>
+                    <?php } while ($row_consultaproducto = mysql_fetch_assoc($consultaproducto)); ?>
                 </table></td>
             </tr>
-            <tr>
-              <td width="186"><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, 0, $queryString_consultaproducto); ?>"><img src="../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, max(0, $pageNum_consultaproducto - 1), $queryString_consultaproducto); ?>"><img src="../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, min($totalPages_consultaproducto, $pageNum_consultaproducto + 1), $queryString_consultaproducto); ?>"><img src="../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, $totalPages_consultaproducto, $queryString_consultaproducto); ?>"><img src="../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></td>
-              <td width="206">&nbsp;</td>
-              <td width="25">&nbsp;</td>
-              <td width="176"><input type="hidden" name="IDPRODUCTO" /></td>
-              <td width="227">&nbsp;</td>
-            </tr>
-          </table>
+            </table>
         </form>
       </div></td>
     </tr>
