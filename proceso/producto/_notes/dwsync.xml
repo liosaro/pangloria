@@ -4,4 +4,7 @@
 <file name="cmodproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107806173986171" remote="130107890400000000" />
 <file name="filtromodificaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107849983759820" remote="130107921600000000" />
 <file name="ingresaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107800527087160" remote="130107931800000000" />
+<file name="eliminacionProducto.php" server="www.liosarpc.info//public_html/pan/" local="130111502270498079" remote="130111573800000000" />
+<file name="eliminarProducto.php" server="www.liosarpc.info//public_html/pan/" local="130111495941894098" remote="130111573200000000" />
+<file name="filtroeliminaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130111496895104601" remote="130111573800000000" />
 </dwsync>
