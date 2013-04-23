@@ -7,4 +7,7 @@
 <file name="eliminacionProducto.php" server="www.liosarpc.info//public_html/pan/" local="130111502270498079" remote="130111573800000000" />
 <file name="eliminarProducto.php" server="www.liosarpc.info//public_html/pan/" local="130111495941894098" remote="130111573200000000" />
 <file name="filtroeliminaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130111506850200375" remote="130111578600000000" />
+<file name="consultanombre.php" server="www.liosarpc.info//public_html/pan/" local="130111671283719876" remote="130111746600000000" />
+<file name="consultaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130111676629239506" remote="130111755600000000" />
+<file name="consultaid.php" server="www.liosarpc.info//public_html/pan/" local="130111683741663963" remote="130111755600000000" />
 </dwsync>
