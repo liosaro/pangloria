@@ -26,7 +26,11 @@
             </li>
             <li><a href="#" class="MenuBarItemSubmenu MenuBarItemSubmenu">Materia Prima</a>
               <ul>
-                <li><a href="#">Pedido Materia Prima</a></li>
+                <li><a href="#" class="MenuBarItemSubmenu">Pedido Materia Prima</a>
+                  <ul>
+                    <li><a href="promateriaprima/pedidomateriaprima/pedidomateriaprima.php" target="contenedor">Ingresar Pedido</a></li>
+                  </ul>
+                </li>
                 <li><a href="#">Salida Materia Prima</a></li>
                 <li><a href="#">Elemento sin t&iacute;tulo</a></li>
                 <li><a href="#">Entrega de Materia Prima</a></li>
