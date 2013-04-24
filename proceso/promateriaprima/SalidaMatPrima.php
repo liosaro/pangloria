@@ -42,6 +42,12 @@ $query_comoboidempleado = "SELECT IDEMPLEADO, NOMBREEMPLEADO FROM CATEMPLEADO";
 $comoboidempleado = mysql_query($query_comoboidempleado, $basepangloria) or die(mysql_error());
 $row_comoboidempleado = mysql_fetch_assoc($comoboidempleado);
 $totalRows_comoboidempleado = mysql_num_rows($comoboidempleado);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_comboOrden = "SELECT IDENCABEORDPROD, IDEMPLEADO FROM TRNENCABEZADOORDENPROD";
+$comboOrden = mysql_query($query_comboOrden, $basepangloria) or die(mysql_error());
+$row_comboOrden = mysql_fetch_assoc($comboOrden);
+$totalRows_comboOrden = mysql_num_rows($comboOrden);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -87,21 +93,21 @@ jQuery(function($){
 <body>
 <table width="820" border="0">
   <tr>
-    <td><form id="ordcompra" name="ordcompra" method="post" action="">
+    <td><form action="" method="post" enctype="multipart/form-data" name="ordcompra" id="ordcompra">
       <table width="820px" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td colspan="5" align="center" bgcolor="#999999"><h1>Salida de Materia Prima</h1></td>
         </tr>
         <tr>
-          <td width="186">Id de Salida de Materia Prima</td>
+          <td width="186">Salida de Materia Prima</td>
           <td width="188"><label for="IDEMPLEADO"></label>
             <span id="idsalidamatprima">
-            <input name="IDENCABEZADOSALMATPRI" type="text" id="IDENCABEZADOSALMATPRI" />
+            <input name="IDENCABEZADOSALMATPRI" type="text" disabled="disabled" id="IDENCABEZADOSALMATPRI" readonly="readonly" />
             <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldMinCharsMsg">No se cumple el mínimo de caracteres requerido.</span><span class="textfieldMaxCharsMsg">Se ha superado el número máximo de caracteres.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span><span class="textfieldMinValueMsg">El valor introducido es inferior al mínimo permitido.</span><span class="textfieldMaxValueMsg">El valor introducido es superior al máximo permitido.</span></span></td>
           <td width="43">&nbsp;</td>
           <td width="231">Fecha y Hora</td>
           <td width="172"><label> Seleccionar Fecha:</label>
-            <input type="text" name="FECHAYHORASALIDAMATPRIMA" id="FECHAYHORASALIDAMATPRIMA" size="12" /></td>
+            <input name="FECHAYHORASALIDAMATPRIMA" type="text" disabled="disabled" id="FECHAYHORASALIDAMATPRIMA" size="12" readonly="readonly" /></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
@@ -111,7 +117,7 @@ jQuery(function($){
           <td>&nbsp;</td>
         </tr>
         <tr>
-          <td>Id Pedido de Materia Prima</td>
+          <td>Pedido de Materia Prima</td>
           <td><select name="ID_PED_MAT_PRIMA" id="ID_PED_MAT_PRIMA">
             <?php
 do {  
@@ -129,7 +135,19 @@ do {
           <td>&nbsp;</td>
           <td>Encabezado de Orden de Produccion</td>
           <td><select name="IDMEDIDA" id="IDMEDIDA">
-</select></td>
+            <?php
+do {  
+?>
+            <option value="<?php echo $row_comboOrden['IDENCABEORDPROD']?>"><?php echo $row_comboOrden['IDEMPLEADO']?></option>
+            <?php
+} while ($row_comboOrden = mysql_fetch_assoc($comboOrden));
+  $rows = mysql_num_rows($comboOrden);
+  if($rows > 0) {
+      mysql_data_seek($comboOrden, 0);
+	  $row_comboOrden = mysql_fetch_assoc($comboOrden);
+  }
+?>
+          </select></td>
         </tr>
         <tr>
           <td><p>&nbsp;</p></td>
@@ -155,8 +173,8 @@ do {
 ?>
           </select></td>
           <td>&nbsp;</td>
-          <td>Id detalle Pedido Materia Prima</td>
-          <td><input name="IDPRODUCTO4" type="text" disabled="disabled" id="IDPRODUCTO4" /></td>
+          <td>Detalle Pedido Materia Prima</td>
+          <td><textarea name="detallePedido" disabled="disabled" id="detallePedido">Digite el Detalle</textarea></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
@@ -178,12 +196,24 @@ do {
             </tr>
             <tr>
               <td><select name="OrdProdIDMedida2" id="OrdProdIDMedida2">
-</select></td>
-              <td>&nbsp;</td>
-              <td><select name="OrdProdIDMedida" id="OrdProdIDMedida">
-</select></td>
+                <?php
+do {  
+?>
+                <option value="<?php echo $row_comboidpedido['ID_ENCAPEDIDO']?>"><?php echo $row_comboidpedido['ID_ENCAPEDIDO']?></option>
+                <?php
+} while ($row_comboidpedido = mysql_fetch_assoc($comboidpedido));
+  $rows = mysql_num_rows($comboidpedido);
+  if($rows > 0) {
+      mysql_data_seek($comboidpedido, 0);
+	  $row_comboidpedido = mysql_fetch_assoc($comboidpedido);
+  }
+?>
+              </select></td>
+              <td><select name="IdCantida" id="IdCantida">
+              </select></td>
               <td><select name="OrdProdIDPRODUCTO5" id="OrdProdIDPRODUCTO5">
-</select></td>
+              </select></td>
+              <td>&nbsp;</td>
             </tr>
             <tr>
               <td>&nbsp;</td>
@@ -261,4 +291,6 @@ var sprytextfield1 = new Spry.Widget.ValidationTextField("idsalidamatprima", "in
 mysql_free_result($comboidpedido);
 
 mysql_free_result($comoboidempleado);
+
+mysql_free_result($comboOrden);
 ?>
