@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_comboidpedido" value="name:ID_ENCAPEDIDO;datatype:int" />
+	<infoitem key="UD_comboOrden" value="name:IDENCABEORDPROD;datatype:int,name:IDEMPLEADO;datatype:int" />
+	<infoitem key="UD_comoboidempleado" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
+</info>

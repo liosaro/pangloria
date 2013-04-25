@@ -2,7 +2,6 @@
 <dwsync>
 <file name="modificarproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107858327156579" remote="130107930600000000" />
 <file name="cmodproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107806173986171" remote="130107890400000000" />
-<file name="filtromodificaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107849983759820" remote="130107921600000000" />
 <file name="ingresaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107800527087160" remote="130107931800000000" />
 <file name="eliminacionProducto.php" server="www.liosarpc.info//public_html/pan/" local="130111502270498079" remote="130111573800000000" />
 <file name="eliminarProducto.php" server="www.liosarpc.info//public_html/pan/" local="130111495941894098" remote="130111573200000000" />
@@ -13,4 +12,5 @@
 <file name="consultacaducidad.php" server="www.liosarpc.info//public_html/pan/" local="130113201259876487" remote="130113279000000000" />
 <file name="consultacosto.php" server="www.liosarpc.info//public_html/pan/" local="130113202551116895" remote="130113279000000000" />
 <file name="consultatodos.php" server="www.liosarpc.info//public_html/pan/" local="130113218679940861" remote="130113292200000000" />
+<file name="filtromodificaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130107921600000000" remote="130107921600000000" />
 </dwsync>
