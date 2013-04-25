@@ -45,7 +45,7 @@ if (isset($_GET['q'])) {
   $colname_nombre = $_GET['q'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_nombre = sprintf("SELECT * FROM CATPRODUCTO WHERE DESCRIPCIONPRODUC = %s ORDER BY IDPRODUCTO ASC", GetSQLValueString($colname_nombre, "text"));
+$query_nombre = sprintf("SELECT * FROM CATPRODUCTO WHERE PRECIO_COSTO = %s ORDER BY IDPRODUCTO ASC", GetSQLValueString($colname_nombre, "double"));
 $query_limit_nombre = sprintf("%s LIMIT %d, %d", $query_nombre, $startRow_nombre, $maxRows_nombre);
 $nombre = mysql_query($query_limit_nombre, $basepangloria) or die(mysql_error());
 $row_nombre = mysql_fetch_assoc($nombre);

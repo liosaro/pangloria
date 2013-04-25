@@ -20,15 +20,19 @@ function OnSubmitForm()
   }
   if(document.consultaproducto.radiosearch[1].checked == true)
   {
-    document.consultaproducto.action ="update.html";
+    document.consultaproducto.action ="consultacaducidad.php?q=";
   }
    if(document.consultaproducto.radiosearch[2].checked == true)
   {
-    document.consultaproducto.action ="tres.html";
+    document.consultaproducto.action ="consultacosto.php?q=";
   }
    if(document.consultaproducto.radiosearch[3].checked == true)
   {
-    document.consultaproducto.action ="consultanombre.php?q=";
+    document.consultaproducto.action ="consultanombre.php?q=" ;
+  }
+   if(document.consultaproducto.radiosearch[4].checked == true)
+  {
+    document.consultaproducto.action ="consultatodos.php";
   }
   return true;
 }
@@ -38,7 +42,7 @@ function OnSubmitForm()
 </head>
 
 <body>
-<form id="form1" name="consultaproducto" onsubmit="return OnSubmitForm();">
+<form id="form1" name="consultaproducto" onsubmit="return OnSubmitForm();" target="conte">
 <table width="600" border="0">
   <tr>
     <td bgcolor="#999999"><h1>Consultar Productos</h1></td>
@@ -81,10 +85,18 @@ function OnSubmitForm()
           <td>&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><input type="radio" name="radiosearch" id="id9" value="id" /> 
+            Todos</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
       </table>
     </div></td>
   </tr>
 </table>
+<iframe src="" width="820" height="300" scrolling="auto" name="conte"></iframe>
 
 </form>
 </body>
