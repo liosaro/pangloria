@@ -63,6 +63,19 @@
               </ul>
             </li>
             <li><a href="#">Reporte de Trabajo</a></li>
+            <li><a href="#" class="MenuBarItemSubmenu">Administracion</a>
+              <ul>
+                <li><a href="#" class="MenuBarItemSubmenu">Permisos</a>
+                  <ul>
+                    <li><a href="../administracion/permisos/IngresoPermiso.php" target="contenedor">Ingresar Permisos</a></li>
+                    <li><a href="../administracion/permisos/modificarpermisos.php" target="contenedor">Modificar Permisos</a></li>
+                    <li><a href="../administracion/permisos/consultapermiso.php" target="contenedor">Consultar Permisos</a></li>
+                    <li><a href="../administracion/permisos/eliminarpermisos.php">Eliminar Permisos</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Elemento sin título</a></li>
+              </ul>
+            </li>
 
           Salir
           </ul>
