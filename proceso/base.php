@@ -19,7 +19,7 @@
           <ul id="MenuBar1" class="MenuBarHorizontal">
             <li><a class="MenuBarItemSubmenu" href="#">Orden de Produccion</a>
               <ul>
-                <li><a href="#">Elemento 1.1</a></li>
+                <li><a href="ModificarOrdenProdccion.php" target="contenedor">Modificar Orden de Produccion</a></li>
                 <li><a href="#">Elemento 1.2</a></li>
                 <li><a href="#">Elemento 1.3</a></li>
               </ul>

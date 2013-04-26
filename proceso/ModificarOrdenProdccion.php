@@ -64,7 +64,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
 <body>
 <table width="820" border="1">
   <tr>
-    <td><form id="form1" name="form1" method="post" action="">
+    <td bgcolor="#CCCCCC"><form id="form1" name="form1" method="post" action="">
     </form>
       <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
         <table width="100%" border="0">
@@ -74,7 +74,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
           <tr>
             <td width="20%" height="28" align="center">Id Orden de Produccion</td>
             <td width="24%"><select name="IDORDENPRODUCCION">
-              <option value="menuitem1" >[ Etiqueta ]</option>
+              <option value="menuitem1" selected="selected" >[ Etiqueta ]</option>
               <option value="menuitem2" >[ Etiqueta ]</option>
             </select></td>
             <td width="43%">Encabezado Orden Produccion
@@ -93,9 +93,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td align="center" bgcolor="#FFFFFF"><p>&nbsp;</p></td>
-            <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
-            <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
+            <td align="center" bgcolor="#CCCCCC"><p>&nbsp;</p></td>
+            <td align="center" bgcolor="#CCCCCC">&nbsp;</td>
+            <td align="center" bgcolor="#CCCCCC">&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
