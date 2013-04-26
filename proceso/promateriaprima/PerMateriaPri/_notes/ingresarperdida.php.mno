@@ -3,4 +3,7 @@
 	<infoitem key="UD_comboempleado" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
 	<infoitem key="UD_comboorden" value="name:IDENCABEORDPROD;datatype:int" />
 	<infoitem key="UD_Recordset1" value="name:ID_ATRIB;datatype:int,name:IDUSUARIO;datatype:int,name:IDROL;datatype:int,name:IDPERMISO;datatype:int,name:C;datatype:int,name:R;datatype:int,name:U;datatype:int,name:D;datatype:int" />
+	<infoitem key="UD_combomedida" value="name:ID_MEDIDA;datatype:int,name:MEDIDA;datatype:blob" />
+	<infoitem key="UD_combomateriaprima" value="name:IDMATPRIMA;datatype:int,name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_ultimajusti" value="name:IDENCABEZADO;datatype:int" />
 </info>

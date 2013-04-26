@@ -1,5 +1,38 @@
 <?php require_once('../../../Connections/basepangloria.php'); ?>
+<?php require_once('../../../Connections/basepangloria.php'); ?>
+<?php require_once('../../../Connections/basepangloria.php'); ?>
 <?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -36,6 +69,26 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
+  $insertSQL = sprintf("INSERT INTO TRNJUSTIFICAIONPERMATPRI (ID_PERDIDA, IDENCABEZADO, IDUNIDAD, CANT_PERDIDA, MAT_PRIMA, JUSTIFICACION, USUARIOPERMATPRI, FECHAYHORAUSUAPMATPRI) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
+                       GetSQLValueString($_POST['ID_PERDIDA'], "int"),
+                       GetSQLValueString($_POST['IDENCABEZADO'], "int"),
+                       GetSQLValueString($_POST['IDUNIDAD'], "int"),
+                       GetSQLValueString($_POST['CANT_PERDIDA'], "double"),
+                       GetSQLValueString($_POST['MAT_PRIMA'], "int"),
+                       GetSQLValueString($_POST['JUSTIFICACION'], "text"),
+                       GetSQLValueString($_POST['USUARIOPERMATPRI'], "int"),
+                       GetSQLValueString($_POST['FECHAYHORAUSUAPMATPRI'], "date"));
+
+  mysql_select_db($database_basepangloria, $basepangloria);
+  $Result1 = mysql_query($insertSQL, $basepangloria) or die(mysql_error());
+}
+
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+}
+
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   $insertSQL = sprintf("INSERT INTO TRNENCABEZADOJUSTPERMATPRIM (IDENCABEZADO, IDEMPLEADO, IDORDENPRODUCCION, FECHAINGRESOJUSTIFICA, EMPLEADOINGRESA, FECHAHORAUSUA) VALUES (%s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['IDENCABEZADO'], "int"),
@@ -60,6 +113,24 @@ $query_comboorden = "SELECT IDENCABEORDPROD FROM TRNENCABEZADOORDENPROD";
 $comboorden = mysql_query($query_comboorden, $basepangloria) or die(mysql_error());
 $row_comboorden = mysql_fetch_assoc($comboorden);
 $totalRows_comboorden = mysql_num_rows($comboorden);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_combomedida = "SELECT * FROM CATMEDIDAS";
+$combomedida = mysql_query($query_combomedida, $basepangloria) or die(mysql_error());
+$row_combomedida = mysql_fetch_assoc($combomedida);
+$totalRows_combomedida = mysql_num_rows($combomedida);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_combomateriaprima = "SELECT IDMATPRIMA, DESCRIPCION FROM CATMATERIAPRIMA";
+$combomateriaprima = mysql_query($query_combomateriaprima, $basepangloria) or die(mysql_error());
+$row_combomateriaprima = mysql_fetch_assoc($combomateriaprima);
+$totalRows_combomateriaprima = mysql_num_rows($combomateriaprima);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_ultimajusti = "SELECT IDENCABEZADO FROM TRNENCABEZADOJUSTPERMATPRIM ORDER BY IDENCABEZADO DESC";
+$ultimajusti = mysql_query($query_ultimajusti, $basepangloria) or die(mysql_error());
+$row_ultimajusti = mysql_fetch_assoc($ultimajusti);
+$totalRows_ultimajusti = mysql_num_rows($ultimajusti);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -85,7 +156,7 @@ body {
     </tr>
     <tr>
       <td width="213">Codigo de Justificacion:</td>
-      <td width="215"><input name="IDENCABEZADO" type="text" disabled="disabled" value="" size="32" readonly="readonly" /></td>
+      <td width="215"><input name="IDENCABEZADO" type="text" disabled="disabled" value="<?php echo $row_ultimajusti['IDENCABEZADO']+1; ?>" size="32" readonly="readonly" /></td>
       <td width="154">Empleado que Justifica:</td>
       <td width="220"><select name="IDEMPLEADO">
         <?php
@@ -134,15 +205,12 @@ do {
 </script></td>
       <td>Orden de Produccion:</td>
       <td><p>
-        <input name="IDENCABEZADO2" type="text" value="<?php echo $row_comboorden['IDENCABEORDPROD']; ?>" size="32" />
-        </p>
-        <p>
-          <select name="IDORDENPRODUCCION">
-            <?php
+        <select name="IDORDENPRODUCCION">
+          <?php
 do {  
 ?>
-            <option value="<?php echo $row_comboorden['IDENCABEORDPROD']?>"><?php echo $row_comboorden['IDENCABEORDPROD']?></option>
-            <?php
+          <option value="<?php echo $row_comboorden['IDENCABEORDPROD']?>"><?php echo $row_comboorden['IDENCABEORDPROD']?></option>
+          <?php
 } while ($row_comboorden = mysql_fetch_assoc($comboorden));
   $rows = mysql_num_rows($comboorden);
   if($rows > 0) {
@@ -150,11 +218,11 @@ do {
 	  $row_comboorden = mysql_fetch_assoc($comboorden);
   }
 ?>
-          </select>
+        </select>
       </p></td>
     </tr>
     <tr>
-      <td><input type="submit" value="Insertar registro" /></td>
+      <td><input type="submit" value="Insertar Encabezado" /></td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
@@ -166,17 +234,74 @@ do {
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td colspan="4">&nbsp;</td>
     </tr>
   </table>
-  <p>&nbsp;</p>
   <p>
     <input type="hidden" name="MM_insert" value="form1" />
   </p>
 </form>
+<form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
+  <table align="left" width="820">
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Codigo de Encabezado:</td>
+      <td><input type="text" name="IDENCABEZADO2" value="<?php echo $row_ultimajusti['IDENCABEZADO']+1; ?>" size="5" /></td>
+      <td>Medida:</td>
+      <td><select name="IDUNIDAD">
+        <?php
+do {  
+?>
+        <option value="<?php echo $row_combomedida['ID_MEDIDA']?>"><?php echo $row_combomedida['MEDIDA']?></option>
+        <?php
+} while ($row_combomedida = mysql_fetch_assoc($combomedida));
+  $rows = mysql_num_rows($combomedida);
+  if($rows > 0) {
+      mysql_data_seek($combomedida, 0);
+	  $row_combomedida = mysql_fetch_assoc($combomedida);
+  }
+?>
+      </select></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Cantidad que se Perdio:</td>
+      <td><input type="text" name="CANT_PERDIDA" value="" size="32" /></td>
+      <td>Materia Prima:</td>
+      <td><select name="MAT_PRIMA">
+        <?php
+do {  
+?>
+        <option value="<?php echo $row_combomateriaprima['IDMATPRIMA']?>"><?php echo $row_combomateriaprima['DESCRIPCION']?></option>
+        <?php
+} while ($row_combomateriaprima = mysql_fetch_assoc($combomateriaprima));
+  $rows = mysql_num_rows($combomateriaprima);
+  if($rows > 0) {
+      mysql_data_seek($combomateriaprima, 0);
+	  $row_combomateriaprima = mysql_fetch_assoc($combomateriaprima);
+  }
+?>
+      </select></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right" valign="top">JUSTIFICACION:</td>
+      <td colspan="3"><textarea name="JUSTIFICACION" cols="100" rows="5"></textarea>
+      <input type="submit" value="Insertar registro" /></td>
+    </tr>
+  </table>
+  <input type="hidden" name="MM_insert" value="form2" />
+</form>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 </body>
 </html>
@@ -184,4 +309,10 @@ do {
 mysql_free_result($comboempleado);
 
 mysql_free_result($comboorden);
+
+mysql_free_result($combomedida);
+
+mysql_free_result($combomateriaprima);
+
+mysql_free_result($ultimajusti);
 ?>
