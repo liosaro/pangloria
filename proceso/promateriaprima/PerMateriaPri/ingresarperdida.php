@@ -72,7 +72,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
   $insertSQL = sprintf("INSERT INTO TRNJUSTIFICAIONPERMATPRI (ID_PERDIDA, IDENCABEZADO, IDUNIDAD, CANT_PERDIDA, MAT_PRIMA, JUSTIFICACION, USUARIOPERMATPRI, FECHAYHORAUSUAPMATPRI) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['ID_PERDIDA'], "int"),
-                       GetSQLValueString($_POST['IDENCABEZADO'], "int"),
+                       GetSQLValueString($_POST['IDENCABEZADOR'], "int"),
                        GetSQLValueString($_POST['IDUNIDAD'], "int"),
                        GetSQLValueString($_POST['CANT_PERDIDA'], "double"),
                        GetSQLValueString($_POST['MAT_PRIMA'], "int"),
@@ -146,6 +146,10 @@ body {
 	margin-top: 0px;
 }
 </style>
+<script src="../../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<script src="../../../SpryAssets/SpryValidationTextarea.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<link href="../../../SpryAssets/SpryValidationTextarea.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -156,7 +160,7 @@ body {
     </tr>
     <tr>
       <td width="213">Codigo de Justificacion:</td>
-      <td width="215"><input name="IDENCABEZADO" type="text" disabled="disabled" value="<?php echo $row_ultimajusti['IDENCABEZADO']+1; ?>" size="32" readonly="readonly" /></td>
+      <td width="215"><input name="IDENCABEZADOR" type="text" disabled="disabled" id="IDENCABEZADOR" value="<?php echo $row_ultimajusti['IDENCABEZADO']+1; ?>" size="32" readonly="readonly" /></td>
       <td width="154">Empleado que Justifica:</td>
       <td width="220"><select name="IDEMPLEADO">
         <?php
@@ -245,7 +249,7 @@ do {
   <table align="left" width="820">
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">Codigo de Encabezado:</td>
-      <td><input type="text" name="IDENCABEZADO2" value="<?php echo $row_ultimajusti['IDENCABEZADO']+1; ?>" size="5" /></td>
+      <td><input name="IDENCABEZADOR" type="text" id="IDENCABEZADOR" value="<?php echo $row_ultimajusti['IDENCABEZADO']; ?>" size="5" /></td>
       <td>Medida:</td>
       <td><select name="IDUNIDAD">
         <?php
@@ -270,7 +274,9 @@ do {
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">Cantidad que se Perdio:</td>
-      <td><input type="text" name="CANT_PERDIDA" value="" size="32" /></td>
+      <td><span id="CANTIDAPERDIDA">
+      <input type="text" name="CANT_PERDIDA" value="" size="32" />
+      <span class="textfieldInvalidFormatMsg">Formato no válido.</span><span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
       <td>Materia Prima:</td>
       <td><select name="MAT_PRIMA">
         <?php
@@ -295,14 +301,19 @@ do {
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right" valign="top">JUSTIFICACION:</td>
-      <td colspan="3"><textarea name="JUSTIFICACION" cols="100" rows="5"></textarea>
-      <input type="submit" value="Insertar registro" /></td>
+      <td colspan="3"><span id="sprytextarea1">
+        <textarea name="JUSTIFICACION" cols="100" rows="5"></textarea>
+      <span class="textareaRequiredMsg">Se necesita un valor.</span></span>        <input type="submit" value="Insertar registro" /></td>
     </tr>
   </table>
   <input type="hidden" name="MM_insert" value="form2" />
 </form>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("CANTIDAPERDIDA", "real", {validateOn:["blur"]});
+var sprytextarea1 = new Spry.Widget.ValidationTextarea("sprytextarea1", {validateOn:["blur", "change"]});
+</script>
 </body>
 </html>
 <?php
