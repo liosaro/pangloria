@@ -134,12 +134,15 @@ do {
 </script></td>
       <td>Orden de Produccion:</td>
       <td><p>
-        <select name="IDORDENPRODUCCION">
-          <?php
+        <input name="IDENCABEZADO2" type="text" value="<?php echo $row_comboorden['IDENCABEORDPROD']; ?>" size="32" />
+        </p>
+        <p>
+          <select name="IDORDENPRODUCCION">
+            <?php
 do {  
 ?>
-          <option value="<?php echo $row_comboorden['IDENCABEORDPROD']?>"><?php echo $row_comboorden['IDENCABEORDPROD']?></option>
-          <?php
+            <option value="<?php echo $row_comboorden['IDENCABEORDPROD']?>"><?php echo $row_comboorden['IDENCABEORDPROD']?></option>
+            <?php
 } while ($row_comboorden = mysql_fetch_assoc($comboorden));
   $rows = mysql_num_rows($comboorden);
   if($rows > 0) {
@@ -147,7 +150,7 @@ do {
 	  $row_comboorden = mysql_fetch_assoc($comboorden);
   }
 ?>
-        </select>
+          </select>
       </p></td>
     </tr>
     <tr>

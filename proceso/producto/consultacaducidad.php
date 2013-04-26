@@ -31,8 +31,6 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$currentPage = $_SERVER["PHP_SELF"];
-
 $maxRows_nombre = 20;
 $pageNum_nombre = 0;
 if (isset($_GET['pageNum_nombre'])) {
@@ -45,7 +43,7 @@ if (isset($_GET['q'])) {
   $colname_nombre = $_GET['q'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_nombre = sprintf("SELECT * FROM CATPRODUCTO WHERE DIAS_CADUCIDAD = %s ORDER BY IDPRODUCTO ASC", GetSQLValueString($colname_nombre, "int"));
+$query_nombre = sprintf("SELECT * FROM CATPRODUCTO WHERE IDPRODUCTO = %s ORDER BY IDPRODUCTO ASC", GetSQLValueString($colname_nombre, "int"));
 $query_limit_nombre = sprintf("%s LIMIT %d, %d", $query_nombre, $startRow_nombre, $maxRows_nombre);
 $nombre = mysql_query($query_limit_nombre, $basepangloria) or die(mysql_error());
 $row_nombre = mysql_fetch_assoc($nombre);
@@ -57,29 +55,10 @@ if (isset($_GET['totalRows_nombre'])) {
   $totalRows_nombre = mysql_num_rows($all_nombre);
 }
 $totalPages_nombre = ceil($totalRows_nombre/$maxRows_nombre)-1;
-
-$queryString_nombre = "";
-if (!empty($_SERVER['QUERY_STRING'])) {
-  $params = explode("&", $_SERVER['QUERY_STRING']);
-  $newParams = array();
-  foreach ($params as $param) {
-    if (stristr($param, "pageNum_nombre") == false && 
-        stristr($param, "totalRows_nombre") == false) {
-      array_push($newParams, $param);
-    }
-  }
-  if (count($newParams) != 0) {
-    $queryString_nombre = "&" . htmlentities(implode("&", $newParams));
-  }
-}
-$queryString_nombre = sprintf("&totalRows_nombre=%d%s", $totalRows_nombre, $queryString_nombre);
 ?>
 <table border="1" cellpadding="0" cellspacing="0" width="820">
   <tr>
     <td colspan="6" align="center" bgcolor="#999999"><h1>Detalle</h1></td>
-  </tr>
-  <tr>
-    <td colspan="6"><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, 0, $queryString_nombre); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, max(0, $pageNum_nombre - 1), $queryString_nombre); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, min($totalPages_nombre, $pageNum_nombre + 1), $queryString_nombre); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, $totalPages_nombre, $queryString_nombre); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></td>
   </tr>
   <tr>
     <td>Id del Producto</td>

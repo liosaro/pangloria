@@ -103,7 +103,6 @@
             </p>
             <p>
               <label for="pass"></label>
-              <input type="submit" name="kjh" id="kjh" value="Enviar" />
             </p>
           </form>
           <p>&nbsp;</p>
