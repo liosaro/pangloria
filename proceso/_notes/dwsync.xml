@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="ConsultarOrdenProduc.php" server="www.liosarpc.info//public_html/pan/" local="130102968600000000" remote="130102968600000000" />
-<file name="ConsultarPedidoMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130102968600000000" remote="130102968600000000" />
-<file name="EliminarrOrdenProduc.php" server="www.liosarpc.info//public_html/pan/" local="130102968600000000" remote="130102968600000000" />
-<file name="OrdProduc.php" server="www.liosarpc.info//public_html/pan/" local="130102968600000000" remote="130102968600000000" />
-<file name="PedidoMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130102968600000000" remote="130102968600000000" />
-<file name="SalidaMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130102968600000000" remote="130102968600000000" />
-<file name="base.php" server="www.liosarpc.info//public_html/pan/" local="130114249988559983" remote="130114322400000000" />
-<file name="conproduccion.php" server="www.liosarpc.info//public_html/pan/" local="130102968600000000" remote="130102968600000000" />
-<file name="ModificarOrdenProdccion.php" server="www.liosarpc.info//public_html/pan/" local="130114251724089250" remote="130114323600000000" />
+<file name="ConsultarOrdenProduc.php" server="www.liosarpc.info//public_html/pan/" local="3448731113" remote="318763443841564572" />
+<file name="ConsultarPedidoMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="3448731114" remote="318763443841564572" />
+<file name="EliminarrOrdenProduc.php" server="www.liosarpc.info//public_html/pan/" local="3448731114" remote="318763443841564572" />
+<file name="OrdProduc.php" server="www.liosarpc.info//public_html/pan/" local="3448731115" remote="318763443841564572" />
+<file name="PedidoMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="3448731115" remote="318763443841564572" />
+<file name="SalidaMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="3448731116" remote="318763443841564572" />
+<file name="conproduccion.php" server="www.liosarpc.info//public_html/pan/" local="3448731116" remote="318763443841564572" />
+<file name="base.php" server="www.liosarpc.info//public_html/pan/" local="130113370912764411" remote="130114282800000000" />
 </dwsync>

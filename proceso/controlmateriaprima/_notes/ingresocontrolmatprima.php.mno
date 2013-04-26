@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_controlmateriaprima" value="name:ID_CONTROLMAT;datatype:int,name:IDMATPRIMA;datatype:int,name:ID_SALIDA;datatype:int,name:IDUNIDAD;datatype:int,name:CANT_ENTREGA;datatype:real,name:CANT_DEVUELTA;datatype:real,name:CANT_UTILIZADA;datatype:real,name:FECHA_CONTROL;datatype:date" />
-</info>

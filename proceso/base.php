@@ -19,7 +19,7 @@
           <ul id="MenuBar1" class="MenuBarHorizontal">
             <li><a class="MenuBarItemSubmenu" href="#">Orden de Produccion</a>
               <ul>
-                <li><a href="ModificarOrdenProdccion.php" target="contenedor">Modificar Orden de Produccion</a></li>
+                <li><a href="#">Elemento 1.1</a></li>
                 <li><a href="#">Elemento 1.2</a></li>
                 <li><a href="#">Elemento 1.3</a></li>
               </ul>
@@ -70,7 +70,7 @@
                     <li><a href="../administracion/permisos/IngresoPermiso.php" target="contenedor">Ingresar Permisos</a></li>
                     <li><a href="../administracion/permisos/modificarpermisos.php" target="contenedor">Modificar Permisos</a></li>
                     <li><a href="../administracion/permisos/consultapermiso.php" target="contenedor">Consultar Permisos</a></li>
-                    <li><a href="../administracion/permisos/eliminarpermisos.php">Eliminar Permisos</a></li>
+                    <li><a href="../administracion/permisos/eliminarpermisos.php" target="contenedor">Eliminar Permisos</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Elemento sin título</a></li>
