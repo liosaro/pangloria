@@ -6,4 +6,5 @@
 	<infoitem key="UD_combomedida" value="name:ID_MEDIDA;datatype:int,name:MEDIDA;datatype:blob" />
 	<infoitem key="UD_combomateriaprima" value="name:IDMATPRIMA;datatype:int,name:DESCRIPCION;datatype:blob" />
 	<infoitem key="UD_ultimajusti" value="name:IDENCABEZADO;datatype:int" />
+	<infoitem key="UD_usuarios" value="name:IDUSUARIO;datatype:int" />
 </info>

@@ -1,4 +1,49 @@
 <?php require_once('../../../Connections/basepangloria.php'); ?>
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "";
+$MM_donotCheckaccess = "true";
+
+// *** Restrict Access To Page: Grant or deny access to this page
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+  // For security, start by assuming the visitor is NOT authorized. 
+  $isValid = False; 
+
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
+  if (!empty($UserName)) { 
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
+    // Parse the strings into arrays. 
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+    // Or, you may restrict access to only certain users based on their username. 
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && true) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+
+$MM_restrictGoTo = "../../../seguridad.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
+?>
 <?php require_once('../../../Connections/basepangloria.php'); ?>
 <?php require_once('../../../Connections/basepangloria.php'); ?>
 <?php
@@ -131,6 +176,16 @@ $query_ultimajusti = "SELECT IDENCABEZADO FROM TRNENCABEZADOJUSTPERMATPRIM ORDER
 $ultimajusti = mysql_query($query_ultimajusti, $basepangloria) or die(mysql_error());
 $row_ultimajusti = mysql_fetch_assoc($ultimajusti);
 $totalRows_ultimajusti = mysql_num_rows($ultimajusti);
+
+$colname_usuarios = "-1";
+if (isset($_SESSION['MM_Username'])) {
+  $colname_usuarios = $_SESSION['MM_Username'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_usuarios = sprintf("SELECT IDUSUARIO FROM CATUSUARIO WHERE NOMBREUSUARIO = %s", GetSQLValueString($colname_usuarios, "text"));
+$usuarios = mysql_query($query_usuarios, $basepangloria) or die(mysql_error());
+$row_usuarios = mysql_fetch_assoc($usuarios);
+$totalRows_usuarios = mysql_num_rows($usuarios);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -228,14 +283,14 @@ do {
     <tr>
       <td><input type="submit" value="Insertar Encabezado" /></td>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td>Codigo de Usuario:</td>
+      <td><input name="EMPLEADOINGRESA" type="text" id="EMPLEADOINGRESA" value="<?php echo $row_usuarios['IDUSUARIO']; ?>" readonly="readonly" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td>Fecha de registro:</td>
+      <td><input name="FECHAHORAUSUA" type="text" id="FECHAHORAUSUA" value="<?php echo date("Y-m-d H:i:s");;?> " readonly="readonly" /></td>
     </tr>
     <tr>
       <td colspan="4">&nbsp;</td>
@@ -326,4 +381,6 @@ mysql_free_result($combomedida);
 mysql_free_result($combomateriaprima);
 
 mysql_free_result($ultimajusti);
+
+mysql_free_result($usuarios);
 ?>
