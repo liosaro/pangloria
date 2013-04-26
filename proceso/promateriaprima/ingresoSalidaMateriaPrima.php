@@ -98,14 +98,15 @@ $totalRows_comboencabe = mysql_num_rows($comboencabe);
 <title>Documento sin título</title>
 <script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 <link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen"
+     href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 </head>
 
 <body>
 <table width="820" border="0">
   <tr>
-    <td><form id="form1" name="form1" method="post" action="">
-    </form>
-      <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
+    <td><form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
         <table width="100%" border="0">
           <tr>
             <td colspan="4" align="center" bgcolor="#999999"><h1> Salida de Materia Prima</h1></td>
@@ -215,7 +216,7 @@ do {
           </tr>
           <tr>
             <td>FECHAYHORAUSUA</td>
-            <td><span id="fecha"><script type="text/javascript"
+            <td><script type="text/javascript"
      src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
     </script> 
     <script type="text/javascript"
@@ -227,9 +228,9 @@ do {
     <script type="text/javascript"
      src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
     </script>
-  <div class="well">
+   <div class="welsl">
   <div id="datetimepicker1" class="input-append date">
-    <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+    <input data-format="yyyy-MM-dd hh:mm:ss" type="text"></input>
     <span class="add-on">
       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
       </i>
@@ -242,7 +243,7 @@ do {
       language: 'pt-BR'
     });
   });
-</script><span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
+</script>></td>
             <td>EMPLEADOSACA:</td>
             <td><select name="IDEMPLEADO" id="IDEMPLEADO">
               <?php
@@ -279,7 +280,6 @@ do {
   </tr>
 </table>
 <script type="text/javascript">
-var sprytextfield1 = new Spry.Widget.ValidationTextField("fecha", "date", {hint:"2013-12-20", validateOn:["blur"], format:"yyyy-mm-dd"});
 var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "integer", {hint:"0001", minChars:1, maxChars:2, minValue:0, maxValue:9999, validateOn:["change"]});
 </script>
 </body>
