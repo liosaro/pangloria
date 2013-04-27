@@ -117,7 +117,7 @@ body {
         </tr>
         <?php do { ?>
           <tr>
-            <td>Modificar </td>
+            <td><a href="ingresoSalidaMateriaPrima.php">Modificar</a></td>
             <td><?php echo $row_consultaSalidaMP['ID_SALIDA']; ?></td>
             <td><?php echo $row_consultaSalidaMP['CANTMAT_PRIMA']; ?></td>
             <td><?php echo $row_consultaSalidaMP['ID_MATPRIMA']; ?></td>
