@@ -143,8 +143,8 @@ do {
           <tr>
             <td>JUSTIFICACIONFALTAPROD</td>
             <td><textarea name="JUSTIFICACIONFALTAPROD" cols="32"></textarea></td>
-            <td><input type="submit" value="Enviar" /></td>
             <td>&nbsp;</td>
+            <td><input type="submit" value="Enviar" /></td>
           </tr>
         </table>
         <p>&nbsp;</p>
