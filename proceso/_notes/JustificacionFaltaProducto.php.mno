@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_idcontrol" value="name:ID_CONTROLPRODUCCION;datatype:int" />
-	<infoitem key="UD_medidas" value="name:ID_MEDIDA;datatype:int,name:MEDIDA;datatype:blob" />
-</info>
