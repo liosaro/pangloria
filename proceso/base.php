@@ -113,7 +113,12 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                 </li>
                 <li><a href="#">Elemento sin t&iacute;tulo</a></li>
                 <li><a href="#">Entrega de Materia Prima</a></li>
-                <li><a href="#">Justificacion Perdia Materia Prima</a></li>
+                <li><a href="#" class="MenuBarItemSubmenu">Justificacion Perdia Materia Prima</a>
+                  <ul>
+                    <li><a href="promateriaprima/PerMateriaPri/ingresarperdida.php" target="contenedor">Ingresar Justificacion</a></li>
+                    <li><a href="promateriaprima/PerMateriaPri/modificarjustificacion.php" target="contenedor">Modificar Justificacion</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
             <li><a class="MenuBarItemSubmenu" href="#">Controles</a>
