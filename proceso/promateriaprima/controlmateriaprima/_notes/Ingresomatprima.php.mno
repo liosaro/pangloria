@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_combomatprima" value="name:IDMATPRIMA;datatype:int" />
-	<infoitem key="UD_combosalida" value="name:ID_SALIDA;datatype:int" />
-	<infoitem key="UD_combounidad" value="name:IDUNIDAD;datatype:int" />
-	<infoitem key="UD_Recordset1" value="name:ID_CONTROLMAT;datatype:int" />
-	<infoitem key="UD_combomateprima" value="name:IDMATPRIMA;datatype:int" />
-</info>
