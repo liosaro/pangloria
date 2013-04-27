@@ -108,7 +108,7 @@ body {
           <td>Modificacion</td>
           <td>ID SALIDA</td>
           <td>CANTIDAD DE MATERIA PRIMA</td>
-          <td>ID MATERIA PRIMA.</td>
+          <td>ID MATERIA PRIMA</td>
           <td>ID ENCABEZADO DE SALIDA DE MATERIA PRI</td>
           <td>ID UNIDAD</td>
           <td>ID DEPTO</td>
