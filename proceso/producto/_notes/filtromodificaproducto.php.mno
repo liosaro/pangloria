@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_filtradoproducto" value="name:IDPRODUCTO;datatype:int,name:DESCRIPCIONPRODUC;datatype:string,name:PRECIO_COSTO;datatype:real,name:PRECIO_VENTAMAYOREO;datatype:real,name:PRECIO_VENTAMENOR;datatype:real,name:DIAS_CADUCIDAD;datatype:int" />
+</info>

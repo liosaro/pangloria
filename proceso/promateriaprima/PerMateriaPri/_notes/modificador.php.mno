@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_encabezado" value="name:IDENCABEZADO;datatype:int,name:IDEMPLEADO;datatype:int,name:IDORDENPRODUCCION;datatype:int,name:FECHAINGRESOJUSTIFICA;datatype:date,name:EMPLEADOINGRESA;datatype:int,name:FECHAHORAUSUA;datatype:datetime" />
+	<infoitem key="UD_cuerpojustifica" value="name:ID_PERDIDA;datatype:int,name:IDENCABEZADO;datatype:int,name:IDUNIDAD;datatype:int,name:CANT_PERDIDA;datatype:real,name:MAT_PRIMA;datatype:int,name:JUSTIFICACION;datatype:blob,name:USUARIOPERMATPRI;datatype:int,name:FECHAYHORAUSUAPMATPRI;datatype:datetime" />
+	<infoitem key="UD_nombreprod" value="name:IDMATPRIMA;datatype:int,name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_cuerpo" value="name:ID_PERDIDA;datatype:int,name:IDENCABEZADO;datatype:int,name:IDUNIDAD;datatype:int,name:CANT_PERDIDA;datatype:real,name:MAT_PRIMA;datatype:int,name:JUSTIFICACION;datatype:blob,name:USUARIOPERMATPRI;datatype:int,name:FECHAYHORAUSUAPMATPRI;datatype:datetime" />
+	<infoitem key="UD_nommatpri" value="name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_Recordset1" value="name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_materia" value="name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_conmedi" value="name:MEDIDA;datatype:blob" />
+</info>
