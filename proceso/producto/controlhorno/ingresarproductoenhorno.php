@@ -216,24 +216,12 @@ body {
     <tr>
       <td width="213">Codigo de Producto en Horno:</td>
       <td width="215"><input name="IDENCABEZADOR" type="text" disabled="disabled" id="IDENCABEZADOR" value="<?php echo $row_ultimajusti['IDENCABEZADO']+1; ?>" size="32" readonly="readonly" /></td>
-      <td width="154">Empleado que Justifica:</td>
-      <td width="220"><select name="IDEMPLEADO">
-        <?php
-do {  
-?>
-        <option value="<?php echo $row_comboempleado['IDEMPLEADO']?>"><?php echo $row_comboempleado['NOMBREEMPLEADO']?></option>
-        <?php
-} while ($row_comboempleado = mysql_fetch_assoc($comboempleado));
-  $rows = mysql_num_rows($comboempleado);
-  if($rows > 0) {
-      mysql_data_seek($comboempleado, 0);
-	  $row_comboempleado = mysql_fetch_assoc($comboempleado);
-  }
-?>
-      </select></td>
+      <td width="154">Empleado que Ingresa:</td>
+      <td width="220"><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" /></td>
     </tr>
     <tr>
-      <td>Fecha de Ingreso</td>
+      <td>Fecha y Hora de Ingreso:</td>
       <td><script type="text/javascript"
      src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
     </script> 
@@ -248,7 +236,10 @@ do {
     </script>
    <div class="welsl">
   <div id="datetimepicker4" class="input-append">
-    <input data-format="yyyy-MM-dd" type="text" name="FECHAINGRESOJUSTIFICA"></input>
+    <input data-format="yyyy-MM-dd" type="text" name="FECHAINGRESOJUSTIFICA">
+    <label for="textfield3"></label>
+    <input type="text" name="textfield3" id="textfield3" />
+    </input>
     <span class="add-on">
       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
       </i>
@@ -262,35 +253,25 @@ do {
     });
   });
 </script></td>
-      <td>Orden de Produccion:</td>
+      <td>Codigo de Control de Produccion</td>
       <td><p>
-        <select name="IDORDENPRODUCCION">
-          <?php
-do {  
-?>
-          <option value="<?php echo $row_comboorden['IDENCABEORDPROD']?>"><?php echo $row_comboorden['IDENCABEORDPROD']?></option>
-          <?php
-} while ($row_comboorden = mysql_fetch_assoc($comboorden));
-  $rows = mysql_num_rows($comboorden);
-  if($rows > 0) {
-      mysql_data_seek($comboorden, 0);
-	  $row_comboorden = mysql_fetch_assoc($comboorden);
-  }
-?>
-        </select>
+        <label for="textfield2"></label>
+        <input type="text" name="textfield2" id="textfield2" />
       </p></td>
     </tr>
     <tr>
-      <td><input type="submit" value="Insertar Encabezado" /></td>
+      <td><p>Cantidad a Ingresar:</p></td>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" /></td>
+      <td>:</td>
       <td>&nbsp;</td>
-      <td>Codigo de Usuario:</td>
-      <td><input name="EMPLEADOINGRESA" type="text" id="EMPLEADOINGRESA" value="<?php echo $row_usuarios['IDUSUARIO']; ?>" readonly="readonly" /></td>
     </tr>
     <tr>
+      <td>Producto a Ingresar:</td>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" /></td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>Fecha de registro:</td>
-      <td><input name="FECHAHORAUSUA" type="text" id="FECHAHORAUSUA" value="<?php echo date("Y-m-d H:i:s");;?> " readonly="readonly" /></td>
     </tr>
     <tr>
       <td colspan="4">&nbsp;</td>
@@ -303,50 +284,27 @@ do {
 <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
   <table align="left" width="820">
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Codigo de Encabezado:</td>
-      <td><input name="IDENCABEZADOR" type="text" id="IDENCABEZADOR" value="<?php echo $row_ultimajusti['IDENCABEZADO']; ?>" size="5" /></td>
-      <td>Medida:</td>
-      <td><select name="IDUNIDAD">
-        <?php
-do {  
-?>
-        <option value="<?php echo $row_combomedida['ID_MEDIDA']?>"><?php echo $row_combomedida['MEDIDA']?></option>
-        <?php
-} while ($row_combomedida = mysql_fetch_assoc($combomedida));
-  $rows = mysql_num_rows($combomedida);
-  if($rows > 0) {
-      mysql_data_seek($combomedida, 0);
-	  $row_combomedida = mysql_fetch_assoc($combomedida);
-  }
-?>
-      </select></td>
+      <td width="209" align="right" nowrap="nowrap">Codigo de Contol de Produccion:</td>
+      <td width="211"><input name="IDENCABEZADOR" type="text" id="IDENCABEZADOR" value="<?php echo $row_ultimajusti['IDENCABEZADO']; ?>" size="5" /></td>
+      <td width="160">Empleado que Revisa Egreso::</td>
+      <td width="220"><label for="textfield7"></label>
+      <input type="text" name="textfield7" id="textfield7" /></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">&nbsp;</td>
-      <td>&nbsp;</td>
+      <td nowrap="nowrap" align="right"><p>&nbsp;</p>
+      <p>Fecha y Hora de Egreso:</p></td>
+      <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" id="textfield6" /></td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Cantidad de Producto en Horno:</td>
+      <td nowrap="nowrap" align="right">Cantidad de Egreso::</td>
       <td><span id="CANTIDAPERDIDA">
       <input type="text" name="CANT_PERDIDA" value="" size="32" />
       <span class="textfieldInvalidFormatMsg">Formato no válido.</span><span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
-      <td>Productos:</td>
-      <td><select name="MAT_PRIMA">
-        <?php
-do {  
-?>
-        <option value="<?php echo $row_combomateriaprima['IDMATPRIMA']?>"><?php echo $row_combomateriaprima['DESCRIPCION']?></option>
-        <?php
-} while ($row_combomateriaprima = mysql_fetch_assoc($combomateriaprima));
-  $rows = mysql_num_rows($combomateriaprima);
-  if($rows > 0) {
-      mysql_data_seek($combomateriaprima, 0);
-	  $row_combomateriaprima = mysql_fetch_assoc($combomateriaprima);
-  }
-?>
-      </select></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -355,10 +313,8 @@ do {
       <td>&nbsp;</td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right" valign="top">JUSTIFICACION:</td>
-      <td colspan="3"><span id="sprytextarea1">
-        <textarea name="JUSTIFICACION" cols="100" rows="5"></textarea>
-      <span class="textareaRequiredMsg">Se necesita un valor.</span></span>        <input type="submit" value="Insertar registro" /></td>
+      <td nowrap="nowrap" align="right" valign="top">&nbsp;</td>
+      <td colspan="3"><span id="sprytextarea1"><span class="textareaRequiredMsg">Se necesita un valor.</span></span>        <input type="submit" value="Insertar registro" /></td>
     </tr>
   </table>
   <input type="hidden" name="MM_insert" value="form2" />
