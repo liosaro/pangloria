@@ -117,6 +117,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                   <ul>
                     <li><a href="promateriaprima/PerMateriaPri/ingresarperdida.php" target="contenedor">Ingresar Justificacion</a></li>
                     <li><a href="promateriaprima/PerMateriaPri/modificarjustificacion.php" target="contenedor">Modificar Justificacion</a></li>
+                    <li><a href="promateriaprima/PerMateriaPri/contenidoeliminador.php" target="contenedor">Eliminar Justificacion</a></li>
                   </ul>
                 </li>
               </ul>
