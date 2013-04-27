@@ -1,4 +1,4 @@
-<?php require_once('../../Connections/basepangloria.php'); ?>
+<?php require_once('../../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -54,11 +54,11 @@ $totalRows_comboOrden = mysql_num_rows($comboOrden);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Control de Empleados</title>
-<link href="../../style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="../../css/jquery-ui-1.7.2.custom.css" />
+<link href="../../../style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../../../css/jquery-ui-1.7.2.custom.css" />
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
-	<script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+	<script src="../../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 	<script type="text/javascript">
 jQuery(function($){
 	$.datepicker.regional['es'] = {
@@ -87,7 +87,7 @@ jQuery(function($){
         });
     </script>
 
-<link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<link href="../../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
