@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_cotiza" value="name:IDMATPRIMA;datatype:int,name:IDUNIDAD;datatype:int,name:CANTPRODUCTO;datatype:int,name:PRECIOUNITARIO;datatype:real" />
+	<infoitem key="UD_consultacotiza" value="name:IDMATPRIMA;datatype:int,name:IDUNIDAD;datatype:int,name:CANTPRODUCTO;datatype:int,name:PRECIOUNITARIO;datatype:real" />
+	<infoitem key="UD_materia" value="name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_concoti" value="name:IDDETALLE;datatype:int,name:IDMATPRIMA;datatype:int,name:IDENCABEZADO;datatype:int,name:IDUNIDAD;datatype:int,name:CANTPRODUCTO;datatype:int,name:PRECIOUNITARIO;datatype:real" />
+</info>

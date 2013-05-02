@@ -1,141 +1,136 @@
+<?php require_once('../../Connections/basepangloria.php'); ?>
+<?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
+  $insertSQL = sprintf("INSERT INTO TRNENCAORDCOMPRA (IDORDEN, NUMEROCOTIZACIO, IDEMPLEADO, FECHAEMISIONORDCOM, FECHAENTREGA, AUTORIZADOPOR, ESTADODEORDEN) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+                       GetSQLValueString($_POST['IDORDEN'], "int"),
+                       GetSQLValueString($_POST['NUMEROCOTIZACIO'], "int"),
+                       GetSQLValueString($_POST['IDEMPLEADO'], "int"),
+                       GetSQLValueString($_POST['FECHAEMISIONORDCOM'], "date"),
+                       GetSQLValueString($_POST['FECHAENTREGA'], "date"),
+                       GetSQLValueString($_POST['AUTORIZADOPOR'], "int"),
+                       GetSQLValueString($_POST['ESTADODEORDEN'], "text"));
+
+  mysql_select_db($database_basepangloria, $basepangloria);
+  $Result1 = mysql_query($insertSQL, $basepangloria) or die(mysql_error());
+}
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_ncoti = "SELECT IDENCABEZADO FROM TRNCABEZACOTIZACION";
+$ncoti = mysql_query($query_ncoti, $basepangloria) or die(mysql_error());
+$row_ncoti = mysql_fetch_assoc($ncoti);
+$totalRows_ncoti = mysql_num_rows($ncoti);
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
-<link href="../../style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+}
+</style>
 </head>
 
 <body>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<table width="820" border="0">
   <tr>
-    <td align="center"><strong>Orden de Compras
-      
-    </strong>
-      <form id="form2" name="form2" method="post" action="">
-      </form>
-    <strong>      </strong></td>
-  </tr>
-  <tr>
-    <td><form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
-      <table width="820px" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
+    <td align="left"><form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+      <table align="center">
+        <tr valign="baseline">
+          <td colspan="4" align="center" nowrap="nowrap">Ingreso de Orden de Produccion</td>
         </tr>
-        <tr>
-          <td width="30%">ID de Compra
-            <input type="text" name="idcompra" id="idcompra" /></td>
-          <td width="41%">Id de Orden qu genera la compra
-            <input type="text" name="textfield2" id="textfield2" /></td>
-          <td width="29%">Id del Proveedor 
-            <label for="comprovee"></label>
-            <select name="comprovee" size="1" id="comprovee">
-              <option value="1">Julio Cesar Flores</option>
-            </select></td>
+        <tr valign="baseline">
+          <td nowrap="nowrap" align="left">IDORDEN:</td>
+          <td nowrap="nowrap" align="left"><input type="text" name="IDORDEN" value="" size="32" /></td>
+          <td nowrap="nowrap" align="left">NUMEROCOTIZACIO:</td>
+          <td align="left"><select name="NUMEROCOTIZACIO"  onchange="conte.location.href = 'concotiza.php?coti=' + this.value" >
+            <?php
+do {  
+?>
+            <option value="<?php echo $row_ncoti['IDENCABEZADO']?>"><?php echo $row_ncoti['IDENCABEZADO']?></option>
+            <?php
+} while ($row_ncoti = mysql_fetch_assoc($ncoti));
+  $rows = mysql_num_rows($ncoti);
+  if($rows > 0) {
+      mysql_data_seek($ncoti, 0);
+	  $row_ncoti = mysql_fetch_assoc($ncoti);
+  }
+?>
+          </select></td>
         </tr>
-        <tr>
-          <td height="21">&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
+        <tr valign="baseline">
+          <td nowrap="nowrap" align="left">IDEMPLEADO:</td>
+          <td nowrap="nowrap" align="left"><input type="text" name="IDEMPLEADO" value="" size="32" /></td>
+          <td nowrap="nowrap" align="left">AUTORIZADOPOR:</td>
+          <td align="left"><select name="AUTORIZADOPOR" onchange=""></select></td>
         </tr>
-        <tr>
-          <td height="21">Concepto            
-            <label for="textfield3"></label>
-            <input type="text" name="textfield3" id="textfield3" /></td>
-          <td>Estado            
-            <input type="text" name="textfield4" id="textfield4" /></td>
-          <td>Fecha_Compra
-            <input type="text" name="textfield5" id="textfield5" /></td>
+        <tr valign="baseline">
+          <td nowrap="nowrap" align="left">FECHAEMISIONORDCOM</td>
+          <td nowrap="nowrap" align="left"><input type="text" name="FECHAEMISIONORDCOM" value="" size="32" /></td>
+          <td nowrap="nowrap" align="left">ESTADODEORDEN</td>
+          <td align="left"><select name="ESTADODEORDEN">
+            <option value="menuitem1" >[ Etiqueta ]</option>
+            <option value="menuitem2" >[ Etiqueta ]</option>
+          </select></td>
         </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
+        <tr valign="baseline">
+          <td nowrap="nowrap" align="left">FECHAENTREGA::</td>
+          <td nowrap="nowrap" align="left"><input type="text" name="FECHAENTREGA" value="" size="32" /></td>
+          <td nowrap="nowrap" align="left">&nbsp;</td>
+          <td align="left">&nbsp;</td>
         </tr>
-        <tr>
-          <td height="23">&nbsp;</td>
-          <td>No.Factura
-            <input type="text" name="textfield6" id="textfield6" /></td>
-          <td>Id del Empleado 
-            <label for="textfield7"></label>
-            <label for="select2"></label>
-            <select name="select2" id="select2">
-              <option value="1">Francisco Javier Santeliz</option>
-            </select></td>
-        </tr>
-        <tr>
-          <td height="21">&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td height="21">Cantidad
-            <label for="fileField"></label>
-            <label for="select">
-              <input type="text" name="textfield7" id="textfield7" />
-            </label></td>
-          <td>Unidad de medida
-            <label for="textfield8"></label>
-            <input type="text" name="textfield8" id="textfield8" /></td>
-          <td>Articulo
-            <label for="textfield9"></label>
-            <input type="text" name="textfield9" id="textfield9" /></td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>Precio Unitario
-            <label for="textfield10"></label>
-            <input type="text" name="textfield10" id="textfield10" /></td>
-          <td>Precio Total
-            <label for="textfield11"></label>
-            <input type="text" name="textfield11" id="textfield11" /></td>
-          <td>Descuento
-            <input type="text" name="textfield12" id="textfield12" /></td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>Sub Total
-            <input type="text" name="textfield13" id="textfield13" /></td>
-          <td>Iva
-            <input type="text" name="textfield14" id="textfield14" /></td>
-          <td>Total
-            <input type="text" name="textfield15" id="textfield15" /></td>
-        </tr>
-        <tr>
-          <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td align="center"><input type="submit" name="Agregar2" id="Agregar2" value="Enviar" /></td>
-              <td align="center"><input type="submit" name="Agregar" id="Agregar" value="Borrar" /></td>
-              <td align="center"><input type="submit" name="Agregar3" id="Agregar3" value="Salir" /></td>
-              </tr>
-            </table></td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
+        <tr valign="baseline">
+          <td nowrap="nowrap" align="left"><input type="submit" value="Insertar registro" /></td>
+          <td nowrap="nowrap" align="left">&nbsp;</td>
+          <td nowrap="nowrap" align="left">&nbsp;</td>
+          <td align="left">&nbsp;</td>
         </tr>
       </table>
+      <input type="hidden" name="MM_insert" value="form1" />
     </form></td>
   </tr>
 </table>
-<blockquote>
-  <blockquote>
-    <blockquote>
-      <blockquote>
-        <blockquote>
-          <p>&nbsp;</p>
-        </blockquote>
-      </blockquote>
-    </blockquote>
-  </blockquote>
-</blockquote>
+<p>&nbsp;<iframe src="concotiza.php" name="conte" width="820" height="400" scrolling="auto" frameborder="0"></iframe></p>
 </body>
 </html>
+<?php
+mysql_free_result($ncoti);
+?>
