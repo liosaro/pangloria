@@ -87,9 +87,10 @@ $totalRows_dect = mysql_num_rows($dect);
       </table>
     </form>
       <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
+        <p>&nbsp;</p>
         <table align="center">
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">IDDEVOLUCION:</td>
+            <td nowrap="nowrap" align="right">ID DEVOLUCION:</td>
             <td><select name="IDDEVOLUCION">
               <?php
 do {  
@@ -106,12 +107,12 @@ do {
             </select></td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">IDEMPLEADO:</td>
+            <td nowrap="nowrap" align="right">ID EMPLEADO:</td>
             <td><select name="IDEMPLEADO">
               <?php
 do {  
 ?>
-              <option value="<?php echo $row_empleado['NOMBREEMPLEADO']?>"><?php echo $row_empleado['IDEMPLEADO']?></option>
+              <option value="<?php echo $row_empleado['IDEMPLEADO']?>"><?php echo $row_empleado['NOMBREEMPLEADO']?></option>
               <?php
 } while ($row_empleado = mysql_fetch_assoc($empleado));
   $rows = mysql_num_rows($empleado);
@@ -144,7 +145,7 @@ do {
             <td><input type="text" name="DOCADEVOLVER" value="" size="32" /></td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">FECHADEVOLUCION:</td>
+            <td nowrap="nowrap" align="right">FECHA DEVOLUCION:</td>
             <td><input type="text" name="FECHADEVOLUCION" value="" size="32" /></td>
           </tr>
           <tr valign="baseline">
@@ -152,7 +153,7 @@ do {
             <td><input type="text" name="IMPORTE" value="" size="32" /></td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">GASTOGENERADO:</td>
+            <td nowrap="nowrap" align="right">GASTO GENERADO:</td>
             <td><input type="text" name="GASTOGENERADO" value="" size="32" /></td>
           </tr>
           <tr valign="baseline">

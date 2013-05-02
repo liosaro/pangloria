@@ -82,7 +82,7 @@ $totalRows_empl = mysql_num_rows($empl);
       <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
         <table align="center">
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">IDDEPTO:</td>
+            <td nowrap="nowrap" align="right">ID DEPTO:</td>
             <td><select name="IDDEPTO">
               <?php
 do {  
@@ -103,7 +103,7 @@ do {
             <td><input type="text" name="DEPARTAMENTO" value="<?php echo htmlentities($row_depa['DEPARTAMENTO'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">NUMEROTELEFONO:</td>
+            <td nowrap="nowrap" align="right">NUMERO DE TELEFONO:</td>
             <td><input type="text" name="NUMEROTELEFONO" value="<?php echo htmlentities($row_depa['NUMEROTELEFONO'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
           </tr>
           <tr valign="baseline">

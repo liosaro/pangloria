@@ -70,9 +70,9 @@ $totalRows_depar = mysql_num_rows($depar);
       </table>
     </form>
       <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
-        <table align="center">
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">IDDEPTO:</td>
+        <table width="100%" border="0">
+          <tr>
+            <td>IDDEPTO</td>
             <td><select name="IDDEPTO">
               <?php
 do {  
@@ -87,18 +87,39 @@ do {
   }
 ?>
             </select></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">DEPARTAMENTO:</td>
+            <td>DEPARTAMENTO</td>
             <td><input type="text" name="DEPARTAMENTO" value="" size="32" /></td>
           </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">NUMEROTELEFONO:</td>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>NUMEROTELEFONO</td>
             <td><input type="text" name="NUMEROTELEFONO" value="" size="32" /></td>
+            <td>&nbsp;</td>
+            <td><input type="submit" value="Insertar registro" /></td>
+          </tr>
+        </table>
+        <p>&nbsp;</p>
+        <table align="center">
+          <tr valign="baseline">
+            <td nowrap="nowrap" align="right">:</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr valign="baseline">
+            <td nowrap="nowrap" align="right">:</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr valign="baseline">
+            <td nowrap="nowrap" align="right">:</td>
+            <td>&nbsp;</td>
           </tr>
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">&nbsp;</td>
-            <td><input type="submit" value="Insertar registro" /></td>
+            <td>&nbsp;</td>
           </tr>
         </table>
         <input type="hidden" name="MM_insert" value="form2" />
