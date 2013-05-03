@@ -49,6 +49,12 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   mysql_select_db($database_basepangloria, $basepangloria);
   $Result1 = mysql_query($insertSQL, $basepangloria) or die(mysql_error());
 }
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_ncoti = "SELECT IDENCABEZADO FROM TRNCABEZACOTIZACION";
+$ncoti = mysql_query($query_ncoti, $basepangloria) or die(mysql_error());
+$row_ncoti = mysql_fetch_assoc($ncoti);
+$totalRows_ncoti = mysql_num_rows($ncoti);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -75,7 +81,20 @@ body {
           <td nowrap="nowrap" align="left">IDORDEN:</td>
           <td nowrap="nowrap" align="left"><input type="text" name="IDORDEN" value="" size="32" /></td>
           <td nowrap="nowrap" align="left">NUMEROCOTIZACIO:</td>
-          <td align="left"><select name="NUMEROCOTIZACIO"  onchange="location.href = 'tupagina.php?coti=' + this.value"></select></td>
+          <td align="left"><select name="NUMEROCOTIZACIO"  onchange="conte.location.href = 'concotiza.php?coti=' + this.value" >
+            <?php
+do {  
+?>
+            <option value="<?php echo $row_ncoti['IDENCABEZADO']?>"><?php echo $row_ncoti['IDENCABEZADO']?></option>
+            <?php
+} while ($row_ncoti = mysql_fetch_assoc($ncoti));
+  $rows = mysql_num_rows($ncoti);
+  if($rows > 0) {
+      mysql_data_seek($ncoti, 0);
+	  $row_ncoti = mysql_fetch_assoc($ncoti);
+  }
+?>
+          </select></td>
         </tr>
         <tr valign="baseline">
           <td nowrap="nowrap" align="left">IDEMPLEADO:</td>
@@ -109,6 +128,9 @@ body {
     </form></td>
   </tr>
 </table>
-<p>&nbsp;</p>
+<p>&nbsp;<iframe src="concotiza.php" name="conte" width="820" height="400" scrolling="auto" frameborder="0"></iframe></p>
 </body>
 </html>
+<?php
+mysql_free_result($ncoti);
+?>

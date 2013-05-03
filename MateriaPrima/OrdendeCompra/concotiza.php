@@ -83,19 +83,15 @@ body {
 <body>
 <table border="1" cellpadding="0" cellspacing="0">
   <tr>
-    <td>IDDETALLE</td>
-    <td>IDMATPRIMA</td>
-    <td>IDENCABEZADO</td>
-    <td>IDUNIDAD</td>
-    <td>CANTPRODUCTO</td>
-    <td>PRECIOUNITARIO</td>
+    <td>Material</td>
+    <td>Unidad de Medida</td>
+    <td>Cantidad de producto</td>
+    <td>Precio uunitario</td>
     <td>Costo</td>
   </tr>
   <?php do { ?>
     <tr>
-      <td><?php echo $row_concoti['IDDETALLE']; ?></td>
       <td><?php echo $row_concoti['IDMATPRIMA']; ?></td>
-      <td><?php echo $row_concoti['IDENCABEZADO']; ?></td>
       <td><?php echo $row_concoti['IDUNIDAD']; ?></td>
       <td><?php echo $row_concoti['CANTPRODUCTO']; ?></td>
       <td><?php echo $row_concoti['PRECIOUNITARIO']; ?></td>
@@ -105,8 +101,13 @@ body {
 </table>
 <table width="820" border="0">
   <tr>
-    <td width="642" align="right">Total:</td>
-    <td width="168"><?php echo sum($row_concoti['PRECIOUNITARIO']* $row_concoti['CANTPRODUCTO'] ); ?></td>
+    <td width="642" align="right">Total de la orden de compra:</td>
+    <td width="168"><?php 
+	$col = $_request['coti'];
+	$result = mysql_query("Select sum(CANTPRODUCTO * PRECIOUNITARIO ) as total from TRNDETALLECOTIZACION where IDENCABEZADO =" . $_GET['coti']);
+	$row = mysql_fetch_array($result, MYSQL_ASSOC);
+	echo $row['total'];
+	 ?></td>
   </tr>
 </table>
 <p>&nbsp;</p>
