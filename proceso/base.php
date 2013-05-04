@@ -147,7 +147,12 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                 <li><a href="#">Justificar Perdida Productos</a></li>
               </ul>
             </li>
-            <li><a href="#">Reporte de Trabajo</a></li>
+            <li><a href="#" class="MenuBarItemSubmenu">Reporte de Trabajo</a>
+              <ul>
+                <li><a href="../MateriaPrima/empleado/ingreso_cargo_empleado.php" target="contenedor">Ingrso  cargo empleado</a></li>
+                <li><a href="../MateriaPrima/empleado/consultar_cargo.php" target="contenedor">Consultar Cargos</a></li>
+              </ul>
+            </li>
             <li><a href="#" class="MenuBarItemSubmenu">Administracion</a>
               <ul>
                 <li><a href="#" class="MenuBarItemSubmenu">Permisos</a>
