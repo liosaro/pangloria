@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:IDDETALLECOMP;datatype:int,name:IDORDEN;datatype:int,name:IDMATPRIMA;datatype:int,name:IDUNIDAD;datatype:int,name:CANTPRODUCTO;datatype:int,name:PRECIOUNITARIO;datatype:real" />
+	<infoitem key="UD_condetalle" value="name:IDENCABEORDPROD;datatype:int,name:CANTIDADORPROD;datatype:real,name:ID_MEDIDA;datatype:int,name:PRODUCTOORDPRODUC;datatype:int" />
+	<infoitem key="UD_Recordset2" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
+</info>

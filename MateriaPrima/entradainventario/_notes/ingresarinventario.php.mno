@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_encainventario" value="name:IdEncabezadoEnInventario;datatype:int" />
+	<infoitem key="UD_Recordset1" value="name:IdEncabezadoEnInventario;datatype:int" />
+	<infoitem key="UD_Recordset2" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
+	<infoitem key="UD_codicuer" value="name:IDENTRADA;datatype:int" />
+	<infoitem key="UD_unmedida" value="name:IDUNIDAD;datatype:int,name:TIPOUNIDAD;datatype:blob" />
+	<infoitem key="UD_Recordset3" value="name:IdEncabezadoEnInventario;datatype:int" />
+	<infoitem key="UD_encainvetario" value="name:IdEncabezadoEnInventario;datatype:int" />
+	<infoitem key="UD_materiapri" value="name:IDMATPRIMA;datatype:int,name:DESCRIPCION;datatype:blob" />
+</info>

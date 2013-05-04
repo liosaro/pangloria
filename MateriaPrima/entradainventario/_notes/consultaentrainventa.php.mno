@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_consuenca" value="name:IdEncabezadoEnInventario;datatype:int,name:idEmpleado;datatype:int,name:fechaIngresoInventario;datatype:date" />
+	<infoitem key="UD_conempleado" value="name:NOMBREEMPLEADO;datatype:blob" />
+	<infoitem key="UD_concuerp" value="name:IDENTRADA;datatype:int,name:IdEncabezadoEnInventario;datatype:int,name:IDUNIDAD;datatype:int,name:IDMATPRIMA;datatype:int,name:CANTIDAD;datatype:real,name:FECHAEXPIRACION;datatype:date,name:PRECIOULTIMACOMPRA;datatype:real" />
+	<infoitem key="UD_medida" value="name:TIPOUNIDAD;datatype:blob" />
+	<infoitem key="UD_conmateripri" value="name:DESCRIPCION;datatype:blob" />
+</info>
