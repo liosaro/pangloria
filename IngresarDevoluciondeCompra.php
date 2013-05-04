@@ -74,6 +74,8 @@ $totalRows_dect = mysql_num_rows($dect);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+<script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -89,11 +91,11 @@ $totalRows_dect = mysql_num_rows($dect);
       <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
         <table width="100%" border="1">
           <tr>
-            <td>ID DEVOLUCION:</td>
-            <td><input type="text" name="IDDEVOLUCION" id="IDDEVOLUCION" value="
+            <td width="18%">ID DEVOLUCION:</td>
+            <td width="31%"><input type="text" name="IDDEVOLUCION" id="IDDEVOLUCION" value="
 <?php echo $row_devolu['IDDEVOLUCION']+1; ?>" size="32" readonly="readonly" /></td>
-            <td>ID EMPLEADO:</td>
-            <td><select name="IDEMPLEADO">
+            <td width="27%">ID EMPLEADO:</td>
+            <td width="24%"><select name="IDEMPLEADO">
               <?php
 do {  
 ?>
@@ -152,29 +154,23 @@ do {
     </script>
     <script type="text/javascript"
      src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-    </script>
-   <div class="welsl">
-  <div id="datetimepicker4" class="input-append">
-    <input data-format="yyyy-MM-dd" type="text" name="FECHAINGRESOJUSTIFICA">
-    <label for="textfield3"></label>
-    <input type="text" name="textfield3" id="textfield3" />
-    </input>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-    </span>
-  </div>
-</div>
-<script type="text/javascript">
+    </script><script type="text/javascript">
   $(function() {
     $('#datetimepicker4').datetimepicker({
       pickTime: false
     });
   });
-</script></td>
+</script>
+    <label for="textfield"></label>
+    <span id="sprytextfield3">
+    <label for="text1"></label>
+    <input type="text" name="text1" id="text1" />
+    <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
            
             <td>IMPORTE</td>
-            <td><input type="text" name="IMPORTE" value="" size="32" /></td>
+            <td><span id="sprytextfield2">
+            <input type="text" name="IMPORTE" value="" size="32" />
+            <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -184,7 +180,9 @@ do {
           </tr>
           <tr>
             <td>GASTO GENERADO:</td>
-            <td><input type="text" name="GASTOGENERADO" value="" size="32" /></td>
+            <td><span id="sprytextfield1">
+            <input type="text" name="GASTOGENERADO" value="" size="32" />
+            <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
             <td>OBSERVACION:</td>
             <td><input type="text" name="OBSERVACION" value="" size="32" /></td>
           </tr>
@@ -216,6 +214,11 @@ do {
     <p>&nbsp;</p></td>
   </tr>
 </table>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "currency", {validateOn:["change"]});
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "currency", {validateOn:["change"]});
+var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3", "date", {format:"yyyy-mm-dd", validateOn:["change"]});
+</script>
 </body>
 </html>
 <?php
