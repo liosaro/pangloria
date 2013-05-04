@@ -73,20 +73,9 @@ $totalRows_depar = mysql_num_rows($depar);
         <table width="100%" border="0">
           <tr>
             <td>IDDEPTO</td>
-            <td><select name="IDDEPTO">
-              <?php
-do {  
-?>
-              <option value="<?php echo $row_depar['DEPARTAMENTO']?>"><?php echo $row_depar['IDDEPTO']?></option>
-              <?php
-} while ($row_depar = mysql_fetch_assoc($depar));
-  $rows = mysql_num_rows($depar);
-  if($rows > 0) {
-      mysql_data_seek($depar, 0);
-	  $row_depar = mysql_fetch_assoc($depar);
-  }
-?>
-            </select></td>
+            <td><label for="IDEMPLEADO"></label>
+            <input name="IDEMPLEADO" type="text" disabled="disabled" id="IDEMPLEADO" value="
+<?php echo $row_depar['IDDEPTO']+1; ?>" size="32" readonly="readonly" /></td>
             <td>DEPARTAMENTO</td>
             <td><input type="text" name="DEPARTAMENTO" value="" size="32" /></td>
           </tr>
@@ -104,24 +93,6 @@ do {
           </tr>
         </table>
         <p>&nbsp;</p>
-        <table align="center">
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">:</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">:</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">:</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-        </table>
         <input type="hidden" name="MM_insert" value="form2" />
       </form>
     <p>&nbsp;</p></td>
