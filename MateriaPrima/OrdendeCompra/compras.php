@@ -1,5 +1,50 @@
 <?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "";
+$MM_donotCheckaccess = "true";
+
+// *** Restrict Access To Page: Grant or deny access to this page
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+  // For security, start by assuming the visitor is NOT authorized. 
+  $isValid = False; 
+
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
+  if (!empty($UserName)) { 
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
+    // Parse the strings into arrays. 
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+    // Or, you may restrict access to only certain users based on their username. 
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && true) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+
+$MM_restrictGoTo = "../../seguridad.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
+?>
+<?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -55,6 +100,28 @@ $query_ncoti = "SELECT IDENCABEZADO FROM TRNCABEZACOTIZACION";
 $ncoti = mysql_query($query_ncoti, $basepangloria) or die(mysql_error());
 $row_ncoti = mysql_fetch_assoc($ncoti);
 $totalRows_ncoti = mysql_num_rows($ncoti);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_numorden = "SELECT IDORDEN FROM TRNENCAORDCOMPRA ORDER BY IDORDEN DESC";
+$numorden = mysql_query($query_numorden, $basepangloria) or die(mysql_error());
+$row_numorden = mysql_fetch_assoc($numorden);
+$totalRows_numorden = mysql_num_rows($numorden);
+
+$colname_nusuario = "-1";
+if (isset($_SESSION['MM_Username'])) {
+  $colname_nusuario = $_SESSION['MM_Username'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_nusuario = sprintf("SELECT IDUSUARIO FROM CATUSUARIO WHERE NOMBREUSUARIO = %s", GetSQLValueString($colname_nusuario, "text"));
+$nusuario = mysql_query($query_nusuario, $basepangloria) or die(mysql_error());
+$row_nusuario = mysql_fetch_assoc($nusuario);
+$totalRows_nusuario = mysql_num_rows($nusuario);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_empleao = "SELECT IDEMPLEADO, NOMBREEMPLEADO FROM CATEMPLEADO";
+$empleao = mysql_query($query_empleao, $basepangloria) or die(mysql_error());
+$row_empleao = mysql_fetch_assoc($empleao);
+$totalRows_empleao = mysql_num_rows($empleao);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -67,20 +134,23 @@ body {
 	margin-top: 0px;
 }
 </style>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen"
+     href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 </head>
 
 <body>
 <table width="820" border="0">
   <tr>
     <td align="left"><form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-      <table align="center">
+      <table align="left">
         <tr valign="baseline">
-          <td colspan="4" align="center" nowrap="nowrap">Ingreso de Orden de Produccion</td>
+          <td colspan="4" align="center" nowrap="nowrap" bgcolor="#999999">Ingreso de orden de compra</td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="left">IDORDEN:</td>
-          <td nowrap="nowrap" align="left"><input type="text" name="IDORDEN" value="" size="32" /></td>
-          <td nowrap="nowrap" align="left">NUMEROCOTIZACIO:</td>
+          <td nowrap="nowrap" align="left">Codigo de Orden de compra:</td>
+          <td nowrap="nowrap" align="left"><input name="IDORDEN" type="text" disabled="disabled" value="<?php echo $row_numorden['IDORDEN']+1; ?>" size="32" /></td>
+          <td nowrap="nowrap" align="left">Numero de Cotizacion:</td>
           <td align="left"><select name="NUMEROCOTIZACIO"  onchange="conte.location.href = 'concotiza.php?coti=' + this.value" >
             <?php
 do {  
@@ -97,25 +167,53 @@ do {
           </select></td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="left">IDEMPLEADO:</td>
-          <td nowrap="nowrap" align="left"><input type="text" name="IDEMPLEADO" value="" size="32" /></td>
-          <td nowrap="nowrap" align="left">AUTORIZADOPOR:</td>
-          <td align="left"><select name="AUTORIZADOPOR" onchange=""></select></td>
-        </tr>
-        <tr valign="baseline">
-          <td nowrap="nowrap" align="left">FECHAEMISIONORDCOM</td>
-          <td nowrap="nowrap" align="left"><input type="text" name="FECHAEMISIONORDCOM" value="" size="32" /></td>
-          <td nowrap="nowrap" align="left">ESTADODEORDEN</td>
-          <td align="left"><select name="ESTADODEORDEN">
-            <option value="menuitem1" >[ Etiqueta ]</option>
-            <option value="menuitem2" >[ Etiqueta ]</option>
+          <td nowrap="nowrap" align="left">Codigo de Empleado:</td>
+          <td nowrap="nowrap" align="left"><input name="IDEMPLEADO" type="text" value="<?php echo $row_nusuario['IDUSUARIO']; ?>" size="32" readonly="readonly" /></td>
+          <td nowrap="nowrap" align="left">Autorizado por:</td>
+          <td align="left"><select name="AUTORIZADOPOR" onchange="">
+            <?php
+do {  
+?>
+            <option value="<?php echo $row_empleao['IDEMPLEADO']?>"><?php echo $row_empleao['NOMBREEMPLEADO']?></option>
+            <?php
+} while ($row_empleao = mysql_fetch_assoc($empleao));
+  $rows = mysql_num_rows($empleao);
+  if($rows > 0) {
+      mysql_data_seek($empleao, 0);
+	  $row_empleao = mysql_fetch_assoc($empleao);
+  }
+?>
           </select></td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="left">FECHAENTREGA::</td>
-          <td nowrap="nowrap" align="left"><input type="text" name="FECHAENTREGA" value="" size="32" /></td>
-          <td nowrap="nowrap" align="left">&nbsp;</td>
-          <td align="left">&nbsp;</td>
+          <td nowrap="nowrap" align="left">Fecha de emision:</td>
+          <td nowrap="nowrap" align="left"><input name="FECHAEMISIONORDCOM" type="text" id="FECHAEMISIONORDCOM" value="<?php echo date("Y-m-d H:i:s");;?> " readonly="readonly" /></td>
+          <td nowrap="nowrap" align="left">Fecha de Entrega:</td>
+          <td align="left"><script type="text/javascript"
+     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script> 
+    <script type="text/javascript"
+     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+    </script>  <div id="datetimepicker4" class="input-append">
+    <input name="FECHAENTREGA" type="text" id="FECHAENTREGA" data-format="yyyy-MM-dd"></input>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
+<script type="text/javascript">
+  $(function() {
+    $('#datetimepicker4').datetimepicker({
+      pickTime: false
+    });
+  });
+</script></td>
         </tr>
         <tr valign="baseline">
           <td nowrap="nowrap" align="left"><input type="submit" value="Insertar registro" /></td>
@@ -133,4 +231,10 @@ do {
 </html>
 <?php
 mysql_free_result($ncoti);
+
+mysql_free_result($numorden);
+
+mysql_free_result($nusuario);
+
+mysql_free_result($empleao);
 ?>

@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
 	<infoitem key="UD_ncoti" value="name:IDENCABEZADO;datatype:int" />
+	<infoitem key="UD_numorden" value="name:IDORDEN;datatype:int" />
+	<infoitem key="UD_nusuario" value="name:IDUSUARIO;datatype:int" />
+	<infoitem key="UD_empleao" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
 </info>
