@@ -138,7 +138,22 @@ body {
           <td>Fecha de Expiracion</td>
           <td>Precio en ultima Compra</td>
         </tr>
-        <?php do { ?>
+        <?php 
+		
+		do { ?>
+        	<?php mysql_select_db($database_basepangloria, $basepangloria);
+$mati = $row_concuerp['IDMATPRIMA'];
+$query_conmateripri = sprintf("SELECT DESCRIPCION FROM CATMATERIAPRIMA WHERE IDMATPRIMA = '$mati'", GetSQLValueString($colname_conmateripri, "int"));
+$conmateripri = mysql_query($query_conmateripri, $basepangloria) or die(mysql_error());
+$row_conmateripri = mysql_fetch_assoc($conmateripri);
+$totalRows_conmateripri = mysql_num_rows($conmateripri); 
+mysql_select_db($database_basepangloria, $basepangloria);
+$med = $row_concuerp['IDUNIDAD'];
+$query_medida = sprintf("SELECT TIPOUNIDAD FROM CATUNIDADES WHERE IDUNIDAD = '$med'", GetSQLValueString($colname_medida, "int"));
+$medida = mysql_query($query_medida, $basepangloria) or die(mysql_error());
+$row_medida = mysql_fetch_assoc($medida);
+$totalRows_medida = mysql_num_rows($medida);
+?>
           <tr>
             <td><?php echo $row_concuerp['IDENTRADA']; ?></td>
             <td><?php echo $row_concuerp['IdEncabezadoEnInventario']; ?></td>

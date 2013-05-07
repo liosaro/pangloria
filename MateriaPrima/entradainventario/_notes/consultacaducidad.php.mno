@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_caducidad" value="name:IDENTRADA;datatype:int,name:IdEncabezadoEnInventario;datatype:int,name:IDUNIDAD;datatype:int,name:IDMATPRIMA;datatype:int,name:CANTIDAD;datatype:real,name:FECHAEXPIRACION;datatype:date,name:PRECIOULTIMACOMPRA;datatype:real" />
+	<infoitem key="UD_matprima" value="name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_medi" value="name:TIPOUNIDAD;datatype:blob" />
+</info>

@@ -169,11 +169,11 @@ do {
         <table width="820" align="center">
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">Codigo de Entrada:</td>
-            <td><input type="text" name="IDENTRADA" value="<?php echo $row_codicuer['IDENTRADA']+1; ?>" size="32" /></td>
+            <td><input name="IDENTRADA" type="text" value="<?php echo $row_codicuer['IDENTRADA']+1; ?>" size="32" readonly="readonly" /></td>
             <td>Codigo de Encabezado:</td>
             <td><span id="sprytextfield3">
-            <input type="text" name="IdEncabezadoEnInventario2" value="" size="32" onkeypress="document.form2.cuerpo.disabled=false;" />
-            <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span><span class="textfieldMinValueMsg">El valor introducido es inferior al mínimo permitido.</span></span><?php echo $row_encainvetario['IdEncabezadoEnInventario']; ?></td>
+            <input name="IdEncabezadoEnInventario2" type="text" value="<?php echo $row_encainvetario['IdEncabezadoEnInventario']; ?>" size="32" readonly="readonly" />
+            <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span><span class="textfieldMinValueMsg">El valor introducido es inferior al mínimo permitido.</span></span></td>
           </tr>
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">Unidad de Medida:</td>
@@ -195,7 +195,7 @@ do {
             <span class="selectRequiredMsg">Seleccione un elemento.</span></span></td>
             <td>Materia Prima:</td>
             <td><span id="spryselect3">
-              <select name="IDMATPRIMA">
+              <select name="IDMATPRIMA"  onfocus="document.form2.cuerpo.disabled=false;">
                 <?php
 do {  
 ?>

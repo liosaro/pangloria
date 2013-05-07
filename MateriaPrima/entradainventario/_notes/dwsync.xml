@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="ingresarinventario.php" server="www.liosarpc.info//public_html/pan/" local="130121181010000000" remote="130121253000000000" />
-<file name="conentradainven.php" server="www.liosarpc.info//public_html/pan/" local="130121204870771473" remote="130121277600000000" />
-<file name="consultaentrainventa.php" server="www.liosarpc.info//public_html/pan/" local="130121212039626294" remote="130121283600000000" />
+<file name="ingresarinventario.php" server="www.liosarpc.info//public_html/pan/" local="130121811525906081" remote="130121926800000000" />
+<file name="conentradainven.php" server="www.liosarpc.info//public_html/pan/" local="130121864056620830" remote="130121935800000000" />
+<file name="consultaentrainventa.php" server="www.liosarpc.info//public_html/pan/" local="130121828657479745" remote="130121901000000000" />
+<file name="consultacaducidad.php" server="www.liosarpc.info//public_html/pan/" local="130121862700819711" remote="130121935800000000" />
 </dwsync>

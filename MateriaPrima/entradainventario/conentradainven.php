@@ -54,13 +54,14 @@ body {
 <table width="820" border="0">
   <tr>
     <td><form action="consultaentrainventa.php" method="post" name="form1" target="conte" id="form1" onsubmit="changeContent">
-      <label for="filtrador">Elija o Ingrese el Numero de Entrada a Inventario</label>
-      <select name="filtrador" id="filtrador">
-        <?php
+      <p>
+        <label for="filtrador">Elija o Ingrese el Numero de Entrada a Inventario</label>
+        <select name="filtrador" id="filtrador">
+          <?php
 do {  
 ?>
-        <option value="<?php echo $row_Recordset1['IdEncabezadoEnInventario']?>"><?php echo $row_Recordset1['IdEncabezadoEnInventario']."</b>"?>----<?php echo $row_Recordset1['fechaIngresoInventario']?></option>
-        <?php
+          <option value="<?php echo $row_Recordset1['IdEncabezadoEnInventario']?>"><?php echo $row_Recordset1['IdEncabezadoEnInventario']."</b>"?>----<?php echo $row_Recordset1['fechaIngresoInventario']?></option>
+          <?php
 } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1));
   $rows = mysql_num_rows($Recordset1);
   if($rows > 0) {
@@ -68,8 +69,12 @@ do {
 	  $row_Recordset1 = mysql_fetch_assoc($Recordset1);
   }
 ?>
-      </select>
-      <input type="submit" name="Filtrar" id="Filtrar" value="Buscar" />
+        </select>
+        <input type="submit" name="Filtrar" id="Filtrar" value="Buscar" />
+      </p>
+    </form>
+    <form action="consultacaducidad.php" method="get" name="focadu" target="conte">
+      <input type="submit" name="caduenvia" id="caduenvia" value="Consultar productos proximos a caducar" />
     </form></td>
   </tr>
 </table>

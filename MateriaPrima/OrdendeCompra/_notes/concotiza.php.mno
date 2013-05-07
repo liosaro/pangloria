@@ -3,7 +3,7 @@
 	<infoitem key="UD_cotiza" value="name:IDMATPRIMA;datatype:int,name:IDUNIDAD;datatype:int,name:CANTPRODUCTO;datatype:int,name:PRECIOUNITARIO;datatype:real" />
 	<infoitem key="UD_consultacotiza" value="name:IDMATPRIMA;datatype:int,name:IDUNIDAD;datatype:int,name:CANTPRODUCTO;datatype:int,name:PRECIOUNITARIO;datatype:real" />
 	<infoitem key="UD_materia" value="name:DESCRIPCION;datatype:blob" />
-	<infoitem key="UD_concoti" value="name:IDDETALLE;datatype:int,name:IDMATPRIMA;datatype:int,name:IDENCABEZADO;datatype:int,name:IDUNIDAD;datatype:int,name:CANTPRODUCTO;datatype:int,name:PRECIOUNITARIO;datatype:real" />
+	<infoitem key="UD_concoti" value="name:IDDETALLE;datatype:int,name:IDMATPRIMA;datatype:int,name:IDUNIDAD;datatype:int,name:CANTPRODUCTO;datatype:int,name:PRECIOUNITARIO;datatype:real" />
 	<infoitem key="UD_nommateria" value="name:DESCRIPCION;datatype:blob" />
 	<infoitem key="UD_Recordset1" value="name:TIPOUNIDAD;datatype:blob" />
 	<infoitem key="UD_detorden" value="name:IDORDENPRODUCCION;datatype:int,name:IDENCABEORDPROD;datatype:int,name:CANTIDADORPROD;datatype:real,name:ID_MEDIDA;datatype:int,name:PRODUCTOORDPRODUC;datatype:int,name:FECHAHORAUSUA;datatype:datetime,name:USUARIO;datatype:int" />
