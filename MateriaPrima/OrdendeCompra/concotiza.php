@@ -1,4 +1,5 @@
 <?php require_once('../../Connections/basepangloria.php'); ?>
+
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -54,7 +55,6 @@ if (isset($_GET['totalRows_concoti'])) {
   $all_concoti = mysql_query($query_concoti);
   $totalRows_concoti = mysql_num_rows($all_concoti);
 }
-$totalPages_concoti = ceil($totalRows_concoti/$maxRows_concoti)-1;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -71,28 +71,52 @@ body {
 </head>
 
 <body><form id="form1" name="form1" method="post" action="script.php">
-<table border="1" cellpadding="0" cellspacing="0">
+<table width="820" border="1" cellpadding="0" cellspacing="0">
   <tr>
-  	<td width="166">Numero Referencial</td>
-    <td width="166">IDMATPRIMA</td>
-    <td width="144">IDUNIDAD</td>
-    <td width="195">CANTPRODUCTO</td>
-    <td width="208">&nbsp;</td>
-    <td width="208">PRECIOUNITARIO</td>
+    <td width="166" bgcolor="#999999">Agregar</td>
+  	<td width="166" bgcolor="#999999">Numero Referencial</td>
+    <td width="166" bgcolor="#999999">Materia Prima</td>
+    <td width="144" bgcolor="#999999">Unidad de Medida</td>
+    <td width="195" bgcolor="#999999">Cantida de Producto</td>
+    <td width="208" bgcolor="#999999">Precio Unitario</td>
+    <td width="208" bgcolor="#999999"> Costo</td>
   </tr>
    <?php do { ?>
-    <tr>
-    <td><?php echo $row_concoti['IDDETALLE']; ?></td>
-      <td><?php echo $row_concoti['IDMATPRIMA']; ?></td>
-      <td><?php echo $row_concoti['IDUNIDAD']; ?></td>
-      <td><?php echo $row_concoti['CANTPRODUCTO']; ?></td>
-      <td><input name="very[]" id="very[]" type="checkbox" value="<?php echo $row_concoti['IDDETALLE']; ?>" /></td>
-      <td><?php echo $row_concoti['PRECIOUNITARIO']; ?></td>
-    </tr>
-    <?php } while ($row_concoti = mysql_fetch_assoc($concoti)); ?>
-</table>
+   <?php $conuniconcoti = $row_concoti['IDUNIDAD'];
+$query_Recordset1 = sprintf("SELECT TIPOUNIDAD FROM CATUNIDADES WHERE IDUNIDAD = '$conuniconcoti'", GetSQLValueString($colname_Recordset1, "int"));
+$Recordset1 = mysql_query($query_Recordset1, $basepangloria) or die(mysql_error());
+$row_Recordset1 = mysql_fetch_assoc($Recordset1);
+$totalRows_Recordset1 = mysql_num_rows($Recordset1);
+$conmatconcoti = $row_concoti['IDMATPRIMA']; 
+$query_nommateria = sprintf("SELECT DESCRIPCION FROM CATMATERIAPRIMA WHERE IDMATPRIMA = '$conmatconcoti'", GetSQLValueString($colname_nommateria, "int"));
+$nommateria = mysql_query($query_nommateria, $basepangloria) or die(mysql_error());
+$row_nommateria = mysql_fetch_assoc($nommateria);
+$totalRows_nommateria = mysql_num_rows($nommateria);
 
-  <input type="submit" name="enviar" id="enviar" value="Enviar"  />
+?>
+    <tr>
+      <td><input name="very[]" type="checkbox" id="very[]" value="<?php echo $row_concoti['IDDETALLE']; ?>" checked="CHECKED" /></td>
+    <td><?php echo $row_concoti['IDDETALLE']; ?></td>
+      <td><?php echo $row_nommateria['DESCRIPCION']; ?></td>
+      <td><?php echo $row_Recordset1['TIPOUNIDAD']; ?></td>
+      <td><?php echo $row_concoti['CANTPRODUCTO']; ?></td>
+      <td><?php echo $row_concoti['PRECIOUNITARIO']; ?></td>
+      <td><?php echo $row_concoti['PRECIOUNITARIO']*$row_concoti['CANTPRODUCTO'] ; ?></td>
+    </tr>
+    <?php } while ($row_concoti = mysql_fetch_assoc($concoti)); ?> 
+</table>
+<table width="820" border="0">
+  <tr>
+    <td align="right" bgcolor="#CCCCCC">Total de la Compra</td>
+    <td bgcolor="#CCCCCC"><?php 
+	$col = $_request['coti'];
+	$result = mysql_query("Select sum(CANTPRODUCTO * PRECIOUNITARIO ) as total from TRNDETALLECOTIZACION where IDENCABEZADO =" . $_GET['coti']);
+	$row = mysql_fetch_array($result, MYSQL_ASSOC);
+	echo $row['total'];
+	 ?></td>
+  </tr>
+</table>
+    <input type="submit" name="enviar" id="enviar" value="Enviar"  />
 </form>
 <p>&nbsp;</p>
 </body>
