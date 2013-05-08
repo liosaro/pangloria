@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="ingresarperdida.php" server="www.liosarpc.info//public_html/pan/" local="130114927722525583" remote="130115618400000000" />
-<file name="modificarjustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130116967656629662" remote="130120110600000000" />
-<file name="modificador.php" server="www.liosarpc.info//public_html/pan/" local="130115184602933068" remote="130115618400000000" />
-<file name="modcuerpo.php" server="www.liosarpc.info//public_html/pan/" local="130115184602723047" remote="130115618400000000" />
-<file name="contenidoeliminador.php" server="www.liosarpc.info//public_html/pan/" local="130115534362288081" remote="130115618400000000" />
-<file name="elimina.php" server="www.liosarpc.info//public_html/pan/" local="130115547454416227" remote="130115619000000000" />
+<file name="ingresarperdida.php" server="www.liosarpc.info//public_html/pan/" local="130125036465003563" remote="130125108000000000" />
+<file name="modificarjustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130125054385450804" remote="130125126000000000" />
+<file name="modificador.php" server="www.liosarpc.info//public_html/pan/" local="130125048018832288" remote="130125120000000000" />
+<file name="modcuerpo.php" server="www.liosarpc.info//public_html/pan/" local="130125045923904428" remote="130125117600000000" />
+<file name="contenidoeliminador.php" server="www.liosarpc.info//public_html/pan/" local="130125056364089236" remote="130125127800000000" />
+<file name="elimina.php" server="www.liosarpc.info//public_html/pan/" local="130116967656549670" remote="130125127200000000" />
 <file name="EliminarHead.php" server="www.liosarpc.info//public_html/pan/" local="130115495969631919" remote="130115618400000000" />
+<file name="consultaUltiperdida.php" server="www.liosarpc.info//public_html/pan/" local="130125033019256870" remote="130125106800000000" />
 </dwsync>

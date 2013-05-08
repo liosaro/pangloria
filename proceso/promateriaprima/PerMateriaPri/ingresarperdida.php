@@ -211,7 +211,7 @@ body {
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
   <table width="820" border="0">
     <tr>
-      <td colspan="4" align="center" bgcolor="#999999"><h1>Justificacion de Perdida de Materia Prima</h1></td>
+      <td colspan="4" align="center" bgcolor="#999999"><h1>Justificacion de <span class="well-small">Perdida</span> de Materia Prima</h1></td>
     </tr>
     <tr>
       <td width="213">Codigo de Justificacion:</td>
@@ -303,9 +303,7 @@ do {
 <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
   <table align="left" width="820">
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Codigo de Encabezado:</td>
-      <td><input name="IDENCABEZADOR" type="text" id="IDENCABEZADOR" value="<?php echo $row_ultimajusti['IDENCABEZADO']; ?>" size="5" /></td>
-      <td>Medida:</td>
+      <td nowrap="nowrap" align="right">Medida:</td>
       <td><select name="IDUNIDAD">
         <?php
 do {  
@@ -320,6 +318,8 @@ do {
   }
 ?>
       </select></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -331,9 +331,9 @@ do {
       <td nowrap="nowrap" align="right">Cantidad que se Perdio:</td>
       <td><span id="CANTIDAPERDIDA">
       <input type="text" name="CANT_PERDIDA" value="" size="32" />
-      <span class="textfieldInvalidFormatMsg">Formato no válido.</span><span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
+      <span class="textfieldInvalidFormatMsg">Formato no válido.</span><span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldMinValueMsg">El valor introducido es inferior al mínimo permitido.</span></span></td>
       <td>Materia Prima:</td>
-      <td><select name="MAT_PRIMA">
+      <td><select name="MAT_PRIMA"  onfocus="document.form2.cuerpo.disabled=false;" >
         <?php
 do {  
 ?>
@@ -358,17 +358,19 @@ do {
       <td nowrap="nowrap" align="right" valign="top">JUSTIFICACION:</td>
       <td colspan="3"><span id="sprytextarea1">
         <textarea name="JUSTIFICACION" cols="100" rows="5"></textarea>
-      <span class="textareaRequiredMsg">Se necesita un valor.</span></span>        <input type="submit" value="Insertar registro" /></td>
+      <span class="textareaRequiredMsg">Se necesita un valor.</span></span>        <input name="cuerpo" type="submit"  id="cuerpo"  onclick="conti.consultaUltiperdida.php"value="Insertar registro" disabled/></td>
     </tr>
   </table>
+  <iframe src="consultaUltiperdida.php"  name="conti" width="820" height="150" scrolling="auto" frameborder="0"></iframe>
+  
+  
   <input type="hidden" name="MM_insert" value="form2" />
 </form>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+
 <script type="text/javascript">
-var sprytextfield1 = new Spry.Widget.ValidationTextField("CANTIDAPERDIDA", "real", {validateOn:["blur"]});
+var sprytextfield1 = new Spry.Widget.ValidationTextField("CANTIDAPERDIDA", "real", {validateOn:["blur"], minValue:0});
 var sprytextarea1 = new Spry.Widget.ValidationTextarea("sprytextarea1", {validateOn:["blur", "change"]});
-</script>
+  </script>
 </body>
 </html>
 <?php

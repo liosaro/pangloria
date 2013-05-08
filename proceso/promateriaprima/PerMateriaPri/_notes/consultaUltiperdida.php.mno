@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_uljusperdia" value="name:ID_PERDIDA;datatype:int,name:IDUNIDAD;datatype:int,name:CANT_PERDIDA;datatype:real,name:MAT_PRIMA;datatype:int,name:JUSTIFICACION;datatype:blob,name:USUARIOPERMATPRI;datatype:int" />
+</info>

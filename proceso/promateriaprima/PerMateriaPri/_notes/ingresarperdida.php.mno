@@ -7,4 +7,6 @@
 	<infoitem key="UD_combomateriaprima" value="name:IDMATPRIMA;datatype:int,name:DESCRIPCION;datatype:blob" />
 	<infoitem key="UD_ultimajusti" value="name:IDENCABEZADO;datatype:int" />
 	<infoitem key="UD_usuarios" value="name:IDUSUARIO;datatype:int" />
+	<infoitem key="UD_ncoti" value="name:IDENCABEZADO;datatype:int" />
+	<infoitem key="UD_empleao" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
 </info>

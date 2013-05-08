@@ -193,8 +193,11 @@ body {
       <input type="hidden" name="IDENCABEZADO" value="<?php echo $row_encabezado['IDENCABEZADO']; ?>" />
       <table width="820" align="left">
         <tr valign="baseline">
+          <td colspan="4" align="center" nowrap="nowrap" bgcolor="#999999">Modificar Justificacion de Perdida de Materia Prima</td>
+          </tr>
+        <tr valign="baseline">
           <td nowrap="nowrap" align="right">Codigo de Encabezado:</td>
-          <td><?php echo $row_encabezado['IDENCABEZADO']; ?></td>
+          <td align="left"><?php echo $row_encabezado['IDENCABEZADO']; ?></td>
           <td>Codigo de empleado:</td>
           <td><input name="IDEMPLEADO" type="text" value="<?php echo htmlentities($row_encabezado['IDEMPLEADO'], ENT_COMPAT, 'utf-8'); ?>" size="32" readonly="readonly" /></td>
         </tr>

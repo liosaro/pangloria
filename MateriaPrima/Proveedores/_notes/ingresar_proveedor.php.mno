@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
 	<infoitem key="UD_combopais" value="name:IDPAIS;datatype:int,name:NOMBREDEPAIS;datatype:blob" />
+	<infoitem key="UD_pais" value="name:IDPAIS;datatype:int,name:NOMBREDEPAIS;datatype:blob" />
 </info>

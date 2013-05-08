@@ -38,4 +38,16 @@ TEXTAREA {
 }
 INPUT {
 	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 10px; BORDER-LEFT: #666666 1px solid; BORDER-BOTTOM: #666666 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; 
+}.ENCABEZADO {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: xx-large;
+	font-style: italic;
+	color: #000;
+	font-weight: bold;
+}
+encabezadoforms {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #000;
 }

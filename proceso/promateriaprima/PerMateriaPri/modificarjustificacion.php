@@ -77,7 +77,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_comboidjusti = "SELECT IDENCABEZADO FROM TRNENCABEZADOJUSTPERMATPRIM";
+$query_comboidjusti = "SELECT IDENCABEZADO, FECHAINGRESOJUSTIFICA FROM TRNENCABEZADOJUSTPERMATPRIM";
 $comboidjusti = mysql_query($query_comboidjusti, $basepangloria) or die(mysql_error());
 $row_comboidjusti = mysql_fetch_assoc($comboidjusti);
 $totalRows_comboidjusti = mysql_num_rows($comboidjusti);
@@ -109,7 +109,7 @@ Ingrese o seleccione el codigo de Justificacion:
             <?php
 do {  
 ?>
-            <option value="<?php echo $row_comboidjusti['IDENCABEZADO']?>"><?php echo $row_comboidjusti['IDENCABEZADO']?></option>
+            <option value="<?php echo $row_comboidjusti['IDENCABEZADO']?>"><?php echo "<p style='font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 12px;color: #FF0000;'>". $row_comboidjusti['IDENCABEZADO']."</p>"?>__<?php echo $row_comboidjusti['FECHAINGRESOJUSTIFICA']?></option>
             <?php
 } while ($row_comboidjusti = mysql_fetch_assoc($comboidjusti));
   $rows = mysql_num_rows($comboidjusti);

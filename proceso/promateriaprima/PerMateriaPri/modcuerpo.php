@@ -133,7 +133,7 @@ body {
       <table align="center">
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">Codigo de Perdia:</td>
-            <td nowrap="nowrap" align="right"><?php echo $row_concuerpo['ID_PERDIDA']; ?></td>
+            <td nowrap="nowrap" align="left"><?php echo $row_concuerpo['ID_PERDIDA']; ?></td>
             <td nowrap="nowrap" align="right">Codigo de Encabezado:</td>
             <td><select name="IDENCABEZADO">
               <?php
