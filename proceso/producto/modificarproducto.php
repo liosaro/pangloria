@@ -107,10 +107,9 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
                 <p><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, 0, $queryString_consultaproducto); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, max(0, $pageNum_consultaproducto - 1), $queryString_consultaproducto); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, min($totalPages_consultaproducto, $pageNum_consultaproducto + 1), $queryString_consultaproducto); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaproducto=%d%s", $currentPage, $totalPages_consultaproducto, $queryString_consultaproducto); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></p>
                 <table width="830" border="1">
                   <tr>
-                    <td colspan="2"><input type="text" name="filtroprod" id="filtroprod" />
+                    <td colspan="4">Ingrese el Nombre del Producto a Modificar:
+                      <input type="text" name="filtroprod" id="filtroprod" />
                       <input type="submit" name="filtrar" id="filtrar" value="Filtrar" /></td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
