@@ -83,12 +83,14 @@ mysql_select_db($database_basepangloria, $basepangloria);
 </table>
 <table width="820" border="1" cellpadding="0" cellspacing="0">
   <tr>
+    <td>Modificar</td>
     <td>Codigo de Orden de Producion</td>
     <td>Fecha de Emision</td>
     <td>Fecha de Entrega</td>
   </tr>
   <?php do { ?>
     <tr>
+      <td>&nbsp;</td>
       <td><?php echo $result['IDORDEN']; ?></td>
       <td><?php echo $result['FECHAEMISIONORDCOM']; ?></td>
       <td><?php echo $result['FECHAENTREGA']; ?></td>
