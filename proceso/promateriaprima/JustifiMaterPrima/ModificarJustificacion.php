@@ -74,7 +74,7 @@ $totalPages_producto = ceil($totalRows_producto/$maxRows_producto)-1;
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="Modificacion.php?root=<?php echo $row_producto['ID_JUSTIFICACION']; ?>">Modificar</a></td>
+      <td><a href="modificacion.php?root=<?php echo $row_producto['ID_JUSTIFICACION']; ?>">Modificar</a></td>
       <td>Eliminar</td>
       <td><?php echo $row_producto['ID_JUSTIFICACION']; ?></td>
       <td><?php echo $row_producto['IDCONTROLPRODUCCION']; ?></td>
