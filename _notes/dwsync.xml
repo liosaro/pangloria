@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="index.php" server="www.liosarpc.info//public_html/pan/" local="130114905796334641" remote="130114977600000000" />
-<file name="style.css" server="www.liosarpc.info//public_html/pan/" local="130125123219389971" remote="130125195000000000" />
+<file name="index.php" server="www.liosarpc.info//public_html/pan/" local="130120264200000000" remote="130120264200000000" />
+<file name="style.css" server="www.liosarpc.info//public_html/pan/" local="130126116000000000" remote="130126116000000000" />
 <file name="dibujo.html" server="www.liosarpc.info//public_html/pan/" local="130107251400000000" remote="130107251400000000" />
-<file name="seguridad.php" server="www.liosarpc.info//public_html/pan/" local="130116967658419865" remote="130125106800000000" />
-<file name="IngresarDevoluciondeCompra.php" server="www.liosarpc.info//public_html/pan/" local="130126189322097275" remote="130126370400000000" />
-<file name="modificardepa.php" server="www.liosarpc.info//public_html/pan/" local="130126189327247570" remote="130126370400000000" />
-<file name="ModificarDevolucionCompra.php" server="www.liosarpc.info//public_html/pan/" local="130126189323287343" remote="130126370400000000" />
-<file name="modificartodo.php" server="www.liosarpc.info//public_html/pan/" local="130126189327267571" remote="130126370400000000" />
+<file name="seguridad.php" server="www.liosarpc.info//public_html/pan/" local="130126116000000000" remote="130126116000000000" />
+<file name="IngresarDevoluciondeCompra.php" server="www.liosarpc.info//public_html/pan/" local="130126262400000000" remote="130126262400000000" />
+<file name="IngresoDepartEmpresa.php" server="www.liosarpc.info//public_html/pan/" local="130119129000000000" remote="130119129000000000" />
+<file name="ModificarDevolucionCompra.php" server="www.liosarpc.info//public_html/pan/" local="130126262400000000" remote="130126262400000000" />
+<file name="admin.php" server="www.liosarpc.info//public_html/pan/" local="129962124000000000" remote="129962124000000000" />
+<file name="admin2.php" server="www.liosarpc.info//public_html/pan/" local="130100466000000000" remote="130100466000000000" />
+<file name="admin_3ya3scsi8m.php" server="www.liosarpc.info//public_html/pan/" local="129961260000000000" remote="129961260000000000" />
+<file name="compra.php" server="www.liosarpc.info//public_html/pan/" local="129962124000000000" remote="129962124000000000" />
+<file name="ejemploreporte.php" server="www.liosarpc.info//public_html/pan/" local="130115191800000000" remote="130115191800000000" />
+<file name="fpdf.php" server="www.liosarpc.info//public_html/pan/" local="130115191200000000" remote="130115191200000000" />
+<file name="modificardepa.php" server="www.liosarpc.info//public_html/pan/" local="130126262400000000" remote="130126262400000000" />
+<file name="modificardevolu.php" server="www.liosarpc.info//public_html/pan/" local="130121518200000000" remote="130121518200000000" />
+<file name="modificartodo.php" server="www.liosarpc.info//public_html/pan/" local="130126262400000000" remote="130126262400000000" />
+<file name="sistema.html" server="www.liosarpc.info//public_html/pan/" local="129961260000000000" remote="129961260000000000" />
+<file name="uso.php" server="www.liosarpc.info//public_html/pan/" local="130120854000000000" remote="130120854000000000" />
 </dwsync>

@@ -104,13 +104,15 @@ $queryString_consultaEmpre = sprintf("&totalRows_consultaEmpre=%d%s", $totalRows
                 <td>IDDEPTO</td>
                 <td>DEPARTAMENTO</td>
                 <td>NUMEROTELEFONO</td>
+                <td>eliminar </td>
               </tr>
               <?php do { ?>
                 <tr>
-                  <td><a href="<?php printf("%s?pageNum_consultaEmpre=%d%s", $currentPage, $totalPages_consultaEmpre, $queryString_consultaEmpre); ?>">Modificar</a></td>
+                  <td><a href="ModificarDepartamento.php">Modificar</a></td>
                   <td><?php echo $row_consultaEmpre['IDDEPTO']; ?></td>
                   <td><?php echo $row_consultaEmpre['DEPARTAMENTO']; ?></td>
                   <td><?php echo $row_consultaEmpre['NUMEROTELEFONO']; ?></td>
+                  <td><a href="eliminar.php?id=<?php echo $row_consultaEmpre['IDDEPTO']; ?>">eliminar </a></td>
                 </tr>
                 <?php } while ($row_consultaEmpre = mysql_fetch_assoc($consultaEmpre)); ?>
             </table>

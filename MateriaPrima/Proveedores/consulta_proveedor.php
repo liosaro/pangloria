@@ -125,8 +125,8 @@ body {
         </tr>
         <?php do { ?>
           <tr>
-            <td><a href="eliminar_proveedor.php?IDPROVEEDOR=&lt;php?">Eliminar</a></td>
-            <td><a href="modificar_proveedor.php?IDPROVEEDOR=<?php echo $row_ConsultProveedor['IDPROVEEDOR'];?>">Modificar</a></td>
+            <td>&nbsp;</td>
+            <td><a href="modificar_proveedor.php?IDPROVEEDOR=<?php echo $row_ConsultProveedor['IDPROVEEDOR']; ?>">Modificar</a></td>
             <td><?php echo $row_ConsultProveedor['IDPROVEEDOR']; ?></td>
             <td><?php echo $row_ConsultProveedor['IDPAIS']; ?></td>
             <td><?php echo $row_ConsultProveedor['NOMBREPROVEEDOR']; ?></td>

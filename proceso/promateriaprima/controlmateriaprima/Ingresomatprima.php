@@ -50,6 +50,30 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
   mysql_select_db($database_basepangloria, $basepangloria);
   $Result1 = mysql_query($insertSQL, $basepangloria) or die(mysql_error());
 }
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_TEXMATPRIMA = "SELECT IDMATPRIMA FROM TRNCONTROL_MAT_PRIMA";
+$TEXMATPRIMA = mysql_query($query_TEXMATPRIMA, $basepangloria) or die(mysql_error());
+$row_TEXMATPRIMA = mysql_fetch_assoc($TEXMATPRIMA);
+$totalRows_TEXMATPRIMA = mysql_num_rows($TEXMATPRIMA);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_TEXSALIDA = "SELECT ID_SALIDA FROM TRNCONTROL_MAT_PRIMA";
+$TEXSALIDA = mysql_query($query_TEXSALIDA, $basepangloria) or die(mysql_error());
+$row_TEXSALIDA = mysql_fetch_assoc($TEXSALIDA);
+$totalRows_TEXSALIDA = mysql_num_rows($TEXSALIDA);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_TEXUNIDAD = "SELECT IDUNIDAD FROM TRNCONTROL_MAT_PRIMA";
+$TEXUNIDAD = mysql_query($query_TEXUNIDAD, $basepangloria) or die(mysql_error());
+$row_TEXUNIDAD = mysql_fetch_assoc($TEXUNIDAD);
+$totalRows_TEXUNIDAD = mysql_num_rows($TEXUNIDAD);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_ULTIMOID = "SELECT ID_CONTROLMAT FROM TRNCONTROL_MAT_PRIMA ORDER BY ID_CONTROLMAT DESC";
+$ULTIMOID = mysql_query($query_ULTIMOID, $basepangloria) or die(mysql_error());
+$row_ULTIMOID = mysql_fetch_assoc($ULTIMOID);
+$totalRows_ULTIMOID = mysql_num_rows($ULTIMOID);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -117,23 +141,53 @@ jQuery(function($){
           </tr>
           <tr>
             <td width="21%">Id Control Materia Prima</td>
-            <td width="16%"><input type="text" name="ID_CONTROLMAT" value="" size="20" /></td>
+            <td width="16%"><input type="text" name="ID_CONTROLMAT" value="<?php echo $row_ULTIMOID['ID_CONTROLMAT']+1; ?>" size="20" /></td>
             <td width="9%">Id Salida:</td>
             <td width="54%"><select name="ID_SALIDA">
-              <option value="menuitem1" >[ Etiqueta ]</option>
-              <option value="menuitem2" >[ Etiqueta ]</option>
+              <?php
+do {  
+?>
+              <option value="<?php echo $row_TEXSALIDA['ID_SALIDA']?>"><?php echo $row_TEXSALIDA['ID_SALIDA']?></option>
+              <?php
+} while ($row_TEXSALIDA = mysql_fetch_assoc($TEXSALIDA));
+  $rows = mysql_num_rows($TEXSALIDA);
+  if($rows > 0) {
+      mysql_data_seek($TEXSALIDA, 0);
+	  $row_TEXSALIDA = mysql_fetch_assoc($TEXSALIDA);
+  }
+?>
             </select></td>
           </tr>
           <tr>
             <td>Id Materia Prima</td>
             <td><select name="IDMATPRIMA">
-              <option value="menuitem1" >[ Etiqueta ]</option>
-              <option value="menuitem2" >[ Etiqueta ]</option>
+              <?php
+do {  
+?>
+              <option value="<?php echo $row_TEXMATPRIMA['IDMATPRIMA']?>"><?php echo $row_TEXMATPRIMA['IDMATPRIMA']?></option>
+              <?php
+} while ($row_TEXMATPRIMA = mysql_fetch_assoc($TEXMATPRIMA));
+  $rows = mysql_num_rows($TEXMATPRIMA);
+  if($rows > 0) {
+      mysql_data_seek($TEXMATPRIMA, 0);
+	  $row_TEXMATPRIMA = mysql_fetch_assoc($TEXMATPRIMA);
+  }
+?>
             </select></td>
             <td>Id Unidad</td>
             <td><select name="IDUNIDAD">
-              <option value="menuitem1" >[ Etiqueta ]</option>
-              <option value="menuitem2" >[ Etiqueta ]</option>
+              <?php
+do {  
+?>
+              <option value="<?php echo $row_TEXUNIDAD['IDUNIDAD']?>"><?php echo $row_TEXUNIDAD['IDUNIDAD']?></option>
+              <?php
+} while ($row_TEXUNIDAD = mysql_fetch_assoc($TEXUNIDAD));
+  $rows = mysql_num_rows($TEXUNIDAD);
+  if($rows > 0) {
+      mysql_data_seek($TEXUNIDAD, 0);
+	  $row_TEXUNIDAD = mysql_fetch_assoc($TEXUNIDAD);
+  }
+?>
             </select></td>
           </tr>
           <tr>
@@ -190,3 +244,12 @@ jQuery(function($){
 </table>
 </body>
 </html>
+<?php
+mysql_free_result($TEXMATPRIMA);
+
+mysql_free_result($TEXSALIDA);
+
+mysql_free_result($TEXUNIDAD);
+
+mysql_free_result($ULTIMOID);
+?>

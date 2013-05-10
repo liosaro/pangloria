@@ -66,6 +66,9 @@ mysql_select_db($database_basepangloria, $basepangloria);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
 <link href="../../css/forms.css" rel="stylesheet" type="text/css" />
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
 <body>
@@ -90,7 +93,7 @@ mysql_select_db($database_basepangloria, $basepangloria);
   </tr>
   <?php do { ?>
     <tr>
-      <td>&nbsp;</td>
+      <td><img src="../../imagenes/icono/Invoice-256.png" width="24" height="26" /></td>
       <td><?php echo $result['IDORDEN']; ?></td>
       <td><?php echo $result['FECHAEMISIONORDCOM']; ?></td>
       <td><?php echo $result['FECHAENTREGA']; ?></td>

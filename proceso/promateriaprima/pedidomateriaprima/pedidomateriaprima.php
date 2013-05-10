@@ -60,6 +60,12 @@ $query_comempleado = "SELECT IDEMPLEADO, NOMBREEMPLEADO FROM CATEMPLEADO";
 $comempleado = mysql_query($query_comempleado, $basepangloria) or die(mysql_error());
 $row_comempleado = mysql_fetch_assoc($comempleado);
 $totalRows_comempleado = mysql_num_rows($comempleado);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_ultimoped = "SELECT ID_ENCAPEDIDO FROM TRNENCABEZADOPEDMATPRI ORDER BY ID_ENCAPEDIDO DESC";
+$ultimoped = mysql_query($query_ultimoped, $basepangloria) or die(mysql_error());
+$row_ultimoped = mysql_fetch_assoc($ultimoped);
+$totalRows_ultimoped = mysql_num_rows($ultimoped);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -88,7 +94,7 @@ body {
           </tr>
           <tr>
             <td>Id Encabezado de Pedido:</td>
-            <td><input name="ID_ENCAPEDIDO" type="text" disabled="disabled" value="" size="32" readonly="readonly" /></td>
+            <td><input name="ID_ENCAPEDIDO" type="text" disabled="disabled" value="<?php echo $row_ultimoped['ID_ENCAPEDIDO']+1; ?>" size="32" readonly="readonly" /></td>
             <td>Empleado Pide:</td>
             <td><select name="IDEMPLEADO">
               <?php
@@ -133,49 +139,21 @@ do {
             <span class="textfieldInvalidFormatMsg">Formato no válido.</span><span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
           </tr>
           <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td><input type="submit" value="Insertar registro" /></td>
+            <td><input type="submit" name="enviarenca" id="enviarenca" value="Insertar Encabezado" /></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td bgcolor="#CC3333">&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td colspan="4">&nbsp;</td>
           </tr>
         </table>
-        <p>
           <input type="hidden" name="MM_insert" value="form1" />
-      </p>
-      </form>
-    <p>&nbsp;</p></td>
-  </tr>
+      </form>  
+      </tr>
 </table>
+    <p><iframe src="insertadordetalle.php" name="conteb" width="820" height="350" scrolling="auto" frameborder="0"></iframe>&nbsp;</p></td>
+
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("spryfecha", "date", {format:"yyyy-mm-dd", validateOn:["blur"]});
 </script>
@@ -185,4 +163,6 @@ var sprytextfield1 = new Spry.Widget.ValidationTextField("spryfecha", "date", {f
 mysql_free_result($combordenprod);
 
 mysql_free_result($comempleado);
+
+mysql_free_result($ultimoped);
 ?>
