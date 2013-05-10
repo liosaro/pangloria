@@ -60,22 +60,32 @@ $totalPages_producto = ceil($totalRows_producto/$maxRows_producto)-1;
 </head>
 
 <body>
+<table width="100%" border="0">
+  <tr>
+    <td align="center" bgcolor="#999999"><h1>Consulta de Justificacion de Perdida de Producto</h1></td>
+  </tr>
+</table>
+<table width="100%" border="0">
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
 <table border="1">
   <tr>
     <td>Modificar</td>
     <td>Eliminar</td>
     <td>ID_JUSTIFICACION</td>
-    <td>IDCONTROLPRODUCCION</td>
-    <td>CANTIDA_FALTANTE</td>
-    <td>IDPRODUCTOFALTA</td>
-    <td>ID_MEDIDA</td>
-    <td>FECHAINGRESOJUSFAPROD</td>
+    <td>ID CONTROL PRODUCCION</td>
+    <td>CANTIDA FALTANTE</td>
+    <td>IDPRODUCTO FALTA</td>
+    <td>ID MEDIDA</td>
+    <td>FECHA INGRESO </td>
     <td>JUSTIFICACIONFALTAPROD</td>
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="<?php echo $row_producto['']; ?>?root=<?php echo $row_producto['ID_JUSTIFICACION']; ?>">Modificar</a></td>
-      <td>Eliminar</td>
+      <td><a href="modificacion.php?root=<?php echo $row_producto['ID_JUSTIFICACION']; ?>">Modificar</a></td>
+      <td><a href="EliminarJustificacion.php?root=<?php echo $row_producto['ID_JUSTIFICACION']; ?>">Eliminar</a></td>
       <td><?php echo $row_producto['ID_JUSTIFICACION']; ?></td>
       <td><?php echo $row_producto['IDCONTROLPRODUCCION']; ?></td>
       <td><?php echo $row_producto['CANTIDA_FALTANTE']; ?></td>
@@ -86,6 +96,7 @@ $totalPages_producto = ceil($totalRows_producto/$maxRows_producto)-1;
     </tr>
     <?php } while ($row_producto = mysql_fetch_assoc($producto)); ?>
 </table>
+<p>&nbsp;</p>
 </body>
 </html>
 <?php
