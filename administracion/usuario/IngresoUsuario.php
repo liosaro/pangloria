@@ -64,6 +64,9 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
 </head>
 
 <body>
+<span class="input-append date">
+<input data-format="yyyy-MM-dd hh:mm:ss" type="text" />
+</span>
 <table width="820" border="0">
   <tr>
     <td align="center" bgcolor="#999999"><h1>Ingreso de Usuario </h1></td>
@@ -87,7 +90,7 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>CONTRASEÑA:</td>
+            <td>CONTRASENA:</td>
             <td><input type="text" name="CONTRASENA" value="" size="32" /></td>
             <td>PRIMER INICIO</td>
             <td><script type="text/javascript"
@@ -136,8 +139,7 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
      src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
     </script>
    <div class="welsl">
-  <div id="datetimepicker1" class="input-append date">
-    <input data-format="yyyy-MM-dd hh:mm:ss" type="text"></input>
+  <div id="datetimepicker1" class="input-append date"></input>
     <span class="add-on">
       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
       </i>
