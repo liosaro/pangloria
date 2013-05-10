@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_combomedida" value="name:ID_MEDIDA;datatype:int,name:MEDIDA;datatype:blob" />
+	<infoitem key="UD_comboproducto" value="name:IDPRODUCTO;datatype:int,name:DESCRIPCIONPRODUC;datatype:string" />
+	<infoitem key="UD_Recordset1" value="name:IDENCABEORDPROD;datatype:int" />
+	<infoitem key="UD_comboSucursal" value="name:IDSUCURSAL;datatype:int,name:NOMBRESUCURSAL;datatype:blob" />
+	<infoitem key="UD_textboxempleados" value="name:IDEMPLEADO;datatype:int" />
+	<infoitem key="UD_ultregis" value="name:IDENCABEORDPROD;datatype:int" />
+	<infoitem key="UD_comboMedida" value="name:ID_MEDIDA;datatype:int,name:MEDIDA;datatype:blob" />
+	<infoitem key="UD_comboProducto" value="name:IDPRODUCTO;datatype:int,name:DESCRIPCIONPRODUC;datatype:string" />
+	<infoitem key="UD_usuarioingresa" value="name:IDUSUARIO;datatype:int" />
+</info>
