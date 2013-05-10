@@ -48,10 +48,29 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 
   mysql_select_db($database_basepangloria, $basepangloria);
   $Result1 = mysql_query($updateSQL, $basepangloria) or die(mysql_error());
+
+  $updateGoTo = "modificacion.php";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
+    $updateGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $updateGoTo));
 }
 
+$colname_producto = "-1";
+if (isset($_GET['root'])) {
+  $colname_producto = $_GET['root'];
+}
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_producto = "SELECT * FROM TRNJUSTIFICACIONFALTAPRODUCTO";
+$query_producto = sprintf("SELECT * FROM TRNJUSTIFICACIONFALTAPRODUCTO WHERE ID_JUSTIFICACION = %s", GetSQLValueString($colname_producto, "int"));
+$producto = mysql_query($query_producto, $basepangloria) or die(mysql_error());
+$row_producto = mysql_fetch_assoc($producto);
+$totalRows_producto = mysql_num_rows($producto);$colname_producto = "-1";
+if (isset($_GET['root'])) {
+  $colname_producto = $_GET['root'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_producto = sprintf("SELECT * FROM TRNJUSTIFICACIONFALTAPRODUCTO WHERE ID_JUSTIFICACION = %s", GetSQLValueString($colname_producto, "int"));
 $producto = mysql_query($query_producto, $basepangloria) or die(mysql_error());
 $row_producto = mysql_fetch_assoc($producto);
 $totalRows_producto = mysql_num_rows($producto);
