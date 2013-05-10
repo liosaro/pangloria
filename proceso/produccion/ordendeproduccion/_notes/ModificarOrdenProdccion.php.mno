@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_comboordenproduccion" value="name:IDORDENPRODUCCION;datatype:int" />
-	<infoitem key="UD_comboencabezado" value="name:IDENCABEORDPROD;datatype:int" />
-</info>
