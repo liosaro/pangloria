@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="IngresarRol.php" server="www.liosarpc.info//public_html/pan/" local="130125951352555279" remote="130126023000000000" />
-<file name="consultarRol.php" server="www.liosarpc.info//public_html/pan/" local="130126153067519396" remote="130126224600000000" />
-<file name="modificarRol.php" server="www.liosarpc.info//public_html/pan/" local="130126147102018189" remote="130126224000000000" />
+<file name="IngresarRol.php" server="www.liosarpc.info//public_html/pan/" local="130125951352555279" remote="130126369800000000" />
+<file name="consultarRol.php" server="www.liosarpc.info//public_html/pan/" local="130126300981258567" remote="130126372800000000" />
+<file name="modificarRol.php" server="www.liosarpc.info//public_html/pan/" local="130126147102018189" remote="130126369800000000" />
+<file name="eliminarRol.php" server="www.liosarpc.info//public_html/pan/" local="130126295180136762" remote="130126369800000000" />
 </dwsync>

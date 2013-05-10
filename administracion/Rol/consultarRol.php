@@ -94,7 +94,7 @@ body {
         <?php do { ?>
           <tr>
             <td><a href="modificarRol.php?IDROL=<?php echo $row_rol['IDROL']; ?>">Modificar</a></td>
-            <td>Eliminar</td>
+            <td><a href="eliminarRol.php?IDROL=<?php echo $row_rol['IDROL']; ?>">Eliminar</a></td>
             <td><?php echo $row_rol['IDROL']; ?></td>
             <td><?php echo $row_rol['DESCRIPCION']; ?></td>
           </tr>
