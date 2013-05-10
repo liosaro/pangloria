@@ -57,8 +57,10 @@ $totalRows_idusu = mysql_num_rows($idusu);
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen"
+href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
 </head>
 
 <body>
@@ -73,7 +75,8 @@ $totalRows_idusu = mysql_num_rows($idusu);
         <table width="820" border="0">
           <tr>
             <td>ID_USUARIO</td>
-            <td><input name="IDUSUARIO" type="text" disabled="disabled" value="<?php echo $row_idusu['IDUSUARIO']; ?>" size="32" readonly="readonly" /></td>
+            <td><input name="IDUSUARIO" type="text" disabled="disabled" value="<?php echo $row_idusu['IDUSUARIO']+1; ?>" size="32" readonly="readonly" /></td>
+            
             <td>NOMBRE USUARIO</td>
             <td><input type="text" name="NOMBREUSUARIO" value="" size="32" /></td>
           </tr>
@@ -114,13 +117,40 @@ $totalRows_idusu = mysql_num_rows($idusu);
       language: 'El Salvador'
     });
   });
-</script>></td>
+</script></td>
            
           </tr>
           
           <tr>
             <td>ULTIMO INICIO:</td>
-            <td><input type="text" name="ULTIMOINICIO" value="" size="32" /></td>
+            <td><script type="text/javascript"
+     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script> 
+    <script type="text/javascript"
+     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+    </script>
+   <div class="welsl">
+  <div id="datetimepicker1" class="input-append date">
+    <input data-format="yyyy-MM-dd hh:mm:ss" type="text"></input>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+    $('#datetimepicker1').datetimepicker({
+      language: 'El Salvador'
+    });
+  });
+</script></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
