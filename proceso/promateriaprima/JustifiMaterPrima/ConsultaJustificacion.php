@@ -31,6 +31,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$currentPage = $_SERVER["PHP_SELF"];
+
 $maxRows_producto = 10;
 $pageNum_producto = 0;
 if (isset($_GET['pageNum_producto'])) {
@@ -51,6 +53,22 @@ if (isset($_GET['totalRows_producto'])) {
   $totalRows_producto = mysql_num_rows($all_producto);
 }
 $totalPages_producto = ceil($totalRows_producto/$maxRows_producto)-1;
+
+$queryString_producto = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_producto") == false && 
+        stristr($param, "totalRows_producto") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_producto = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_producto = sprintf("&totalRows_producto=%d%s", $totalRows_producto, $queryString_producto);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -67,7 +85,7 @@ $totalPages_producto = ceil($totalRows_producto/$maxRows_producto)-1;
 </table>
 <table width="100%" border="0">
   <tr>
-    <td>&nbsp;</td>
+    <td><a href="<?php printf("%s?pageNum_producto=%d%s", $currentPage, 0, $queryString_producto); ?>"><img src="../../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_producto=%d%s", $currentPage, max(0, $pageNum_producto - 1), $queryString_producto); ?>"><img src="../../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_producto=%d%s", $currentPage, min($totalPages_producto, $pageNum_producto + 1), $queryString_producto); ?>"><img src="../../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_producto=%d%s", $currentPage, $totalPages_producto, $queryString_producto); ?>"><img src="../../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
   </tr>
 </table>
 <table border="1">
