@@ -83,6 +83,11 @@ $totalRows_producto = mysql_num_rows($producto);
 </head>
 
 <body>
+<table width="100%" border="1">
+  <tr>
+    <td align="center" bgcolor="#999999"><h1>Modificacion de Justificacion de Falta de Producto</h1></td>
+  </tr>
+</table>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
   <table align="center">
     <tr valign="baseline">
