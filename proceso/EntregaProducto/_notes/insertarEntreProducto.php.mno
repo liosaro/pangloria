@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_empleado" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
-	<infoitem key="UD_txtempleado" value="name:IDEMPLEADO;datatype:int" />
-</info>
