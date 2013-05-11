@@ -94,7 +94,7 @@ body {
           </tr>
           <tr>
             <td>Id Encabezado de Pedido:</td>
-            <td><input name="ID_ENCAPEDIDO" type="text" disabled="disabled" value="<?php echo $row_ultimoped['ID_ENCAPEDIDO']+1; ?>" size="32" readonly="readonly" /></td>
+            <td><input name="ID_ENCAPEDIDO" type="text" disabled="disabled" value="<?php echo $row_ultimoped['ID_ENCAPEDIDO']+1;?>" size="32" readonly="readonly" /></td>
             <td>Empleado Pide:</td>
             <td><select name="IDEMPLEADO">
               <?php

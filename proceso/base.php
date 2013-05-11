@@ -120,7 +120,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                     <li><a href="promateriaprima/PerMateriaPri/contenidoeliminador.php" target="contenedor">Eliminar Justificacion</a></li>
                   </ul>
                 </li>
-              </ul>
+</ul>
             </li>
             <li><a class="MenuBarItemSubmenu" href="#">Controles</a>
               <ul>
@@ -131,7 +131,12 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                   </ul>
                 </li>
                 <li><a href="#">Control de Produccion</a></li>
-                <li><a href="#">Materia Prima</a></li>
+                <li><a href="#" class="MenuBarItemSubmenu">Control Materia Prima</a>
+                  <ul>
+                    <li><a href="promateriaprima/controlmatprima/ingresomatpri.php" target="contenedor">Ingreso</a></li>
+                    <li><a href="promateriaprima/controlmatprima/modimatprima.php" target="contenedor">Modificar</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
             <li><a href="#" class="MenuBarItemSubmenu MenuBarItemSubmenu">Producto</a>

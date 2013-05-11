@@ -95,6 +95,22 @@ $query_menumatprima = "SELECT IDMATPRIMA FROM TRNCONTROL_MAT_PRIMA";
 $menumatprima = mysql_query($query_menumatprima, $basepangloria) or die(mysql_error());
 $row_menumatprima = mysql_fetch_assoc($menumatprima);
 $totalRows_menumatprima = mysql_num_rows($menumatprima);
+
+$colname_compmatprima = "-1";
+if (isset($_GET['ID_CONTROLMAT'])) {
+  $colname_compmatprima = $_GET['ID_CONTROLMAT'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_compmatprima = sprintf("SELECT ID_CONTROLMAT FROM TRNCONTROL_MAT_PRIMA WHERE ID_CONTROLMAT = %s ORDER BY ID_CONTROLMAT DESC", GetSQLValueString($colname_compmatprima, "int"));
+$compmatprima = mysql_query($query_compmatprima, $basepangloria) or die(mysql_error());
+$row_compmatprima = mysql_fetch_assoc($compmatprima);
+$totalRows_compmatprima = mysql_num_rows($compmatprima);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_COMBOUNIDAD = "SELECT IDUNIDAD, TIPOUNIDAD FROM CATUNIDADES";
+$COMBOUNIDAD = mysql_query($query_COMBOUNIDAD, $basepangloria) or die(mysql_error());
+$row_COMBOUNIDAD = mysql_fetch_assoc($COMBOUNIDAD);
+$totalRows_COMBOUNIDAD = mysql_num_rows($COMBOUNIDAD);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -163,23 +179,57 @@ jQuery(function($){
           </tr>
           <tr>
             <td width="21%">Id Control Materia Prima</td>
-            <td width="17%"><input name="ID_CONTROLMAT" type="text" disabled="disabled" value="" size="20" readonly="readonly" /></td>
+            <td width="17%"><input name="ID_CONTROLMAT" type="text" disabled="disabled" value="<?php echo $row_compmatprima['ID_CONTROLMAT']+1; ?>" size="20" readonly="readonly" /></td>
             <td width="14%">Id Salida </td>
             <td width="48%"><select name="ID_SALIDA">
-</select></td>
+              <?php
+do {  
+?>
+              <option value="<?php echo $row_botonsalida['ID_SALIDA']?>"><?php echo $row_botonsalida['ID_SALIDA']?></option>
+              <?php
+} while ($row_botonsalida = mysql_fetch_assoc($botonsalida));
+  $rows = mysql_num_rows($botonsalida);
+  if($rows > 0) {
+      mysql_data_seek($botonsalida, 0);
+	  $row_botonsalida = mysql_fetch_assoc($botonsalida);
+  }
+?>
+            </select></td>
           </tr>
           <tr>
             <td>Id Materia Prima:</td>
             <td><select name="IDMATPRIMA">
-              <option value="menuitem1" selected="selected" >[ Etiqueta ]</option>
-              <option value="menuitem2" >[ Etiqueta ]</option>
+              <?php
+do {  
+?>
+              <option value="<?php echo $row_botonmatprima['IDMATPRIMA']?>"><?php echo $row_botonmatprima['IDMATPRIMA']?></option>
+              <?php
+} while ($row_botonmatprima = mysql_fetch_assoc($botonmatprima));
+  $rows = mysql_num_rows($botonmatprima);
+  if($rows > 0) {
+      mysql_data_seek($botonmatprima, 0);
+	  $row_botonmatprima = mysql_fetch_assoc($botonmatprima);
+  }
+?>
             </select>
             <label for="matprima"></label></td>
             <td>Id Unidad</td>
-            <td><select name="IDUNIDAD">
-              <option value="menuitem1" >[ Etiqueta ]</option>
-              <option value="menuitem2" >[ Etiqueta ]</option>
-            </select></td>
+            <td><span class="textfieldInvalidFormatMsg">
+              <select name="IDUNIDAD">
+                <?php
+do {  
+?>
+                <option value="<?php echo $row_COMBOUNIDAD['IDUNIDAD']?>"><?php echo $row_COMBOUNIDAD['TIPOUNIDAD']?></option>
+                <?php
+} while ($row_COMBOUNIDAD = mysql_fetch_assoc($COMBOUNIDAD));
+  $rows = mysql_num_rows($COMBOUNIDAD);
+  if($rows > 0) {
+      mysql_data_seek($COMBOUNIDAD, 0);
+	  $row_COMBOUNIDAD = mysql_fetch_assoc($COMBOUNIDAD);
+  }
+?>
+              </select>
+            </span></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -208,10 +258,21 @@ jQuery(function($){
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td colspan="4">&nbsp;
+              <table border="1">
+                <tr>
+                  <td>CANT_ENTREGA</td>
+                  <td>CANT_DEVUELTA</td>
+                  <td>CANT_UTILIZADA</td>
+                </tr>
+                <?php do { ?>
+                  <tr>
+                    <td><?php echo $row_tablaeliminar['CANT_ENTREGA']; ?></td>
+                    <td><?php echo $row_tablaeliminar['CANT_DEVUELTA']; ?></td>
+                    <td><?php echo $row_tablaeliminar['CANT_UTILIZADA']; ?></td>
+                  </tr>
+                  <?php } while ($row_tablaeliminar = mysql_fetch_assoc($tablaeliminar)); ?>
+              </table></td>
           </tr>
           <tr>
             <td height="26">&nbsp;</td>
@@ -244,4 +305,8 @@ mysql_free_result($botonsalida);
 mysql_free_result($Recordset1);
 
 mysql_free_result($menumatprima);
+
+mysql_free_result($compmatprima);
+
+mysql_free_result($COMBOUNIDAD);
 ?>

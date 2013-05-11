@@ -144,10 +144,11 @@ $totalRows_nombremateria = mysql_num_rows($nombremateria);
             <td nowrap="nowrap" align="right">ID_PED_MAT_PRIMA:</td>
             <td><input name="ID_PED_MAT_PRIMA" type="text" disabled="disabled" value="<?php echo $row_ultimodetallepedido['ID_PED_MAT_PRIMA']+1; ?>" size="32" readonly="readonly" /></td>
             <td>ID_ENCAPEDIDO:</td>
-            <td><input name="ID_ENCAPEDIDO" type="text" 
-            //aca modifique/
-            value="<?php echo $row_sumaridnuevo['ID_ENCAPEDIDO']+1; ?>" size="32" readonly="readonly" /></td>
+            
+            <td><input name="ID_ENCAPEDIDO" type="text" disabled="disabled" value="<?php echo $row_sumaridnuevo['ID_ENCAPEDIDO']+1; ?>" size="32" readonly="readonly" /></td>
           </tr>
+                          
+                    
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">&nbsp;</td>
           </tr>

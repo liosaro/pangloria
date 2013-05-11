@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_conDetOrdenProd" value="name:IDORDENPRODUCCION;datatype:int" />
-	<infoitem key="UD_DetOrdeProd" value="name:IDORDENPRODUCCION;datatype:int,name:IDENCABEORDPROD;datatype:int,name:CANTIDADORPROD;datatype:real,name:ID_MEDIDA;datatype:int,name:PRODUCTOORDPRODUC;datatype:int,name:FECHAHORAUSUA;datatype:datetime,name:USUARIO;datatype:int" />
-</info>

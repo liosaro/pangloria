@@ -1,4 +1,6 @@
 <?php require_once('../../../Connections/basepangloria.php'); ?>
+<?php require_once('../../../../Connections/basepangloria.php'); ?>
+<?php require_once('../../../../Connections/basepangloria.php'); ?>
 <?php
 if (!isset($_SESSION)) {
   session_start();
@@ -47,6 +49,37 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <?php require_once('../../../Connections/basepangloria.php'); ?>
 <?php require_once('../../../Connections/basepangloria.php'); ?>
 <?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -186,6 +219,42 @@ $query_usuarios = sprintf("SELECT IDUSUARIO FROM CATUSUARIO WHERE NOMBREUSUARIO 
 $usuarios = mysql_query($query_usuarios, $basepangloria) or die(mysql_error());
 $row_usuarios = mysql_fetch_assoc($usuarios);
 $totalRows_usuarios = mysql_num_rows($usuarios);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_llenadocontrolproductohorno = "SELECT IDENCABEZADO FROM TRNENCACONTROLPRODHORNO";
+$llenadocontrolproductohorno = mysql_query($query_llenadocontrolproductohorno, $basepangloria) or die(mysql_error());
+$row_llenadocontrolproductohorno = mysql_fetch_assoc($llenadocontrolproductohorno);
+$totalRows_llenadocontrolproductohorno = mysql_num_rows($llenadocontrolproductohorno);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_Recordset1 = "SELECT CANTIDAD_INGRESO FROM TRNDETACONTROL_PRODUCTO_HORNO";
+$Recordset1 = mysql_query($query_Recordset1, $basepangloria) or die(mysql_error());
+$row_Recordset1 = mysql_fetch_assoc($Recordset1);
+$totalRows_Recordset1 = mysql_num_rows($Recordset1);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_Recordset2 = "SELECT CANTIDADEGRESO FROM TRNDETACONTROL_PRODUCTO_HORNO";
+$Recordset2 = mysql_query($query_Recordset2, $basepangloria) or die(mysql_error());
+$row_Recordset2 = mysql_fetch_assoc($Recordset2);
+$totalRows_Recordset2 = mysql_num_rows($Recordset2);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_Unidadesdemedidadeproducto = "SELECT ID_MEDIDA FROM TRNDETACONTROL_PRODUCTO_HORNO";
+$Unidadesdemedidadeproducto = mysql_query($query_Unidadesdemedidadeproducto, $basepangloria) or die(mysql_error());
+$row_Unidadesdemedidadeproducto = mysql_fetch_assoc($Unidadesdemedidadeproducto);
+$totalRows_Unidadesdemedidadeproducto = mysql_num_rows($Unidadesdemedidadeproducto);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_Cantidadaingresarenhorno = "SELECT CANTIDAD_INGRESO FROM TRNDETACONTROL_PRODUCTO_HORNO";
+$Cantidadaingresarenhorno = mysql_query($query_Cantidadaingresarenhorno, $basepangloria) or die(mysql_error());
+$row_Cantidadaingresarenhorno = mysql_fetch_assoc($Cantidadaingresarenhorno);
+$totalRows_Cantidadaingresarenhorno = mysql_num_rows($Cantidadaingresarenhorno);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_Recordset3 = "SELECT CANTIDADEGRESO FROM TRNDETACONTROL_PRODUCTO_HORNO";
+$Recordset3 = mysql_query($query_Recordset3, $basepangloria) or die(mysql_error());
+$row_Recordset3 = mysql_fetch_assoc($Recordset3);
+$totalRows_Recordset3 = mysql_num_rows($Recordset3);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -201,82 +270,78 @@ body {
 	margin-top: 0px;
 }
 </style>
-<script src="../../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
-<script src="../../../SpryAssets/SpryValidationTextarea.js" type="text/javascript"></script>
-<link href="../../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
-<link href="../../../SpryAssets/SpryValidationTextarea.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-  <table width="820" border="0">
+  <table width="789" height="470" border="0">
     <tr>
-      <td colspan="4" align="center" bgcolor="#999999"><h1>Control de Producto en Horno</h1></td>
+      <td height="62" colspan="4" align="center" bgcolor="#999999"><h1>Control de Producto en Horno</h1></td>
     </tr>
     <tr>
-      <td width="213">Codigo de Producto en Horno:</td>
-      <td width="215"><input name="IDENCABEZADOR" type="text" disabled="disabled" id="IDENCABEZADOR" value="<?php echo $row_ultimajusti['IDENCABEZADO']+1; ?>" size="32" readonly="readonly" /></td>
-      <td width="154">Empleado que Ingresa:</td>
-      <td width="220"><label for="textfield"></label>
-      <input type="text" name="textfield" id="textfield" /></td>
+      <td width="155" height="43">Codigo de Producto en Horno:</td>
+      <td width="248"><input name="IDENCABEZADOR" type="text" disabled="disabled" id="IDENCABEZADOR" value="<?php echo $row_ultimajusti['IDENCABEZADO']+1; ?>" size="32" readonly="readonly" /></td>
+      <td width="155">Codigo de Produccion:</td>
+      <td width="213"><input name="IDENCABEZADOR2" type="text" id="IDENCABEZADOR2" value="<?php echo $row_ultimajusti['IDENCABEZADO']; ?>" size="5" /></td>
     </tr>
     <tr>
-      <td>Fecha y Hora de Ingreso:</td>
+      <td height="41">Fecha y Hora de Ingreso:</td>
       <td><script type="text/javascript"
      src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
     </script> 
-    <script type="text/javascript"
+        <script type="text/javascript"
      src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
     </script>
-    <script type="text/javascript"
+        <script type="text/javascript"
      src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
     </script>
-    <script type="text/javascript"
+        <script type="text/javascript"
      src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-    </script>
-   <div class="welsl">
-  <div id="datetimepicker4" class="input-append">
-    <h1>
-      <input data-format="yyyy-MM-dd" type="text" name="FECHAINGRESOJUSTIFICA">
-      <label for="textfield3"></label>
-      <input type="text" name="textfield3" id="textfield3" />
-      </input>
-      <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-          </i>
-      </span></h1>
-  </div>
-</div>
-<script type="text/javascript">
+    </script><script type="text/javascript">
   $(function() {
     $('#datetimepicker4').datetimepicker({
       pickTime: false
     });
   });
-</script></td>
-      <td>Codigo de Control de Produccion</td>
+</script>
+      <input name="textfield3" type="text" id="textfield3" /></td>
+      <td>Empleado que ingresa:</td>
       <td><p>
-        <label for="textfield2"></label>
-        <input type="text" name="textfield2" id="textfield2" />
+        <input type="text" name="textfield8" id="textfield8" />
       </p></td>
     </tr>
     <tr>
-      <td><p>Cantidad a Ingresar:</p></td>
-      <td><label for="textfield4"></label>
-      <input type="text" name="textfield4" id="textfield4" /></td>
-      <td>:Empleado que revisa Ingreso:</td>
-      <td><label for="textfield8"></label>
-      <input type="text" name="textfield8" id="textfield8" /></td>
+      <td>Fecha y Hora de Egreso:</td>
+      <td><input type="text" name="textfield4" id="textfield4" /></td>
+      <td>Empleado que Revisa Ingreso:</td>
+      <td><input type="text" name="textfield" id="textfield" /></td>
     </tr>
     <tr>
-      <td>Producto a Ingresar:</td>
-      <td><label for="textfield5"></label>
+      <td height="73">Producto que esa:</td>
+      <td><select name="select" id="select">
+      </select></td>
+      <td>Empleado que Revisa Egreso:</td>
+      <td><input type="text" name="textfield2" id="textfield2" /></td>
+    </tr>
+    <tr>
+      <td height="22" colspan="4">Unidades de Medida:
+        <label for="textfield7"></label>
+      <input type="text" name="textfield7" id="textfield7" /></td>
+    </tr>
+    <tr>
+      <td height="22" colspan="4">Cantidad que ingresa:
+        <label for="textfield5"></label>
       <input type="text" name="textfield5" id="textfield5" /></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
-      <td colspan="4">&nbsp;</td>
+      <td height="56" colspan="4"><p>Cantidad que egresa:</p>
+        <p>
+  <input type="text" name="textfield6" id="textfield6" />        
+          <label for="textfield6"></label>
+      </p></td>
+    </tr>
+    <tr>
+      <td colspan="4"><input type="submit" value="Insertar registro" /></td>
     </tr>
   </table>
   <p>
@@ -284,49 +349,11 @@ body {
   </p>
 </form>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
-  <table align="left" width="820">
-    <tr valign="baseline">
-      <td width="209" align="right" nowrap="nowrap">Codigo de Contol de Produccion:</td>
-      <td width="211"><input name="IDENCABEZADOR" type="text" id="IDENCABEZADOR" value="<?php echo $row_ultimajusti['IDENCABEZADO']; ?>" size="5" /></td>
-      <td width="160">Empleado que Revisa Egreso::</td>
-      <td width="220"><label for="textfield7"></label>
-      <input type="text" name="textfield7" id="textfield7" /></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right"><p>&nbsp;</p>
-      <p>Fecha y Hora de Egreso:</p></td>
-      <td><label for="textfield6"></label>
-      <input type="text" name="textfield6" id="textfield6" /></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Cantidad de Egreso::</td>
-      <td><span id="CANTIDAPERDIDA">
-      <input type="text" name="CANT_PERDIDA" value="" size="32" />
-      <span class="textfieldInvalidFormatMsg">Formato no válido.</span><span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right" valign="top">&nbsp;</td>
-      <td colspan="3"><span id="sprytextarea1"><span class="textareaRequiredMsg">Se necesita un valor.</span></span>        <input type="submit" value="Insertar registro" /></td>
-    </tr>
+  <table align="left" width="816">
+  <tr valign="baseline">    </tr>
   </table>
-  <input type="hidden" name="MM_insert" value="form2" />
 </form>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<script type="text/javascript">
-var sprytextfield1 = new Spry.Widget.ValidationTextField("CANTIDAPERDIDA", "real", {validateOn:["blur"]});
-var sprytextarea1 = new Spry.Widget.ValidationTextarea("sprytextarea1", {validateOn:["blur", "change"]});
-</script>
 </body>
 </html>
 <?php
@@ -341,4 +368,16 @@ mysql_free_result($combomateriaprima);
 mysql_free_result($ultimajusti);
 
 mysql_free_result($usuarios);
+
+mysql_free_result($llenadocontrolproductohorno);
+
+mysql_free_result($Recordset1);
+
+mysql_free_result($Recordset2);
+
+mysql_free_result($Unidadesdemedidadeproducto);
+
+mysql_free_result($Cantidadaingresarenhorno);
+
+mysql_free_result($Recordset3);
 ?>
