@@ -128,7 +128,7 @@ $usuarioingresa = mysql_query($query_usuarioingresa, $basepangloria) or die(mysq
 $row_usuarioingresa = mysql_fetch_assoc($usuarioingresa);
 $totalRows_usuarioingresa = mysql_num_rows($usuarioingresa);
 
-$maxRows_encaOrdenProd = 25;
+$maxRows_encaOrdenProd = 10;
 $pageNum_encaOrdenProd = 0;
 if (isset($_GET['pageNum_encaOrdenProd'])) {
   $pageNum_encaOrdenProd = $_GET['pageNum_encaOrdenProd'];
@@ -136,7 +136,7 @@ if (isset($_GET['pageNum_encaOrdenProd'])) {
 $startRow_encaOrdenProd = $pageNum_encaOrdenProd * $maxRows_encaOrdenProd;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_encaOrdenProd = "SELECT * FROM TRNENCABEZADOORDENPROD";
+$query_encaOrdenProd = "SELECT * FROM TRNENCABEZADOORDENPROD ORDER BY IDENCABEORDPROD DESC";
 $query_limit_encaOrdenProd = sprintf("%s LIMIT %d, %d", $query_encaOrdenProd, $startRow_encaOrdenProd, $maxRows_encaOrdenProd);
 $encaOrdenProd = mysql_query($query_limit_encaOrdenProd, $basepangloria) or die(mysql_error());
 $row_encaOrdenProd = mysql_fetch_assoc($encaOrdenProd);
@@ -157,7 +157,7 @@ if (isset($_GET['pageNum_detOrdeProd'])) {
 $startRow_detOrdeProd = $pageNum_detOrdeProd * $maxRows_detOrdeProd;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_detOrdeProd = "SELECT * FROM TRNDETORDENPRODUCCION";
+$query_detOrdeProd = "SELECT * FROM TRNDETORDENPRODUCCION ORDER BY IDORDENPRODUCCION DESC";
 $query_limit_detOrdeProd = sprintf("%s LIMIT %d, %d", $query_detOrdeProd, $startRow_detOrdeProd, $maxRows_detOrdeProd);
 $detOrdeProd = mysql_query($query_limit_detOrdeProd, $basepangloria) or die(mysql_error());
 $row_detOrdeProd = mysql_fetch_assoc($detOrdeProd);
