@@ -126,7 +126,49 @@ mysql_select_db($database_basepangloria, $basepangloria);
 $query_usuarioingresa = sprintf("SELECT IDUSUARIO FROM CATUSUARIO WHERE NOMBREUSUARIO = %s", GetSQLValueString($colname_usuarioingresa, "text"));
 $usuarioingresa = mysql_query($query_usuarioingresa, $basepangloria) or die(mysql_error());
 $row_usuarioingresa = mysql_fetch_assoc($usuarioingresa);
-$totalRows_usuarioingresa = mysql_num_rows($usuarioingresa);?>
+$totalRows_usuarioingresa = mysql_num_rows($usuarioingresa);
+
+$maxRows_encaOrdenProd = 25;
+$pageNum_encaOrdenProd = 0;
+if (isset($_GET['pageNum_encaOrdenProd'])) {
+  $pageNum_encaOrdenProd = $_GET['pageNum_encaOrdenProd'];
+}
+$startRow_encaOrdenProd = $pageNum_encaOrdenProd * $maxRows_encaOrdenProd;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_encaOrdenProd = "SELECT * FROM TRNENCABEZADOORDENPROD";
+$query_limit_encaOrdenProd = sprintf("%s LIMIT %d, %d", $query_encaOrdenProd, $startRow_encaOrdenProd, $maxRows_encaOrdenProd);
+$encaOrdenProd = mysql_query($query_limit_encaOrdenProd, $basepangloria) or die(mysql_error());
+$row_encaOrdenProd = mysql_fetch_assoc($encaOrdenProd);
+
+if (isset($_GET['totalRows_encaOrdenProd'])) {
+  $totalRows_encaOrdenProd = $_GET['totalRows_encaOrdenProd'];
+} else {
+  $all_encaOrdenProd = mysql_query($query_encaOrdenProd);
+  $totalRows_encaOrdenProd = mysql_num_rows($all_encaOrdenProd);
+}
+$totalPages_encaOrdenProd = ceil($totalRows_encaOrdenProd/$maxRows_encaOrdenProd)-1;
+
+$maxRows_detOrdeProd = 10;
+$pageNum_detOrdeProd = 0;
+if (isset($_GET['pageNum_detOrdeProd'])) {
+  $pageNum_detOrdeProd = $_GET['pageNum_detOrdeProd'];
+}
+$startRow_detOrdeProd = $pageNum_detOrdeProd * $maxRows_detOrdeProd;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_detOrdeProd = "SELECT * FROM TRNDETORDENPRODUCCION";
+$query_limit_detOrdeProd = sprintf("%s LIMIT %d, %d", $query_detOrdeProd, $startRow_detOrdeProd, $maxRows_detOrdeProd);
+$detOrdeProd = mysql_query($query_limit_detOrdeProd, $basepangloria) or die(mysql_error());
+$row_detOrdeProd = mysql_fetch_assoc($detOrdeProd);
+
+if (isset($_GET['totalRows_detOrdeProd'])) {
+  $totalRows_detOrdeProd = $_GET['totalRows_detOrdeProd'];
+} else {
+  $all_detOrdeProd = mysql_query($query_detOrdeProd);
+  $totalRows_detOrdeProd = mysql_num_rows($all_detOrdeProd);
+}
+$totalPages_detOrdeProd = ceil($totalRows_detOrdeProd/$maxRows_detOrdeProd)-1;?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -224,11 +266,52 @@ do {
   <p>&nbsp;</p>
   <table width="820" border="0">
   <tr>
-    <td><iframe src="inserdetalle.php" name="conte" width="820" height="400" scrolling="auto" frameborder="0"></iframe>&nbsp;</td>
+    <td><iframe src="inserdetalle.php" name="conte" width="820" height="250" scrolling="auto" frameborder="0"></iframe>&nbsp;</td>
   </tr>
 </table>
-
- 
+<form id="form2" name="form2" method="post" action="">
+    <label for="txtfiltro"></label>
+    <input type="text" name="txtfiltro" id="txtfiltro" />
+  <input type="submit" name="btnfiltrar" id="btnfiltrar" value="Filtro" />
+</form>
+<table border="1">
+  <tr>
+    <td>IDENCABEORDPROD</td>
+    <td>IDEMPLEADO</td>
+    <td>IDSUCURSAL</td>
+    <td>FECHA</td>
+  </tr>
+  <?php do { ?>
+    <tr>
+      <td><?php echo $row_encaOrdenProd['IDENCABEORDPROD']; ?></td>
+      <td><?php echo $row_encaOrdenProd['IDEMPLEADO']; ?></td>
+      <td><?php echo $row_encaOrdenProd['IDSUCURSAL']; ?></td>
+      <td><?php echo $row_encaOrdenProd['FECHA']; ?></td>
+    </tr>
+    <?php } while ($row_encaOrdenProd = mysql_fetch_assoc($encaOrdenProd)); ?>
+</table>
+<table border="1">
+  <tr>
+    <td>IDORDENPRODUCCION</td>
+    <td>IDENCABEORDPROD</td>
+    <td>CANTIDADORPROD</td>
+    <td>ID_MEDIDA</td>
+    <td>PRODUCTOORDPRODUC</td>
+    <td>FECHAHORAUSUA</td>
+    <td>USUARIO</td>
+  </tr>
+  <?php do { ?>
+    <tr>
+      <td><?php echo $row_detOrdeProd['IDORDENPRODUCCION']; ?></td>
+      <td><?php echo $row_detOrdeProd['IDENCABEORDPROD']; ?></td>
+      <td><?php echo $row_detOrdeProd['CANTIDADORPROD']; ?></td>
+      <td><?php echo $row_detOrdeProd['ID_MEDIDA']; ?></td>
+      <td><?php echo $row_detOrdeProd['PRODUCTOORDPRODUC']; ?></td>
+      <td><?php echo $row_detOrdeProd['FECHAHORAUSUA']; ?></td>
+      <td><?php echo $row_detOrdeProd['USUARIO']; ?></td>
+    </tr>
+    <?php } while ($row_detOrdeProd = mysql_fetch_assoc($detOrdeProd)); ?>
+</table>
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "custom", {validateOn:["blur"]});
 var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "custom");
@@ -244,6 +327,10 @@ mysql_free_result($comboSucursal);
 mysql_free_result($textboxempleados);
 
 mysql_free_result($usuarioingresa);
+
+mysql_free_result($encaOrdenProd);
+
+mysql_free_result($detOrdeProd);
 
 mysql_free_result($comboproducto);
 
