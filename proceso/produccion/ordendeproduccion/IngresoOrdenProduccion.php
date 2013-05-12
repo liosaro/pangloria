@@ -85,6 +85,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$currentPage = $_SERVER["PHP_SELF"];
+
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
@@ -168,7 +170,24 @@ if (isset($_GET['totalRows_detOrdeProd'])) {
   $all_detOrdeProd = mysql_query($query_detOrdeProd);
   $totalRows_detOrdeProd = mysql_num_rows($all_detOrdeProd);
 }
-$totalPages_detOrdeProd = ceil($totalRows_detOrdeProd/$maxRows_detOrdeProd)-1;?>
+$totalPages_detOrdeProd = ceil($totalRows_detOrdeProd/$maxRows_detOrdeProd)-1;
+
+$queryString_encaOrdenProd = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_encaOrdenProd") == false && 
+        stristr($param, "totalRows_encaOrdenProd") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_encaOrdenProd = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_encaOrdenProd = sprintf("&totalRows_encaOrdenProd=%d%s", $totalRows_encaOrdenProd, $queryString_encaOrdenProd);
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -181,6 +200,11 @@ $totalPages_detOrdeProd = ceil($totalRows_detOrdeProd/$maxRows_detOrdeProd)-1;?>
 
 <body>
 
+     </table>
+     <table width="820" border="0">
+       <tr>
+         <td align="center" bgcolor="#999999"><h1>Ingresar Orde de Produccion</h1></td>
+       </tr>
      </table>
 <table width="100%" border="0">
 </table>
@@ -270,35 +294,33 @@ do {
   </tr>
 </table>
 <form id="form2" name="form2" method="post" action="">
-    <label for="txtfiltro"></label>
-    <input type="text" name="txtfiltro" id="txtfiltro" />
-  <input type="submit" name="btnfiltrar" id="btnfiltrar" value="Filtro" />
+    <label for="txtfiltro"><a href="<?php printf("%s?pageNum_encaOrdenProd=%d%s", $currentPage, 0, $queryString_encaOrdenProd); ?>"><img src="../../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_encaOrdenProd=%d%s", $currentPage, max(0, $pageNum_encaOrdenProd - 1), $queryString_encaOrdenProd); ?>"><img src="../../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_encaOrdenProd=%d%s", $currentPage, min($totalPages_encaOrdenProd, $pageNum_encaOrdenProd + 1), $queryString_encaOrdenProd); ?>"><img src="../../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_encaOrdenProd=%d%s", $currentPage, $totalPages_encaOrdenProd, $queryString_encaOrdenProd); ?>"><img src="../../../imagenes/icono/Next-32.png" width="32" height="32" /></a>  </label>
 </form>
-<table border="1">
+<table border="2" align="left">
   <tr>
-    <td>IDENCABEORDPROD</td>
-    <td>IDEMPLEADO</td>
-    <td>IDSUCURSAL</td>
-    <td>FECHA</td>
+    <td width="100" height="24">Id Encab. Orden Produccion</td>
+    <td width="100">Id Empleado</td>
+    <td width="100">Id Sucursal</td>
+    <td width="103">Fecha</td>
   </tr>
   <?php do { ?>
     <tr>
-      <td><?php echo $row_encaOrdenProd['IDENCABEORDPROD']; ?></td>
+      <td height="30"><?php echo $row_encaOrdenProd['IDENCABEORDPROD']; ?></td>
       <td><?php echo $row_encaOrdenProd['IDEMPLEADO']; ?></td>
       <td><?php echo $row_encaOrdenProd['IDSUCURSAL']; ?></td>
       <td><?php echo $row_encaOrdenProd['FECHA']; ?></td>
     </tr>
     <?php } while ($row_encaOrdenProd = mysql_fetch_assoc($encaOrdenProd)); ?>
 </table>
-<table border="1">
+<table border="2" align="right">
   <tr>
-    <td>IDORDENPRODUCCION</td>
-    <td>IDENCABEORDPROD</td>
-    <td>CANTIDADORPROD</td>
-    <td>ID_MEDIDA</td>
-    <td>PRODUCTOORDPRODUC</td>
-    <td>FECHAHORAUSUA</td>
-    <td>USUARIO</td>
+    <td width="100" height="24">Id Det. Orde Produccion</td>
+    <td>Id Encab. Orden Produccion</td>
+    <td width="100">Cantidad Orden Produccion</td>
+    <td width="100">Id Medida</td>
+    <td width="100">Producto</td>
+    <td width="175">Fecha y Hora de Usario</td>
+    <td width="175">Usuario</td>
   </tr>
   <?php do { ?>
     <tr>
