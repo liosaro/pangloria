@@ -103,7 +103,7 @@ function OnSubmitForm()
     <td><form id="form1" name="form1" method="post" action="">
     </form>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
-        <table width="60%" border="0">
+  <table width="60%" border="0">
           <tr>
             <td colspan="3" align="center" bgcolor="#999999"><h1>Consultar Atribuciones</h1></td>
           </tr>
@@ -158,9 +158,6 @@ function OnSubmitForm()
         <p>
           <input type="hidden" name="MM_insert" value="form2" />
       </p>
-      </form>
-    <p>&nbsp;</p></td>
-  </tr>
-</table>
+</form>
 </body>
 </html>
