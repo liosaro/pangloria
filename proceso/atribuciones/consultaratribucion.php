@@ -123,66 +123,9 @@ body {
             <td colspan="3"><iframe src="" width="820" height="200" scrolling="auto"></iframe>&nbsp;</td>
           </tr>
         </table>
-        <p>&nbsp;</p>
-        <table align="center">
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">ID_ATRIB:</td>
-            <td valign="baseline"><table>
-              <tr>
-                <td>                  [ Etiqueta ]</td>
-              </tr>
-              <tr>
-                <td><input type="radio" name="ID_ATRIB" value="radiobutton2" />
-                  [ Etiqueta ]</td>
-              </tr>
-            </table></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">IDUSUARIO:</td>
-            <td valign="baseline"><table>
-              <tr>
-                <td>                  Botón2</td>
-              </tr>
-            </table></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">IDROL:</td>
-            <td valign="baseline"><table>
-              <tr>
-                <td>                  Botón3</td>
-              </tr>
-            </table></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">IDPERMISO:</td>
-            <td valign="baseline"><table>
-              <tr>
-                <td>                  Botón4</td>
-              </tr>
-            </table></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">C:</td>
-            <td><input type="text" name="C" value="" size="32" /></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">R:</td>
-            <td><input type="text" name="R" value="" size="32" /></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">U:</td>
-            <td><input type="text" name="U" value="" size="32" /></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">D:</td>
-            <td><input type="text" name="D" value="" size="32" /></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">&nbsp;</td>
-            <td><input type="submit" value="Insertar registro" /></td>
-          </tr>
-        </table>
-        <input type="hidden" name="MM_insert" value="form2" />
+        <p>
+          <input type="hidden" name="MM_insert" value="form2" />
+      </p>
       </form>
     <p>&nbsp;</p></td>
   </tr>
