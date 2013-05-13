@@ -61,6 +61,8 @@ $totalRows_idusu = mysql_num_rows($idusu);
 <link rel="stylesheet" type="text/css" media="screen"
 href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 
+<script src="../../SpryAssets/SpryValidationPassword.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryValidationPassword.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -77,11 +79,11 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
       <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
         <table width="820" border="0">
           <tr>
-            <td>ID_USUARIO</td>
-            <td><input name="IDUSUARIO" type="text" disabled="disabled" value="<?php echo $row_idusu['IDUSUARIO']+1; ?>" size="32" readonly="readonly" /></td>
+            <td width="163">Id de Usuario</td>
+            <td width="224"><input name="IDUSUARIO" type="text" disabled="disabled" value="<?php echo $row_idusu['IDUSUARIO']+1; ?>" size="32" readonly="readonly" /></td>
             
-            <td>NOMBRE USUARIO</td>
-            <td><input type="text" name="NOMBREUSUARIO" value="" size="32" /></td>
+            <td width="206">Nombre de Usuario</td>
+            <td width="209"><input type="text" name="NOMBREUSUARIO" value="" size="32" /></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -90,9 +92,12 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>CONTRASENA:</td>
-            <td><input type="text" name="CONTRASENA" value="" size="32" /></td>
-            <td>PRIMER INICIO</td>
+            <td>Contrasena:</td>
+            <td><span id="sprypassword1">
+              <label for="contraseña"></label>
+              <input type="password" name="contraseña" id="contraseña" />
+            <span class="passwordRequiredMsg">Se necesita un valor.</span></span></td>
+            <td>Primer Inicio de Sesion</td>
             <td><script type="text/javascript"
      src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
     </script> 
@@ -125,7 +130,7 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
           </tr>
           
           <tr>
-            <td>ULTIMO INICIO:</td>
+            <td>Ultimo Inicio de Sesion:</td>
             <td><script type="text/javascript"
      src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
     </script> 
@@ -138,8 +143,8 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
     <script type="text/javascript"
      src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
     </script>
-   <div class="welsl">
-  <div id="datetimepicker1" class="input-append date"></input>
+   <div class="wels2">
+  <div id="datetimepicker2" class="input-append date"></input>
     <span class="add-on">
       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
       </i>
@@ -148,7 +153,7 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
 </div>
 <script type="text/javascript">
   $(function() {
-    $('#datetimepicker1').datetimepicker({
+    $('#datetimepicker2').datetimepicker({
       language: 'El Salvador'
     });
   });
@@ -195,6 +200,9 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
     <p>&nbsp;</p></td>
   </tr>
 </table>
+<script type="text/javascript">
+var sprypassword1 = new Spry.Widget.ValidationPassword("sprypassword1", {validateOn:["blur"]});
+</script>
 </body>
 </html>
 <?php
