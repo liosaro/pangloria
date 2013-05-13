@@ -91,12 +91,11 @@ body {
    <td align="center" bgcolor="#999999"><h1>Consultar Proveedores</h1></td>
   </tr>
  <tr>
-    <td><iframe src="../../pangloria/index.php" width="820" scrolling="no"></iframe></td>
+    <td>&nbsp;</td>
  </tr>
   <tr>
     <td><form id="form1" name="form1" method="post" action="">
-     <label for="root"></label>
-     <input type="text" name="root" id="root" />
+      <input type="text" name="root" id="root" />
      <input type="submit" name="enviar" id="enviar" value="filtrar" />
    </form></td>
   </tr>
@@ -110,7 +109,6 @@ body {
       <table border="1">
        <tr>
           <td align="center">Eliminacion</td>
-          <td align="center">Modificacion</td>
           <td align="center">Id Proveedor</td>
           <td align="center">Pais</td>
           <td align="center">Nombre del Proveedor</td>
@@ -126,8 +124,7 @@ body {
        <?php do { ?>
           <tr>
             <td><a href="../../pangloria/MateriaPrima/Proveedores/eliminar_proveedor.php?IDPROVEEDOR=&lt;php?">Eliminar</a></td>
-           <td><a href="../../pangloria/MateriaPrima/Proveedores/modificar_proveedor.php?IDPROVEEDOR=<?php echo $row_ConsultProveedor['IDPROVEEDOR'];?>">Modificar</a></td>
-            <td><?php echo $row_ConsultProveedor['IDPROVEEDOR']; ?></td>
+           <td><?php echo $row_ConsultProveedor['IDPROVEEDOR']; ?></td>
             <td><?php echo $row_ConsultProveedor['IDPAIS']; ?></td>
             <td><?php echo $row_ConsultProveedor['NOMBREPROVEEDOR']; ?></td>
             <td><?php echo $row_ConsultProveedor['DIRECCIONPROVEEDOR']; ?></td>
