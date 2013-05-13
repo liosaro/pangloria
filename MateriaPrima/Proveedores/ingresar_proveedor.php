@@ -59,6 +59,33 @@ $query_pais = "SELECT * FROM CATPAIS ORDER BY NOMBREDEPAIS ASC";
 $pais = mysql_query($query_pais, $basepangloria) or die(mysql_error());
 $row_pais = mysql_fetch_assoc($pais);
 $totalRows_pais = mysql_num_rows($pais);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_depPais = "SELECT IDDP, NOMBREDEPTOPAIS FROM CATDEPTOPAIS";
+$depPais = mysql_query($query_depPais, $basepangloria) or die(mysql_error());
+$row_depPais = mysql_fetch_assoc($depPais);
+$totalRows_depPais = mysql_num_rows($depPais);
+
+$maxRows_ingeProvee = 10;
+$pageNum_ingeProvee = 0;
+if (isset($_GET['pageNum_ingeProvee'])) {
+  $pageNum_ingeProvee = $_GET['pageNum_ingeProvee'];
+}
+$startRow_ingeProvee = $pageNum_ingeProvee * $maxRows_ingeProvee;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_ingeProvee = "SELECT * FROM CATPROVEEDOR ORDER BY IDPROVEEDOR DESC";
+$query_limit_ingeProvee = sprintf("%s LIMIT %d, %d", $query_ingeProvee, $startRow_ingeProvee, $maxRows_ingeProvee);
+$ingeProvee = mysql_query($query_limit_ingeProvee, $basepangloria) or die(mysql_error());
+$row_ingeProvee = mysql_fetch_assoc($ingeProvee);
+
+if (isset($_GET['totalRows_ingeProvee'])) {
+  $totalRows_ingeProvee = $_GET['totalRows_ingeProvee'];
+} else {
+  $all_ingeProvee = mysql_query($query_ingeProvee);
+  $totalRows_ingeProvee = mysql_num_rows($all_ingeProvee);
+}
+$totalPages_ingeProvee = ceil($totalRows_ingeProvee/$maxRows_ingeProvee)-1;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -72,7 +99,14 @@ body {
 	font-size: 16px;
 }
 </style>
-<link href="../../css/forms.css" rel="stylesheet" type="text/css" /></head>
+<link href="../../css/forms.css" rel="stylesheet" type="text/css" />
+<script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen"
+href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+</head>
 
 <body>
 <table width="820" border="0">
@@ -83,9 +117,9 @@ body {
           <td colspan="4" align="center" nowrap="nowrap" class="ENCABEZADO"><span class="encaforms">Ingreso de Proveedores</span></td>
           </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right">Id Proveedor:</td>
-          <td nowrap="nowrap" align="right"><input name="IDPROVEEDOR" type="text" value="" size="32" readonly="readonly" /></td>
-          <td nowrap="nowrap" align="right">Direccion del Porveedor:</td>
+          <td >Id Proveedor:</td>
+          <td ><input name="IDPROVEEDOR" type="text" value="" size="32" readonly="readonly" /></td>
+          <td >Direccion del Porveedor:</td>
           <td><input type="text" name="DIRECCIONPROVEEDOR" value="" size="32" /></td>
         </tr>
         <tr valign="baseline">
@@ -108,20 +142,20 @@ do {
           </select></td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right">Nombre del Porveedor:</td>
-          <td nowrap="nowrap" align="right"><input type="text" name="NOMBREPROVEEDOR" value="" size="32" /></td>
-          <td nowrap="nowrap" align="right">Departamento</td>
+          <td >Nombre del Porveedor:</td>
+          <td ><input type="text" name="NOMBREPROVEEDOR" value="" size="32" /></td>
+          <td>Departamento</td>
           <td><select name="DEPTOPAISPROVEEDOR">
             <?php
 do {  
 ?>
-            <option value="<?php echo $row_pais['IDPAIS']?>"><?php echo $row_pais['IDPAIS']?></option>
+            <option value="<?php echo $row_depPais['IDDP']?>"><?php echo $row_depPais['NOMBREDEPTOPAIS']?></option>
             <?php
-} while ($row_pais = mysql_fetch_assoc($pais));
-  $rows = mysql_num_rows($pais);
+} while ($row_depPais = mysql_fetch_assoc($depPais));
+  $rows = mysql_num_rows($depPais);
   if($rows > 0) {
-      mysql_data_seek($pais, 0);
-	  $row_pais = mysql_fetch_assoc($pais);
+      mysql_data_seek($depPais, 0);
+	  $row_depPais = mysql_fetch_assoc($depPais);
   }
 ?>
           </select></td>
@@ -133,10 +167,14 @@ do {
           <td>&nbsp;</td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right">Telefono del Proveedor:</td>
-          <td nowrap="nowrap" align="right"><input type="text" name="TELEFONOPROVEEDOR" value="" size="32" /></td>
+          <td >Telefono del Proveedor:</td>
+          <td nowrap="nowrap" align="right"><span id="sprytextfield1">
+          <input type="text" name="TELEFONOPROVEEDOR" value="" size="32" />
+          <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
           <td nowrap="nowrap" align="right">Correo del Proveedor:</td>
-          <td><input type="text" name="CORREOPROVEEDOR" value="" size="32" /></td>
+          <td><span id="sprytextfield2">
+          <input type="text" name="CORREOPROVEEDOR" value="" size="32" />
+          <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
         </tr>
         <tr valign="baseline">
           <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -145,8 +183,47 @@ do {
           <td>&nbsp;</td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right">Fecha Ingreso del Proveedor:</td>
-          <td nowrap="nowrap" align="right"><input type="text" name="FECHAINGRESOPROVE" value="" size="32" /></td>
+          <td >Fecha Ingreso del Proveedor:</td>
+          <td><script type="text/javascript"
+src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+<script type="text/javascript"
+src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+</script> <div id="datetimepicker4" class="input-append">
+
+
+<input name="FECHAINGRESOPROVE" type="text" id="FECHAINGRESOPROVE" data-format="yyyy-MM-dd"></input>
+<span class="add-on"><script type="text/javascript"
+src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+<script type="text/javascript"
+src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+</script> <div id="datetimepicker4" class="input-append">
+
+<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+</i>
+</div>
+<script type="text/javascript">
+$(function() {
+$('#datetimepicker4').datetimepicker({
+pickTime: false
+});
+});
+</script>
+
+</td>
           <td nowrap="nowrap" align="right">Giro:</td>
           <td><input type="text" name="GIRO" value="" size="32" /></td>
         </tr>
@@ -157,10 +234,12 @@ do {
           <td>&nbsp;</td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right">Numero de Registro:</td>
-          <td nowrap="nowrap" align="right"><input type="text" name="NUMEROREGISTRO" value="" size="32" /></td>
+          <td >Numero de Registro:</td>
+          <td ><input type="text" name="NUMEROREGISTRO" value="" size="32" /></td>
           <td nowrap="nowrap" align="right">WEB:</td>
-          <td><input type="text" name="WEB" value="" size="32" /></td>
+          <td><span id="sprytextfield3">
+          <input type="text" name="WEB" value="" size="32" />
+          <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
         </tr>
         <tr valign="baseline">
           <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -185,8 +264,47 @@ do {
     </form></td>
   </tr>
 </table>
+<table border="1">
+  <tr>
+    <td>IDPROVEEDOR</td>
+    <td>IDPAIS</td>
+    <td>NOMBREPROVEEDOR</td>
+    <td>DIRECCIONPROVEEDOR</td>
+    <td>TELEFONOPROVEEDOR</td>
+    <td>CORREOPROVEEDOR</td>
+    <td>FECHAINGRESOPROVE</td>
+    <td>GIRO</td>
+    <td>NUMEROREGISTRO</td>
+    <td>WEB</td>
+    <td>DEPTOPAISPROVEEDOR</td>
+  </tr>
+  <?php do { ?>
+    <tr>
+      <td><?php echo $row_ingeProvee['IDPROVEEDOR']; ?></td>
+      <td><?php echo $row_ingeProvee['IDPAIS']; ?></td>
+      <td><?php echo $row_ingeProvee['NOMBREPROVEEDOR']; ?></td>
+      <td><?php echo $row_ingeProvee['DIRECCIONPROVEEDOR']; ?></td>
+      <td><?php echo $row_ingeProvee['TELEFONOPROVEEDOR']; ?></td>
+      <td><?php echo $row_ingeProvee['CORREOPROVEEDOR']; ?></td>
+      <td><?php echo $row_ingeProvee['FECHAINGRESOPROVE']; ?></td>
+      <td><?php echo $row_ingeProvee['GIRO']; ?></td>
+      <td><?php echo $row_ingeProvee['NUMEROREGISTRO']; ?></td>
+      <td><?php echo $row_ingeProvee['WEB']; ?></td>
+      <td><?php echo $row_ingeProvee['DEPTOPAISPROVEEDOR']; ?></td>
+    </tr>
+    <?php } while ($row_ingeProvee = mysql_fetch_assoc($ingeProvee)); ?>
+</table>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "phone_number", {format:"phone_custom", pattern:"0000-0000", useCharacterMasking:true, validateOn:["blur"]});
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "email", {hint:"ejemplo@dominio.com", useCharacterMasking:true, validateOn:["blur"]});
+var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3", "url", {hint:"www.ejemplo.com", validateOn:["blur"]});
+</script>
 </body>
 </html>
 <?php
 mysql_free_result($pais);
+
+mysql_free_result($depPais);
+
+mysql_free_result($ingeProvee);
 ?>

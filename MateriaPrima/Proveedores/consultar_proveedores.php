@@ -123,7 +123,7 @@ body {
        </tr>
        <?php do { ?>
           <tr>
-            <td><a href="../../pangloria/MateriaPrima/Proveedores/eliminar_proveedor.php?IDPROVEEDOR=&lt;php?">Eliminar</a></td>
+            <td><a href="eliminar_proveedor.php?IDPROVEEDOR=<?php echo $row_ConsultProveedor['IDPROVEEDOR']; ?>">Eliminar</a></td>
            <td><?php echo $row_ConsultProveedor['IDPROVEEDOR']; ?></td>
             <td><?php echo $row_ConsultProveedor['IDPAIS']; ?></td>
             <td><?php echo $row_ConsultProveedor['NOMBREPROVEEDOR']; ?></td>

@@ -2,4 +2,8 @@
 <info>
 	<infoitem key="UD_combopais" value="name:IDPAIS;datatype:int,name:NOMBREDEPAIS;datatype:blob" />
 	<infoitem key="UD_pais" value="name:IDPAIS;datatype:int,name:NOMBREDEPAIS;datatype:blob" />
+	<infoitem key="UD_depPais" value="name:IDDP;datatype:int,name:NOMBREDEPTOPAIS;datatype:blob" />
+	<infoitem key="UD_comboMedida" value="name:ID_MEDIDA;datatype:int,name:MEDIDA;datatype:blob" />
+	<infoitem key="UD_comboProducto" value="name:IDPRODUCTO;datatype:int,name:DESCRIPCIONPRODUC;datatype:string" />
+	<infoitem key="UD_ingeProvee" value="name:IDPROVEEDOR;datatype:int,name:IDPAIS;datatype:int,name:NOMBREPROVEEDOR;datatype:blob,name:DIRECCIONPROVEEDOR;datatype:blob,name:TELEFONOPROVEEDOR;datatype:blob,name:CORREOPROVEEDOR;datatype:blob,name:FECHAINGRESOPROVE;datatype:date,name:GIRO;datatype:blob,name:NUMEROREGISTRO;datatype:blob,name:WEB;datatype:blob,name:DEPTOPAISPROVEEDOR;datatype:int" />
 </info>

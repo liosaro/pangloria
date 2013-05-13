@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_ConsultProveedor" value="name:IDPROVEEDOR;datatype:int,name:IDPAIS;datatype:int,name:NOMBREPROVEEDOR;datatype:blob,name:DIRECCIONPROVEEDOR;datatype:blob,name:TELEFONOPROVEEDOR;datatype:blob,name:CORREOPROVEEDOR;datatype:blob,name:FECHAINGRESOPROVE;datatype:date,name:GIRO;datatype:blob,name:NUMEROREGISTRO;datatype:blob,name:WEB;datatype:blob,name:DEPTOPAISPROVEEDOR;datatype:int" />
+</info>
