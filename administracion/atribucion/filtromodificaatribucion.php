@@ -70,6 +70,7 @@ body {
 <p>&nbsp;</p>
 <table border="1">
   <tr>
+    <td>Modificar</td>
     <td>ID_ATRIB</td>
     <td>IDUSUARIO</td>
     <td>IDROL</td>
@@ -81,6 +82,7 @@ body {
   </tr>
   <?php do { ?>
     <tr>
+      <td><a href="modificadoratribu.php">Modificar</a></td>
       <td><?php echo $row_filtradoatribu['ID_ATRIB']; ?></td>
       <td><?php echo $row_filtradoatribu['IDUSUARIO']; ?></td>
       <td><?php echo $row_filtradoatribu['IDROL']; ?></td>

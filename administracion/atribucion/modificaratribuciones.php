@@ -103,7 +103,7 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
           <table width="1026" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="800" colspan="6" align="left">&nbsp;
-                <iframe src="modificadoratribu.php" name="modiprodu" width="830" height="400" align="middle" scrolling="auto" frameborder="0" id="modiprodu"></iframe>
+                <iframe src="modificadoratribu.php" name="modiprodu" width="830" height="300" align="middle" scrolling="auto" frameborder="0" id="modiprodu"></iframe>
                 <p><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, 0, $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, max(0, $pageNum_consultaatribu - 1), $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, min($totalPages_consultaatribu, $pageNum_consultaatribu + 1), $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, $totalPages_consultaatribu, $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a> </p>
                 <p>
                   <input type="text" name="filtroprod" id="filtroprod" />
@@ -111,6 +111,7 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
                 </p>
                 <table width="820" border="1">
                   <tr>
+                    <td>Modificar</td>
                     <td>ID_ATRIB</td>
                     <td>IDUSUARIO</td>
                     <td>IDROL</td>
@@ -122,6 +123,7 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
                   </tr>
                   <?php do { ?>
                     <tr>
+                      <td><a href="modificadoratribu.php">Modificar</a></td>
                       <td><?php echo $row_consultaatribu['ID_ATRIB']; ?></td>
                       <td><?php echo $row_consultaatribu['IDUSUARIO']; ?></td>
                       <td><?php echo $row_consultaatribu['IDROL']; ?></td>
