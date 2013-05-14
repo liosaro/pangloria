@@ -31,7 +31,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$maxRows_filtradoatribu = 10;
+$maxRows_filtradoatribu = 6;
 $pageNum_filtradoatribu = 0;
 if (isset($_GET['pageNum_filtradoatribu'])) {
   $pageNum_filtradoatribu = $_GET['pageNum_filtradoatribu'];
@@ -66,7 +66,7 @@ body {
 </head>
 
 <body>
-<iframe src="modificadoratribu.php" name="modiprodu" width="780" height="250" align="middle" scrolling="No" frameborder="0" id="modiproducs"></iframe>
+<iframe src="modificadoratribu.php" name="modiprodu" width="830" height="300" align="middle" scrolling="No" frameborder="0" id="modiproducs"></iframe>
 <p>&nbsp;</p>
 <table border="1">
   <tr>
@@ -82,8 +82,8 @@ body {
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="modificadoratribu.php">Modificar</a></td>
-      <td><?php echo $row_filtradoatribu['ID_ATRIB']; ?></td>
+      <td><a href="modificadoratribu.php?root=<?php echo $row_filtradoatribu['ID_ATRIB']; ?>" target="modiprodu">Modificar</a></td>      
+      <td><?php echo $row_filtradoatribu['ID_ATRIB']; ?></a></td>
       <td><?php echo $row_filtradoatribu['IDUSUARIO']; ?></td>
       <td><?php echo $row_filtradoatribu['IDROL']; ?></td>
       <td><?php echo $row_filtradoatribu['IDPERMISO']; ?></td>

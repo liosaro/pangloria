@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="modificaratribuciones.php" server="www.liosarpc.info//public_html/pan/" local="130128852610000000" remote="130128924600000000" />
-<file name="filtromodificaatribucion.php" server="www.liosarpc.info//public_html/pan/" local="130128834185462517" remote="130128906000000000" />
-<file name="modificadoratribu.php" server="www.liosarpc.info//public_html/pan/" local="130128841016983257" remote="130128917400000000" />
-<file name="conatribucion1.php" server="www.liosarpc.info//public_html/pan/" local="130129381722341621" remote="130129888800000000" />
-<file name="consultaratribucion1.php" server="www.liosarpc.info//public_html/pan/" local="130129381722811648" remote="130129888800000000" />
+<file name="modificaratribuciones.php" server="www.liosarpc.info//public_html/pan/" local="130129062802614147" remote="130129134600000000" Dst="0" />
+<file name="filtromodificaatribucion.php" server="www.liosarpc.info//public_html/pan/" local="130129040028341533" remote="130129113000000000" Dst="0" />
+<file name="modificadoratribu.php" server="www.liosarpc.info//public_html/pan/" local="130128910606553553" remote="130129113600000000" Dst="0" />
+<file name="eliminaratribu.php" server="www.liosarpc.info//public_html/pan/" local="130128491748572013" remote="130128993000000000" Dst="0" />
+<file name="filtroeliminaatribu.php" server="www.liosarpc.info//public_html/pan/" local="130129021508052233" remote="130129093200000000" Dst="0" />
+<file name="eliminacionatribu.php" server="www.liosarpc.info//public_html/pan/" local="130129025488499902" remote="130130034000000000" Dst="0" />
+<file name="eliminarAtribu.php" server="www.liosarpc.info//public_html/pan/" local="130129018495669935" remote="130129090200000000" Dst="0" />
+<file name="ingresoatribucion.php" server="www.liosarpc.info//public_html/pan/" local="130129075958266607" remote="130129147800000000" Dst="0" />
+<file name="consultaratribucion1.php" server="www.liosarpc.info//public_html/pan/" local="130129950201747981" remote="130130022000000000" Dst="0" />
+<file name="IngresoAtribu.php" server="www.liosarpc.info//public_html/pan/" local="130129975098501994" remote="130130048400000000" Dst="0" />
 </dwsync>
