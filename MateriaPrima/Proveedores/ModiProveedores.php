@@ -85,7 +85,10 @@ body {
 </style>
 </head>
 
-<body><iframe src="modificarProveedor.php" name="modificar" width="850" height="500" align="middle" scrolling="auto" frameborder="0" id="modiProvee"></iframe>
+<body>
+
+<iframe src="modificarProveedor.php" name="modificar" width="850" height="500" align="middle" scrolling="auto" frameborder="0" id="modiProvee"></iframe>
+
 
 <table width="820" border="0">
   <tr>

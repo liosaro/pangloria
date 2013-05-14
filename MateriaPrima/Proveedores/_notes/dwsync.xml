@@ -4,5 +4,6 @@
 <file name="consultar_proveedores.php" server="www.liosarpc.info//public_html/pan/" local="130129431849118709" remote="130129503600000000" />
 <file name="eliminar_proveedor.php" server="www.liosarpc.info//public_html/pan/" local="130128068193486274" remote="130128144600000000" />
 <file name="modificarProveedor.php" server="www.liosarpc.info//public_html/pan/" local="130129498996199302" remote="130129570800000000" />
-<file name="ModiProveedores.php" server="www.liosarpc.info//public_html/pan/" local="130129509932964849" remote="130129581600000000" />
+<file name="ModiProveedores.php" server="www.liosarpc.info//public_html/pan/" local="130129663290904725" remote="130129735200000000" />
+<file name="filtroProveedor.php" server="www.liosarpc.info//public_html/pan/" local="130129574747269852" remote="130129646400000000" />
 </dwsync>
