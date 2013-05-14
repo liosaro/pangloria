@@ -65,6 +65,17 @@ body {
 	margin-bottom: 0px;
 }
 </style>
+<script language="JavaScript">
+function aviso(url){
+if (!confirm("ALERTA!! va a proceder a eliminar este registro, si desea eliminarlo de click en ACEPTAR\n de lo contrario de click en CANCELAR.")) {
+return false;
+}
+else {
+document.location = url;
+return true;
+}
+}
+</script>
 </head>
 
 <body>
@@ -74,10 +85,12 @@ body {
   </tr>
   <tr>
     <td><form id="form1" name="form1" method="post" action="">
-      <label for="txtfiltrar"></label>
-      <input type="text" name="txtfiltrar" id="txtfiltrar" />
-      <input type="submit" name="btnFiltrar" id="btnFiltrar" value="Filtro" />
-    </form></td>
+        <p>
+        <label for="txtfiltrar"></label>
+        <input type="text" name="txtfiltrar" id="txtfiltrar" />
+        <input type="submit" name="btnFiltrar" id="btnFiltrar" value="Filtro" />
+      </p>
+  </form></td>
   </tr>
   <tr>
     <td><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></td>
@@ -86,15 +99,13 @@ body {
     <td>&nbsp;
       <table border="1">
         <tr>
-          <td>Modificar</td>
           <td>Eliminar</td>
           <td>IDROL</td>
           <td>DESCRIPCION</td>
         </tr>
         <?php do { ?>
           <tr>
-            <td><a href="modificarRol.php?IDROL=<?php echo $row_rol['IDROL']; ?>">Modificar</a></td>
-            <td><a href="eliminarRol.php?IDROL=<?php echo $row_rol['IDROL']; ?>">Eliminar</a></td>
+            <td><a href="javascript:;" onclick="aviso('eliminarRol.php?IDROL=<?php echo $row_rol['IDROL']; ?>'); return false;">Eliminar</a></td>
             <td><?php echo $row_rol['IDROL']; ?></td>
             <td><?php echo $row_rol['DESCRIPCION']; ?></td>
           </tr>
