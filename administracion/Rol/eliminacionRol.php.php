@@ -81,14 +81,14 @@ return true;
 <body>
 <table width="820" border="0">
   <tr>
-    <td align="center" bgcolor="#999999"><h1>Consultar Rol</h1></td>
+    <td align="center" bgcolor="#999999"><h1>Eliminar Rol</h1></td>
   </tr>
   <tr>
   
-    <td><p><iframe src="filtroEliminarRol.php" name="filteliminar" width="820" height="150" align="middle" scrolling="Auto" frameborder="0" id="modificarRol"></iframe></p>
-      <form action="filtroEliminarRol" method="post"   name="enciorolmodi" target="modificarRol"  id="enciorolmodi">
+    <td><iframe src="filtroEliminarRol.php" name="filteliminar" width="820" height="150" align="middle" scrolling="Auto" frameborder="0" id="filteliminar"></iframe>
+      <form action="filtroEliminarRol.php" method="post"   name="enciorolmodi" target="filteliminar" id="enciorolmodi" >
         <p>
-        <input type="text" name="txtfiltrar" id="txtfiltrar" />
+        <input type="text" name="IDROL" id="IDROL" />
         <input type="submit" name="btnFiltrar" id="btnFiltrar" value="Filtro"  />
       </p>
     </form></td>
@@ -106,7 +106,7 @@ return true;
         </tr>
         <?php do { ?>
           <tr>
-            <td><a href="javascript:;" onclick="aviso('eliminarRol.php?IDROL=<?php echo $row_rol['IDROL']; ?>'); return false;">Eliminar</a></td>
+            <td><a href="javascript:;" onclick="<?php echo $row_rol['']; ?>?IDROL=<?php echo $row_rol['IDROL']; ?>'); return false;">Eliminar</a></td>
             <td><?php echo $row_rol['IDROL']; ?></td>
             <td><?php echo $row_rol['DESCRIPCION']; ?></td>
           </tr>

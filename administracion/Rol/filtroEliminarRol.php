@@ -39,8 +39,8 @@ if (isset($_GET['pageNum_filtradoRol'])) {
 $startRow_filtradoRol = $pageNum_filtradoRol * $maxRows_filtradoRol;
 
 $colname_filtradoRol = "-1";
-if (isset($_POST['DESCRIPROL'])) {
-  $colname_filtradoRol = $_POST['DESCRIPROL'];
+if (isset($_POST['IDROL'])) {
+  $colname_filtradoRol = $_POST['IDROL'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
 $query_filtradoRol = sprintf("SELECT * FROM CATROL WHERE DESCRIPCION LIKE %s ORDER BY DESCRIPCION ASC", GetSQLValueString("%" . $colname_filtradoRol . "%", "text"));

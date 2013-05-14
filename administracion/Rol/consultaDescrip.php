@@ -31,6 +31,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$currentPage = $_SERVER["PHP_SELF"];
+
 $maxRows_descripcion = 10;
 $pageNum_descripcion = 0;
 if (isset($_GET['pageNum_descripcion'])) {
@@ -55,29 +57,30 @@ if (isset($_GET['totalRows_descripcion'])) {
   $totalRows_descripcion = mysql_num_rows($all_descripcion);
 }
 $totalPages_descripcion = ceil($totalRows_descripcion/$maxRows_descripcion)-1;
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
-<style type="text/css">
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
-</style>
-</head>
 
-<body>
-<table width="820" border="0">
+$queryString_descripcion = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_descripcion") == false && 
+        stristr($param, "totalRows_descripcion") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_descripcion = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_descripcion = sprintf("&totalRows_descripcion=%d%s", $totalRows_descripcion, $queryString_descripcion);
+?>
+<table border="1" cellpadding="0" cellspacing="0" width="820">
   <tr>
-    <td align="center" bgcolor="#999999"><h1>Detalle</h1></td>
+    <td colspan="6" align="center" bgcolor="#999999"><h1>Detalle</h1></td>
   </tr>
-</table>
-<table border="1">
+  <tr>
+   <td colspan="6"><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, 0, $queryString_nombre); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, max(0, $pageNum_nombre - 1), $queryString_nombre); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, min($totalPages_nombre, $pageNum_nombre + 1), $queryString_nombre); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, $totalPages_nombre, $queryString_nombre); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></td>
+  </tr>
   <tr>
     <td>IDROL</td>
     <td>DESCRIPCION</td>
@@ -89,8 +92,14 @@ body {
     </tr>
     <?php } while ($row_descripcion = mysql_fetch_assoc($descripcion)); ?>
 </table>
-</body>
-</html>
+<style type="text/css">
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+</style>
 <?php
 mysql_free_result($descripcion);
 ?>
