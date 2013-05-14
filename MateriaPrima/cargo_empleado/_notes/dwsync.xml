@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="ingreso_cargo_empleado.php" server="www.liosarpc.info//public_html/pan/" local="130128068194826351" remote="130128144600000000" Dst="-1" />
-<file name="consultar_cargo.php" server="www.liosarpc.info//public_html/pan/" local="130129998167801482" remote="130130072400000000" Dst="0" />
+<file name="consulta_cargos.php" server="www.liosarpc.info//public_html/pan/" local="130130034431695658" remote="130130106000000000" Dst="0" />
+<file name="consulta_cargoid.php" server="www.liosarpc.info//public_html/pan/" local="130130033039036002" remote="130130104800000000" Dst="0" />
 </dwsync>

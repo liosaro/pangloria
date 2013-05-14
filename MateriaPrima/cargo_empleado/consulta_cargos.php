@@ -16,7 +16,7 @@ function OnSubmitForm()
 {
   if(document.consultaproducto.radiosearch[0].checked == true)
   {
-    document.consultaproducto.action ="consultaid.php?q=";
+    document.consultaproducto.action ="consulta_cargoid.php?q=";
    }
    if(document.consultaproducto.radiosearch[1].checked == true)
   {
