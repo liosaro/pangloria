@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
 	<infoitem key="UD_rol" value="name:IDROL;datatype:int,name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_modiRol" value="name:IDROL;datatype:int,name:DESCRIPCION;datatype:blob" />
 </info>

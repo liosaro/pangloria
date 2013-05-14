@@ -43,62 +43,44 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 
   mysql_select_db($database_basepangloria, $basepangloria);
   $Result1 = mysql_query($updateSQL, $basepangloria) or die(mysql_error());
-
-  $updateGoTo = "consultarRol.php";
-  if (isset($_SERVER['QUERY_STRING'])) {
-    $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
-    $updateGoTo .= $_SERVER['QUERY_STRING'];
-  }
-  header(sprintf("Location: %s", $updateGoTo));
 }
 
-$colname_rol = "-1";
-if (isset($_GET['IDROL'])) {
-  $colname_rol = $_GET['IDROL'];
+$colname_modiRol = "-1";
+if (isset($_GET['root'])) {
+  $colname_modiRol = $_GET['root'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_rol = sprintf("SELECT * FROM CATROL WHERE IDROL = %s ORDER BY IDROL ASC", GetSQLValueString($colname_rol, "int"));
-$rol = mysql_query($query_rol, $basepangloria) or die(mysql_error());
-$row_rol = mysql_fetch_assoc($rol);
-$totalRows_rol = mysql_num_rows($rol);
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
-<style type="text/css">
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
+$query_modiRol = sprintf("SELECT * FROM CATROL WHERE IDROL = %s", GetSQLValueString($colname_modiRol, "int"));
+$modiRol = mysql_query($query_modiRol, $basepangloria) or die(mysql_error());
+$row_modiRol = mysql_fetch_assoc($modiRol);
+$totalRows_modiRol = mysql_num_rows($modiRol);$colname_modiRol = "-1";
+if (isset($_GET['root'])) {
+  $colname_modiRol = $_GET['root'];
 }
-</style>
-</head>
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_modiRol = sprintf("SELECT * FROM CATROL WHERE IDROL = %s", GetSQLValueString($colname_modiRol, "int"));
+$modiRol = mysql_query($query_modiRol, $basepangloria) or die(mysql_error());
+$row_modiRol = mysql_fetch_assoc($modiRol);
+$totalRows_modiRol = mysql_num_rows($modiRol);
 
-<body>
-<form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+mysql_free_result($modiRol);
+?>
+<form method="post" name="form1" action="<?php echo $editFormAction; ?>">
   <table align="center">
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">IDROL:</td>
-      <td><?php echo $row_rol['IDROL']; ?></td>
+      <td nowrap align="right">IDROL:</td>
+      <td><?php echo $row_modiRol['IDROL']; ?></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">DESCRIPCION:</td>
-      <td><input type="text" name="DESCRIPCION" value="<?php echo htmlentities($row_rol['DESCRIPCION'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td nowrap align="right">DESCRIPCION:</td>
+      <td><input type="text" name="DESCRIPCION" value="<?php echo htmlentities($row_modiRol['DESCRIPCION'], ENT_COMPAT, ''); ?>" size="32"></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">&nbsp;</td>
-      <td><input type="submit" value="Actualizar registro" /></td>
+      <td nowrap align="right">&nbsp;</td>
+      <td><input type="submit" value="Actualizar registro"></td>
     </tr>
   </table>
-  <input type="hidden" name="MM_update" value="form1" />
-  <input type="hidden" name="IDROL" value="<?php echo $row_rol['IDROL']; ?>" />
+  <input type="hidden" name="MM_update" value="form1">
+  <input type="hidden" name="IDROL" value="<?php echo $row_modiRol['IDROL']; ?>">
 </form>
 <p>&nbsp;</p>
-</body>
-</html>
-<?php
-mysql_free_result($rol);
-?>
