@@ -154,8 +154,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
             </li>
             <li><a href="#" class="MenuBarItemSubmenu">Reporte de Trabajo</a>
               <ul>
-                <li><a href="../MateriaPrima/empleado/ingreso_cargo_empleado.php" target="contenedor">Ingrso  cargo empleado</a></li>
-                <li><a href="../MateriaPrima/empleado/consultar_cargo.php" target="contenedor">Consultar Cargos</a></li>
+                <li><a href="../MateriaPrima/cargo_empleado/ingreso_cargo_empleado.php" target="contenedor">Ingrso  cargo empleado</a></li>
+                <li><a href="../MateriaPrima/cargo_empleado/consultar_cargo.php" target="contenedor">Consultar Cargos</a></li>
               </ul>
             </li>
             <li><a href="#" class="MenuBarItemSubmenu">Administracion</a>
