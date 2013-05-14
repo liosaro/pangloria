@@ -85,6 +85,8 @@ $totalRows_medidas = mysql_num_rows($medidas);
 <link rel="stylesheet" type="text/css" media="screen"
 href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 
+<script src="../../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -103,10 +105,10 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
         <table align="center">
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">ID_JUSTIFICACION:</td>
-            <td nowrap="nowrap" align="right"><input name="ID_JUSTIFICACION" type="text" disabled="disabled"  value="<?php echo $row_justifi['ID_JUSTIFICACION']+1; ?>" size="32" readonly="readonly" /></td>
+            <td nowrap="nowrap"><input name="ID_JUSTIFICACION" type="text" disabled="disabled"  value="<?php echo $row_justifi['ID_JUSTIFICACION']+1; ?>" size="32" readonly="readonly" /></td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">IDCONTROLPRODUCCION:</td>
+            <td nowrap="nowrap" align="right">ID CONTROL PRODUCCION:</td>
             <td><select name="IDCONTROLPRODUCCION">
               <?php
 do {  
@@ -123,11 +125,13 @@ do {
             </select></td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">CANTIDA_FALTANTE:</td>
-            <td><input type="text" name="CANTIDA_FALTANTE" value="" size="32" /></td>
+            <td nowrap="nowrap" align="right">CANTIDAD FALTANTE:</td>
+            <td><span id="sprytextfield1">
+              <input type="text" name="CANTIDA_FALTANTE" value="" size="32" />
+            <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">IDPRODUCTOFALTA:</td>
+            <td nowrap="nowrap" align="right">PRODUCTO FALTANTE:</td>
             <td><select name="IDPRODUCTOFALTA" id="IDPRODUCTOFALTA">
               <?php
 do {  
@@ -144,7 +148,7 @@ do {
             </select></td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">ID_MEDIDA:</td>
+            <td nowrap="nowrap" align="right">MEDIDA:</td>
             <td><select name="ID_MEDIDA">
               <?php
 do {  
@@ -161,7 +165,7 @@ do {
             </select></td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">FECHAINGRESOJUSFAPROD:</td>
+            <td nowrap="nowrap" align="right"><p>FECHA DE INGRESO:</p></td>
             <td><script type="text/javascript"
 
 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
@@ -239,8 +243,12 @@ pickTime: false
             <td>&nbsp;</td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right">JUSTIFICACION DE FALTA DE PROD:</td>
-            <td><textarea name="JUSTIFICACIONFALTAPROD" cols="32"></textarea></td>
+            <td nowrap="nowrap" align="right"><p>JUSTIFICACION DE FALTA DE</p>
+            <p> PRODUCTO:</p></td>
+            <td><span id="sprytextfield2">
+              <label for="text1"></label>
+              <textarea name="text1" id="text1"></textarea>
+            <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
           </tr>
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -252,6 +260,10 @@ pickTime: false
     <p>&nbsp;</p></td>
   </tr>
 </table>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "none", {validateOn:["blur"]});
+</script>
 </body>
 </html>
 <?php
