@@ -91,10 +91,6 @@ body {
 
 <body><iframe src="modificarRol.php" name="modificar" width="830" height="150" scrolling="auto" align="middle"  frameborder="0" id="modiRol"></iframe>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-</iframe>
-<p>&nbsp;</p>
 <table width="820" border="0">
   <tr>
     <td><a href="<?php printf("%s?pageNum_modificaRol=%d%s", $currentPage, 0, $queryString_modificaRol); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modificaRol=%d%s", $currentPage, max(0, $pageNum_modificaRol - 1), $queryString_modificaRol); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modificaRol=%d%s", $currentPage, min($totalPages_modificaRol, $pageNum_modificaRol + 1), $queryString_modificaRol); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modificaRol=%d%s", $currentPage, $totalPages_modificaRol, $queryString_modificaRol); ?>"><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>

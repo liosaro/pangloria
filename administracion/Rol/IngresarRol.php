@@ -111,7 +111,7 @@ body {
           </tr>
           <tr>
             <td>Id Rol:</td>
-            <td><input name="IDROL" type="text" disabled="disabled" value="" size="32" /></td>
+            <td><input name="IDROL" type="text" id="IDROL" value="Automaticamente" readonly="readonly" /></td>
             <td>DESCRIPCION:</td>
             <td><input type="text" name="DESCRIPCION" value="" size="32" /></td>
           </tr>

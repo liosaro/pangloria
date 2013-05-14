@@ -84,13 +84,14 @@ return true;
     <td align="center" bgcolor="#999999"><h1>Consultar Rol</h1></td>
   </tr>
   <tr>
-    <td><form id="form1" name="form1" method="post" action="">
+  
+    <td><p><iframe src="filtroEliminarRol.php" name="filteliminar" width="820" height="150" align="middle" scrolling="Auto" frameborder="0" id="modificarRol"></iframe></p>
+      <form action="filtroEliminarRol" method="post"   name="enciorolmodi" target="modificarRol"  id="enciorolmodi">
         <p>
-        <label for="txtfiltrar"></label>
         <input type="text" name="txtfiltrar" id="txtfiltrar" />
-        <input type="submit" name="btnFiltrar" id="btnFiltrar" value="Filtro" />
+        <input type="submit" name="btnFiltrar" id="btnFiltrar" value="Filtro"  />
       </p>
-  </form></td>
+    </form></td>
   </tr>
   <tr>
     <td><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></td>
@@ -113,6 +114,7 @@ return true;
     </table></td>
   </tr>
 </table>
+<p>&nbsp;</p>
 </body>
 </html>
 <?php

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="modificaratribuciones.php" server="www.liosarpc.info//public_html/pan/" local="130128852610000000" remote="130128924600000000" Dst="0" />
-<file name="filtromodificaatribucion.php" server="www.liosarpc.info//public_html/pan/" local="130128834185462517" remote="130128906000000000" Dst="0" />
-<file name="modificadoratribu.php" server="www.liosarpc.info//public_html/pan/" local="130128841016983257" remote="130128917400000000" Dst="0" />
+<file name="modificaratribuciones.php" server="www.liosarpc.info//public_html/pan/" local="130128852610000000" remote="130128924600000000" />
+<file name="filtromodificaatribucion.php" server="www.liosarpc.info//public_html/pan/" local="130128834185462517" remote="130128906000000000" />
+<file name="modificadoratribu.php" server="www.liosarpc.info//public_html/pan/" local="130128841016983257" remote="130128917400000000" />
+<file name="conatribucion1.php" server="www.liosarpc.info//public_html/pan/" local="130129381722341621" remote="130129888800000000" />
+<file name="consultaratribucion1.php" server="www.liosarpc.info//public_html/pan/" local="130129381722811648" remote="130129888800000000" />
 </dwsync>

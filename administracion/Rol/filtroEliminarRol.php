@@ -61,6 +61,18 @@ $totalPages_filtradoRol = ceil($totalRows_filtradoRol/$maxRows_filtradoRol)-1;
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+
+<script language="JavaScript">
+function aviso(url){
+if (!confirm("ALERTA!! va a proceder a eliminar este registro, si desea eliminarlo de click en ACEPTAR\n de lo contrario de click en CANCELAR.")) {
+return false;
+}
+else {
+document.location = url;
+return true;
+}
+}
+</script>
 </head>
 
 <body>
@@ -72,7 +84,7 @@ $totalPages_filtradoRol = ceil($totalRows_filtradoRol/$maxRows_filtradoRol)-1;
   </tr>
   <?php do { ?>
     <tr>
-      <td>Eliminar</td>
+      <td><a href="javascript:;" onclick="aviso('eliminarRol.php?IDROL=<?php echo $row_filtradoRol['IDROL']; ?>'); return false;">Eliminar</a></td>
       <td><?php echo $row_filtradoRol['IDROL']; ?></td>
       <td><?php echo $row_filtradoRol['DESCRIPCION']; ?></td>
     </tr>
