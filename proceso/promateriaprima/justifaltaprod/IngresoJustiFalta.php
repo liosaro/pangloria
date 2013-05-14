@@ -163,33 +163,78 @@ do {
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">FECHAINGRESOJUSFAPROD:</td>
             <td><script type="text/javascript"
-     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-    </script> 
-    <script type="text/javascript"
-     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-    </script>
-    <script type="text/javascript"
-     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-    </script>
-    <script type="text/javascript"
-     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-    </script>
-   <div class="welsl">
-  <div id="datetimepicker1" class="input-append date">
-    <input name="FECHAINGRESOJUSFAPROD" type="text" id="FECHAINGRESOJUSFAPROD" data-format="yyyy-MM-dd "></input>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-    </span>
-  </div>
+
+src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+
+</script>
+
+<script type="text/javascript"
+
+src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+
+</script>
+
+<script type="text/javascript"
+
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+
+</script>
+
+<script type="text/javascript"
+
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+
+</script> <div id="datetimepicker4" class="input-append">
+
+
+
+<input name="FECHAINGRESOJUSFAPROD" type="text" id="FECHAINGRESOJUSFAPROD" data-format="yyyy-MM-dd"></input>
+
+<span class="add-on"><script type="text/javascript"
+
+src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+
+</script>
+
+<script type="text/javascript"
+
+src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+
+</script>
+
+<script type="text/javascript"
+
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+
+</script>
+
+<script type="text/javascript"
+
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+
+</script> <div id="datetimepicker4" class="input-append">
+
+
+<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+
+</i>
+
+
+
 </div>
+
 <script type="text/javascript">
-  $(function() {
-    $('#datetimepicker1').datetimepicker({
-      language: 'El Salvador'
-    });
-  });
-</script>></td>
+
+$(function() {
+
+$('#datetimepicker4').datetimepicker({
+
+pickTime: false
+
+});
+
+});
+</script></td>
         
             <td>&nbsp;</td>
           </tr>
