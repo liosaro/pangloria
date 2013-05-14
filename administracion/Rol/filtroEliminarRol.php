@@ -84,7 +84,7 @@ return true;
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="eliminarRol.php?IDROL=<?php echo $row_filtradoRol['IDROL']; ?>">Eliminar</a></td>
+      <td><a href="javascript:;" onclick="aviso('eliminarRol.php?IDROL=<?php echo $row_filtradoRol['IDROL']; ?>'); return false;">Eliminar</a></td>
       <td><?php echo $row_filtradoRol['IDROL']; ?></td>
       <td><?php echo $row_filtradoRol['DESCRIPCION']; ?></td>
     </tr>
