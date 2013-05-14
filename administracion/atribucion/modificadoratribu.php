@@ -36,15 +36,6 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE CATPERMISOS SET DESCRIPCION=%s WHERE IDPERMISO=%s",
-                       GetSQLValueString($_POST['DESCRIPCION'], "text"),
-                       GetSQLValueString($_POST['IDPERMISO'], "int"));
-
-  mysql_select_db($database_basepangloria, $basepangloria);
-  $Result1 = mysql_query($updateSQL, $basepangloria) or die(mysql_error());
-}
-
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
   $updateSQL = sprintf("UPDATE CATATRIBUCIONES SET IDUSUARIO=%s, IDROL=%s, IDPERMISO=%s, C=%s, R=%s, U=%s, D=%s WHERE ID_ATRIB=%s",
                        GetSQLValueString($_POST['IDUSUARIO'], "int"),
@@ -86,8 +77,6 @@ body {
 </head>
 
 <body>
-<form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-</form>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
   <table align="center">
     <tr valign="baseline">

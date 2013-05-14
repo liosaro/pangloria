@@ -33,7 +33,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 $currentPage = $_SERVER["PHP_SELF"];
 
-$maxRows_consultaatribu = 10;
+$maxRows_consultaatribu = 6;
 $pageNum_consultaatribu = 0;
 if (isset($_GET['pageNum_consultaatribu'])) {
   $pageNum_consultaatribu = $_GET['pageNum_consultaatribu'];
@@ -103,12 +103,10 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
           <table width="1026" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="800" colspan="6" align="left">&nbsp;
-                <iframe src="modificadoratribu.php" name="modiprodu" width="830" height="300" align="middle" scrolling="auto" frameborder="0" id="modiprodu"></iframe>
-                <p><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, 0, $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, max(0, $pageNum_consultaatribu - 1), $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, min($totalPages_consultaatribu, $pageNum_consultaatribu + 1), $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, $totalPages_consultaatribu, $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a> </p>
-                <p>
-                  <input type="text" name="filtroprod" id="filtroprod" />
-                  <input type="submit" name="filtrar" id="filtrar" value="Filtrar" />
-                </p>
+                <iframe src="modificadoratribu.php" name="modiprodu" width="830" height="300" align="middle" scrolling="no" frameborder="0" id="modiprodu"></iframe>
+                
+                ><p><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, 0, $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, max(0, $pageNum_consultaatribu - 1), $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, min($totalPages_consultaatribu, $pageNum_consultaatribu + 1), $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, $totalPages_consultaatribu, $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a> </p>
+                <p>&nbsp;</p>
                 <table width="820" border="1">
                   <tr>
                     <td>Modificar</td>
@@ -120,11 +118,12 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
                     <td>R</td>
                     <td>U</td>
                     <td>D</td>
-                  </tr>
+                    </tr>
                   <?php do { ?>
                     <tr>
-                      <td><a href="modificadoratribu.php">Modificar</a></td>
+                      <td><a href="modificadoratribu.php?root=<?php echo $row_consultaatribu['ID_ATRIB']; ?>" target="modiprodu">Modificar</a></td>
                       <td><?php echo $row_consultaatribu['ID_ATRIB']; ?></td>
+                      <td><?php echo $row_consultaatribu['IDUSUARIO']; ?></td>
                       <td><?php echo $row_consultaatribu['IDUSUARIO']; ?></td>
                       <td><?php echo $row_consultaatribu['IDROL']; ?></td>
                       <td><?php echo $row_consultaatribu['IDPERMISO']; ?></td>
@@ -132,7 +131,7 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
                       <td><?php echo $row_consultaatribu['R']; ?></td>
                       <td><?php echo $row_consultaatribu['U']; ?></td>
                       <td><?php echo $row_consultaatribu['D']; ?></td>
-                    </tr>
+                      </tr>
                     <?php } while ($row_consultaatribu = mysql_fetch_assoc($consultaatribu)); ?>
                 </table></td>
             </tr>
