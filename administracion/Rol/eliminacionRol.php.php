@@ -106,7 +106,7 @@ return true;
         </tr>
         <?php do { ?>
           <tr>
-            <td><a href="javascript:;" onclick="<?php echo $row_rol['']; ?>?IDROL=<?php echo $row_rol['IDROL']; ?>'); return false;">Eliminar</a></td>
+            <td><a href="eliminarRol.php?IDROL=<?php echo $row_rol['IDROL']; ?>">Eliminar</a></td>
             <td><?php echo $row_rol['IDROL']; ?></td>
             <td><?php echo $row_rol['DESCRIPCION']; ?></td>
           </tr>

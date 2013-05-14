@@ -1,3 +1,14 @@
+<head>
+<script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+}
+</style>
+</head>
+
 <?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -65,7 +76,7 @@ $totalRows_modiRol = mysql_num_rows($modiRol);
 
 mysql_free_result($modiRol);
 ?>
-<form method="post" name="form1" action="<?php echo $editFormAction; ?>">
+<form method="post" name="modiRol" id="modiRol"action="<?php echo $editFormAction; ?>">
   <table align="center">
     <tr valign="baseline">
       <td nowrap align="right">IDROL:</td>

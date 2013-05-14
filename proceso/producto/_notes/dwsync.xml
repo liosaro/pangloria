@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="modificarproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068222487933" remote="130128148200000000" Dst="-1" />
-<file name="cmodproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068221627884" remote="130128148200000000" Dst="-1" />
-<file name="ingresaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068222457931" remote="130129977000000000" Dst="-1" />
-<file name="eliminacionProducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068222347925" remote="130129977000000000" Dst="-1" />
-<file name="eliminarProducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068222377927" remote="130128148200000000" Dst="-1" />
-<file name="filtroeliminaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068222417929" remote="130128148200000000" Dst="-1" />
-<file name="consultanombre.php" server="www.liosarpc.info//public_html/pan/" local="130128068221747891" remote="130128148200000000" Dst="-1" />
-<file name="consultaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068221777893" remote="130129917600000000" Dst="-1" />
-<file name="consultaid.php" server="www.liosarpc.info//public_html/pan/" local="130129852399608353" remote="130129924200000000" Dst="-1" />
-<file name="consultacaducidad.php" server="www.liosarpc.info//public_html/pan/" local="130128068221657886" remote="130128148200000000" Dst="-1" />
-<file name="consultacosto.php" server="www.liosarpc.info//public_html/pan/" local="130128068221697888" remote="130128148200000000" Dst="-1" />
-<file name="consultatodos.php" server="www.liosarpc.info//public_html/pan/" local="130129978204769662" remote="130130076000000000" Dst="0" />
-<file name="filtromodificaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068222437930" remote="130129629000000000" Dst="-1" />
+<file name="modificarproducto.php" server="www.liosarpc.info//public_html/pan/" local="130130333499164639" remote="130130479800000000" />
+<file name="cmodproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068221627884" remote="130128148200000000" />
+<file name="ingresaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130130333499124637" remote="130130425800000000" />
+<file name="eliminacionProducto.php" server="www.liosarpc.info//public_html/pan/" local="130130333498984629" remote="130130425800000000" />
+<file name="eliminarProducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068222377927" remote="130128148200000000" />
+<file name="filtroeliminaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130130333499044633" remote="130130425800000000" />
+<file name="consultanombre.php" server="www.liosarpc.info//public_html/pan/" local="130130333497364536" remote="130130425800000000" />
+<file name="consultaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130130333497374537" remote="130130425800000000" />
+<file name="consultaid.php" server="www.liosarpc.info//public_html/pan/" local="130130333497344535" remote="130130425800000000" />
+<file name="consultacaducidad.php" server="www.liosarpc.info//public_html/pan/" local="130130333496644495" remote="130130425800000000" />
+<file name="consultacosto.php" server="www.liosarpc.info//public_html/pan/" local="130130333497324534" remote="130130425800000000" />
+<file name="consultatodos.php" server="www.liosarpc.info//public_html/pan/" local="130130333497394538" remote="130130425800000000" />
+<file name="filtromodificaproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068222437930" remote="130129629000000000" />
 </dwsync>

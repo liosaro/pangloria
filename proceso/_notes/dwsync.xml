@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="base.php" server="www.liosarpc.info//public_html/pan/" local="130127520600000000" remote="130127520600000000" />
-<file name="elimarJustificacionFaltaProd.php" server="www.liosarpc.info//public_html/pan/" local="130128068220727833" remote="130128148200000000" />
-<file name="JustificacionFaltaProducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068220477818" remote="130128148800000000" />
-<file name="ConsultarOrdenProduc.php" server="www.liosarpc.info//public_html/pan/" local="130128068220387813" remote="130128148200000000" />
-<file name="ConsultarPedidoMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130128068220417815" remote="130128148200000000" />
-<file name="EliminarrOrdenProduc.php" server="www.liosarpc.info//public_html/pan/" local="130128068220437816" remote="130128148800000000" />
-<file name="ModificarOrdenProdccion.php" server="www.liosarpc.info//public_html/pan/" local="130128068220497819" remote="130128148800000000" />
-<file name="OrdProduc.php" server="www.liosarpc.info//public_html/pan/" local="130128068220537822" remote="130128148800000000" />
-<file name="PedidoMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130128068220557823" remote="130128148800000000" />
-<file name="SalidaMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130128068220587824" remote="130128148800000000" />
-<file name="cmodproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068220657828" remote="130128148200000000" />
-<file name="conproduccion.php" server="www.liosarpc.info//public_html/pan/" local="130128068220687830" remote="130128148200000000" />
-<file name="eliminarproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068220747834" remote="130128148200000000" />
+<file name="elimarJustificacionFaltaProd.php" server="www.liosarpc.info//public_html/pan/" local="130130333495454427" remote="130130426400000000" />
+<file name="JustificacionFaltaProducto.php" server="www.liosarpc.info//public_html/pan/" local="130130333495154410" remote="130130426400000000" />
+<file name="ConsultarOrdenProduc.php" server="www.liosarpc.info//public_html/pan/" local="130130333494944398" remote="130130426400000000" />
+<file name="ConsultarPedidoMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130130333494964399" remote="130130426400000000" />
+<file name="EliminarrOrdenProduc.php" server="www.liosarpc.info//public_html/pan/" local="130130333494994401" remote="130130426400000000" />
+<file name="ModificarOrdenProdccion.php" server="www.liosarpc.info//public_html/pan/" local="130130333495184412" remote="130130426400000000" />
+<file name="OrdProduc.php" server="www.liosarpc.info//public_html/pan/" local="130130333495214414" remote="130130426400000000" />
+<file name="PedidoMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130130333495244415" remote="130130426400000000" />
+<file name="SalidaMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130130333495274417" remote="130130426400000000" />
+<file name="cmodproducto.php" server="www.liosarpc.info//public_html/pan/" local="130130333495404424" remote="130130426400000000" />
+<file name="conproduccion.php" server="www.liosarpc.info//public_html/pan/" local="130130333495434426" remote="130130426400000000" />
+<file name="eliminarproducto.php" server="www.liosarpc.info//public_html/pan/" local="130130333495484429" remote="130130426400000000" />
 <file name="ingresoControlProduccion.php" server="www.liosarpc.info//public_html/pan/" local="130128068220777835" remote="130128148800000000" />
-<file name="lisproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068220807837" remote="130128148800000000" />
-<file name="modificarproducto.php" server="www.liosarpc.info//public_html/pan/" local="130128068220837839" remote="130128148800000000" />
+<file name="lisproducto.php" server="www.liosarpc.info//public_html/pan/" local="130130333495534432" remote="130130426400000000" />
+<file name="modificarproducto.php" server="www.liosarpc.info//public_html/pan/" local="130130333495554433" remote="130130426400000000" />
 </dwsync>

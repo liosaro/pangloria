@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="IngresarRol.php" server="www.liosarpc.info//public_html/pan/" local="130129800468168044" remote="130129969200000000" />
-<file name="modificarRol.php" server="www.liosarpc.info//public_html/pan/" local="130129796592446366" remote="130129868400000000" />
+<file name="IngresarRol.php" server="www.liosarpc.info//public_html/pan/" local="130130333480763587" remote="130130430600000000" />
+<file name="modificarRol.php" server="www.liosarpc.info//public_html/pan/" local="130130333481093606" remote="130130418000000000" />
 <file name="eliminarRol.php" server="www.liosarpc.info//public_html/pan/" local="130128068197286492" remote="130128143400000000" />
-<file name="ModificacionRol.php" server="www.liosarpc.info//public_html/pan/" local="130129793543361968" remote="130129868400000000" />
-<file name="eliminacionRol.php.php" server="www.liosarpc.info//public_html/pan/" local="130129908288111291" remote="130129980000000000" />
+<file name="ModificacionRol.php" server="www.liosarpc.info//public_html/pan/" local="130130399354461347" remote="130130479200000000" />
+<file name="eliminacionRol.php.php" server="www.liosarpc.info//public_html/pan/" local="130130361516617146" remote="130130433600000000" />
 <file name="filtroEliminarRol.php" server="www.liosarpc.info//public_html/pan/" local="130129893817787337" remote="130129965600000000" />
 <file name="consultaId.php" server="www.liosarpc.info//public_html/pan/" local="130129885913765253" remote="130129985400000000" />
-<file name="consultaDescrip.php" server="www.liosarpc.info//public_html/pan/" local="130129913410000000" remote="130129985400000000" />
-<file name="consultaRol.php" server="www.liosarpc.info//public_html/pan/" local="130129876440563417" remote="130129985400000000" />
-<file name="consultaTodo.php" server="www.liosarpc.info//public_html/pan/" local="130129876189759071" remote="130129985400000000" />
+<file name="consultaDescrip.php" server="www.liosarpc.info//public_html/pan/" local="130130333480953598" remote="130130418000000000" />
+<file name="consultaRol.php" server="www.liosarpc.info//public_html/pan/" local="130130333480983600" remote="130130418000000000" />
+<file name="consultaTodo.php" server="www.liosarpc.info//public_html/pan/" local="130130333481003601" remote="130130418000000000" />
+<file name="filtroModiRol.php" server="www.liosarpc.info//public_html/pan/" local="130130395355782636" remote="130130479200000000" />
 </dwsync>

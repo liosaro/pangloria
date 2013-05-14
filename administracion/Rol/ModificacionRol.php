@@ -88,8 +88,15 @@ body {
 }
 </style>
 </head>
-
-<body><iframe src="modificarRol.php" name="modificar" width="830" height="150" scrolling="auto" align="middle"  frameborder="0" id="modiRol"></iframe>
+<div class="content" id="contenidoadminphp2">
+  <table width="844" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="844" align="center"><div class="cont">
+        <form action="filtroModiRol.php" method="post" name="MODIFICAR" target="modiRol" id="MODIFICAR">
+          <table width="1026" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="800" colspan="6" align="left">&nbsp;
+<body><iframe src="modificarRol.php" name="modiRol" width="830" height="150" scrolling="auto" align="middle"  frameborder="0" id="modiRol"></iframe>
 <p>&nbsp;</p>
 <table width="820" border="0">
   <tr>
@@ -109,7 +116,7 @@ body {
       </tr>
       <?php do { ?>
       <tr>
-        <td><a href="modificarRol.php?root=<?php echo $row_modificarRol['IDROL']; ?>" target="modificar">Modificar</a></td>
+        <td><a href="modificarRol.php?root=<?php echo $row_modificarRol['IDROL']; ?>" target="modiRol">Modificar</a></td>
         <td><?php echo $row_modificarRol['IDROL']; ?></td>
         <td><?php echo $row_modificarRol['DESCRIPCION']; ?></td>
       </tr>
@@ -118,7 +125,7 @@ body {
   </tr>
 </table>
 <p>&nbsp;</p>
-</body>
+
 </html>
 <?php
 mysql_free_result($modificarRol);

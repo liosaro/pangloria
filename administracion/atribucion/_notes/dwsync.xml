@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="modificaratribuciones.php" server="www.liosarpc.info//public_html/pan/" local="130129062802614147" remote="130129134600000000" Dst="0" />
-<file name="filtromodificaatribucion.php" server="www.liosarpc.info//public_html/pan/" local="130129040028341533" remote="130129113000000000" Dst="0" />
-<file name="modificadoratribu.php" server="www.liosarpc.info//public_html/pan/" local="130128910606553553" remote="130129113600000000" Dst="0" />
-<file name="eliminaratribu.php" server="www.liosarpc.info//public_html/pan/" local="130128491748572013" remote="130128993000000000" Dst="0" />
-<file name="filtroeliminaatribu.php" server="www.liosarpc.info//public_html/pan/" local="130129021508052233" remote="130129093200000000" Dst="0" />
-<file name="eliminacionatribu.php" server="www.liosarpc.info//public_html/pan/" local="130129025488499902" remote="130130034000000000" Dst="0" />
-<file name="eliminarAtribu.php" server="www.liosarpc.info//public_html/pan/" local="130129018495669935" remote="130129090200000000" Dst="0" />
-<file name="ingresoatribucion.php" server="www.liosarpc.info//public_html/pan/" local="130129075958266607" remote="130129147800000000" Dst="0" />
-<file name="consultaratribucion1.php" server="www.liosarpc.info//public_html/pan/" local="130129950201747981" remote="130130022000000000" Dst="0" />
-<file name="IngresoAtribu.php" server="www.liosarpc.info//public_html/pan/" local="130129975098501994" remote="130130048400000000" Dst="0" />
+<file name="modificaratribuciones.php" server="www.liosarpc.info//public_html/pan/" local="130130333481553632" remote="130130417400000000" />
+<file name="filtromodificaatribucion.php" server="www.liosarpc.info//public_html/pan/" local="130129040028341533" remote="130129113000000000" />
+<file name="modificadoratribu.php" server="www.liosarpc.info//public_html/pan/" local="130130333481533631" remote="130130417400000000" />
+<file name="eliminaratribu.php" server="www.liosarpc.info//public_html/pan/" local="130128491748572013" remote="130128993000000000" />
+<file name="filtroeliminaatribu.php" server="www.liosarpc.info//public_html/pan/" local="130130333481483628" remote="130130417400000000" />
+<file name="eliminacionatribu.php" server="www.liosarpc.info//public_html/pan/" local="130130333481433625" remote="130130417400000000" />
+<file name="eliminarAtribu.php" server="www.liosarpc.info//public_html/pan/" local="130130333481463627" remote="130130417400000000" />
+<file name="ingresoatribucion.php" server="www.liosarpc.info//public_html/pan/" local="130130333481523630" remote="130130417400000000" />
+<file name="consultaratribucion1.php" server="www.liosarpc.info//public_html/pan/" local="130130333481413624" remote="130130416800000000" />
+<file name="IngresoAtribu.php" server="www.liosarpc.info//public_html/pan/" local="130130333481173610" remote="130130417400000000" />
+<file name="conatribucion1.php" server="www.liosarpc.info//public_html/pan/" local="130130333481373622" remote="130130416800000000" />
 </dwsync>
