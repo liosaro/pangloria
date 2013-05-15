@@ -1,4 +1,4 @@
-<?php require_once('../../../Connections/basepangloria.php'); ?>
+<?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -99,8 +99,8 @@ body {
 	margin-bottom: 0px;
 }
 </style>
-<script src="../../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
-<link href="../../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 
 <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" media="screen"

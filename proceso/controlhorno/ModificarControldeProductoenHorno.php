@@ -1,4 +1,4 @@
-<?php require_once('../../../../Connections/basepangloria.php'); ?>
+<?php require_once('file:///C|/Users/Julio Flores/Documents/GitHub/controlinventario/Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -57,8 +57,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
 <title>Documento sin título</title>
 <style type="text/css">
 </style>
-<script src="../../../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
-<link href="../../../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<script src="file:///C|/Users/Julio Flores/Documents/GitHub/controlinventario/SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="file:///C|/Users/Julio Flores/Documents/GitHub/controlinventario/SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
