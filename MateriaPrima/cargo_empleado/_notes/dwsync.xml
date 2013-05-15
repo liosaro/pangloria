@@ -5,4 +5,5 @@
 <file name="Ingreso_cargo.php" server="www.liosarpc.info//public_html/pan/" local="130130333478593463" remote="130130421600000000" Dst="-1" />
 <file name="consulta_cargonombre.php" server="www.liosarpc.info//public_html/pan/" local="130130830145203052" remote="130130920200000000" Dst="0" />
 <file name="consulta_cargotodos.php" server="www.liosarpc.info//public_html/pan/" local="130129978204769662" remote="130130925600000000" Dst="0" />
+<file name="modificarcargo.php" server="www.liosarpc.info//public_html/pan/" local="130130880677003306" remote="130130952600000000" Dst="0" />
 </dwsync>
