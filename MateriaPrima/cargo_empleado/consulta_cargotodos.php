@@ -33,7 +33,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 $currentPage = $_SERVER["PHP_SELF"];
 
-$maxRows_registro = 6;
+$maxRows_registro = 20;
 $pageNum_registro = 0;
 if (isset($_GET['pageNum_registro'])) {
   $pageNum_registro = $_GET['pageNum_registro'];
@@ -78,7 +78,7 @@ $queryString_registro = sprintf("&totalRows_registro=%d%s", $totalRows_registro,
     <td colspan="2"><a href="<?php printf("%s?pageNum_registro=%d%s", $currentPage, 0, $queryString_registro); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_registro=%d%s", $currentPage, max(0, $pageNum_registro - 1), $queryString_registro); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_registro=%d%s", $currentPage, min($totalPages_registro, $pageNum_registro + 1), $queryString_registro); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_registro=%d%s", $currentPage, $totalPages_registro, $queryString_registro); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></td>
   </tr>
   <tr>
-    <td>Id  Cargo</td>
+    <td>Id Cardo</td>
     <td><p>Nombre del Cargo</p></td>
   </tr>
   <?php do { ?>

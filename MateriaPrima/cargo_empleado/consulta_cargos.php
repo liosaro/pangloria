@@ -20,11 +20,11 @@ function OnSubmitForm()
    }
    if(document.consultaproducto.radiosearch[1].checked == true)
   {
-    document.consultaproducto.action ="consultanombre.php?q=" ;
+    document.consultaproducto.action ="consulta_cargonombre.php?q=" ;
   }
-   if(document.consultaproducto.radiosearch[2].checked == true)
+   if(document.consultaproducto.radiosearch[4].checked == true)
   {
-    document.consultaproducto.action ="consultatodos.php";
+    document.consultaproducto.action ="consulta_cargotodos.php";
   }
   return true;
 }
@@ -73,7 +73,7 @@ function OnSubmitForm()
     </div></td>
   </tr>
 </table>
-<iframe src="" width="820" height="300" scrolling="auto" name="conte"></iframe>
+<iframe src="" width="820" height="350" scrolling="auto" name="conte"></iframe>
 
 </form>
 </body>

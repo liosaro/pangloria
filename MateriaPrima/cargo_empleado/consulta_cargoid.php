@@ -29,7 +29,6 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   }
   return $theValue;
 }
-}
 }if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -61,7 +60,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$maxRows_nombre = 20;
+$maxRows_nombre = 6;
 $pageNum_nombre = 0;
 if (isset($_GET['pageNum_nombre'])) {
   $pageNum_nombre = $_GET['pageNum_nombre'];
