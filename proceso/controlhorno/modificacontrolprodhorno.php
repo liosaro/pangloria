@@ -1,4 +1,4 @@
-<?php require_once('../../../Connections/basepangloria.php'); ?>
+<?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -99,7 +99,7 @@ body {
     </form></td>
   </tr>
   <tr>
-    <td><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, 0, $queryString_consultaprodhorno); ?>"><img src="../../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, max(0, $pageNum_consultaprodhorno - 1), $queryString_consultaprodhorno); ?>"><img src="../../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, min($totalPages_consultaprodhorno, $pageNum_consultaprodhorno + 1), $queryString_consultaprodhorno); ?>"><img src="../../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, $totalPages_consultaprodhorno, $queryString_consultaprodhorno); ?>"><img src="../../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
+    <td><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, 0, $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, max(0, $pageNum_consultaprodhorno - 1), $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, min($totalPages_consultaprodhorno, $pageNum_consultaprodhorno + 1), $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, $totalPages_consultaprodhorno, $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
   </tr>
   <tr>
     <td>&nbsp;
