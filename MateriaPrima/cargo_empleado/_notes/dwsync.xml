@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="consulta_cargos.php" server="www.liosarpc.info//public_html/pan/" local="130130333478703469" remote="130130421600000000" />
-<file name="consulta_cargoid.php" server="www.liosarpc.info//public_html/pan/" local="130130033039036002" remote="130130104800000000" />
-<file name="Ingreso_cargo.php" server="www.liosarpc.info//public_html/pan/" local="130130333478593463" remote="130130421600000000" />
+<file name="consulta_cargos.php" server="www.liosarpc.info//public_html/pan/" local="130130034431695658" remote="130130890800000000" Dst="0" />
+<file name="consulta_cargoid.php" server="www.liosarpc.info//public_html/pan/" local="130130818713989224" remote="130130890200000000" Dst="0" />
+<file name="Ingreso_cargo.php" server="www.liosarpc.info//public_html/pan/" local="130130333478593463" remote="130130421600000000" Dst="-1" />
+<file name="consulta_cargonombre.php" server="www.liosarpc.info//public_html/pan/" local="130130830145203052" remote="130130920200000000" Dst="0" />
 </dwsync>
