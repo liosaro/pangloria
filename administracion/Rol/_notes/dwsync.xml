@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="IngresarRol.php" server="www.liosarpc.info//public_html/pan/" local="130130333480763587" remote="130130430600000000" />
-<file name="modificarRol.php" server="www.liosarpc.info//public_html/pan/" local="130130333481093606" remote="130130418000000000" />
-<file name="eliminarRol.php" server="www.liosarpc.info//public_html/pan/" local="130128068197286492" remote="130128143400000000" />
-<file name="ModificacionRol.php" server="www.liosarpc.info//public_html/pan/" local="130130399354461347" remote="130130479200000000" />
-<file name="eliminacionRol.php.php" server="www.liosarpc.info//public_html/pan/" local="130130431850860035" remote="130130503800000000" />
+<file name="IngresarRol.php" server="www.liosarpc.info//public_html/pan/" local="130130333480763587" remote="130130788800000000" />
+<file name="modificarRol.php" server="www.liosarpc.info//public_html/pan/" local="130130406702181613" remote="130130736600000000" />
+<file name="eliminarRol.php" server="www.liosarpc.info//public_html/pan/" local="130130684190707407" remote="130130755800000000" />
+<file name="ModificacionRol.php" server="www.liosarpc.info//public_html/pan/" local="130130673971802919" remote="130130745600000000" />
 <file name="filtroEliminarRol.php" server="www.liosarpc.info//public_html/pan/" local="130129893817787337" remote="130129965600000000" />
-<file name="consultaId.php" server="www.liosarpc.info//public_html/pan/" local="130129885913765253" remote="130129985400000000" />
-<file name="consultaDescrip.php" server="www.liosarpc.info//public_html/pan/" local="130130333480953598" remote="130130418000000000" />
-<file name="consultaRol.php" server="www.liosarpc.info//public_html/pan/" local="130130333480983600" remote="130130418000000000" />
-<file name="consultaTodo.php" server="www.liosarpc.info//public_html/pan/" local="130130333481003601" remote="130130418000000000" />
-<file name="filtroModiRol.php" server="www.liosarpc.info//public_html/pan/" local="130130395355782636" remote="130130479200000000" />
+<file name="consultaId.php" server="www.liosarpc.info//public_html/pan/" local="130130333480973599" remote="130130812800000000" />
+<file name="consultaDescrip.php" server="www.liosarpc.info//public_html/pan/" local="130130741031998543" remote="130130812800000000" />
+<file name="consultaRol.php" server="www.liosarpc.info//public_html/pan/" local="130130716701426914" remote="130130813400000000" />
+<file name="consultaTodo.php" server="www.liosarpc.info//public_html/pan/" local="130130741561198812" remote="130130813400000000" />
+<file name="filtroModiRol.php" server="www.liosarpc.info//public_html/pan/" local="130130675230644921" remote="130130747400000000" />
+<file name="eliminacionRol.php" server="www.liosarpc.info//public_html/pan/" local="130130691539307723" remote="130130769600000000" />
 </dwsync>

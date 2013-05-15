@@ -50,6 +50,44 @@ if (isset($_GET['totalRows_todo'])) {
   $all_todo = mysql_query($query_todo);
   $totalRows_todo = mysql_num_rows($all_todo);
 }
+$totalPages_todo = ceil($totalRows_todo/$maxRows_todo = 10;
+$pageNum_todo = 0;
+if (isset($_GET['pageNum_todo'])) {
+  $pageNum_todo = $_GET['pageNum_todo'];
+}
+$startRow_todo = $pageNum_todo * $maxRows_todo;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_todo = "SELECT * FROM CATROL ORDER BY IDROL ASC";
+$query_limit_todo = sprintf("%s LIMIT %d, %d", $query_todo, $startRow_todo, $maxRows_todo);
+$todo = mysql_query($query_limit_todo, $basepangloria) or die(mysql_error());
+$row_todo = mysql_fetch_assoc($todo);
+
+if (isset($_GET['totalRows_todo'])) {
+  $totalRows_todo = $_GET['totalRows_todo'];
+} else {
+  $all_todo = mysql_query($query_todo);
+  $totalRows_todo = mysql_num_rows($all_todo);
+}
+$totalPages_todo = ceil($totalRows_todo/$maxRows_todo)-1;$maxRows_todo = 10;
+$pageNum_todo = 0;
+if (isset($_GET['pageNum_todo'])) {
+  $pageNum_todo = $_GET['pageNum_todo'];
+}
+$startRow_todo = $pageNum_todo * $maxRows_todo;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_todo = "SELECT * FROM CATROL ORDER BY IDROL ASC";
+$query_limit_todo = sprintf("%s LIMIT %d, %d", $query_todo, $startRow_todo, $maxRows_todo);
+$todo = mysql_query($query_limit_todo, $basepangloria) or die(mysql_error());
+$row_todo = mysql_fetch_assoc($todo);
+
+if (isset($_GET['totalRows_todo'])) {
+  $totalRows_todo = $_GET['totalRows_todo'];
+} else {
+  $all_todo = mysql_query($query_todo);
+  $totalRows_todo = mysql_num_rows($all_todo);
+}
 $totalPages_todo = ceil($totalRows_todo/$maxRows_todo)-1;
 $queryString_todo = "";
 if (!empty($_SERVER['QUERY_STRING'])) {

@@ -52,6 +52,25 @@ if (isset($_GET['totalRows_consultaproducto'])) {
   $all_consultaproducto = mysql_query($query_consultaproducto);
   $totalRows_consultaproducto = mysql_num_rows($all_consultaproducto);
 }
+$totalPages_consultaproducto = ceil($totalRows_consultaproducto/$maxRows_consultaproducto)-1;$maxRows_consultaproducto = 5;
+$pageNum_consultaproducto = 0;
+if (isset($_GET['pageNum_consultaproducto'])) {
+  $pageNum_consultaproducto = $_GET['pageNum_consultaproducto'];
+}
+$startRow_consultaproducto = $pageNum_consultaproducto * $maxRows_consultaproducto;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_consultaproducto = "SELECT * FROM CATPRODUCTO ORDER BY IDPRODUCTO DESC";
+$query_limit_consultaproducto = sprintf("%s LIMIT %d, %d", $query_consultaproducto, $startRow_consultaproducto, $maxRows_consultaproducto);
+$consultaproducto = mysql_query($query_limit_consultaproducto, $basepangloria) or die(mysql_error());
+$row_consultaproducto = mysql_fetch_assoc($consultaproducto);
+
+if (isset($_GET['totalRows_consultaproducto'])) {
+  $totalRows_consultaproducto = $_GET['totalRows_consultaproducto'];
+} else {
+  $all_consultaproducto = mysql_query($query_consultaproducto);
+  $totalRows_consultaproducto = mysql_num_rows($all_consultaproducto);
+}
 $totalPages_consultaproducto = ceil($totalRows_consultaproducto/$maxRows_consultaproducto)-1;
 
 $queryString_consultaproducto = "";

@@ -14,25 +14,17 @@ body {
 <script type="text/javascript">
 function OnSubmitForm()
 {
-  if(document.consultaproducto.radiosearch[0].checked == true)
+  if(document.consultaRol.radiosearch[0].checked == true)
   {
-    document.consultaproducto.action ="consultaid.php?q=";
+    document.consultaRol.action ="consultaId.php?root=";
   }
-  if(document.consultaproducto.radiosearch[1].checked == true)
+   if(document.consultaRol.radiosearch[1].checked == true)
   {
-    document.consultaproducto.action ="consultacaducidad.php?q=";
+    document.consultaRol.action ="consultaDescrip.php?root=" ;
   }
-   if(document.consultaproducto.radiosearch[2].checked == true)
+   if(document.consultaRol.radiosearch[2].checked == true)
   {
-    document.consultaproducto.action ="consultacosto.php?q=";
-  }
-   if(document.consultaproducto.radiosearch[3].checked == true)
-  {
-    document.consultaproducto.action ="consultanombre.php?q=" ;
-  }
-   if(document.consultaproducto.radiosearch[4].checked == true)
-  {
-    document.consultaproducto.action ="consultatodos.php";
+    document.consultaRol.action ="consultaTodo.php";
   }
   return true;
 }
@@ -64,14 +56,14 @@ function OnSubmitForm()
         </tr>
         <tr>
           <td>&nbsp;</td>
-          <td><input type="radio" name="radiosearch" id="id8" value="id" />
+          <td><input type="radio" name="radiosearch" id="id2" value="id" />
             Descripcion</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td>&nbsp;</td>
-          <td><input type="radio" name="radiosearch" id="id9" value="id" /> 
+          <td><input type="radio" name="radiosearch" id="id3" value="id" /> 
             Todos</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>

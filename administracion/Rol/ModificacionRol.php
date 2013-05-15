@@ -88,24 +88,25 @@ body {
 }
 </style>
 </head>
+<iframe src="modificarRol.php" name="modiRol" width="830" height="300" scrolling="No" align="left"  frameborder="0" id="modiRol"></iframe>
 <div class="content" id="contenidoadminphp2">
+  <p>&nbsp;</p>
   <table width="844" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="844" align="center"><div class="cont">
         <form action="filtroModiRol.php" method="post" name="MODIFICAR" target="modiRol" id="MODIFICAR">
           <table width="1026" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="800" colspan="6" align="left">&nbsp;
-<body><iframe src="modificarRol.php" name="modiRol" width="830" height="150" scrolling="auto" align="middle"  frameborder="0" id="modiRol"></iframe>
-<p>&nbsp;</p>
-<table width="820" border="0">
-  <tr>
+              <td width="800" colspan="6" align="left"><table width="820" border="0">
+                <tr>
     <td><a href="<?php printf("%s?pageNum_modificaRol=%d%s", $currentPage, 0, $queryString_modificaRol); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modificaRol=%d%s", $currentPage, max(0, $pageNum_modificaRol - 1), $queryString_modificaRol); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modificaRol=%d%s", $currentPage, min($totalPages_modificaRol, $pageNum_modificaRol + 1), $queryString_modificaRol); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modificaRol=%d%s", $currentPage, $totalPages_modificaRol, $queryString_modificaRol); ?>"><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
   </tr>
   <tr>
-    <td> Nombre  del Proveedor a Modificar:
-<input type="text" name="txtfiltrar" id="txtfiltrar" />
-    <input type="submit" name="btnfiltrar" id="btnfiltrar" value="Filtrar" /></td>
+    <td><form action="modificarRol.php" method="post" name="form1" target="modiRol" id="form1">
+      Nombre  del Proveedor a Modificar:
+      <input type="text" name="filmodro" id="filmodro" />
+      <input type="submit" name="btnfiltrar" id="btnfiltrar" value="Filtrar" />
+    </form></td>
   </tr>
   <tr>
     <td><table border="1">

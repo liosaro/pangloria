@@ -51,8 +51,12 @@ if (isset($_POST['DESCRIPCION'])) {
   $totalRows_filtroModiRol = $_POST['DESCRIPCION'];
 }
 
+$colname_filtroModiRol = "-1";
+if (isset($_POST['filmodro'])) {
+  $colname_filtroModiRol = $_POST['filmodro'];
+}
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_filtroModiRol = "SELECT * FROM CATROL WHERE DESCRIPCION LIKE '%DESCRIPCION%' ORDER BY IDROL ASC";
+$query_filtroModiRol = sprintf("SELECT * FROM CATROL WHERE DESCRIPCION LIKE %s ORDER BY IDROL ASC", GetSQLValueString("%" . $colname_filtroModiRol . "%", "text"));
 $filtroModiRol = mysql_query($query_filtroModiRol, $basepangloria) or die(mysql_error());
 $row_filtroModiRol = mysql_fetch_assoc($filtroModiRol);
 $totalRows_filtroModiRol = mysql_num_rows($filtroModiRol);
@@ -73,7 +77,7 @@ body {
 </head>
 
 <body>
-<p><iframe src="modificarRol.php" name="modiRol" width="820" height="400" scrolling="No" frameborder="0" id="modiRol"></iframe>&nbsp;</p>
+<p><iframe src="modificarRol.php" name="modiRole" width="820" height="200" scrolling="No" frameborder="0" id="modiRol"></iframe>&nbsp;</p>
 <table border="1">
   <tr>
     <td>Modificacion</td>
@@ -82,7 +86,7 @@ body {
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="modificarRol.php?DESCRIPCION=<?php echo $row_filtroModiRol['IDROL']; ?>" target="modiRol">Modificar</a></td>
+      <td><a href="modificarRol.php?root=<?php echo $row_filtroModiRol['IDROL']; ?>" target="modiRole">Modificar</a></td>
       <td><?php echo $row_filtroModiRol['IDROL']; ?></td>
       <td><?php echo $row_filtroModiRol['DESCRIPCION']; ?></td>
     </tr>
