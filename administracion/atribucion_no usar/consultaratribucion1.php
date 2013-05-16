@@ -64,12 +64,14 @@ body {
 	margin-bottom: 0px;
 }
 </style>
- <script type="text/javascript">
+
+
+<script type="text/javascript">
 function OnSubmitForm()
 {
   if(document.consultaproducto.radiosearch[0].checked == true)
   {
-    document.consultaproducto.action ="conatribucion.php?q=";
+    document.consultaproducto.action ="conatribucion1.php?q=";
   }
   if(document.consultaproducto.radiosearch[1].checked == true)
   {
@@ -81,73 +83,48 @@ function OnSubmitForm()
   }
    if(document.consultaproducto.radiosearch[3].checked == true)
   {
-    document.consultaproducto.action ="cosultapertodo2.php?q=";
+    document.consultaproducto.action ="conatribucion.php?q=";
 	
  }
   return true;
 }
 </script>
-  <SCRIPT type="text/JavaScript" >
 
-function lookup(inputString) {
-		if(inputString.length == 0) {
- 		// Hide the suggestion box.
-        show(inputString);
-        	$('#suggestions').hide();
-		} else {
-			$.post("clie9_sv.php", {queryString: ""+inputString+""}, function(data){
-				if(data.length >0) {
-					$('#suggestions').show();
-					$('#autoSuggestionsList').html(data);
-				}
-			});
-		}
-	} // lookup
 
-	function fill(thisValue) {
-		$('#inputString').val(thisValue);
-		setTimeout("$('#suggestions').hide();", 300);
-	}
-      </script>
+
 
 </head>
 
 <body>
 <form id="form1" name="consultaproducto" onsubmit="return OnSubmitForm();" target="conte">
- <table width="820" border="0">
+
+<table width="820" border="0">
   <tr>
-    <td bgcolor="#999999"><h1>Consultar</h1></td>
-  </tr>
+    <td><form id="form1" name="form1" method="post" action="">
+    </form>
+<form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
+        <table width="60%" border="0">
+          <tr>
+            <td colspan="3" align="center" bgcolor="#999999"><h1>Consultar Atribuciones</h1></td>
+          </tr>
           <tr><div id="radiosearch">   
-           <p>
-            <label for="q"></label>
+                             
+            <td width="27%"><label for="q"></label>
               <input type="text" name="q" id="q" />
-
-             <tr> <TD><b>Digite la informacion requerida:</tr>
-             <input type="text" size="50" value="" name="q" id="q"  onkeyup="lookup(this.value);" onblur="fill();" />
-                                    <div class="suggestionsBox" id="suggestions" style="display: none;">
-
-				                    <div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
-                                    </div>
-                                    <p>  </p>
-
-
-              <input type="submit" name="enviar" id="enviar" value="Enviar" />
-               </p>
-      <table width="820px" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td width="186">Seleccione un tipo de Consulta:</td>
-          <td width="188">
-          <input name="radiosearch" type="radio" value="1" checked>
-          Id Atribucion</td>
-          <td width="39">&nbsp;</td>
-          <td width="200">&nbsp;</td>
+              <input type="submit" name="enviar" id="enviar" value="Enviar" /></td>
+            <td width="69%">&nbsp;</td>
+            <td width="4%">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Seleccione tipo de Consulta.</td>
+            <td><input name="radiosearch" type="radio" value="id"  checked />
+              Id Atribucion</td>
+            <td>&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;</td>
             <td><input type="radio" name="radiosearch" id="id6" value="id" />
               Usuario</td>
-            <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
@@ -155,28 +132,35 @@ function lookup(inputString) {
             <td><input type="radio" name="radiosearch" id="id7" value="id" />
               Rol</td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;</td>
             <td><input type="radio" name="radiosearch" id="id8" value="id" />
               Permiso</td>
             <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td><input type="radio" name="radiosearch" id="boton5" value="id" />
+            <label for="boton5"></label>
+            Todos</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>&nbsp;</td>
-            <td><input type="radio" name="radiosearch" id="id5" value="id" />
-             Todos</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3"><iframe src="" width="820" height="200" name="conte"scrolling="auto"></iframe>&nbsp;</td>
+          </tr>
         </table>
-    </div>
+        <p>
+          <input type="hidden" name="MM_insert" value="form2" />
+      </p>
+      </form>
+    <p>&nbsp;</p></td>
   </tr>
 </table>
-<iframe src="" width="820" height="300" scrolling="auto" name="conte" frameborder="0"></iframe>
-
-</form>
 </body>
 </html>
