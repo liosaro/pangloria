@@ -84,9 +84,9 @@ body {
 </head>
 
 <body>
-<table width="820" border="0">
+<table width="976" border="0">
   <tr>
-    <td align="center" bgcolor="#999999"><h1>Modificacion  de Control ede horno</h1></td>
+    <td width="970" align="center" bgcolor="#999999"><h1>Modificacion  de Control ede horno</h1></td>
   </tr>
   <tr>
     <td><iframe src="formodificarproductohorno.php" width="820" height="400" scrolling="auto" name="conti"></iframe>&nbsp;</td>
@@ -99,19 +99,19 @@ body {
     </form></td>
   </tr>
   <tr>
-    <td><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, 0, $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, max(0, $pageNum_consultaprodhorno - 1), $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, min($totalPages_consultaprodhorno, $pageNum_consultaprodhorno + 1), $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, $totalPages_consultaprodhorno, $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
+    <td><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, 0, $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, max(0, $pageNum_consultaprodhorno - 1), $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaprodhorno=%d%s", $currentPage, min($totalPages_consultaprodhorno, $pageNum_consultaprodhorno + 1), $queryString_consultaprodhorno); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a></td>
   </tr>
   <tr>
     <td>&nbsp;
       <table border="1">
         <tr>
           <td>Modificion</td>
-          <td>ID_CONTROLPRODHORNO</td>
-          <td>IDPRODUCTO</td>
-          <td>IDENCABEZADO</td>
-          <td>ID_MEDIDA</td>
-          <td>CANTIDAD_INGRESO</td>
-          <td>CANTIDADEGRESO</td>
+          <td>Codigo Control Producto en Horno</td>
+          <td>Producto</td>
+          <td>Idencabezado</td>
+          <td>CodigoMedida</td>
+          <td>Cantidad Ingresada</td>
+          <td>Cantidad de Egreso</td>
         </tr>
         <?php do { ?>
           <tr>
