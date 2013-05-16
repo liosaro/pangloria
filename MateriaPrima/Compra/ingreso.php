@@ -98,6 +98,24 @@ $query_COMestadofact = "SELECT ESTADO FROM CATESTADOFACTURA ORDER BY ESTADO ASC"
 $COMestadofact = mysql_query($query_COMestadofact, $basepangloria) or die(mysql_error());
 $row_COMestadofact = mysql_fetch_assoc($COMestadofact);
 $totalRows_COMestadofact = mysql_num_rows($COMestadofact);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_comproveedor = "SELECT NOMBREPROVEEDOR FROM CATPROVEEDOR ORDER BY IDPROVEEDOR ASC";
+$comproveedor = mysql_query($query_comproveedor, $basepangloria) or die(mysql_error());
+$row_comproveedor = mysql_fetch_assoc($comproveedor);
+$totalRows_comproveedor = mysql_num_rows($comproveedor);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_comEmple = "SELECT NOMBREEMPLEADO FROM CATEMPLEADO ORDER BY NOMBREEMPLEADO ASC";
+$comEmple = mysql_query($query_comEmple, $basepangloria) or die(mysql_error());
+$row_comEmple = mysql_fetch_assoc($comEmple);
+$totalRows_comEmple = mysql_num_rows($comEmple);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_Ctipfactura = "SELECT TIPOFACTURA FROM CATTIPOFACTURA ORDER BY TIPOFACTURA ASC";
+$Ctipfactura = mysql_query($query_Ctipfactura, $basepangloria) or die(mysql_error());
+$row_Ctipfactura = mysql_fetch_assoc($Ctipfactura);
+$totalRows_Ctipfactura = mysql_num_rows($Ctipfactura);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -120,9 +138,19 @@ $totalRows_COMestadofact = mysql_num_rows($COMestadofact);
           <td align="center"><label for="IDCOMPRA"></label>
             <input name="IDCOMPRA2" type="text" disabled="disabled" id="IDCOMPRA" readonly="readonly" /></td>
           <td align="center">IDPROVEEDOR:</td>
-          <td align="center"><select name="IDPROVEEDOR">
-            <option value="menuitem1" >[ Etiqueta ]</option>
-            <option value="menuitem2" >[ Etiqueta ]</option>
+          <td align="left"><select name="IDPROVEEDOR">
+            <?php
+do {  
+?>
+            <option value="<?php echo $row_comproveedor['NOMBREPROVEEDOR']?>"><?php echo $row_comproveedor['NOMBREPROVEEDOR']?></option>
+            <?php
+} while ($row_comproveedor = mysql_fetch_assoc($comproveedor));
+  $rows = mysql_num_rows($comproveedor);
+  if($rows > 0) {
+      mysql_data_seek($comproveedor, 0);
+	  $row_comproveedor = mysql_fetch_assoc($comproveedor);
+  }
+?>
           </select></td>
           <td align="center">No.FACTURA:</td>
           <td align="center"><input type="text" name="NOFACTURA" value="" size="32" /></td>
@@ -156,9 +184,19 @@ do {
 ?>
           </select></td>
           <td align="center">IDEMPLEADO</td>
-          <td align="center"><select name="IDEMPLEADO">
-            <option value="menuitem1" >[ Etiqueta ]</option>
-            <option value="menuitem2" >[ Etiqueta ]</option>
+          <td align="left"><select name="IDEMPLEADO">
+            <?php
+do {  
+?>
+            <option value="<?php echo $row_comEmple['NOMBREEMPLEADO']?>"><?php echo $row_comEmple['NOMBREEMPLEADO']?></option>
+            <?php
+} while ($row_comEmple = mysql_fetch_assoc($comEmple));
+  $rows = mysql_num_rows($comEmple);
+  if($rows > 0) {
+      mysql_data_seek($comEmple, 0);
+	  $row_comEmple = mysql_fetch_assoc($comEmple);
+  }
+?>
           </select></td>
           <td align="center">&nbsp;</td>
           <td align="center">&nbsp;</td>
@@ -193,8 +231,18 @@ do {
           </select></td>
           <td align="center">ID_TIPO_FACTURA:</td>
           <td align="center"><select name="ID_TIPO_FACTURA">
-            <option value="menuitem1" >[ Etiqueta ]</option>
-            <option value="menuitem2" >[ Etiqueta ]</option>
+            <?php
+do {  
+?>
+            <option value="<?php echo $row_Ctipfactura['TIPOFACTURA']?>"><?php echo $row_Ctipfactura['TIPOFACTURA']?></option>
+            <?php
+} while ($row_Ctipfactura = mysql_fetch_assoc($Ctipfactura));
+  $rows = mysql_num_rows($Ctipfactura);
+  if($rows > 0) {
+      mysql_data_seek($Ctipfactura, 0);
+	  $row_Ctipfactura = mysql_fetch_assoc($Ctipfactura);
+  }
+?>
           </select></td>
           <td align="center">&nbsp;</td>
           <td align="center">&nbsp;</td>
@@ -403,4 +451,10 @@ do {
 mysql_free_result($Recordset1);
 
 mysql_free_result($COMestadofact);
+
+mysql_free_result($comproveedor);
+
+mysql_free_result($comEmple);
+
+mysql_free_result($Ctipfactura);
 ?>

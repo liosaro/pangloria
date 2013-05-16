@@ -2,4 +2,9 @@
 <info>
 	<infoitem key="UD_Recordset1" value="name:IDORDEN;datatype:int" />
 	<infoitem key="UD_COMestadofact" value="name:ESTADO;datatype:blob" />
+	<infoitem key="UD_CbProvee" value="name:NOMBREPROVEEDOR;datatype:blob" />
+	<infoitem key="UD_cbEmpl" value="name:NOMBREEMPLEADO;datatype:blob" />
+	<infoitem key="UD_comproveedor" value="name:NOMBREPROVEEDOR;datatype:blob" />
+	<infoitem key="UD_comEmple" value="name:NOMBREEMPLEADO;datatype:blob" />
+	<infoitem key="UD_Ctipfactura" value="name:TIPOFACTURA;datatype:blob" />
 </info>
