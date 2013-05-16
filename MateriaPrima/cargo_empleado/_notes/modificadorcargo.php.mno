@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:IDPERMISO;datatype:int,name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_modicargo" value="name:IDCARGO;datatype:int,name:CARGO;datatype:blob" />
+</info>
