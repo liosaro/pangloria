@@ -335,8 +335,8 @@ do {
         </p>
         <p>&nbsp;</p>
         <p>
-          <input name="enviar" type="submit" disabled="disabled" value="Insertar registro" />
-      </p></td>
+          <input name="enviar2" type="submit" disabled="disabled" value="Insertar registro" />
+        </p></td>
     </tr>
     <tr>
       <td>Cantidad a introducir:</td>
