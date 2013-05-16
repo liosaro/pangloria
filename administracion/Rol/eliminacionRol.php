@@ -31,6 +31,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$currentPage = $_SERVER["PHP_SELF"];
+
 $maxRows_rol = 10;
 $pageNum_rol = 0;
 if (isset($_GET['pageNum_rol'])) {
@@ -51,6 +53,22 @@ if (isset($_GET['totalRows_rol'])) {
   $totalRows_rol = mysql_num_rows($all_rol);
 }
 $totalPages_rol = ceil($totalRows_rol/$maxRows_rol)-1;
+
+$queryString_rol = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_rol") == false && 
+        stristr($param, "totalRows_rol") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_rol = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_rol = sprintf("&totalRows_rol=%d%s", $totalRows_rol, $queryString_rol);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -94,7 +112,7 @@ return true;
     </form></td>
   </tr>
   <tr>
-    <td><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></td>
+    <td><a href="<?php printf("%s?pageNum_rol=%d%s", $currentPage, 0, $queryString_rol); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_rol=%d%s", $currentPage, max(0, $pageNum_rol - 1), $queryString_rol); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_rol=%d%s", $currentPage, min($totalPages_rol, $pageNum_rol + 1), $queryString_rol); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_rol=%d%s", $currentPage, $totalPages_rol, $queryString_rol); ?>"><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
   </tr>
   <tr>
     <td>&nbsp;

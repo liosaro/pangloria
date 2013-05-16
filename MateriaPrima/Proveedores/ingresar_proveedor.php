@@ -235,11 +235,11 @@ pickTime: false
         </tr>
         <tr valign="baseline">
           <td >Numero de Registro:</td>
-          <td ><input type="text" name="NUMEROREGISTRO" value="" size="32" /></td>
-          <td nowrap="nowrap" align="right">WEB:</td>
-          <td><span id="sprytextfield3">
-          <input type="text" name="WEB" value="" size="32" />
+          <td ><span id="sprytextfield4">
+          <input type="text" name="NUMEROREGISTRO" value="" size="32" />
           <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
+          <td nowrap="nowrap" align="right">WEB:</td>
+          <td> <input type="text" name="textfield" id="textfield" /></td>
         </tr>
         <tr valign="baseline">
           <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -297,7 +297,7 @@ pickTime: false
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "phone_number", {format:"phone_custom", pattern:"0000-0000", useCharacterMasking:true, validateOn:["blur"]});
 var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "email", {hint:"ejemplo@dominio.com", useCharacterMasking:true, validateOn:["blur"]});
-var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3", "url", {hint:"www.ejemplo.com", validateOn:["blur"]});
+var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4", "custom", {pattern:"000-000000-000-0", useCharacterMasking:true, validateOn:["blur"]});
 </script>
 </body>
 </html>

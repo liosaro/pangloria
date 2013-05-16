@@ -31,11 +31,20 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$maxRows_filtroModiRol = 15;
+$pageNum_filtroModiRol = 0;
+if (isset($_GET['pageNum_filtroModiRol'])) {
+  $pageNum_filtroModiRol= $_GET['pageNum_filtroModiRol'];
+  
+}
+$startRow_filtroModiRol = $pageNum_filtroModiRol * $maxRows_filtroModiRol;
+
 $colname_filtroModiRol = "-1";
-if (isset($_GET['IDROL'])) {
-  $colname_filtroModiRol = $_GET['IDROL'];
+if (isset($_POST['filmodro'])) {
+  $colname_filtradoproducto = $_POST['filmodro'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
+
 $query_filtroModiRol = sprintf("SELECT * FROM CATROL WHERE IDROL = %s ORDER BY IDROL ASC", GetSQLValueString($colname_filtroModiRol, "int"));
 $filtroModiRol = mysql_query($query_filtroModiRol, $basepangloria) or die(mysql_error());
 $row_filtroModiRol = mysql_fetch_assoc($filtroModiRol);
@@ -52,6 +61,14 @@ if (isset($_POST['DESCRIPCION'])) {
 }
 
 $colname_filtroModiRol = "-1";
+if (isset($_POST['filmodro'])) {
+  $colname_filtroModiRol = $_POST['filmodro'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_filtroModiRol = sprintf("SELECT * FROM CATROL WHERE DESCRIPCION LIKE %s ORDER BY IDROL ASC", GetSQLValueString("%" . $colname_filtroModiRol . "%", "text"));
+$filtroModiRol = mysql_query($query_filtroModiRol, $basepangloria) or die(mysql_error());
+$row_filtroModiRol = mysql_fetch_assoc($filtroModiRol);
+$totalRows_filtroModiRol = mysql_num_rows($filtroModiRol);$colname_filtroModiRol = "-1";
 if (isset($_POST['filmodro'])) {
   $colname_filtroModiRol = $_POST['filmodro'];
 }

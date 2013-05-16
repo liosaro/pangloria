@@ -31,6 +31,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$currentPage = $_SERVER["PHP_SELF"];
+
 $maxRows_todo = 10;
 $pageNum_todo = 0;
 if (isset($_GET['pageNum_todo'])) {
@@ -50,45 +52,8 @@ if (isset($_GET['totalRows_todo'])) {
   $all_todo = mysql_query($query_todo);
   $totalRows_todo = mysql_num_rows($all_todo);
 }
-$totalPages_todo = ceil($totalRows_todo/$maxRows_todo = 10;
-$pageNum_todo = 0;
-if (isset($_GET['pageNum_todo'])) {
-  $pageNum_todo = $_GET['pageNum_todo'];
-}
-$startRow_todo = $pageNum_todo * $maxRows_todo;
-
-mysql_select_db($database_basepangloria, $basepangloria);
-$query_todo = "SELECT * FROM CATROL ORDER BY IDROL ASC";
-$query_limit_todo = sprintf("%s LIMIT %d, %d", $query_todo, $startRow_todo, $maxRows_todo);
-$todo = mysql_query($query_limit_todo, $basepangloria) or die(mysql_error());
-$row_todo = mysql_fetch_assoc($todo);
-
-if (isset($_GET['totalRows_todo'])) {
-  $totalRows_todo = $_GET['totalRows_todo'];
-} else {
-  $all_todo = mysql_query($query_todo);
-  $totalRows_todo = mysql_num_rows($all_todo);
-}
-$totalPages_todo = ceil($totalRows_todo/$maxRows_todo)-1;$maxRows_todo = 10;
-$pageNum_todo = 0;
-if (isset($_GET['pageNum_todo'])) {
-  $pageNum_todo = $_GET['pageNum_todo'];
-}
-$startRow_todo = $pageNum_todo * $maxRows_todo;
-
-mysql_select_db($database_basepangloria, $basepangloria);
-$query_todo = "SELECT * FROM CATROL ORDER BY IDROL ASC";
-$query_limit_todo = sprintf("%s LIMIT %d, %d", $query_todo, $startRow_todo, $maxRows_todo);
-$todo = mysql_query($query_limit_todo, $basepangloria) or die(mysql_error());
-$row_todo = mysql_fetch_assoc($todo);
-
-if (isset($_GET['totalRows_todo'])) {
-  $totalRows_todo = $_GET['totalRows_todo'];
-} else {
-  $all_todo = mysql_query($query_todo);
-  $totalRows_todo = mysql_num_rows($all_todo);
-}
 $totalPages_todo = ceil($totalRows_todo/$maxRows_todo)-1;
+
 $queryString_todo = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
   $params = explode("&", $_SERVER['QUERY_STRING']);
@@ -104,14 +69,15 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   }
 }
 $queryString_todo = sprintf("&totalRows_todo=%d%s", $totalRows_todo, $queryString_todo);
-?>
 
-<table border="1" cellpadding="0" cellspacing="0" width="820">
+
+?>
+<table border="1">
   <tr>
-    <td colspan="6" align="center" bgcolor="#999999"><h1>Detalle</h1></td>
+    <td colspan="2" align="center" bgcolor="#999999"><h1>Detalle</h1></td>
   </tr>
   <tr>
-    <td colspan="6"><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, 0, $queryString_nombre); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, max(0, $pageNum_nombre - 1), $queryString_nombre); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, min($totalPages_nombre, $pageNum_nombre + 1), $queryString_nombre); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_nombre=%d%s", $currentPage, $totalPages_nombre, $queryString_nombre); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></td>
+    <td colspan="2"><a href="<?php printf("%s?pageNum_todo=%d%s", $currentPage, 0, $queryString_todo); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_todo=%d%s", $currentPage, max(0, $pageNum_todo - 1), $queryString_todo); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_todo=%d%s", $currentPage, min($totalPages_todo, $pageNum_todo + 1), $queryString_todo); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_todo=%d%s", $currentPage, $totalPages_todo, $queryString_todo); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></td>
   </tr>
   <tr>
     <td>IDROL</td>
@@ -132,6 +98,6 @@ body {
 	margin-bottom: 0px;
 }
 </style>
-<?php
+<?php 
 mysql_free_result($todo);
-?>
+ ?>
