@@ -92,6 +92,12 @@ $query_Recordset1 = "SELECT IDORDEN FROM TRNENCAORDCOMPRA";
 $Recordset1 = mysql_query($query_Recordset1, $basepangloria) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_COMestadofact = "SELECT ESTADO FROM CATESTADOFACTURA ORDER BY ESTADO ASC";
+$COMestadofact = mysql_query($query_COMestadofact, $basepangloria) or die(mysql_error());
+$row_COMestadofact = mysql_fetch_assoc($COMestadofact);
+$totalRows_COMestadofact = mysql_num_rows($COMestadofact);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -111,10 +117,8 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
           </tr>
         <tr>
           <td align="center">ID_DETENCCOM</td>
-          <td align="center"><select name="ID_DETENCCOM">
-            <option value="menuitem1" >[ Etiqueta ]</option>
-            <option value="menuitem2" >[ Etiqueta ]</option>
-          </select></td>
+          <td align="center"><label for="IDCOMPRA"></label>
+            <input name="IDCOMPRA2" type="text" disabled="disabled" id="IDCOMPRA" readonly="readonly" /></td>
           <td align="center">IDPROVEEDOR:</td>
           <td align="center"><select name="IDPROVEEDOR">
             <option value="menuitem1" >[ Etiqueta ]</option>
@@ -137,9 +141,19 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
         </tr>
         <tr>
           <td align="center">IDORDEN:</td>
-          <td align="center"><select name="IDORDEN">
-            <option value="menuitem1" >[ Etiqueta ]</option>
-            <option value="menuitem2" >[ Etiqueta ]</option>
+          <td align="left"><select name="IDORDEN">
+            <?php
+do {  
+?>
+            <option value="<?php echo $row_Recordset1['IDORDEN']?>"><?php echo $row_Recordset1['IDORDEN']?></option>
+            <?php
+} while ($row_Recordset1 = mysql_fetch_assoc($Recordset1));
+  $rows = mysql_num_rows($Recordset1);
+  if($rows > 0) {
+      mysql_data_seek($Recordset1, 0);
+	  $row_Recordset1 = mysql_fetch_assoc($Recordset1);
+  }
+?>
           </select></td>
           <td align="center">IDEMPLEADO</td>
           <td align="center"><select name="IDEMPLEADO">
@@ -163,9 +177,19 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
         </tr>
         <tr>
           <td align="center">IDESTAFACTURA: </td>
-          <td align="center"><select name="IDESTAFACTURA">
-            <option value="menuitem1" >[ Etiqueta ]</option>
-            <option value="menuitem2" >[ Etiqueta ]</option>
+          <td><select name="IDESTAFACTURA">
+            <?php
+do {  
+?>
+            <option value="<?php echo $row_COMestadofact['ESTADO']?>"><?php echo $row_COMestadofact['ESTADO']?></option>
+            <?php
+} while ($row_COMestadofact = mysql_fetch_assoc($COMestadofact));
+  $rows = mysql_num_rows($COMestadofact);
+  if($rows > 0) {
+      mysql_data_seek($COMestadofact, 0);
+	  $row_COMestadofact = mysql_fetch_assoc($COMestadofact);
+  }
+?>
           </select></td>
           <td align="center">ID_TIPO_FACTURA:</td>
           <td align="center"><select name="ID_TIPO_FACTURA">
@@ -377,4 +401,6 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
 </html>
 <?php
 mysql_free_result($Recordset1);
+
+mysql_free_result($COMestadofact);
 ?>

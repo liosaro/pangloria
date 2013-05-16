@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
 	<infoitem key="UD_Recordset1" value="name:IDORDEN;datatype:int" />
+	<infoitem key="UD_COMestadofact" value="name:ESTADO;datatype:blob" />
 </info>
