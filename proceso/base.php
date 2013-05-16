@@ -168,7 +168,14 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                     <li><a href="../administracion/permisos/eliminarpermisos.php">Eliminar Permisos</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Elemento sin título</a></li>
+                <li><a href="#" class="MenuBarItemSubmenu">Atribuciones</a>
+                  <ul>
+                    <li><a href="../administracion/atribucion/ingresoatribucion.php" target="contenedor">Ingreso</a></li>
+                    <li><a href="#">Consulta</a></li>
+                    <li><a href="#">Modificar</a></li>
+                    <li><a href="#">Eliminar</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
             <a href="<?php echo $logoutAction ?>">Salir</a>
