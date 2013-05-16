@@ -41,24 +41,7 @@ if (isset($_GET['pageNum_consultaatribu'])) {
 $startRow_consultaatribu = $pageNum_consultaatribu * $maxRows_consultaatribu;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-//$query_consultaatribu = "SELECT * FROM CATATRIBUCIONES";
-
-$query_consultaatribu = "SELECT CA.ID_ATRIB,
-								CA.IDUSUARIO,
-								CA.IDROL,
-								CA.IDPERMISO,
-								CA.C,
-								CA.R,
-								CA.U,
-								CA.D,
-								CU.NOMBREUSUARIO,
-								CR.DESCRIPCION AS DESCRI_ROL,
-								CP.DESCRIPCION AS DESCRI_PER 
-						 FROM CATATRIBUCIONES CA, CATUSUARIO CU, CATPERMISOS CP, CATROL CR
-						WHERE CA.IDUSUARIO = CU.IDUSUARIO
-						  AND CA.IDROL     = CR.IDROL
-					      AND CA.IDPERMISO = CP.IDPERMISO";
-
+$query_consultaatribu = "SELECT * FROM CATATRIBUCIONES";
 $query_limit_consultaatribu = sprintf("%s LIMIT %d, %d", $query_consultaatribu, $startRow_consultaatribu, $maxRows_consultaatribu);
 $consultaatribu = mysql_query($query_limit_consultaatribu, $basepangloria) or die(mysql_error());
 $row_consultaatribu = mysql_fetch_assoc($consultaatribu);
@@ -116,25 +99,21 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
   <table width="844" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="844" align="center"><div class="cont">
-      <form action="<?php echo $currentPage; ?>" method="post" name="envioproductomodifica" id="envioproductomodifica">
-        <!--<form action="filtromodificaatribucion.php" method="post" name="envioproductomodifica" target="modiprodu" id="envioproductomodifica">-->
+        <form action="filtromodificaatribucion.php" method="post" name="envioproductomodifica" target="modiprodu" id="envioproductomodifica">
           <table width="1026" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="800" colspan="6" align="left">&nbsp;
                 <iframe src="modificadoratribu.php" name="modiprodu" width="830" height="300" align="middle" scrolling="no" frameborder="0" id="modiprodu"></iframe>
- 
                 
-<p>
-<a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, 0, $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, max(0, $pageNum_consultaatribu - 1), $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, min($totalPages_consultaatribu, $pageNum_consultaatribu + 1), $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, $totalPages_consultaatribu, $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a>
-</p>
+                <p><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, 0, $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, max(0, $pageNum_consultaatribu - 1), $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, min($totalPages_consultaatribu, $pageNum_consultaatribu + 1), $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribu=%d%s", $currentPage, $totalPages_consultaatribu, $queryString_consultaatribu); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a> </p>
                 <p>&nbsp;</p>
-                <table width="820" border="0" cellpadding="2">
-                  <tr bgcolor="#999999">
-                    <th>Accion</th>
-                    <th>ID</th>
-                    <th>USUARIO</th>
-                    <th>ROL</th>
-                    <th>PERMISO</th>
+                <table width="820" border="1">
+                  <tr>
+                    <th>Modificarx</th>
+                    <th>ID_ATRIB</th>
+                    <th>IDUSUARIO</th>
+                    <th>IDROL</th>
+                    <th>IDPERMISO</th>
                     <th>C</th>
                     <th>R</th>
                     <th>U</th>
@@ -144,9 +123,10 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
                     <tr>
                       <td><a href="modificadoratribu.php?root=<?php echo $row_consultaatribu['ID_ATRIB']; ?>" target="modiprodu">Modificar</a></td>
                       <td><?php echo $row_consultaatribu['ID_ATRIB']; ?></td>
-                      <td><?php echo $row_consultaatribu['NOMBREUSUARIO']; ?></td>
-                      <td><?php echo $row_consultaatribu['DESCRI_ROL']; ?></td>
-                      <td><?php echo $row_consultaatribu['DESCRI_PER']; ?></td>
+                      <td><?php echo $row_consultaatribu['IDUSUARIO']; ?></td>
+                      <!--<td><?php //echo $row_consultaatribu['IDUSUARIO']; ?></td>-->
+                      <td><?php echo $row_consultaatribu['IDROL']; ?></td>
+                      <td><?php echo $row_consultaatribu['IDPERMISO']; ?></td>
                       <td><?php echo $row_consultaatribu['C']; ?></td>
                       <td><?php echo $row_consultaatribu['R']; ?></td>
                       <td><?php echo $row_consultaatribu['U']; ?></td>
