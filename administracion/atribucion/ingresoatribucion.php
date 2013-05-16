@@ -36,7 +36,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   $insertSQL = sprintf("INSERT INTO CATATRIBUCIONES (ID_ATRIB, IDUSUARIO, IDROL, IDPERMISO, C, R, U, D) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['ID_ATRIB'], "int"),
                        GetSQLValueString($_POST['IDUSUARIO'], "int"),
@@ -93,16 +93,16 @@ body {
 <body>
 <table width="820" border="0">
   <tr>
-    <td><form id="form1" name="form1" method="post" action="">
+    <td><form id="form1" name="form1" method="post" action="<?php echo $editFormAction; ?>">
       <table width="100%" border="0">
         <tr>
           <td colspan="4" align="center" bgcolor="#999999"><h1>Ingreso de Atribuciones</h1></td>
           </tr>
         <tr>
           <td width="12%">Id Atribución:</td>
-          <td width="19%"><input type="text" name="ID_ATRIB" value="<?php echo $row_juegoatribu['ID_ATRIB']+1; ?>" size="15" /></td>
+          <td width="19%"><input type="text"  id="ID_ATRIB"  name="ID_ATRIB" value="<?php echo $row_juegoatribu['ID_ATRIB']+1; ?>" size="15" /></td>
           <td width="11%">Id Rol:</td>
-          <td width="58%"><select name="IDROL">
+          <td width="58%"><select  id="IDROL"  name="IDROL">
             <?php
 do {  
 ?>
@@ -119,7 +119,7 @@ do {
         </tr>
         <tr>
           <td>Usuario:</td>
-          <td><select name="IDUSUARIO">
+          <td><select  id="IDUSUARIO"  name="IDUSUARIO">
             <?php
 do {  
 ?>
@@ -134,7 +134,7 @@ do {
 ?>
           </select></td>
           <td>Id Permiso:</td>
-          <td><select name="IDPERMISO">
+          <td><select  id="IDPERMISO"  name="IDPERMISO">
             <?php
 do {  
 ?>
@@ -157,25 +157,25 @@ do {
         </tr>
         <tr>
           <td>C</td>
-          <td><input type="text" name="C" value="" size="32" /></td>
+          <td><input type="text"  id="C"  name="C" value="" size="32" /></td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td>R </td>
-          <td><input type="text" name="R" value="" size="32" /></td>
+          <td><input type="text"  id="R"  name="R" value="" size="32" /></td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td>U:</td>
-          <td><input type="text" name="U" value="" size="32" /></td>
+          <td><input type="text"  id="U"  name="U" value="" size="32" /></td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td>D:</td>
-          <td><input type="text" name="D" value="" size="32" /></td>
+          <td><input type="text"  id="D"  name="D" value="" size="32" /></td>
           <td>&nbsp;</td>
           <td><input type="submit" value="Insertar registro" /></td>
         </tr>
@@ -189,13 +189,14 @@ do {
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
-          <td>&nbsp;</td>
+          <td>
+              <input type="hidden"  id="MM_insert"  name="MM_insert" value="form1" /> 
+              &nbsp;
+          </td>
         </tr>
   </table>
     </form>
-      <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
-        <input type="hidden" name="MM_insert" value="form2" />
-      </form>
+
     <p>&nbsp;</p></td>
   </tr>
 </table>
