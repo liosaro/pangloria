@@ -7,4 +7,6 @@
 	<infoitem key="UD_comproveedor" value="name:NOMBREPROVEEDOR;datatype:blob" />
 	<infoitem key="UD_comEmple" value="name:NOMBREEMPLEADO;datatype:blob" />
 	<infoitem key="UD_Ctipfactura" value="name:TIPOFACTURA;datatype:blob" />
+	<infoitem key="UD_comunid" value="name:TIPOUNIDAD;datatype:blob" />
+	<infoitem key="UD_commatprim" value="name:DESCRIPCION;datatype:blob" />
 </info>

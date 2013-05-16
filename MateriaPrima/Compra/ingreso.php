@@ -116,6 +116,18 @@ $query_Ctipfactura = "SELECT TIPOFACTURA FROM CATTIPOFACTURA ORDER BY TIPOFACTUR
 $Ctipfactura = mysql_query($query_Ctipfactura, $basepangloria) or die(mysql_error());
 $row_Ctipfactura = mysql_fetch_assoc($Ctipfactura);
 $totalRows_Ctipfactura = mysql_num_rows($Ctipfactura);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_comunid = "SELECT TIPOUNIDAD FROM CATUNIDADES ORDER BY TIPOUNIDAD ASC";
+$comunid = mysql_query($query_comunid, $basepangloria) or die(mysql_error());
+$row_comunid = mysql_fetch_assoc($comunid);
+$totalRows_comunid = mysql_num_rows($comunid);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_commatprim = "SELECT DESCRIPCION FROM CATMATERIAPRIMA ORDER BY DESCRIPCION ASC";
+$commatprim = mysql_query($query_commatprim, $basepangloria) or die(mysql_error());
+$row_commatprim = mysql_fetch_assoc($commatprim);
+$totalRows_commatprim = mysql_num_rows($commatprim);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -134,11 +146,11 @@ $totalRows_Ctipfactura = mysql_num_rows($Ctipfactura);
             <h1>Formulario para el Ingreso de Compra</h1></td>
           </tr>
         <tr>
-          <td align="center">ID_DETENCCOM</td>
-          <td align="center"><label for="IDCOMPRA"></label>
+          <td width="16%" align="center">ID_DETENCCOM</td>
+          <td width="14%" align="center"><label for="IDCOMPRA"></label>
             <input name="IDCOMPRA2" type="text" disabled="disabled" id="IDCOMPRA" readonly="readonly" /></td>
-          <td align="center">IDPROVEEDOR:</td>
-          <td align="left"><select name="IDPROVEEDOR">
+          <td width="12%" align="left">Nombre de Proveedor:</td>
+          <td width="4%" align="left"><select name="IDPROVEEDOR">
             <?php
 do {  
 ?>
@@ -152,10 +164,10 @@ do {
   }
 ?>
           </select></td>
-          <td align="center">No.FACTURA:</td>
-          <td align="center"><input type="text" name="NOFACTURA" value="" size="32" /></td>
-          <td align="center">FECHACOMPRA:</td>
-          <td align="center"><input type="text" name="FECHACOMPRA" value="" size="32" /></td>
+          <td width="7%" align="left">No.Factura:</td>
+          <td width="18%" align="center"><input type="text" name="NOFACTURA" value="" size="32" /></td>
+          <td width="11%" align="center">FECHACOMPRA:</td>
+          <td width="18%" align="center"><input type="text" name="FECHACOMPRA" value="" size="32" /></td>
         </tr>
         <tr>
           <td align="center">&nbsp;</td>
@@ -168,7 +180,7 @@ do {
           <td align="center">&nbsp;</td>
         </tr>
         <tr>
-          <td align="center">IDORDEN:</td>
+          <td align="left">Codigo de Orden de Compra:</td>
           <td align="left"><select name="IDORDEN">
             <?php
 do {  
@@ -183,7 +195,7 @@ do {
   }
 ?>
           </select></td>
-          <td align="center">IDEMPLEADO</td>
+          <td align="left">Nombre de Empleado:</td>
           <td align="left"><select name="IDEMPLEADO">
             <?php
 do {  
@@ -214,7 +226,7 @@ do {
           <td align="center">&nbsp;</td>
         </tr>
         <tr>
-          <td align="center">IDESTAFACTURA: </td>
+          <td align="left">Estado de la factura: </td>
           <td><select name="IDESTAFACTURA">
             <?php
 do {  
@@ -229,7 +241,7 @@ do {
   }
 ?>
           </select></td>
-          <td align="center">ID_TIPO_FACTURA:</td>
+          <td align="left">Tipo de factura:</td>
           <td align="center"><select name="ID_TIPO_FACTURA">
             <?php
 do {  
@@ -267,175 +279,116 @@ do {
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
-          <td><input type="submit" value="Insertar registro" /></td>
+          <td align="right"><input name="enviar" type="submit" id="enviar" value="Insertar registro" /></td>
         </tr>
         <tr>
-          <td colspan="8" align="center" bgcolor="#999999"><h1>Dellate de la Compra</h1></td>
+          <td colspan="8" align="center" bgcolor="#999999"><h1>Dellate de la Compra</h1>
+            <p>&nbsp;</p></td>
         </tr>
       </table></td>
     </tr>
   </table>
 </form>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
-  <table width="99%" border="1">
+  <table width="99%" border="1" align="left">
     <tr>
-      <td width="8%">IDCOMPRA:</td>
+      <td width="8%">Codigo de la Compra:</td>
       <td width="18%"><input type="text" name="IDCOMPRA" value="" size="32" /></td>
-      <td width="8%">IDUNIDAD:</td>
-      <td width="10%"><select name="IDUNIDAD">
-        <option value="menuitem1" >[ Etiqueta ]</option>
-        <option value="menuitem2" >[ Etiqueta ]</option>
+      <td width="8%">Unidad:</td>
+      <td width="10%" align="left"><select name="IDUNIDAD">
+        <?php
+do {  
+?>
+        <option value="<?php echo $row_comunid['TIPOUNIDAD']?>"><?php echo $row_comunid['TIPOUNIDAD']?></option>
+        <?php
+} while ($row_comunid = mysql_fetch_assoc($comunid));
+  $rows = mysql_num_rows($comunid);
+  if($rows > 0) {
+      mysql_data_seek($comunid, 0);
+	  $row_comunid = mysql_fetch_assoc($comunid);
+  }
+?>
       </select></td>
       <td width="12%">ID_DETENCCOM</td>
-      <td width="10%"><select name="ID_DETENCCOM2">
-        <option value="menuitem1" >[ Etiqueta ]</option>
-        <option value="menuitem2" >[ Etiqueta ]</option>
-      </select></td>
-      <td width="16%">MATERIAPRIMA</td>
+      <td width="10%"><label for=""></label>
+      <input name="iddetencompra" type="text" id="iddetencompra" readonly="readonly" /></td>
+      <td width="16%">Nombre de Materia Prima</td>
       <td width="18%"><select name="MATERIAPRIMA">
-        <option value="menuitem1" >[ Etiqueta ]</option>
-        <option value="menuitem2" >[ Etiqueta ]</option>
+        <?php
+do {  
+?>
+        <option value="<?php echo $row_commatprim['DESCRIPCION']?>"><?php echo $row_commatprim['DESCRIPCION']?></option>
+        <?php
+} while ($row_commatprim = mysql_fetch_assoc($commatprim));
+  $rows = mysql_num_rows($commatprim);
+  if($rows > 0) {
+      mysql_data_seek($commatprim, 0);
+	  $row_commatprim = mysql_fetch_assoc($commatprim);
+  }
+?>
       </select></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td colspan="6" rowspan="14"><p>&nbsp;
+        </p>
+        <p>&nbsp;</p>
+        <p>
+          <input name="enviar" type="submit" disabled="disabled" value="Insertar registro" />
+      </p></td>
     </tr>
     <tr>
-      <td>CANTIDADMATPRIMA:</td>
+      <td>Cantidad a introducir:</td>
       <td><input type="text" name="CANTIDADMATPRIMA" value="" size="32" /></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>PRECIOUNIDAD</td>
+      <td>Precio de la Unidad</td>
       <td><input type="text" name="PRECIOUNIDAD" value="" size="32" /></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>PRECIOTOTAL</td>
+      <td>Descuento:</td>
       <td><input type="text" name="PRECIOTOTAL" value="" size="32" /></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>DESCUENTO</td>
+      <td>Sub_Total:</td>
       <td><input type="text" name="DESCUENTO" value="" size="32" /></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>SUBTOTAL</td>
+      <td>Precio Total:</td>
       <td><input type="text" name="SUBTOTAL" value="" size="32" /></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>IVA:</td>
+      <td>Iva:</td>
       <td><input type="text" name="IVA" value="" size="32" /></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>TOTAL</td>
+      <td>Total :</td>
       <td><input type="text" name="TOTAL" value="" size="32" /></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td><input type="submit" value="Insertar registro" /></td>
     </tr>
   </table>
   <input type="hidden" name="MM_insert" value="form3" />
@@ -457,4 +410,8 @@ mysql_free_result($comproveedor);
 mysql_free_result($comEmple);
 
 mysql_free_result($Ctipfactura);
+
+mysql_free_result($comunid);
+
+mysql_free_result($commatprim);
 ?>
