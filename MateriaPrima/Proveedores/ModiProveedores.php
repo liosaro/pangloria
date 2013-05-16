@@ -86,24 +86,21 @@ body {
 </head>
 
 <body>
-
-<iframe src="modificarProveedor.php" name="modificar" width="850" height="500" align="middle" scrolling="auto" frameborder="0" id="modiProvee"></iframe>
-
-
-<table width="820" border="0">
+<table border="1">
   <tr>
-    <td><a href="<?php printf("%s?pageNum_modiProvee=%d%s", $currentPage, 0, $queryString_modiProvee); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modiProvee=%d%s", $currentPage, max(0, $pageNum_modiProvee - 1), $queryString_modiProvee); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modiProvee=%d%s", $currentPage, min($totalPages_modiProvee, $pageNum_modiProvee + 1), $queryString_modiProvee); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modiProvee=%d%s", $currentPage, $totalPages_modiProvee, $queryString_modiProvee); ?>"><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
+    <td colspan="5"><iframe src="modificarProveedor.php" name="modificar" width="850" height="500" align="middle" scrolling="Auto" frameborder="0"></iframe></td>
   </tr>
   <tr>
-    <td colspan="4"><form id="filtro" name="filtro" method="post" action="">
+    <td colspan="5"><form action="filtroProveedor.php" method="post" name="form2" target="modificar" id="form2">
       Ingrese el Nombre
       del Proveedor a Modificar:
-      <input type="text" name="txtfiltro" id="txtfiltro" />
+      <input type="text" name="FiltroProvee" id="FiltroProvee" />
       <input type="submit" name="btnfiltrar" id="btnfiltrar" value="Filtro" />
     </form></td>
   </tr>
-</table>
-<table border="1">
+  <tr>
+    <td colspan="5"><a href="<?php printf("%s?pageNum_modiProvee=%d%s", $currentPage, 0, $queryString_modiProvee); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modiProvee=%d%s", $currentPage, max(0, $pageNum_modiProvee - 1), $queryString_modiProvee); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modiProvee=%d%s", $currentPage, min($totalPages_modiProvee, $pageNum_modiProvee + 1), $queryString_modiProvee); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modiProvee=%d%s", $currentPage, $totalPages_modiProvee, $queryString_modiProvee); ?>"><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
+  </tr>
   <tr>
     <td>Modificar</td>
     <td>IDPROVEEDOR</td>

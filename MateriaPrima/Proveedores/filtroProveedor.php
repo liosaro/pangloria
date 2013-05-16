@@ -1,4 +1,4 @@
-<iframe src="modificarProveedor.php" name="modificar" width="820" height="550" scrolling="auto"></iframe>
+<iframe src="modificarProveedor.php" name="modificar2" width="820" height="550" scrolling="auto"></iframe>
 <p>
   <?php require_once('../../Connections/basepangloria.php'); ?>
   <?php
@@ -41,8 +41,8 @@ if (isset($_GET['pageNum_FiltroProveedor'])) {
 $startRow_FiltroProveedor = $pageNum_FiltroProveedor * $maxRows_FiltroProveedor;
 
 $colname_FiltroProveedor = "-1";
-if (isset($_POST['filtroProvee'])) {
-  $colname_FiltroProveedor = $_POST['filtroProvee'];
+if (isset($_POST['FiltroProvee'])) {
+  $colname_FiltroProveedor = $_POST['FiltroProvee'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
 $query_FiltroProveedor = sprintf("SELECT * FROM CATPROVEEDOR WHERE NOMBREPROVEEDOR LIKE %s ORDER BY NOMBREPROVEEDOR ASC", GetSQLValueString("%" . $colname_FiltroProveedor . "%", "text"));
@@ -72,7 +72,7 @@ mysql_free_result($FiltroProveedor);
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="modificarProveedor.php?filtroProvee=<?php echo $row_FiltroProveedor['IDPROVEEDOR']; ?>"target="modificar">Modificar</a></td>
+      <td><a href="modificarProveedor.php?root=<?php echo $row_FiltroProveedor['IDPROVEEDOR']; ?>"target="modificar">Modificar</a></td>
       <td><?php echo $row_FiltroProveedor['IDPROVEEDOR']; ?></td>
       <td><?php echo $row_FiltroProveedor['NOMBREPROVEEDOR']; ?></td>
       <td><?php echo $row_FiltroProveedor['GIRO']; ?></td>
