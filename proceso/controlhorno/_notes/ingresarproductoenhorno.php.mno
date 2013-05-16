@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Codigodeproduccion" value="name:IDPRODUCTO;datatype:int" />
+	<infoitem key="UD_Producto" value="name:IDPRODUCTO;datatype:int" />
+	<infoitem key="UD_Codigodeencabezado" value="name:IDENCABEZADO;datatype:int" />
+	<infoitem key="UD_Codigodemedida" value="name:ID_MEDIDA;datatype:int" />
+</info>
