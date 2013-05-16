@@ -55,23 +55,35 @@ $totalPages_eliminarPorvee = ceil($totalRows_eliminarPorvee/$maxRows_eliminarPor
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<script language="JavaScript">
+function aviso(url){
+if (!confirm("ALERTA!! va a proceder a eliminar este registro, si desea eliminarlo de click en ACEPTAR\n de lo contrario de click en CANCELAR.")) {
+return false;
+}
+else {
+document.location = url;
+return true;
+}
+}
+</script>
 </head>
 
 <body>
-<form id="form1" name="form1" method="post" action="">
+<form action="filtroElimiProvee.php" method="post" name="eliminaProvee" target="eliminar" id="eliminaProvee">
   <table border="1">
     <tr></tr>
     <tr>
-      <td colspan="11">&nbsp;</td>
+      <td colspan="12"><iframe src="filtroElimiProvee.php" name="eliminar" width="820" height="400" scrolling="Auto" id="eliminar"></iframe>
+      <p>&nbsp;</p>
+      <p><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></p></td>
     </tr>
     <tr>
-      <td colspan="11"><label for="filtroProvee"></label>
+      <td colspan="12"><label for="filtroProvee"></label>
       <input type="text" name="filtroProvee" id="filtroProvee" />
       <input type="submit" name="Filtrar" id="Filtrar" value="Filtrar" /></td>
     </tr>
     <tr>
+      <td>Eliminacion</td>
       <td>IDPROVEEDOR</td>
       <td>IDPAIS</td>
       <td>NOMBREPROVEEDOR</td>
@@ -86,6 +98,7 @@ $totalPages_eliminarPorvee = ceil($totalRows_eliminarPorvee/$maxRows_eliminarPor
     </tr>
     <?php do { ?>
     <tr>
+      <td><a href="javascript:;" onclick="aviso('eliminar_proveedor.php'); return false;">Eliminar</a></td>
       <td><?php echo $row_eliminarPorvee['IDPROVEEDOR']; ?></td>
       <td><?php echo $row_eliminarPorvee['IDPAIS']; ?></td>
       <td><?php echo $row_eliminarPorvee['NOMBREPROVEEDOR']; ?></td>
