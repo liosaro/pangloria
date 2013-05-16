@@ -134,9 +134,9 @@ body {
 	margin-top: 0px;
 }
 </style>
-<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<link href="../../SpryAssets/bootstrap-combined.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" media="screen"
-     href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+     href="../../css/bootstrap-datetimepicker.min.css">
 </head>
 
 <body>
@@ -151,7 +151,7 @@ body {
           <td nowrap="nowrap" align="left">Codigo de Orden de compra:</td>
           <td nowrap="nowrap" align="left"><input name="IDORDEN" type="text" disabled="disabled" value="<?php echo $row_numorden['IDORDEN']+1; ?>" size="32" /></td>
           <td nowrap="nowrap" align="left">Numero de Cotizacion:</td>
-          <td align="left"><select name="NUMEROCOTIZACIO"  onchange="conte.location.href = 'concotiza.php?coti=' + this.value" >
+          <td align="left"><select name="NUMEROCOTIZACIO"  onchange="conte.location.href = 'concotiza.php?coti=' + this.value">
             <?php
 do {  
 ?>
@@ -170,7 +170,7 @@ do {
           <td nowrap="nowrap" align="left">Codigo de Empleado:</td>
           <td nowrap="nowrap" align="left"><input name="IDEMPLEADO" type="text" value="<?php echo $row_nusuario['IDUSUARIO']; ?>" size="32" readonly="readonly" /></td>
           <td nowrap="nowrap" align="left">Autorizado por:</td>
-          <td align="left"><select name="AUTORIZADOPOR" onchange="">
+          <td align="left"><select name="AUTORIZADOPOR" onfocus="document.form1.subit.disabled=false;">
             <?php
 do {  
 ?>
@@ -190,16 +190,16 @@ do {
           <td nowrap="nowrap" align="left"><input name="FECHAEMISIONORDCOM" type="text" id="FECHAEMISIONORDCOM" value="<?php echo date("Y-m-d H:i:s");;?> " readonly="readonly" /></td>
           <td nowrap="nowrap" align="left">Fecha de Entrega:</td>
           <td align="left"><script type="text/javascript"
-     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+      src="../../SpryAssets/jquery-1.8.3.min.js">
     </script> 
     <script type="text/javascript"
-     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+      src="../../SpryAssets/bootstrap.min.js">
     </script>
     <script type="text/javascript"
-     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+      src="../../SpryAssets/bootstrap-datetimepicker.min.js">
     </script>
     <script type="text/javascript"
-     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+     src="../../SpryAssets/bootstrap-datetimepicker.es.js">
     </script>  <div id="datetimepicker4" class="input-append">
     <input name="FECHAENTREGA" type="text" id="FECHAENTREGA" data-format="yyyy-MM-dd"></input>
     <span class="add-on">
@@ -216,7 +216,7 @@ do {
 </script></td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="left"><input type="submit" value="Insertar registro" /></td>
+          <td nowrap="nowrap" align="left"><input type="submit" value="Insertar registro"  name="subit" id="subit" disabled /></td>
           <td nowrap="nowrap" align="left">&nbsp;</td>
           <td nowrap="nowrap" align="left">&nbsp;</td>
           <td align="left">&nbsp;</td>
@@ -226,7 +226,8 @@ do {
     </form></td>
   </tr>
 </table>
-<p>&nbsp;<iframe src="concotiza.php" name="conte" width="820" height="400" scrolling="auto" frameborder="0"></iframe></p>
+<p>&nbsp;</p>
+<div id="detalle"><?php  include('concotiza.php') ?></div>
 </body>
 </html>
 <?php

@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
+<<<<<<< HEAD
+<file name="SpryAccordion.js" server="www.liosarpc.info//public_html/pan/" local="130116967652709191" remote="130131610800000000" />
+<file name="SpryMenuBarDown.gif" server="www.liosarpc.info//public_html/pan/" local="130116967652759215" remote="130131610800000000" />
+<file name="SpryAccordion.css" server="www.liosarpc.info//public_html/pan/" local="130116967652699199" remote="130131610800000000" />
+<file name="SpryMenuBar.js" server="www.liosarpc.info//public_html/pan/" local="130116967652739216" remote="130131610800000000" />
+<file name="SpryMenuBarDownHover.gif" server="www.liosarpc.info//public_html/pan/" local="130116967652789205" remote="130131610800000000" />
+<file name="SpryMenuBarHorizontal.css" server="www.liosarpc.info//public_html/pan/" local="130116967652809204" remote="130131610800000000" />
+<file name="SpryMenuBarRight.gif" server="www.liosarpc.info//public_html/pan/" local="130116967652829199" remote="130131610800000000" />
+<file name="SpryMenuBarRightHover.gif" server="www.liosarpc.info//public_html/pan/" local="130116967652839237" remote="130131610800000000" />
+<file name="SpryMenuBarVertical.css" server="www.liosarpc.info//public_html/pan/" local="130116967652849229" remote="130131610800000000" />
+<file name="SpryValidationTextField.js" server="www.liosarpc.info//public_html/pan/" local="130116967652889211" remote="130131611400000000" />
+<file name="SpryValidationTextField.css" server="www.liosarpc.info//public_html/pan/" local="130116967652859213" remote="130131611400000000" />
+<file name="bootstrap-datetimepicker.min.js" server="www.liosarpc.info//public_html/pan/" local="130116967653019260" remote="130131610800000000" />
+<file name="jquery-ui-sliderAccess.js" server="www.liosarpc.info//public_html/pan/" local="130116967653029229" remote="130131610800000000" />
+<file name="SpryValidationTextarea.js" server="www.liosarpc.info//public_html/pan/" local="130116967652939242" remote="130131610800000000" />
+<file name="SpryValidationTextarea.css" server="www.liosarpc.info//public_html/pan/" local="130116967652909217" remote="130131610800000000" />
+<file name="SpryValidationSelect.js" server="www.liosarpc.info//public_html/pan/" local="130120977649631456" remote="130131610800000000" />
+<file name="SpryValidationSelect.css" server="www.liosarpc.info//public_html/pan/" local="130120977649611461" remote="130131610800000000" />
+=======
 <file name="SpryAccordion.js" server="www.liosarpc.info//public_html/pan/" local="130130333479973542" remote="130130428200000000" />
 <file name="SpryMenuBarDown.gif" server="www.liosarpc.info//public_html/pan/" local="130130333480013544" remote="130130428200000000" />
 <file name="SpryAccordion.css" server="www.liosarpc.info//public_html/pan/" local="130130333479933539" remote="130130428200000000" />
@@ -17,7 +36,12 @@
 <file name="SpryValidationTextarea.css" server="www.liosarpc.info//public_html/pan/" local="130130333480333562" remote="130130428200000000" />
 <file name="SpryValidationSelect.js" server="www.liosarpc.info//public_html/pan/" local="130130333480233557" remote="130130428200000000" />
 <file name="SpryValidationSelect.css" server="www.liosarpc.info//public_html/pan/" local="130130333480213556" remote="130130428200000000" />
+>>>>>>> b454d1b1f49162a55fe4362d4aa37fe8de2990a7
 <file name="Thumbs.db" server="www.liosarpc.info//public_html/pan/" local="130130333480393566" remote="130130428200000000" />
-<file name="SpryValidationPassword.css" server="www.liosarpc.info//public_html/pan/" local="130130333480173553" remote="130130428200000000" />
-<file name="SpryValidationPassword.js" server="www.liosarpc.info//public_html/pan/" local="130130333480193554" remote="130130428200000000" />
+<file name="SpryValidationPassword.css" server="www.liosarpc.info//public_html/pan/" local="130129872286979832" remote="130131610800000000" />
+<file name="SpryValidationPassword.js" server="www.liosarpc.info//public_html/pan/" local="130129872286989847" remote="130131610800000000" />
+<file name="bootstrap-datetimepicker.es.js" server="www.liosarpc.info//public_html/pan/" local="130119945240000000" remote="130131610800000000" />
+<file name="bootstrap.min.js" server="www.liosarpc.info//public_html/pan/" local="130065819640000000" remote="130131619800000000" />
+<file name="jquery-1.8.3.min.js" server="www.liosarpc.info//public_html/pan/" local="130131547673473729" remote="130131619800000000" />
+<file name="bootstrap-combined.min.css" server="www.liosarpc.info//public_html/pan/" local="130131551782443588" remote="130131624000000000" />
 </dwsync>

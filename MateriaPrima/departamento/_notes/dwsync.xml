@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="IngresoDepartEmpresa.php" server="www.liosarpc.info//public_html/pan/" local="130130333478973485" remote="130130422200000000" />
-<file name="ModificarDepartamento.php" server="www.liosarpc.info//public_html/pan/" local="130130333478993486" remote="130130422200000000" />
-<file name="consultarDepartamento.php" server="www.liosarpc.info//public_html/pan/" local="130130333479463513" remote="130130422200000000" />
-<file name="modificaciondepa.php" server="www.liosarpc.info//public_html/pan/" local="130130333479503515" remote="130130422200000000" />
-<file name="eliminar.php" server="www.liosarpc.info//public_html/pan/" local="130130333479483514" remote="130130422200000000" />
+<file name="IngresoDepartEmpresa.php" server="www.liosarpc.info//public_html/pan/" local="130132246142336250" remote="130131454200000000" />
+<file name="consultaid.php" server="www.liosarpc.info//public_html/pan/" local="130132253360305000" remote="130131489000000000" />
+<file name="consultanombre.php" server="www.liosarpc.info//public_html/pan/" local="130132268771875000" remote="130131489000000000" />
+<file name="ConsultaDepartamento.php" server="www.liosarpc.info//public_html/pan/" local="130132284109687500" remote="130131492600000000" />
+<file name="eliminacionDepartamento.php" server="www.liosarpc.info//public_html/pan/" local="130132328212656250" remote="130131535800000000" />
+<file name="eliminarDepartamento.php" server="www.liosarpc.info//public_html/pan/" local="130132293756718750" remote="130131526200000000" />
+<file name="filtroeliminarDepar.php" server="www.liosarpc.info//public_html/pan/" local="130132304494843750" remote="130131526200000000" />
 </dwsync>
