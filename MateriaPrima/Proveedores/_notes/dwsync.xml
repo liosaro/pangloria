@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="ingresar_proveedor.php" server="www.liosarpc.info//public_html/pan/" local="130131571662446095" remote="130131643800000000" />
-<file name="consultar_proveedores.php" server="www.liosarpc.info//public_html/pan/" local="130130770718506514" remote="130131339600000000" />
+<file name="consultar_proveedores.php" server="www.liosarpc.info//public_html/pan/" local="130131617713186335" remote="130131689400000000" />
 <file name="eliminar_proveedor.php" server="www.liosarpc.info//public_html/pan/" local="130130333478423453" remote="130130422200000000" />
 <file name="modificarProveedor.php" server="www.liosarpc.info//public_html/pan/" local="130131334868682096" remote="130131465000000000" />
 <file name="ModiProveedores.php" server="www.liosarpc.info//public_html/pan/" local="130131396054893445" remote="130131646800000000" />
 <file name="filtroProveedor.php" server="www.liosarpc.info//public_html/pan/" local="130131494697393946" remote="130131566400000000" />
+<file name="consproveTodo.php" server="www.liosarpc.info//public_html/pan/" local="130131607744916183" remote="130131688200000000" />
+<file name="consulProveId.php" server="www.liosarpc.info//public_html/pan/" local="130131613053549819" remote="130131688200000000" />
+<file name="consulProveNombre.php" server="www.liosarpc.info//public_html/pan/" local="130131604544473128" remote="130131688200000000" />
 </dwsync>

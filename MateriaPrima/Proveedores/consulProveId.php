@@ -1,4 +1,4 @@
-<?php require_once('file:///C|/Users/Marielos/Documents/GitHub/pangloria/Connections/basepangloria.php'); ?>
+<?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
