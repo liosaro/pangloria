@@ -129,7 +129,9 @@ $totalRows_consulEmple = mysql_num_rows($consulEmple);
     </table></td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
+    <td>Esta Orden no posee orden de Compra: 
+      <input type="checkbox" name="chequeo" id="chequeo" />
+    <label for="chequeo"></label></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
