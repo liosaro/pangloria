@@ -11,4 +11,6 @@
 	<infoitem key="UD_commatprim" value="name:DESCRIPCION;datatype:blob" />
 	<infoitem key="UD_cobingresocompra" value="name:IDORDEN;datatype:int" />
 	<infoitem key="UD_comboOrden11" value="name:IDORDEN;datatype:int" />
+	<infoitem key="UD_comboorden" value="name:IDORDEN;datatype:int" />
+	<infoitem key="UD_corden" value="name:IDORDEN;datatype:int" />
 </info>

@@ -88,12 +88,6 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form4")) {
 }
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_Recordset1 = "SELECT IDORDEN FROM TRNENCAORDCOMPRA";
-$Recordset1 = mysql_query($query_Recordset1, $basepangloria) or die(mysql_error());
-$row_Recordset1 = mysql_fetch_assoc($Recordset1);
-$totalRows_Recordset1 = mysql_num_rows($Recordset1);
-
-mysql_select_db($database_basepangloria, $basepangloria);
 $query_COMestadofact = "SELECT ESTADO FROM CATESTADOFACTURA ORDER BY ESTADO ASC";
 $COMestadofact = mysql_query($query_COMestadofact, $basepangloria) or die(mysql_error());
 $row_COMestadofact = mysql_fetch_assoc($COMestadofact);
@@ -128,6 +122,12 @@ $query_commatprim = "SELECT DESCRIPCION FROM CATMATERIAPRIMA ORDER BY DESCRIPCIO
 $commatprim = mysql_query($query_commatprim, $basepangloria) or die(mysql_error());
 $row_commatprim = mysql_fetch_assoc($commatprim);
 $totalRows_commatprim = mysql_num_rows($commatprim);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_corden = "SELECT IDORDEN FROM TRNENCAORDCOMPRA ORDER BY IDORDEN ASC";
+$corden = mysql_query($query_corden, $basepangloria) or die(mysql_error());
+$row_corden = mysql_fetch_assoc($corden);
+$totalRows_corden = mysql_num_rows($corden);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -148,6 +148,8 @@ $totalRows_commatprim = mysql_num_rows($commatprim);
         <tr>
           <td width="16%" align="center">ID_DETENCCOM</td>
           <td width="14%" align="center"><label for="IDCOMPRA"></label>
+          
+          
             <input name="IDCOMPRA2" type="text" disabled="disabled" id="IDCOMPRA" readonly="readonly" /></td>
           <td width="12%" align="left">Nombre de Proveedor:</td>
           <td width="4%" align="left"><select name="IDPROVEEDOR">
@@ -181,20 +183,22 @@ do {
         </tr>
         <tr>
           <td align="left">Codigo de Orden de Compra:</td>
-          <td align="left"><select name="IDORDEN">
-            <?php
+          <td align="left"><label for="select"></label>
+            <label for="ordenc"></label>
+            <select name="ordenc" id="ordenc">
+              <?php
 do {  
 ?>
-            <option value="<?php echo $row_Recordset1['IDORDEN']?>"><?php echo $row_Recordset1['IDORDEN']?></option>
-            <?php
-} while ($row_Recordset1 = mysql_fetch_assoc($Recordset1));
-  $rows = mysql_num_rows($Recordset1);
+              <option value="<?php echo $row_corden['IDORDEN']?>"><?php echo $row_corden['IDORDEN']+1;?></option>
+              <?php
+} while ($row_corden = mysql_fetch_assoc($corden));
+  $rows = mysql_num_rows($corden);
   if($rows > 0) {
-      mysql_data_seek($Recordset1, 0);
-	  $row_Recordset1 = mysql_fetch_assoc($Recordset1);
+      mysql_data_seek($corden, 0);
+	  $row_corden = mysql_fetch_assoc($corden);
   }
 ?>
-          </select></td>
+            </select></td>
           <td align="left">Nombre de Empleado:</td>
           <td align="left"><select name="IDEMPLEADO">
             <?php
@@ -296,8 +300,6 @@ do {
 </body>
 </html>
 <?php
-mysql_free_result($Recordset1);
-
 mysql_free_result($COMestadofact);
 
 mysql_free_result($comproveedor);
@@ -309,4 +311,6 @@ mysql_free_result($Ctipfactura);
 mysql_free_result($comunid);
 
 mysql_free_result($commatprim);
+
+mysql_free_result($corden);
 ?>
