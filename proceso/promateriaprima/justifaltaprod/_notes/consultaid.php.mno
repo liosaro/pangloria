@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_conid" value="name:ID_JUSTIFICACION;datatype:int,name:IDCONTROLPRODUCCION;datatype:int,name:CANTIDA_FALTANTE;datatype:real,name:IDPRODUCTOFALTA;datatype:int,name:ID_MEDIDA;datatype:int,name:FECHAINGRESOJUSFAPROD;datatype:date,name:JUSTIFICACIONFALTAPROD;datatype:string" />
+	<infoitem key="UD_id" value="name:ID_JUSTIFICACION;datatype:int,name:IDCONTROLPRODUCCION;datatype:int,name:CANTIDA_FALTANTE;datatype:real,name:IDPRODUCTOFALTA;datatype:int,name:ID_MEDIDA;datatype:int,name:FECHAINGRESOJUSFAPROD;datatype:date,name:JUSTIFICACIONFALTAPROD;datatype:string" />
+</info>
