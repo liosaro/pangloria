@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="frmmodificar.php" server="www.liosarpc.info//public_html/pan/" local="130130792400000000" remote="130131406800000000" />
-<file name="filtrojustificacion.php" server="www.liosarpc.info//public_html/pan/" local="137438953474" remote="130131406800000000" />
-<file name="consultaJustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130131288852157109" remote="130131405000000000" />
-<file name="consultafecha.php" server="www.liosarpc.info//public_html/pan/" local="130131278758447016" remote="130131404400000000" />
-<file name="consultaid.php" server="www.liosarpc.info//public_html/pan/" local="130131291389851590" remote="130131404400000000" />
-<file name="consultatodos.php" server="www.liosarpc.info//public_html/pan/" local="130131283694089570" remote="130131405600000000" />
-<file name="eliminacionJustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130131311314314397" remote="130131405600000000" />
-<file name="filtroeliminarjustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130131323227122938" remote="130131406200000000" />
+<file name="IngresoJustiFalta.php" server="www.liosarpc.info//public_html/pan/" local="130130124656718750" remote="130130196600000000" />
+<file name="ModificarJustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130129848600000000" />
+<file name="elimarJustificacionFaltaProd.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130129848600000000" />
+<file name="modificacion.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130129848600000000" />
+<file name="ConsultaJustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130129848600000000" />
+<file name="EliminarJustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130129848600000000" />
+<file name="Modificando.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130130244000000000" />
+<file name="frmmodificar.php" server="www.liosarpc.info//public_html/pan/" local="130130170164687500" remote="130130242200000000" />
 </dwsync>
