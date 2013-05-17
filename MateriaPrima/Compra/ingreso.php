@@ -128,6 +128,12 @@ $query_corden = "SELECT IDORDEN FROM TRNENCAORDCOMPRA ORDER BY IDORDEN ASC";
 $corden = mysql_query($query_corden, $basepangloria) or die(mysql_error());
 $row_corden = mysql_fetch_assoc($corden);
 $totalRows_corden = mysql_num_rows($corden);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_comDetencom = "SELECT * FROM TRNENCABEZADOCOMPRA ORDER BY ID_DETENCCOM DESC";
+$comDetencom = mysql_query($query_comDetencom, $basepangloria) or die(mysql_error());
+$row_comDetencom = mysql_fetch_assoc($comDetencom);
+$totalRows_comDetencom = mysql_num_rows($comDetencom);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -148,11 +154,16 @@ $totalRows_corden = mysql_num_rows($corden);
         <tr>
           <td width="16%" align="center">ID_DETENCCOM</td>
           <td width="14%" align="center"><label for="IDCOMPRA"></label>
-          <?php echo $row_ULTIMOENCA['IDORDEN']; ?>
-          
-            <input name="IDCOMPRA2" type="text" id="IDCOMPRA" readonly="readonly" /></td>
+                   
+            <input name="IDCOMPRA2" type="text" id="IDCOMPRA" readonly="readonly" />
+            <?php echo $row_conDetencom ['ID_DETENCOM']; ?> </td>
+            
+            
+         
+                    
+            
           <td width="12%" align="left">Nombre de Proveedor:</td>
-          <td width="4%" align="left"><select name="IDPROVEEDOR">
+          <td width="4%" align="left"><select name="IDPROVEEDOR" title="<?php echo $row_comDetencom['IDPROVEEDOR']; ?>">
             <?php
 do {  
 ?>
@@ -172,14 +183,14 @@ do {
           <td width="18%" align="center"><input type="text" name="FECHACOMPRA" value="" size="32" /></td>
         </tr>
         <tr>
-          <td align="left">Codigo de Orden de Compra:</td>
+          <td height="67" align="left">Codigo de Orden de Compra:</td>
           <td align="left"><label for="select"></label>
             <label for="ordenc"></label>
             <select name="ordenc" id="ordenc">
               <?php
 do {  
 ?>
-              <option value="<?php echo $row_corden['IDORDEN']?>"><?php echo $row_corden['IDORDEN']+1;?></option>
+              <option value="<?php echo $row_corden['IDORDEN']?>"><?php echo $row_corden['IDORDEN'];?></option>
               <?php
 } while ($row_corden = mysql_fetch_assoc($corden));
   $rows = mysql_num_rows($corden);
@@ -220,12 +231,6 @@ do {
 ?>
           </select></td>
           <td align="left" valign="top">Tipo de factura:</td>
-          <td align="center">&nbsp;</td>
-        </tr>
-        <tr>
-          <td align="left">&nbsp;</td>
-          <td>&nbsp;</td>
-          <td align="left">&nbsp;</td>
           <td align="center"><select name="ID_TIPO_FACTURA">
             <?php
 do {  
@@ -239,12 +244,9 @@ do {
 	  $row_Ctipfactura = mysql_fetch_assoc($Ctipfactura);
   }
 ?>
-            </select></td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
+          </select></td>
         </tr>
+        
         <tr>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
@@ -278,4 +280,6 @@ mysql_free_result($comunid);
 mysql_free_result($commatprim);
 
 mysql_free_result($corden);
+
+mysql_free_result($comDetencom);
 ?>
