@@ -1,1 +1,0 @@
-Lo siento no tiene derecho a ingresar a esta zona del sistema, contacte al administrador

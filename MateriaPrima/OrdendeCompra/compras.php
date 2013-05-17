@@ -167,8 +167,11 @@ do {
           </select></td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="left">Codigo de Empleado:</td>
-          <td nowrap="nowrap" align="left"><input name="IDEMPLEADO" type="text" value="<?php echo $row_nusuario['IDUSUARIO']; ?>" size="32" readonly="readonly" /></td>
+          <td nowrap="nowrap" align="left">Fecha de Entrega:</td>
+          <td nowrap="nowrap" align="left"><div id="datetimepicker4" class="input-append">
+            <input name="FECHAENTREGA" type="text" id="FECHAENTREGA" data-format="yyyy-MM-dd" />
+            </input>
+            <span class="add-on"> <i data-time-icon="icon-time" data-date-icon="icon-calendar"> </i> </span> </div></td>
           <td nowrap="nowrap" align="left">Autorizado por:</td>
           <td align="left"><select name="AUTORIZADOPOR" onfocus="document.form1.subit.disabled=false;">
             <?php
@@ -188,7 +191,7 @@ do {
         <tr valign="baseline">
           <td nowrap="nowrap" align="left">Fecha de emision:</td>
           <td nowrap="nowrap" align="left"><input name="FECHAEMISIONORDCOM" type="text" id="FECHAEMISIONORDCOM" value="<?php echo date("Y-m-d H:i:s");;?> " readonly="readonly" /></td>
-          <td nowrap="nowrap" align="left">Fecha de Entrega:</td>
+          <td nowrap="nowrap" align="left">Codigo de Empleado:</td>
           <td align="left"><script type="text/javascript"
       src="../../SpryAssets/jquery-1.8.3.min.js">
     </script> 
@@ -200,23 +203,17 @@ do {
     </script>
     <script type="text/javascript"
      src="../../SpryAssets/bootstrap-datetimepicker.es.js">
-    </script>  <div id="datetimepicker4" class="input-append">
-    <input name="FECHAENTREGA" type="text" id="FECHAENTREGA" data-format="yyyy-MM-dd"></input>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-    </span>
-  </div>
-<script type="text/javascript">
+    </script><script type="text/javascript">
   $(function() {
     $('#datetimepicker4').datetimepicker({
       pickTime: false
     });
   });
-</script></td>
+</script>
+    <input name="IDEMPLEADO" type="text" value="<?php echo $row_nusuario['IDUSUARIO']; ?>" size="32" readonly="readonly" /></td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="left"><input type="submit" value="Insertar registro"  name="subit" id="subit" disabled /></td>
+          <td nowrap="nowrap" align="left"><input type="submit" value="Insertar registro"  onClick="window.close()" name="subit" id="subit" disabled /></td>
           <td nowrap="nowrap" align="left">&nbsp;</td>
           <td nowrap="nowrap" align="left">&nbsp;</td>
           <td align="left">&nbsp;</td>
@@ -226,8 +223,7 @@ do {
     </form></td>
   </tr>
 </table>
-<p>&nbsp;</p>
-<div id="detalle"><?php  include('concotiza.php') ?></div>
+
 </body>
 </html>
 <?php

@@ -85,6 +85,26 @@ $query_Codigodeproduccion = "SELECT IDPRODUCTO FROM TRNDETACONTROL_PRODUCTO_HORN
 $Codigodeproduccion = mysql_query($query_Codigodeproduccion, $basepangloria) or die(mysql_error());
 $row_Codigodeproduccion = mysql_fetch_assoc($Codigodeproduccion);
 $totalRows_Codigodeproduccion = mysql_num_rows($Codigodeproduccion);
+
+$colname_Producto = "-1";
+if (isset($_GET['IDPRODUCTO'])) {
+  $colname_Producto = $_GET['IDPRODUCTO'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_Producto = sprintf("SELECT IDPRODUCTO FROM TRNDETACONTROL_PRODUCTO_HORNO WHERE IDPRODUCTO = %s ORDER BY IDPRODUCTO ASC", GetSQLValueString($colname_Producto, "int"));
+$Producto = mysql_query($query_Producto, $basepangloria) or die(mysql_error());
+$row_Producto = mysql_fetch_assoc($Producto);
+$totalRows_Producto = mysql_num_rows($Producto);
+
+$colname_codigoproduccion = "-1";
+if (isset($_GET['IDORDENPRODUCCION'])) {
+  $colname_codigoproduccion = $_GET['IDORDENPRODUCCION'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_codigoproduccion = sprintf("SELECT IDORDENPRODUCCION FROM TRNENCACONTROLPRODHORNO WHERE IDORDENPRODUCCION = %s ORDER BY IDORDENPRODUCCION ASC", GetSQLValueString($colname_codigoproduccion, "int"));
+$codigoproduccion = mysql_query($query_codigoproduccion, $basepangloria) or die(mysql_error());
+$row_codigoproduccion = mysql_fetch_assoc($codigoproduccion);
+$totalRows_codigoproduccion = mysql_num_rows($codigoproduccion);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -118,18 +138,63 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
             <td colspan="4" align="center" bgcolor="#999999"><h1>Ingreso Control de Producto Horno</h1></td>
           </tr>
           <tr>
+            <td width="26%">&nbsp;</td>
+            <td width="30%">&nbsp;</td>
+            <td width="16%">&nbsp;</td>
+            <td width="28%">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Codigo de Control Horno</td>
+            <td><input name="ID_CONTROLPRODHORNO" type="text" disabled="disabled" value="<?php echo $row_Codigocontrolhorno['ID_CONTROLPRODHORNO']; ?>" size="32" readonly="readonly" /></td>
+            <td>Codigo Produccion</td>
+            <td><select name="codigoproduccion" id="codigoproduccion">
+              <option value=""  <?php if (!(strcmp("", $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value=""  <?php if (!(strcmp("", $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="value" <?php if (!(strcmp("value", $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="" <?php if (!(strcmp("", $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="" <?php if (!(strcmp("", $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="" <?php if (!(strcmp("", $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="" <?php if (!(strcmp("", $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>></option>
+              <?php
+do {  
+?>
+              <option value="<?php echo $row_Codigodeproduccion['IDPRODUCTO']?>"<?php if (!(strcmp($row_Codigodeproduccion['IDPRODUCTO'], $row_codigoproduccion['IDORDENPRODUCCION']))) {echo "selected=\"selected\"";} ?>><?php echo $row_Codigodeproduccion['IDPRODUCTO']?></option>
+              <?php
+} while ($row_Codigodeproduccion = mysql_fetch_assoc($Codigodeproduccion));
+  $rows = mysql_num_rows($Codigodeproduccion);
+  if($rows > 0) {
+      mysql_data_seek($Codigodeproduccion, 0);
+	  $row_Codigodeproduccion = mysql_fetch_assoc($Codigodeproduccion);
+  }
+?>
+            </select></td>
+          </tr>
+          <tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>Codigo de Control Horno</td>
-            <td><input name="ID_CONTROLPRODHORNO" type="text" disabled="disabled" value="" size="32" readonly="readonly" /></td>
-            <td>Codigo Produccion</td>
-            <td><select name="IDPRODUCTO">
-              <option value="menuitem1" >[ Etiqueta ]</option>
-              <option value="menuitem2" >[ Etiqueta ]</option>
+            <td>Usuario:</td>
+            <td><input type="text" name="USUARIO" value="" size="32" /></td>
+            <td>Producto:</td>
+            <td><select name="producto" id="producto">
+              <?php
+do {  
+?>
+              <option value="<?php echo $row_Producto['IDPRODUCTO']?>"<?php if (!(strcmp($row_Producto['IDPRODUCTO'], $row_Producto['IDPRODUCTO']))) {echo "selected=\"selected\"";} ?>><?php echo $row_Producto['IDPRODUCTO']?></option>
+              <?php
+} while ($row_Producto = mysql_fetch_assoc($Producto));
+  $rows = mysql_num_rows($Producto);
+  if($rows > 0) {
+      mysql_data_seek($Producto, 0);
+	  $row_Producto = mysql_fetch_assoc($Producto);
+  }
+?>
             </select></td>
           </tr>
           <tr>
@@ -141,13 +206,58 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
           <tr>
             <td>Codigo Encabezado </td>
             <td><select name="IDENCABEZADO">
-              <option value="menuitem1" >[ Etiqueta ]</option>
-              <option value="menuitem2" >[ Etiqueta ]</option>
+              <option value=""  <?php if (!(strcmp("", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value=""  <?php if (!(strcmp("", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="" <?php if (!(strcmp("", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="" <?php if (!(strcmp("", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="" <?php if (!(strcmp("", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="" <?php if (!(strcmp("", $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>></option>
+              <?php
+do {  
+?>
+              <option value="<?php echo $row_Codigodeencabezado['IDENCABEZADO']?>"<?php if (!(strcmp($row_Codigodeencabezado['IDENCABEZADO'], $row_Codigodeencabezado['IDENCABEZADO']))) {echo "selected=\"selected\"";} ?>><?php echo $row_Codigodeencabezado['IDENCABEZADO']?></option>
+              <?php
+} while ($row_Codigodeencabezado = mysql_fetch_assoc($Codigodeencabezado));
+  $rows = mysql_num_rows($Codigodeencabezado);
+  if($rows > 0) {
+      mysql_data_seek($Codigodeencabezado, 0);
+	  $row_Codigodeencabezado = mysql_fetch_assoc($Codigodeencabezado);
+  }
+?>
             </select></td>
             <td>Codigo Medida</td>
             <td><select name="ID_MEDIDA">
-              <option value="menuitem1" >[ Etiqueta ]</option>
-              <option value="menuitem2" >[ Etiqueta ]</option>
+              <option value=""  <?php if (!(strcmp("", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value=""  <?php if (!(strcmp("", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="value" <?php if (!(strcmp("value", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>>label</option>
+              <option value="" <?php if (!(strcmp("", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="" <?php if (!(strcmp("", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="" <?php if (!(strcmp("", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>></option>
+              <option value="" <?php if (!(strcmp("", $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>></option>
+              <?php
+do {  
+?>
+              <option value="<?php echo $row_Codigodemedida['ID_MEDIDA']?>"<?php if (!(strcmp($row_Codigodemedida['ID_MEDIDA'], $row_Codigodemedida['ID_MEDIDA']))) {echo "selected=\"selected\"";} ?>><?php echo $row_Codigodemedida['ID_MEDIDA']?></option>
+              <?php
+} while ($row_Codigodemedida = mysql_fetch_assoc($Codigodemedida));
+  $rows = mysql_num_rows($Codigodemedida);
+  if($rows > 0) {
+      mysql_data_seek($Codigodemedida, 0);
+	  $row_Codigodemedida = mysql_fetch_assoc($Codigodemedida);
+  }
+?>
             </select></td>
           </tr>
           <tr>
@@ -170,25 +280,31 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
           </tr>
           <tr>
             <td>Fecha y hora de Ingreso</td>
+            
+            
+           
+            
+            
+            
+            
             <td><span id="spryfechahora">
-            <script type="text/javascript"
-src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-</script>
+           
+           <script type="text/javascript"
+     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script> 
+    <script type="text/javascript"
+     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+    </script>
 
-<script type="text/javascript"
-src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-</script>
-<script type="text/javascript"
-src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-</script>
-<script type="text/javascript"
-src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-</script>
-<script type="text/javascript"
-src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-</script> <div id="datetimepicker4" class="input-append">
-
-    
+           
+           
+          
     <input name="FECHAYHORADEINGRESO" type="text" id="FECHAYHORADEINGRESO" data-format="yyyy-MM-dd"></input>
 <span class="add-on"><script type="text/javascript"
 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
@@ -201,26 +317,27 @@ src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-date
 </script>
 <script type="text/javascript"
 src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-</script> <div id="datetimepicker4" class="input-append">
-
-<i data-time-icon="icon-time" data-date-icon="icon-calendar">
-</i>
-</span>
+</script> <div class="well">
+  <div id="datetimepicker1" class="input-append date"></input>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
 </div>
 <script type="text/javascript">
-$(function() {
-$('#datetimepicker4').datetimepicker({
-pickTime: false
-});
-});
+  $(function() {
+    $('#datetimepicker1').datetimepicker({
+      language: 'pt-BR'
+    });
+  });
 </script>
 
     
             
             <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
-            <td>Empleaso Revisa:</td>
-            <td>
-            </td>
+            <td>Empleado que Revisa:</td>
+            <td><input type="text" name="textfield" id="textfield" /></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -229,28 +346,29 @@ pickTime: false
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>Usuario:</td>
-            <td><input type="text" name="USUARIO" value="" size="32" /></td>
+            <td>&nbsp;</td>
+            <td><span id="Horadeingreso"><span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
+            
             <td>Fecha y hora de Egreso</td>
             <td><span id="spryfechahora2">
             
-            <script type="text/javascript"
-src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-</script>
-<script type="text/javascript"
-src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-</script>
-<script type="text/javascript"
-src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-</script>
-<script type="text/javascript"
-src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-</script> <div id="datetimepicker4" class="input-append">
-
-            
-            
-            
-            <input name="FECHAYHORATRANSAC" type="text" id="FECHAYHORATRANSAC" data-format="yyyy-MM-dd"></input>
+          <script type="text/javascript"
+     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script> 
+    <script type="text/javascript"
+     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+    </script>
+   
+       
+    <input name="FECHAYHORATRANSAC" type="text" id="FECHAYHORATRANSAC" data-format="yyyy-MM-dd"></input>
+    
+    
 <span class="add-on"><script type="text/javascript"
 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 </script>
@@ -262,25 +380,28 @@ src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-date
 </script>
 <script type="text/javascript"
 src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-</script> <div id="datetimepicker4" class="input-append">
-
-<i data-time-icon="icon-time" data-date-icon="icon-calendar">
-</i>
-</span>
+</script>  <div class="well">
+  <div id="datetimepicker2" class="input-append date"></input>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
 </div>
 <script type="text/javascript">
-$(function() {
-$('#datetimepicker4').datetimepicker({
-pickTime: false
-});
-});
+  $(function() {
+    $('#datetimepicker2').datetimepicker({
+      language: 'pt-BR'
+    });
+  });
 </script>
-
+    
             
             
             <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
           </tr>
-          <tr>
+          
+<tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -289,7 +410,7 @@ pickTime: false
           <tr>
             <td><input type="submit" value="Insertar registro" /></td>
             <td>&nbsp;</td>
-            <td>&nbsp;</td>
+           <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
         </table>
@@ -306,6 +427,7 @@ pickTime: false
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("spryfechahora", "date", {format:"yyyy-mm-dd"});
 var sprytextfield2 = new Spry.Widget.ValidationTextField("spryfechahora2", "date", {format:"yyyy-mm-dd"});
+var sprytextfield3 = new Spry.Widget.ValidationTextField("spryhoradeingreso", "time", {format:"HH:mm:ss"});
 </script>
 </body>
 </html>
@@ -317,4 +439,8 @@ mysql_free_result($Codigodeencabezado);
 mysql_free_result($Codigodemedida);
 
 mysql_free_result($Codigodeproduccion);
+
+mysql_free_result($Producto);
+
+mysql_free_result($codigoproduccion);
 ?>
