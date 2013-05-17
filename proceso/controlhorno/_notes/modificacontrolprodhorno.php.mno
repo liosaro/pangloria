@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_consultaprodhorno" value="name:ID_CONTROLPRODHORNO;datatype:int,name:IDPRODUCTO;datatype:int,name:IDENCABEZADO;datatype:int,name:ID_MEDIDA;datatype:int,name:CANTIDAD_INGRESO;datatype:real,name:CANTIDADEGRESO;datatype:real" />
+</info>
