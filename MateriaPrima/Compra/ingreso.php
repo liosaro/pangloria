@@ -155,6 +155,12 @@ if (isset($_GET['totalRows_consultacompra'])) {
   $totalRows_consultacompra = mysql_num_rows($all_consultacompra);
 }
 $totalPages_consultacompra = ceil($totalRows_consultacompra/$maxRows_consultacompra)-1;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_Consutaorden2 = "SELECT IDORDEN FROM TRNDETALLEORDENCOMPRA ORDER BY IDORDEN DESC";
+$Consutaorden2 = mysql_query($query_Consutaorden2, $basepangloria) or die(mysql_error());
+$row_Consutaorden2 = mysql_fetch_assoc($Consutaorden2);
+$totalRows_Consutaorden2 = mysql_num_rows($Consutaorden2);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -205,7 +211,7 @@ do {
         </tr>
         <tr>
           <td height="67" align="left">Codigo de Orden de Compra:</td>
-          <td align="left"><label for="select"></label>
+          <td align="left"><label for="carorden"></label>
             <label for="ordenc"></label>
             <select name="ordenc" id="ordenc">
               <?php
@@ -269,10 +275,26 @@ do {
         </tr>
         
         <tr>
-          <td colspan="8"><p>
-            <input name="enviar" type="submit" id="enviar" value="Insertar registro" />
+          <td colspan="8"><p>Cargar Detalle desde la Orden de Compra : 
+              <label for="select2"></label>
+              
+           
+                            
+            <select name="carorden" id="carorden" onchange= "window.location.href='carorden.php?varia='+document.getElementById(this.id).value ;"> 
+              <?php
+do {  
+?>
+              <option value="<?php echo $row_Consutaorden2['IDORDEN']?>"><?php echo $row_Consutaorden2['IDORDEN']?></option>
+              <?php
+} while ($row_Consutaorden2 = mysql_fetch_assoc($Consutaorden2));
+  $rows = mysql_num_rows($Consutaorden2);
+  if($rows > 0) {
+      mysql_data_seek($Consutaorden2, 0);
+	  $row_Consutaorden2 = mysql_fetch_assoc($Consutaorden2);
+  }
+?>
+            </select>
           </p>
-            <p>&nbsp; </p>
             <table border="1">
               <tr>
                 <td> Modificación </td>
@@ -304,7 +326,7 @@ do {
                   <td><?php echo $row_consultacompra['TOTAL']; ?></td>
                 </tr>
                 <?php } while ($row_consultacompra = mysql_fetch_assoc($consultacompra)); ?>
-            </table></td>
+          </table></td>
         </tr>
       </table></td>
     </tr>
@@ -333,4 +355,6 @@ mysql_free_result($corden);
 mysql_free_result($comDetencom);
 
 mysql_free_result($consultacompra);
+
+mysql_free_result($Consutaorden2);
 ?>
