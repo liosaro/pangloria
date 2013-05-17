@@ -57,6 +57,8 @@ $totalRows_depar = mysql_num_rows($depar);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+<script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -72,12 +74,14 @@ $totalRows_depar = mysql_num_rows($depar);
       <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
         <table width="100%" border="0">
           <tr>
-            <td>IDDEPTO</td>
+            <td>Id Departamento</td>
             <td><label for="IDEMPLEADO"></label>
             <input name="IDEMPLEADO" type="text" disabled="disabled" id="IDEMPLEADO" value="
 <?php echo $row_depar['IDDEPTO']+1; ?>" size="32" readonly="readonly" /></td>
-            <td>DEPARTAMENTO</td>
-            <td><input type="text" name="DEPARTAMENTO" value="" size="32" /></td>
+            <td>Departamento</td>
+            <td><span id="sprytextfield2">
+              <input type="text" name="DEPARTAMENTO" value="" size="32" />
+            <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -86,8 +90,10 @@ $totalRows_depar = mysql_num_rows($depar);
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>NUMEROTELEFONO</td>
-            <td><input type="text" name="NUMEROTELEFONO" value="" size="32" /></td>
+            <td>Numero de Telefono</td>
+            <td><span id="sprytextfield1">
+            <input type="text" name="NUMEROTELEFONO" value="" size="32" />
+            <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
             <td>&nbsp;</td>
             <td><input type="submit" value="Insertar registro" /></td>
           </tr>
@@ -98,6 +104,10 @@ $totalRows_depar = mysql_num_rows($depar);
     <p>&nbsp;</p></td>
   </tr>
 </table>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "phone_number", {format:"phone_custom", pattern:"0000-0000", validateOn:["blur"]});
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2");
+</script>
 </body>
 </html>
 <?php
