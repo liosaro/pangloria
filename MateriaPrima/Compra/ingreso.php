@@ -148,9 +148,9 @@ $totalRows_corden = mysql_num_rows($corden);
         <tr>
           <td width="16%" align="center">ID_DETENCCOM</td>
           <td width="14%" align="center"><label for="IDCOMPRA"></label>
+          <?php echo $row_ULTIMOENCA['IDORDEN']; ?>
           
-          
-            <input name="IDCOMPRA2" type="text" disabled="disabled" id="IDCOMPRA" readonly="readonly" /></td>
+            <input name="IDCOMPRA2" type="text" id="IDCOMPRA" readonly="readonly" /></td>
           <td width="12%" align="left">Nombre de Proveedor:</td>
           <td width="4%" align="left"><select name="IDPROVEEDOR">
             <?php
