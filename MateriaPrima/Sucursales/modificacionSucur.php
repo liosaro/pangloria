@@ -1,4 +1,5 @@
 <?php require_once('../../Connections/basepangloria.php'); ?>
+<?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -31,6 +32,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$currentPage = $_SERVER["PHP_SELF"];
+
 $maxRows_modificarsuc = 10;
 $pageNum_modificarsuc = 0;
 if (isset($_GET['pageNum_modificarsuc'])) {
@@ -51,6 +54,22 @@ if (isset($_GET['totalRows_modificarsuc'])) {
   $totalRows_modificarsuc = mysql_num_rows($all_modificarsuc);
 }
 $totalPages_modificarsuc = ceil($totalRows_modificarsuc/$maxRows_modificarsuc)-1;
+
+$queryString_modificarsuc = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_modificarsuc") == false && 
+        stristr($param, "totalRows_modificarsuc") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_modificarsuc = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_modificarsuc = sprintf("&totalRows_modificarsuc=%d%s", $totalRows_modificarsuc, $queryString_modificarsuc);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -68,20 +87,21 @@ body {
 </head>
 
 <body>
-<form action="filtroModiSucur.php" method="post" name="form1" target="modificar" id="form1">
-  <table border="1">
-    <tr></tr>
+<table border="1">
+  <tr></tr>
   <tr>
-    <td colspan="5"><iframe src="modiSucursal.php" name="modificar" width="820" height="400" scrolling="Auto"></iframe></td>
+    <td colspan="5"><iframe src="modiSucursal.php" name="modificar" width="820" height="400" scrolling="No" id="modificar"></iframe></td>
   </tr>
   <tr>
     <td colspan="5"><label for="FiltroProvee"></label>
-      Ingrese el nombre de la Sucursal a Modificar
-      <input type="text" name="FiltroProvee" id="FiltroProvee" />
-      <input type="submit" name="button" id="button" value="Filtrar" /></td>
+      <form action="filtroModiSucur.php" method="post" name="form1" target="modificar" id="form1">
+Ingrese el nombre de la Sucursal a Modificar
+        <input type="text" name="filtroSucu" id="filtroSucu" />
+        <input type="submit" name="button" id="button" value="Filtrar" />
+      </form></td>
   </tr>
   <tr>
-    <td colspan="5"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></td>
+    <td colspan="5"><a href="<?php printf("%s?pageNum_modificarsuc=%d%s", $currentPage, 0, $queryString_modificarsuc); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modificarsuc=%d%s", $currentPage, max(0, $pageNum_modificarsuc - 1), $queryString_modificarsuc); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modificarsuc=%d%s", $currentPage, min($totalPages_modificarsuc, $pageNum_modificarsuc + 1), $queryString_modificarsuc); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modificarsuc=%d%s", $currentPage, $totalPages_modificarsuc, $queryString_modificarsuc); ?>"><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
   </tr>
   <tr>
     <td>Modificacion</td>
@@ -100,10 +120,11 @@ body {
   </tr>
   <?php } while ($row_modificarsuc = mysql_fetch_assoc($modificarsuc)); ?>
 </table>
-</form>
 <p>&nbsp;</p>
 </body>
 </html>
 <?php
+mysql_free_result($modificarsuc);
+
 mysql_free_result($modificarsuc);
 ?>
