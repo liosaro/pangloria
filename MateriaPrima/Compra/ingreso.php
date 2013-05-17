@@ -138,9 +138,9 @@ $totalRows_corden = mysql_num_rows($corden);
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-  <table width="820" border="0">
+  <table width="820" border="0" align="left">
     <tr>
-      <td><table width="99%" border="1">
+      <td><table width="99%" border="">
         <tr>
           <td colspan="8" align="center" bgcolor="#999999"><h1>&nbsp;</h1>
             <h1>Formulario para el Ingreso de Compra</h1></td>
@@ -260,12 +260,7 @@ do {
   </table>
 </form>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
-  <input type="hidden" name="MM_insert" value="form3" />
-  <iframe src="ingreso.php" width="820" height="200" align="left" scrolling="Auto"></iframe>
 </form>
-<form action="<?php echo $editFormAction; ?>" method="post" name="form4" id="form4">
-  <input type="hidden" name="MM_insert" value="form4" /></form>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 </body>
 </html>
