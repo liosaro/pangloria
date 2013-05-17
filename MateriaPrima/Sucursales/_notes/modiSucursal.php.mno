@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_modiSucur" value="name:IDSUCURSAL;datatype:int,name:NOMBRESUCURSAL;datatype:blob,name:DIRECCIONSUCURSAL;datatype:blob,name:TELEFONOSUCURSAL;datatype:blob" />
-</info>
