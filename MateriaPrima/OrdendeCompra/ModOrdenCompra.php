@@ -93,7 +93,7 @@ mysql_select_db($database_basepangloria, $basepangloria);
   </tr>
   <?php do { ?>
     <tr>
-      <td><img src="../../imagenes/icono/Invoice-256.png" width="24" height="26" /></td>
+      <td>Modificar</td>
       <td><?php echo $result['IDORDEN']; ?></td>
       <td><?php echo $result['FECHAEMISIONORDCOM']; ?></td>
       <td><?php echo $result['FECHAENTREGA']; ?></td>
