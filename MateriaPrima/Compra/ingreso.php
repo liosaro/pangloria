@@ -134,6 +134,27 @@ $query_comDetencom = "SELECT * FROM TRNENCABEZADOCOMPRA ORDER BY ID_DETENCCOM DE
 $comDetencom = mysql_query($query_comDetencom, $basepangloria) or die(mysql_error());
 $row_comDetencom = mysql_fetch_assoc($comDetencom);
 $totalRows_comDetencom = mysql_num_rows($comDetencom);
+
+$maxRows_consultacompra = 5;
+$pageNum_consultacompra = 0;
+if (isset($_GET['pageNum_consultacompra'])) {
+  $pageNum_consultacompra = $_GET['pageNum_consultacompra'];
+}
+$startRow_consultacompra = $pageNum_consultacompra * $maxRows_consultacompra;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_consultacompra = "SELECT * FROM TRNDETALLECOMPRA ORDER BY IDCOMPRA DESC";
+$query_limit_consultacompra = sprintf("%s LIMIT %d, %d", $query_consultacompra, $startRow_consultacompra, $maxRows_consultacompra);
+$consultacompra = mysql_query($query_limit_consultacompra, $basepangloria) or die(mysql_error());
+$row_consultacompra = mysql_fetch_assoc($consultacompra);
+
+if (isset($_GET['totalRows_consultacompra'])) {
+  $totalRows_consultacompra = $_GET['totalRows_consultacompra'];
+} else {
+  $all_consultacompra = mysql_query($query_consultacompra);
+  $totalRows_consultacompra = mysql_num_rows($all_consultacompra);
+}
+$totalPages_consultacompra = ceil($totalRows_consultacompra/$maxRows_consultacompra)-1;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -248,14 +269,42 @@ do {
         </tr>
         
         <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td><input name="enviar" type="submit" id="enviar" value="Insertar registro" /></td>
+          <td colspan="8"><p>
+            <input name="enviar" type="submit" id="enviar" value="Insertar registro" />
+          </p>
+            <p>&nbsp; </p>
+            <table border="1">
+              <tr>
+                <td> Modificación </td>
+                <td>Codigo de la Compra</td>
+                <td>Unidad</td>
+                <td>ID_DETENCCOM</td>
+                <td>Materia Prima Cantidad</td>
+                <td>Nombre de la Materia Prima</td>
+                <td>Precio Por Unidad</td>
+                <td>Precio Total</td>
+                <td>Descuento</td>
+                <td>SubTotal</td>
+                <td>IVA</td>
+                <td>Total</td>
+              </tr>
+              <?php do { ?>
+                <tr>
+                  <td>Modificar</td>
+                  <td><?php echo $row_consultacompra['IDCOMPRA']; ?></td>
+                  <td><?php echo $row_consultacompra['IDUNIDAD']; ?></td>
+                  <td><?php echo $row_consultacompra['ID_DETENCCOM']; ?></td>
+                  <td><?php echo $row_consultacompra['CANTIDADMATPRIMA']; ?></td>
+                  <td><?php echo $row_consultacompra['MATERIAPRIMA']; ?></td>
+                  <td><?php echo $row_consultacompra['PRECIOUNIDAD']; ?></td>
+                  <td><?php echo $row_consultacompra['PRECIOTOTAL']; ?></td>
+                  <td><?php echo $row_consultacompra['DESCUENTO']; ?></td>
+                  <td><?php echo $row_consultacompra['SUBTOTAL']; ?></td>
+                  <td><?php echo $row_consultacompra['IVA']; ?></td>
+                  <td><?php echo $row_consultacompra['TOTAL']; ?></td>
+                </tr>
+                <?php } while ($row_consultacompra = mysql_fetch_assoc($consultacompra)); ?>
+            </table></td>
         </tr>
       </table></td>
     </tr>
@@ -282,4 +331,6 @@ mysql_free_result($commatprim);
 mysql_free_result($corden);
 
 mysql_free_result($comDetencom);
+
+mysql_free_result($consultacompra);
 ?>
