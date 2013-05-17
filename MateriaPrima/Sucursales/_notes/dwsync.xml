@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="consultar_sucursales.php" server="www.liosarpc.info//public_html/pan/" local="130131334894703585" remote="130132107000000000" />
+<file name="IngresarSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132056204948370" remote="130132128000000000" />
+<file name="consulSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132068655370494" remote="130132141200000000" />
+<file name="consulTodoSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132067857234843" remote="130132141200000000" />
+<file name="consulNombreSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132064700774304" remote="130132141200000000" />
+<file name="consulIdSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132061500251244" remote="130132141200000000" />
 </dwsync>
