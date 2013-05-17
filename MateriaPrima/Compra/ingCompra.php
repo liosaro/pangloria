@@ -36,6 +36,50 @@ $query_encacompra = "SELECT * FROM TRNENCABEZADOCOMPRA ORDER BY ID_DETENCCOM DES
 $encacompra = mysql_query($query_encacompra, $basepangloria) or die(mysql_error());
 $row_encacompra = mysql_fetch_assoc($encacompra);
 $totalRows_encacompra = mysql_num_rows($encacompra);
+
+$colname_consulTipFac = "-1";
+if (isset($_POST['ID_TIPO_FACTURA'])) {
+  $colname_consulTipFac = $_POST['ID_TIPO_FACTURA'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$tipofac = $row_encacompra['ID_TIPO_FACTURA'];
+$query_consulTipFac = sprintf("SELECT TIPOFACTURA FROM CATTIPOFACTURA WHERE ID_TIPO_FACTURA = '$tipofac' ORDER BY TIPOFACTURA ASC");
+$consulTipFac = mysql_query($query_consulTipFac, $basepangloria) or die(mysql_error());
+$row_consulTipFac = mysql_fetch_assoc($consulTipFac);
+$totalRows_consulTipFac = mysql_num_rows($consulTipFac);
+
+$colname_consulEstFac = "-1";
+if (isset($_POST['IDESTAFACTURA'])) {
+  $colname_consulEstFac = $_POST['IDESTAFACTURA'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$estafact = $row_encacompra['IDESTAFACTURA'];
+$query_consulEstFac = sprintf("SELECT ESTADO FROM CATESTADOFACTURA WHERE IDESTAFACTURA = '$estafact' ORDER BY ESTADO ASC");
+$consulEstFac = mysql_query($query_consulEstFac, $basepangloria) or die(mysql_error());
+$row_consulEstFac = mysql_fetch_assoc($consulEstFac);
+$totalRows_consulEstFac = mysql_num_rows($consulEstFac);
+
+$colname_ConsulProvee = "-1";
+if (isset($_POST['IDPROVEEDOR'])) {
+  $colname_ConsulProvee = $_POST['IDPROVEEDOR'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$conprovee=$row_encacompra['IDPROVEEDOR'];
+$query_ConsulProvee = sprintf("SELECT NOMBREPROVEEDOR FROM CATPROVEEDOR WHERE IDPROVEEDOR = '$conprovee' ORDER BY NOMBREPROVEEDOR ASC");
+$ConsulProvee = mysql_query($query_ConsulProvee, $basepangloria) or die(mysql_error());
+$row_ConsulProvee = mysql_fetch_assoc($ConsulProvee);
+$totalRows_ConsulProvee = mysql_num_rows($ConsulProvee);
+
+$colname_consulEmple = "-1";
+if (isset($_POST['IDEMPLEADO'])) {
+  $colname_consulEmple = $_POST['IDEMPLEADO'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$consemplead = $row_encacompra['IDEMPLEADO'];
+$query_consulEmple = sprintf("SELECT NOMBREEMPLEADO FROM CATEMPLEADO WHERE IDEMPLEADO = '$consemplead' ORDER BY NOMBREEMPLEADO ASC");
+$consulEmple = mysql_query($query_consulEmple, $basepangloria) or die(mysql_error());
+$row_consulEmple = mysql_fetch_assoc($consulEmple);
+$totalRows_consulEmple = mysql_num_rows($consulEmple);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -56,19 +100,19 @@ $totalRows_encacompra = mysql_num_rows($encacompra);
         <td>Codigo de Compra:</td>
         <td><?php echo $row_encacompra['ID_DETENCCOM']; ?></td>
         <td>Proveedor:</td>
-        <td><?php echo $row_encacompra['IDPROVEEDOR']; ?></td>
+        <td><?php echo $row_ConsulProvee['NOMBREPROVEEDOR']; ?></td>
       </tr>
       <tr>
         <td>Tipo de Factura:</td>
-        <td><?php echo $row_encacompra['ID_TIPO_FACTURA']; ?></td>
+        <td><?php echo $row_consulTipFac['TIPOFACTURA']; ?></td>
         <td>Orden de Compra:</td>
         <td><?php echo $row_encacompra['IDORDEN']; ?></td>
       </tr>
       <tr>
         <td>Estado deFactura:</td>
-        <td><?php echo $row_encacompra['IDESTAFACTURA']; ?></td>
+        <td><?php echo $row_consulEstFac['ESTADO']; ?></td>
         <td>Empleado:</td>
-        <td><?php echo $row_encacompra['IDEMPLEADO']; ?></td>
+        <td><?php echo $row_consulEmple['NOMBREEMPLEADO']; ?></td>
       </tr>
       <tr>
         <td>Factura de Referencia</td>
@@ -80,7 +124,7 @@ $totalRows_encacompra = mysql_num_rows($encacompra);
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
-        <td align="right"><a href="compras.php" target="popup" onclick="window.open(this.href, this.target, 'width=810,height=285,resizable = 0'); return false;">Nuevo Encabezado</a></td>
+        <td align="right"><a href="encaingre.php" target="popup" onclick="window.open(this.href, this.target, 'width=810,height=285,resizable = 0'); return false;">Nuevo Encabezado</a></td>
       </tr>
     </table></td>
   </tr>
@@ -107,4 +151,12 @@ $totalRows_encacompra = mysql_num_rows($encacompra);
 </html>
 <?php
 mysql_free_result($encacompra);
+
+mysql_free_result($consulTipFac);
+
+mysql_free_result($consulEstFac);
+
+mysql_free_result($ConsulProvee);
+
+mysql_free_result($consulEmple);
 ?>
