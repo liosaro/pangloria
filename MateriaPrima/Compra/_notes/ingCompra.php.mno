@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_encacompra" value="name:ID_DETENCCOM;datatype:int,name:IDPROVEEDOR;datatype:int,name:IDORDEN;datatype:int,name:IDEMPLEADO;datatype:int,name:ID_TIPO_FACTURA;datatype:int,name:IDESTAFACTURA;datatype:int,name:NOFACTURA;datatype:blob,name:FECHACOMPRA;datatype:date" />
+</info>
