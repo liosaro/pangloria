@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_selecclaOrd" value="name:IDORDEN;datatype:int,name:FECHAENTREGA;datatype:date" />
+</info>
