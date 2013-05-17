@@ -8,4 +8,6 @@
 	<infoitem key="UD_Recordset1" value="name:TIPOUNIDAD;datatype:blob" />
 	<infoitem key="UD_detorden" value="name:IDORDENPRODUCCION;datatype:int,name:IDENCABEORDPROD;datatype:int,name:CANTIDADORPROD;datatype:real,name:ID_MEDIDA;datatype:int,name:PRODUCTOORDPRODUC;datatype:int,name:FECHAHORAUSUA;datatype:datetime,name:USUARIO;datatype:int" />
 	<infoitem key="UD_numeorden" value="name:IDORDEN;datatype:int" />
+	<infoitem key="UD_carcoti" value="name:IDENCABEZADO;datatype:int,name:FECHACOTIZACION;datatype:date" />
+	<infoitem key="UD_ultimaorden" value="name:IDORDEN;datatype:int" />
 </info>

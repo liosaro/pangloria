@@ -54,6 +54,12 @@ $concoti = mysql_query($query_concoti, $basepangloria) or die(mysql_error());
 $row_concoti = mysql_fetch_assoc($concoti);
 $totalRows_concoti = mysql_num_rows($concoti);
 
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_ULTIMOENCA = "SELECT * FROM TRNENCAORDCOMPRA ORDER BY IDORDEN DESC";
+$ULTIMOENCA = mysql_query($query_ULTIMOENCA, $basepangloria) or die(mysql_error());
+$row_ULTIMOENCA = mysql_fetch_assoc($ULTIMOENCA);
+$totalRows_ULTIMOENCA = mysql_num_rows($ULTIMOENCA);
+
 $maxRows_concoti = 10;
 $pageNum_concoti = 0;
 if (isset($_GET['pageNum_concoti'])) {
@@ -71,26 +77,54 @@ if (isset($_GET['coti'])) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style type="text/css">
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-}
-</style>
+<script language="JavaScript">
+ function Abrir_ventana (pagina) {
+ var opciones="toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, width=508, height=365, top=85, left=140";
+ window.open(pagina,"",opciones);
+ }
+ </script>
+<link href="../../css/forms.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 <table width="820" border="0">
   <tr>
-    <td width="386">Detalles para la orden de compra: <?php echo $row_ultimaorden['IDORDEN']; ?></td>
-    <td width="778">Cargar detalle desde la Cotizacion: 
-      <label for="carcoti"></label>
-      <select name="carcoti" id="carcoti">
-        <?php
+    <td align="center">Ingreso de Orden de Compra</td>
+  </tr>
+  <tr>
+    <td><table width="820" border="0">
+      <tr>
+        <td width="158" class="etifactu"><span class="etifactu">Codigo de Orden de Compra</span></td>
+        <td width="309" class="retorno"><?php echo $row_ULTIMOENCA['IDORDEN']; ?></td>
+        <td width="60" class="etifactu">Cotizacion que genera</td>
+        <td width="275" class="retorno"><?php echo $row_ULTIMOENCA['NUMEROCOTIZACIO']; ?></td>
+      </tr>
+      <tr>
+        <td class="etifactu">Fecha de Emision</td>
+        <td class="retorno"><?php echo $row_ULTIMOENCA['FECHAEMISIONORDCOM']; ?></td>
+        <td class="etifactu">Fecha de Entrega</td>
+        <td class="retorno"><?php echo $row_ULTIMOENCA['FECHAENTREGA']; ?></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td align="right"><a href="compras.php" target="popup" onClick="window.open(this.href, this.target, 'width=810,height=285,resizable = 0'); return false;">Nuevo Encabezado</a></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><form id="form1" name="form1" method="post" action="script.php">
+      <table width="820" border="1" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="7" bgcolor="#999999"><p>Cargar detalle desde la Cotizacion:
+              <label for="carcoti"></label>
+              <select name="carcoti" id="carcoti" onchange="window.location.href='concotiza.php?varia='+document.getElementById(this.id).value ;">
+                <?php
 do {  
 ?>
-        <option value="<?php echo $row_carcoti['IDENCABEZADO']?>"><?php echo $row_carcoti['IDENCABEZADO']?>---<?php echo $row_carcoti['FECHACOTIZACION']?></option>
-        <?php
+                <option value="<?php echo $row_carcoti['IDENCABEZADO']?>"><?php echo $row_carcoti['IDENCABEZADO']?>---<?php echo $row_carcoti['FECHACOTIZACION']?></option>
+                <?php
 } while ($row_carcoti = mysql_fetch_assoc($carcoti));
   $rows = mysql_num_rows($carcoti);
   if($rows > 0) {
@@ -98,11 +132,9 @@ do {
 	  $row_carcoti = mysql_fetch_assoc($carcoti);
   }
 ?>
-      </select></td>
-  </tr>
-  <tr>
-    <td colspan="2"><form id="form1" name="form1" method="post" action="script.php">
-      <table width="820" border="1" cellpadding="0" cellspacing="0">
+              </select>
+            </p></td>
+          </tr>
         <tr>
           <td width="166" bgcolor="#999999">Agregar</td>
           <td width="166" bgcolor="#999999">Numero Referencial</td>
@@ -151,7 +183,7 @@ $totalRows_nommateria = mysql_num_rows($nommateria);
     </form></td>
   </tr>
 </table>
-<p>&nbsp;</p>
+<p class="etifactu"><span class="retorno"></span></p>
 </body>
 </html>
 <?php
@@ -160,4 +192,6 @@ mysql_free_result($ultimaorden);
 mysql_free_result($carcoti);
 
 mysql_free_result($concoti);
+
+mysql_free_result($ULTIMOENCA);
 ?>

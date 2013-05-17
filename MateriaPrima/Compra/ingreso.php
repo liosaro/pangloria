@@ -172,16 +172,6 @@ do {
           <td width="18%" align="center"><input type="text" name="FECHACOMPRA" value="" size="32" /></td>
         </tr>
         <tr>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-        </tr>
-        <tr>
           <td align="left">Codigo de Orden de Compra:</td>
           <td align="left"><label for="select"></label>
             <label for="ordenc"></label>
@@ -213,25 +203,9 @@ do {
 	  $row_comEmple = mysql_fetch_assoc($comEmple);
   }
 ?>
-          </select></td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-        </tr>
-        <tr>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-          <td align="center">&nbsp;</td>
-        </tr>
-        <tr>
-          <td align="left">Estado de la factura: </td>
-          <td><select name="IDESTAFACTURA">
+            </select></td>
+          <td align="center">Estado de la factura: </td>
+          <td align="left"><select name="IDESTAFACTURA">
             <?php
 do {  
 ?>
@@ -245,7 +219,13 @@ do {
   }
 ?>
           </select></td>
-          <td align="left">Tipo de factura:</td>
+          <td align="left" valign="top">Tipo de factura:</td>
+          <td align="center">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="left">&nbsp;</td>
+          <td>&nbsp;</td>
+          <td align="left">&nbsp;</td>
           <td align="center"><select name="ID_TIPO_FACTURA">
             <?php
 do {  
@@ -259,7 +239,7 @@ do {
 	  $row_Ctipfactura = mysql_fetch_assoc($Ctipfactura);
   }
 ?>
-          </select></td>
+            </select></td>
           <td align="center">&nbsp;</td>
           <td align="center">&nbsp;</td>
           <td align="center">&nbsp;</td>
@@ -274,16 +254,6 @@ do {
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td><input name="enviar" type="submit" id="enviar" value="Insertar registro" /></td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td align="right">&nbsp;</td>
         </tr>
       </table></td>
     </tr>
