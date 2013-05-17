@@ -269,7 +269,7 @@ do {
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
-          <td>&nbsp;</td>
+          <td><input name="enviar" type="submit" id="enviar" value="Insertar registro" /></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
@@ -279,123 +279,18 @@ do {
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
-          <td align="right"><input name="enviar" type="submit" id="enviar" value="Insertar registro" /></td>
-        </tr>
-        <tr>
-          <td colspan="8" align="center" bgcolor="#999999"><h1>Dellate de la Compra</h1>
-            <p>&nbsp;</p></td>
+          <td align="right">&nbsp;</td>
         </tr>
       </table></td>
     </tr>
   </table>
 </form>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form3" id="form3">
-  <table width="99%" border="1" align="left">
-    <tr>
-      <td width="8%">Codigo de la Compra:</td>
-      <td width="18%"><input type="text" name="IDCOMPRA" value="" size="32" /></td>
-      <td width="8%">Unidad:</td>
-      <td width="10%" align="left"><select name="IDUNIDAD">
-        <?php
-do {  
-?>
-        <option value="<?php echo $row_comunid['TIPOUNIDAD']?>"><?php echo $row_comunid['TIPOUNIDAD']?></option>
-        <?php
-} while ($row_comunid = mysql_fetch_assoc($comunid));
-  $rows = mysql_num_rows($comunid);
-  if($rows > 0) {
-      mysql_data_seek($comunid, 0);
-	  $row_comunid = mysql_fetch_assoc($comunid);
-  }
-?>
-      </select></td>
-      <td width="12%">ID_DETENCCOM</td>
-      <td width="10%"><label for=""></label>
-      <input name="iddetencompra" type="text" id="iddetencompra" readonly="readonly" /></td>
-      <td width="16%">Nombre de Materia Prima</td>
-      <td width="18%"><select name="MATERIAPRIMA">
-        <?php
-do {  
-?>
-        <option value="<?php echo $row_commatprim['DESCRIPCION']?>"><?php echo $row_commatprim['DESCRIPCION']?></option>
-        <?php
-} while ($row_commatprim = mysql_fetch_assoc($commatprim));
-  $rows = mysql_num_rows($commatprim);
-  if($rows > 0) {
-      mysql_data_seek($commatprim, 0);
-	  $row_commatprim = mysql_fetch_assoc($commatprim);
-  }
-?>
-      </select></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td colspan="6" rowspan="14"><p>&nbsp;
-        </p>
-        <p>&nbsp;</p>
-        <p>
-          <input name="enviar" type="submit" disabled="disabled" value="Insertar registro" />
-      </p></td>
-    </tr>
-    <tr>
-      <td>Cantidad a introducir:</td>
-      <td><input type="text" name="CANTIDADMATPRIMA" value="" size="32" /></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>Precio de la Unidad</td>
-      <td><input type="text" name="PRECIOUNIDAD" value="" size="32" /></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>Descuento:</td>
-      <td><input type="text" name="PRECIOTOTAL" value="" size="32" /></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>Sub_Total:</td>
-      <td><input type="text" name="DESCUENTO" value="" size="32" /></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>Precio Total:</td>
-      <td><input type="text" name="SUBTOTAL" value="" size="32" /></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>Iva:</td>
-      <td><input type="text" name="IVA" value="" size="32" /></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>Total :</td>
-      <td><input type="text" name="TOTAL" value="" size="32" /></td>
-    </tr>
-  </table>
   <input type="hidden" name="MM_insert" value="form3" />
+  <iframe src="ingreso.php" width="820" height="200" align="left" scrolling="Auto"></iframe>
 </form>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form4" id="form4">
-  <input type="hidden" name="MM_insert" value="form4" />
-</form>
+  <input type="hidden" name="MM_insert" value="form4" /></form>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 </body>

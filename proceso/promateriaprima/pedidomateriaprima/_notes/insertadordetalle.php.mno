@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_comboparaunidad" value="name:IDUNIDAD;datatype:int,name:TIPOUNIDAD;datatype:blob" />
+	<infoitem key="UD_comboMatprima" value="name:IDMATPRIMA;datatype:int,name:DESCRIPCION;datatype:blob" />
+</info>
