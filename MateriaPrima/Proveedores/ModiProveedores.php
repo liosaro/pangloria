@@ -52,6 +52,25 @@ if (isset($_GET['totalRows_modiProvee'])) {
   $all_modiProvee = mysql_query($query_modiProvee);
   $totalRows_modiProvee = mysql_num_rows($all_modiProvee);
 }
+$totalPages_modiProvee = ceil($totalRows_modiProvee/$maxRows_modiProvee)-1;$maxRows_modiProvee = 10;
+$pageNum_modiProvee = 0;
+if (isset($_GET['pageNum_modiProvee'])) {
+  $pageNum_modiProvee = $_GET['pageNum_modiProvee'];
+}
+$startRow_modiProvee = $pageNum_modiProvee * $maxRows_modiProvee;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_modiProvee = "SELECT * FROM CATPROVEEDOR ORDER BY IDPROVEEDOR DESC";
+$query_limit_modiProvee = sprintf("%s LIMIT %d, %d", $query_modiProvee, $startRow_modiProvee, $maxRows_modiProvee);
+$modiProvee = mysql_query($query_limit_modiProvee, $basepangloria) or die(mysql_error());
+$row_modiProvee = mysql_fetch_assoc($modiProvee);
+
+if (isset($_GET['totalRows_modiProvee'])) {
+  $totalRows_modiProvee = $_GET['totalRows_modiProvee'];
+} else {
+  $all_modiProvee = mysql_query($query_modiProvee);
+  $totalRows_modiProvee = mysql_num_rows($all_modiProvee);
+}
 $totalPages_modiProvee = ceil($totalRows_modiProvee/$maxRows_modiProvee)-1;
 
 $queryString_modiProvee = "";
@@ -88,7 +107,7 @@ body {
 <body>
 <table border="1">
   <tr>
-    <td colspan="5"><iframe src="modificarProveedor.php" name="modificar" width="850" height="500" align="middle" scrolling="Auto" frameborder="0"></iframe></td>
+    <td colspan="5"><iframe src="modificarProveedor.php" name="modificar" width="850" height="500" align="middle" scrolling="NO" frameborder="0" id="modificar "></iframe></td>
   </tr>
   <tr>
     <td colspan="5"><form action="filtroProveedor.php" method="post" name="form2" target="modificar" id="form2">
