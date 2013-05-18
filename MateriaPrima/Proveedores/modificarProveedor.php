@@ -62,6 +62,14 @@ mysql_select_db($database_basepangloria, $basepangloria);
 $query_modiProvee = sprintf("SELECT * FROM CATPROVEEDOR WHERE IDPROVEEDOR = %s", GetSQLValueString($colname_modiProvee, "int"));
 $modiProvee = mysql_query($query_modiProvee, $basepangloria) or die(mysql_error());
 $row_modiProvee = mysql_fetch_assoc($modiProvee);
+$totalRows_modiProvee = mysql_num_rows($modiProvee);$colname_modiProvee = "-1";
+if (isset($_GET['root'])) {
+  $colname_modiProvee = $_GET['root'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_modiProvee = sprintf("SELECT * FROM CATPROVEEDOR WHERE IDPROVEEDOR = %s", GetSQLValueString($colname_modiProvee, "int"));
+$modiProvee = mysql_query($query_modiProvee, $basepangloria) or die(mysql_error());
+$row_modiProvee = mysql_fetch_assoc($modiProvee);
 $totalRows_modiProvee = mysql_num_rows($modiProvee);
 
 mysql_select_db($database_basepangloria, $basepangloria);

@@ -3,9 +3,9 @@
 <file name="ingresar_proveedor.php" server="www.liosarpc.info//public_html/pan/" local="130131745806935309" remote="130132060800000000" />
 <file name="consultar_proveedores.php" server="www.liosarpc.info//public_html/pan/" local="130131617713186335" remote="130131689400000000" />
 <file name="eliminar_proveedor.php" server="www.liosarpc.info//public_html/pan/" local="130131334868622093" remote="130131718800000000" />
-<file name="modificarProveedor.php" server="www.liosarpc.info//public_html/pan/" local="130131334868682096" remote="130131465000000000" />
-<file name="ModiProveedores.php" server="www.liosarpc.info//public_html/pan/" local="130131396054893445" remote="130131646800000000" />
-<file name="filtroProveedor.php" server="www.liosarpc.info//public_html/pan/" local="130131494697393946" remote="130131566400000000" />
+<file name="modificarProveedor.php" server="www.liosarpc.info//public_html/pan/" local="130132979629094596" remote="130133052000000000" />
+<file name="ModiProveedores.php" server="www.liosarpc.info//public_html/pan/" local="130132979690668118" remote="130133052000000000" />
+<file name="filtroProveedor.php" server="www.liosarpc.info//public_html/pan/" local="130132979925731563" remote="130133052000000000" />
 <file name="consproveTodo.php" server="www.liosarpc.info//public_html/pan/" local="130131607744916183" remote="130131688200000000" />
 <file name="consulProveId.php" server="www.liosarpc.info//public_html/pan/" local="130131613053549819" remote="130131688200000000" />
 <file name="consulProveNombre.php" server="www.liosarpc.info//public_html/pan/" local="130131604544473128" remote="130131688200000000" />
