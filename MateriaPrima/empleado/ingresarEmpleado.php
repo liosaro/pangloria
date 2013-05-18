@@ -73,28 +73,126 @@ $totalRows_ingreemple = mysql_num_rows($ingreemple);
 
 <body>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-  <p>&nbsp;</p>
-  <table align="center">
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">IDEMPLEADO:</td>
-      <td><input type="text" name="IDEMPLEADO" value="" size="32" /></td>
+  <table width="100" border="0">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
     </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">IDDEPTO:</td>
+    <tr>
+      <td>IDEMPLEADO:IDEMPLEADO:</td>
+      <td><input type="text" name="IDEMPLEADO" value="" size="32" /></td>
+      <td>IDDEPTO:</td>
       <td><select name="IDDEPTO">
         <option value="menuitem1" >[ Etiqueta ]</option>
         <option value="menuitem2" >[ Etiqueta ]</option>
       </select></td>
     </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">IDCARGO:</td>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>IDCARGO:</td>
       <td><select name="IDCARGO">
         <option value="menuitem1" >[ Etiqueta ]</option>
         <option value="menuitem2" >[ Etiqueta ]</option>
       </select></td>
+      <td>IDSUCURSAL:</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table align="center">
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">&nbsp;</td>
+      <td>&nbsp;</td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">IDSUCURSAL:</td>
+      <td nowrap="nowrap" align="right">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">&nbsp;</td>
       <td><select name="IDSUCURSAL">
         <option value="menuitem1" >[ Etiqueta ]</option>
         <option value="menuitem2" >[ Etiqueta ]</option>
