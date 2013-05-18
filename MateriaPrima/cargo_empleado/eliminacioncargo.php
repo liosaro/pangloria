@@ -70,21 +70,21 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_consultacargo = sprintf("&totalRows_consultacargo=%d%s", $totalRows_consultacargo, $queryString_consultacargo);
 
-$queryString_consultaProducto = "";
+$queryString_consultacargo = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
   $params = explode("&", $_SERVER['QUERY_STRING']);
   $newParams = array();
   foreach ($params as $param) {
-    if (stristr($param, "pageNum_consultaProducto") == false && 
-        stristr($param, "totalRows_consultaProducto") == false) {
+    if (stristr($param, "pageNum_consultacargo") == false && 
+        stristr($param, "totalRows_consultacargo") == false) {
       array_push($newParams, $param);
     }
   }
   if (count($newParams) != 0) {
-    $queryString_consultaProducto = "&" . htmlentities(implode("&", $newParams));
+    $queryString_consultacargo = "&" . htmlentities(implode("&", $newParams));
   }
 }
-$queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $totalRows_consultaProducto, $queryString_consultaProducto);
+$queryString_consultacargo = sprintf("&totalRows_consultacargo=%d%s", $totalRows_consultacargo, $queryString_consultacargo);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -147,5 +147,4 @@ return true;
 <?php
 mysql_free_result($consultacargo);
 
-mysql_free_result($consultaProducto);
 ?>
