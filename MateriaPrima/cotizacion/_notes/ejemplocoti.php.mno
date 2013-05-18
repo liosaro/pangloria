@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_provee" value="name:IDPROVEEDOR;datatype:int,name:NOMBREPROVEEDOR;datatype:blob" />
+	<infoitem key="UD_comboemple" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
+	<infoitem key="UD_vende" value="name:IDVENDEDOR;datatype:int,name:NOM;datatype:blob" />
+	<infoitem key="UD_combopago" value="name:IDCONDICION;datatype:int,name:TIPO;datatype:blob" />
+</info>
