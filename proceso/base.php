@@ -179,7 +179,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                     <li><a href="../administracion/atribucion/ingresoatribucion.php" target="contenedor">Ingreso</a></li>
                     <li><a href="#">Consulta</a></li>
                     <li><a href="../administracion/atribucion/modificaratribuciones.php" target="contenedor">Modificar</a></li>
-                    <li><a href="#">Eliminar</a></li>
+                    <li><a href="../administracion/atribucion/eliminacionatribu.php" target="contenedor">Eliminar</a></li>
                   </ul>
                 </li>
               </ul>
