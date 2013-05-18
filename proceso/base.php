@@ -154,8 +154,14 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
             </li>
             <li><a href="#" class="MenuBarItemSubmenu">Reporte de Trabajo</a>
               <ul>
-                <li><a href="../MateriaPrima/cargo_empleado/ingreso_cargo_empleado.php" target="contenedor">Ingrso  cargo empleado</a></li>
-                <li><a href="../MateriaPrima/cargo_empleado/consultar_cargo.php" target="contenedor">Consultar Cargos</a></li>
+<li><a href="#" class="MenuBarItemSubmenu">Cargos</a>
+  <ul>
+    <li><a href="../MateriaPrima/cargo_empleado/Ingreso_cargo.php" target="contenedor">Ingreso de Cargos</a></li>
+    <li><a href="#">Consultar Cargos</a></li>
+    <li><a href="../MateriaPrima/cargo_empleado/modificarcargo.php" target="contenedor">Modificar Cargos</a></li>
+    <li><a href="../MateriaPrima/cargo_empleado/eliminacioncargo.php" target="contenedor">Eliminar Cargos</a></li>
+  </ul>
+              </li>
               </ul>
             </li>
             <li><a href="#" class="MenuBarItemSubmenu">Administracion</a>
@@ -172,8 +178,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                   <ul>
                     <li><a href="../administracion/atribucion/ingresoatribucion.php" target="contenedor">Ingreso</a></li>
                     <li><a href="#">Consulta</a></li>
-                    <li><a href="#">Modificar</a></li>
-                    <li><a href="#">Eliminar</a></li>
+                    <li><a href="../administracion/atribucion/modificaratribuciones.php" target="contenedor">Modificar</a></li>
+                    <li><a href="../administracion/atribucion/eliminacionatribu.php" target="contenedor">Eliminar</a></li>
                   </ul>
                 </li>
               </ul>

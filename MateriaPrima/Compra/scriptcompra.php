@@ -16,17 +16,21 @@ echo '<pre>';
 echo '<p>Se guardaron los siguientes registros:</p>';
 echo '<p>__________________________________________________</p>';
 if (isset($_POST['very'])) { 
-     foreach($_POST['very'] as $idMatPrima) { 
-	 			$sql1="SELECT IDMATPRIMA, IDORDEN, IDUNIDAD, CANTPRODUCTO, PRECIOUNITARIO FROM TRNDETALLEORDENCOMPRA WHERE IDORDEN = '$idMatPrima'";
+     foreach($_POST['very'] as $idMatPrima ) { 
+	 		foreach ($_POST['desc'] as $descue){
+	 			$sql1="SELECT IDMATPRIMA, IDORDEN, IDUNIDAD, CANTPRODUCTO, PRECIOUNITARIO FROM TRNDETALLEORDENCOMPRA WHERE IDDETALLECOMP = '$idMatPrima'";
 				$rs1=mysql_query($sql1);
+				$fill = mysql_fetch_array($rs1);
 			   echo '<p>Detalle de Compra: '.$idMatPrima.'</p>';
 			   echo '<p>Materia Prima: '.$fill['IDMATPRIMA'].'</p>';
 			   echo '<p>Orden de Produccion: '.$fill['IDORDEN'].'</p>';
-			   echo '<p>Unidad de Media: '.$fill['CANTPRODUCTO'].'</p>';
-			   echo '<p>Canitdad de Producto: '.$fill['CANTPRODUCTO'].'</p>';
+			   echo '<p>Unidad de Media: '.$fill['IDUNIDAD'].'</p>';
+			   echo '<p>Cantidad de Producto: '.$fill['CANTPRODUCTO'].'</p>';
+			   echo '<p>Descuento: '.$descue.'</p>';
 			   echo '<p>Precio Unitario: '.$fill['PRECIOUNITARIO'].'</p>';
 			   echo '<p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>';
      } 
+	 }
 }?> 
 </head> 
  

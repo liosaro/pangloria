@@ -24,6 +24,8 @@ if (isset($_POST['very'])) {
 			   echo '<p>Detalle de Entrada: '.$idMatPrima.'</p>';
 			   echo '<p>Canitdad de Producto: '.$fill['CANTPRODUCTO'].'</p>';
 			   echo '<p>Materia Prima: '.$fill['IDMATPRIMA'].'</p>';
+			   echo '<p>Unidad de Medida: '.$fill['IDUNIDAD'].'</p>';
+			   echo '<p>Canidad: '.$fill['CANTPRODUCTO'].'</p>';
 			   echo '<p>Precio Unitario: '.$fill['PRECIOUNITARIO'].'</p>';
 			   echo '<p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>';
      } 

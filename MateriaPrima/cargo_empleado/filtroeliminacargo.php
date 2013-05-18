@@ -31,7 +31,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$maxRows_filtradocargo = 15;
+$maxRows_filtradocargo = 10;
 $pageNum_filtradocargo = 0;
 if (isset($_GET['pageNum_filtradocargo'])) {
   $pageNum_filtradocargo = $_GET['pageNum_filtradocargo'];
@@ -39,7 +39,7 @@ if (isset($_GET['pageNum_filtradocargo'])) {
 $startRow_filtradocargo = $pageNum_filtradocargo * $maxRows_filtradocargo;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_filtradocargo = "SELECT * FROM CATCARGO ORDER BY IDCARGO DESC";
+$query_filtradocargo = "SELECT * FROM CATCARGO";
 $query_limit_filtradocargo = sprintf("%s LIMIT %d, %d", $query_filtradocargo, $startRow_filtradocargo, $maxRows_filtradocargo);
 $filtradocargo = mysql_query($query_limit_filtradocargo, $basepangloria) or die(mysql_error());
 $row_filtradocargo = mysql_fetch_assoc($filtradocargo);
@@ -63,24 +63,43 @@ body {
 	margin-top: 0px;
 }
 </style>
+<script language="JavaScript">
+function aviso(url){
+if (!confirm("ALERTA!! va a proceder a eliminar este registro, si desea eliminarlo de click en ACEPTAR\n de lo contrario de click en CANCELAR.")) {
+return false;
+}
+else {
+document.location = url;
+return true;
+}
+}
+</script>
 </head>
 
 <body>
-<iframe src="modificadorcargo.php" name="modiprodu" width="780" height="250" align="middle" scrolling="No" frameborder="0" id="modiproducs"></iframe>
-<p>&nbsp;</p>
-<table width="830" border="1" cellpadding="0" cellspacing="0">
+<table width="821" border="1">
   <tr>
-    <td>Modificacion</td>
-    <td>ID de Cargo</td>
-    <td>Nombre de Cargo</td>
+    <td colspan="10" align="center" bgcolor="#999999"><h1>Eliminar Cargos </h1></td>
   </tr>
-  <?php do { ?>
-    <tr>
-      <td><a href="modificadorcargo.php?>?root=<?php echo $row_filtradocargo['IDCARGO']; ?>" target="modiprodu">Modificar</a></td>
-      <td><?php echo $row_filtradocargo['IDCARGO']; ?></td>
-      <td><?php echo $row_filtradocargo['CARGO']; ?></td>
-    </tr>
-    <?php } while ($row_filtradocargo = mysql_fetch_assoc($filtradocargo)); ?>
+  <tr>
+    <td colspan="10"><table width="830" border="1" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="3">&nbsp;</td>
+        </tr>
+      <tr>
+        <td>Eliminacion</td>
+        <td>Id Cargo</td>
+        <td>Nombre del Cargo</td>
+        </tr>
+      <?php do { ?>
+      <tr>
+        <td><a href="javascript:;" onclick="aviso('eliminarCargo.php?root=<?php echo $row_filtradocargo['IDCARGO'];?>');return false;">Eliminar</a></td>
+        <td><?php echo $row_filtradocargo['IDCARGO']; ?></td>
+        <td><?php echo $row_filtradocargo['CARGO']; ?></td>
+        </tr>
+      <?php } while ($row_filtradocargo = mysql_fetch_assoc($filtradocargo)); ?>
+    </table></td>
+  </tr>
 </table>
 </body>
 </html>

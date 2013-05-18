@@ -1,3 +1,60 @@
+<?php require_once('../../Connections/basepangloria.php'); ?>
+<?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_provee = "SELECT IDPROVEEDOR, NOMBREPROVEEDOR FROM CATPROVEEDOR ORDER BY IDPROVEEDOR DESC";
+$provee = mysql_query($query_provee, $basepangloria) or die(mysql_error());
+$row_provee = mysql_fetch_assoc($provee);
+$totalRows_provee = mysql_num_rows($provee);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_comboemple = "SELECT IDEMPLEADO, NOMBREEMPLEADO FROM CATEMPLEADO ORDER BY IDEMPLEADO DESC";
+$comboemple = mysql_query($query_comboemple, $basepangloria) or die(mysql_error());
+$row_comboemple = mysql_fetch_assoc($comboemple);
+$totalRows_comboemple = mysql_num_rows($comboemple);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_vende = "SELECT IDVENDEDOR, NOM FROM CATVENDEDOR_PROV ORDER BY IDVENDEDOR DESC";
+$vende = mysql_query($query_vende, $basepangloria) or die(mysql_error());
+$row_vende = mysql_fetch_assoc($vende);
+$totalRows_vende = mysql_num_rows($vende);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_combopago = "SELECT IDCONDICION, TIPO FROM CATCONDICIONPAGO ORDER BY IDCONDICION DESC";
+$combopago = mysql_query($query_combopago, $basepangloria) or die(mysql_error());
+$row_combopago = mysql_fetch_assoc($combopago);
+$totalRows_combopago = mysql_num_rows($combopago);
+?>
 <!--
 To change this template, choose Tools | Templates
 and open the template in the editor.
@@ -88,21 +145,76 @@ and open the template in the editor.
             </tr>
             <tr>
                 <td>Empleado</td>
-                <td><input type="text" id="empleado"  name="empleado"  size="32"></td>
+                <td><label for="emple"></label>
+                  <select name="emple" id="emple">
+                    <?php
+do {  
+?>
+                    <option value="<?php echo $row_comboemple['IDEMPLEADO']?>"><?php echo $row_comboemple['NOMBREEMPLEADO']?></option>
+                    <?php
+} while ($row_comboemple = mysql_fetch_assoc($comboemple));
+  $rows = mysql_num_rows($comboemple);
+  if($rows > 0) {
+      mysql_data_seek($comboemple, 0);
+	  $row_comboemple = mysql_fetch_assoc($comboemple);
+  }
+?>
+                </select>                  <label for="comboproveedor"></label></td>
             </tr>
             <tr>
                 <td>Proveedor</td>
-                <td><input type="text" id="proveedor"  name="proveedor"  size="32"></td>
+                <td><select name="comboproveedor" id="comboproveedor">
+                  <?php
+do {  
+?>
+                  <option value="<?php echo $row_provee['IDPROVEEDOR']?>"><?php echo $row_provee['NOMBREPROVEEDOR']?></option>
+                  <?php
+} while ($row_provee = mysql_fetch_assoc($provee));
+  $rows = mysql_num_rows($provee);
+  if($rows > 0) {
+      mysql_data_seek($provee, 0);
+	  $row_provee = mysql_fetch_assoc($provee);
+  }
+?>
+                </select></td>
             </tr>
             <tr>
                 <td>Vendedor</td>
-                <td><input type="text" id="vendedor"  name="vendedor"  size="32"></td>
+                <td><label for="combovende"></label>
+                  <select name="combovende" id="combovende">
+                    <?php
+do {  
+?>
+                    <option value="<?php echo $row_vende['IDVENDEDOR']?>"><?php echo $row_vende['NOM']?></option>
+                    <?php
+} while ($row_vende = mysql_fetch_assoc($vende));
+  $rows = mysql_num_rows($vende);
+  if($rows > 0) {
+      mysql_data_seek($vende, 0);
+	  $row_vende = mysql_fetch_assoc($vende);
+  }
+?>
+                </select></td>
             </tr>
         </table>
         <table style="font-family: verdana; font-size: 0.9em;">
             <tr>
                 <td>Tipo de pago</td>
-                <td><input type="text" id="condicion_pago"  name="condicion_pago"  size="10"></td>
+                <td><label for="tpago"></label>
+                  <select name="tpago" id="tpago">
+                    <?php
+do {  
+?>
+                    <option value="<?php echo $row_combopago['IDCONDICION']?>"><?php echo $row_combopago['TIPO']?></option>
+                    <?php
+} while ($row_combopago = mysql_fetch_assoc($combopago));
+  $rows = mysql_num_rows($combopago);
+  if($rows > 0) {
+      mysql_data_seek($combopago, 0);
+	  $row_combopago = mysql_fetch_assoc($combopago);
+  }
+?>
+                </select></td>
                 <td>Validez</td>
                 <td><input type="text" id="validez"  name="validez"  size="10"></td>
                 <td>Plazo Entrega</td>
@@ -139,3 +251,12 @@ and open the template in the editor.
         ?>
     </body>
 </html>
+<?php
+mysql_free_result($provee);
+
+mysql_free_result($comboemple);
+
+mysql_free_result($vende);
+
+mysql_free_result($combopago);
+?>

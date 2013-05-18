@@ -114,35 +114,39 @@ function lookup(inputString) {
 
 <body>
 <form id="form1" name="consultaproducto" onsubmit="return OnSubmitForm();" target="conte">
- <table width="820" border="0">
-  <tr>
-    <td bgcolor="#999999"><h1>Consultar</h1></td>
-  </tr>
-          <tr><div id="radiosearch">   
-           <p>
-            <label for="q"></label>
+  <table width="820" border="1">
+    <tr>
+      <td><table width="820" border="0">
+        <tr>
+          <td align="center" bgcolor="#999999"><h1>Consultar Cargo</h1></td>
+        </tr>
+        <tr>
+          <div id="radiosearch">
+            <p>
+              <label for="q"></label>
               <input type="text" name="q" id="q" />
-
-             <tr> <TD><b>Digite la informacion requerida:</tr>
-             <input type="text" size="50" value="" name="q" id="q"  onkeyup="lookup(this.value);" onblur="fill();" />
-                                    <div class="suggestionsBox" id="suggestions" style="display: none;">
-
-				                    <div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
-                                    </div>
-                                    <p>  </p>
-
-
-              <input type="submit" name="enviar" id="enviar" value="Enviar" />
-               </p>
+            </p>
+          </div>
+        </tr>
+        <tr>
+          <td><b>Digite la informacion requerida:</td>
+        </tr>
+      </table>
+        <input type="text" size="50" value="" name="q" id="q"  onkeyup="lookup(this.value);" onblur="fill();" />
+        <div class="suggestionsBox" id="suggestions" style="display: none;">
+          <div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
+        </div>
+        <p> </p>
+      <input type="submit" name="enviar" id="enviar" value="Enviar" /></td><td></p></td>
       <table width="820px" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="186">Seleccione un tipo de Consulta:</td>
           <td width="188">
-          <input name="radiosearch" type="radio" value="1" checked>
+          <input name="radiosearch" type="radio" value="1" checked="checked" />
           Id Atribucion</td>
           <td width="39">&nbsp;</td>
           <td width="200">&nbsp;</td>
-          </tr>
+        </tr>
           <tr>
             <td>&nbsp;</td>
             <td><input type="radio" name="radiosearch" id="id6" value="id" />
@@ -171,11 +175,15 @@ function lookup(inputString) {
           <td>&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
-        </table>
-    </div>
-  </tr>
-</table>
-<iframe src="" width="820" height="300" scrolling="auto" name="conte" frameborder="0"></iframe>
+      </table>
+    </tr>
+  </table>
+<table width="820" border="1"><tr><td><table width="820" border="0"><tr><div><tbody></tbody></div></tr></table></td>
+    </tr>
+    <tr>
+      <td><iframe src="" name="conte" width="820" height="300" scrolling="auto" frameborder="0" id="conte"></iframe></td>
+    </tr>
+  </table>
 
 </form>
 </body>

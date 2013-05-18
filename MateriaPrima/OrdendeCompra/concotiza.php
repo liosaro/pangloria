@@ -172,8 +172,7 @@ $totalRows_nommateria = mysql_num_rows($nommateria);
         <tr>
           <td align="right" bgcolor="#CCCCCC">Total de la Compra</td>
           <td bgcolor="#CCCCCC"><?php 
-	$col = $_request['coti'];
-	$result = mysql_query("Select sum(CANTPRODUCTO * PRECIOUNITARIO ) as total from TRNDETALLECOTIZACION where IDENCABEZADO =" . $_GET['coti']);
+	$result = mysql_query("Select sum(CANTPRODUCTO * PRECIOUNITARIO ) as total from TRNDETALLECOTIZACION where IDENCABEZADO = " . $_GET['varia']);
 	$row = mysql_fetch_array($result, MYSQL_ASSOC);
 	echo $row['total'];
 	 ?></td>
