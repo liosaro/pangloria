@@ -1,3 +1,16 @@
+<head>
+<script language="JavaScript">
+function aviso(url){
+if (!confirm("ALERTA!! va a proceder a eliminar este registro, si desea eliminarlo de click en ACEPTAR\n de lo contrario de click en CANCELAR.")) {
+return false;
+}
+else {
+document.location = url;
+return true;
+}
+}
+</script>
+</head>
 <?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -31,53 +44,37 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$maxRows_filtrelimiSucur = 10;
-$pageNum_filtrelimiSucur = 0;
-if (isset($_GET['pageNum_filtrelimiSucur'])) {
-  $pageNum_filtrelimiSucur = $_GET['pageNum_filtrelimiSucur'];
+$maxRows_filtroelimiSucur = 10;
+$pageNum_filtroelimiSucur = 0;
+if (isset($_GET['pageNum_filtroelimiSucur'])) {
+  $pageNum_filtroelimiSucur = $_GET['pageNum_filtroelimiSucur'];
 }
-$startRow_filtrelimiSucur = $pageNum_filtrelimiSucur * $maxRows_filtrelimiSucur;
+$startRow_filtroelimiSucur = $pageNum_filtroelimiSucur * $maxRows_filtroelimiSucur;
 
-$colname_filtrelimiSucur = "-1";
+$colname_filtroelimiSucur = "-1";
 if (isset($_POST['elimisucur'])) {
-  $colname_filtrelimiSucur = $_POST['elimisucur'];
+  $colname_filtroelimiSucur = $_POST['elimisucur'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_filtrelimiSucur = sprintf("SELECT * FROM CATSUCURSAL WHERE NOMBRESUCURSAL LIKE %s ORDER BY NOMBRESUCURSAL ASC", GetSQLValueString("%" . $colname_filtrelimiSucur . "%", "text"));
-$query_limit_filtrelimiSucur = sprintf("%s LIMIT %d, %d", $query_filtrelimiSucur, $startRow_filtrelimiSucur, $maxRows_filtrelimiSucur);
-$filtrelimiSucur = mysql_query($query_limit_filtrelimiSucur, $basepangloria) or die(mysql_error());
-$row_filtrelimiSucur = mysql_fetch_assoc($filtrelimiSucur);
+$query_filtroelimiSucur = sprintf("SELECT * FROM CATSUCURSAL WHERE NOMBRESUCURSAL LIKE %s ORDER BY IDSUCURSAL ASC", GetSQLValueString("%" . $colname_filtroelimiSucur . "%", "text"));
+$query_limit_filtroelimiSucur = sprintf("%s LIMIT %d, %d", $query_filtroelimiSucur, $startRow_filtroelimiSucur, $maxRows_filtroelimiSucur);
+$filtroelimiSucur = mysql_query($query_limit_filtroelimiSucur, $basepangloria) or die(mysql_error());
+$row_filtroelimiSucur = mysql_fetch_assoc($filtroelimiSucur);
 
-if (isset($_GET['totalRows_filtrelimiSucur'])) {
-  $totalRows_filtrelimiSucur = $_GET['totalRows_filtrelimiSucur'];
+if (isset($_GET['totalRows_filtroelimiSucur'])) {
+  $totalRows_filtroelimiSucur = $_GET['totalRows_filtroelimiSucur'];
 } else {
-  $all_filtrelimiSucur = mysql_query($query_filtrelimiSucur);
-  $totalRows_filtrelimiSucur = mysql_num_rows($all_filtrelimiSucur);
+  $all_filtroelimiSucur = mysql_query($query_filtroelimiSucur);
+  $totalRows_filtroelimiSucur = mysql_num_rows($all_filtroelimiSucur);
 }
-$totalPages_filtrelimiSucur = ceil($totalRows_filtrelimiSucur/$maxRows_filtrelimiSucur)-1;
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
-<script language="JavaScript">
-function aviso(url){
-if (!confirm("ALERTA!! va a proceder a eliminar este registro, si desea eliminarlo de click en ACEPTAR\n de lo contrario de click en CANCELAR.")) {
-return false;
-}
-else {
-document.location = url;
-return true;
-}
-}
-</script>
-</head>
+$totalPages_filtroelimiSucur = ceil($totalRows_filtroelimiSucur/$maxRows_filtroelimiSucur)-1;
 
-<body>
+mysql_free_result($filtroelimiSucur);
+?>
+
 <table border="1">
   <tr>
-    <td>eliminacion </td>
+    <td>Eliminacion</td>
     <td>IDSUCURSAL</td>
     <td>NOMBRESUCURSAL</td>
     <td>DIRECCIONSUCURSAL</td>
@@ -85,16 +82,11 @@ return true;
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="javascript:;" onclick="aviso('eliminarSucur.php?root=<?php echo $row_filtrelimiSucur['IDSUCURSAL']; ?>'); return false;">Eliminar</a></td>
-      <td><?php echo $row_filtrelimiSucur['IDSUCURSAL']; ?></td>
-      <td><?php echo $row_filtrelimiSucur['NOMBRESUCURSAL']; ?></td>
-      <td><?php echo $row_filtrelimiSucur['DIRECCIONSUCURSAL']; ?></td>
-      <td><?php echo $row_filtrelimiSucur['TELEFONOSUCURSAL']; ?></td>
+      <td><a href="javascript:;" onclick="aviso('eliminarSucur.php?root=<?php echo $row_filtroelimiSucur['IDSUCURSAL']; ?>'); return false;">Eliminar</a></td>
+      <td><?php echo $row_filtroelimiSucur['IDSUCURSAL']; ?></td>
+      <td><?php echo $row_filtroelimiSucur['NOMBRESUCURSAL']; ?></td>
+      <td><?php echo $row_filtroelimiSucur['DIRECCIONSUCURSAL']; ?></td>
+      <td><?php echo $row_filtroelimiSucur['TELEFONOSUCURSAL']; ?></td>
     </tr>
-    <?php } while ($row_filtrelimiSucur = mysql_fetch_assoc($filtrelimiSucur)); ?>
+    <?php } while ($row_filtroelimiSucur = mysql_fetch_assoc($filtroelimiSucur)); ?>
 </table>
-</body>
-</html>
-<?php
-mysql_free_result($filtrelimiSucur);
-?>

@@ -98,7 +98,7 @@ return true;
 </tr>
 <?php do { ?>
 <tr>
-  <td><a href="javascript:;" onclick="aviso('modiSucursal.php?root=<?php echo $row_elimiSucur['IDSUCURSAL']; ?>'); return false;">Eliminar</a></td>
+  <td><a href="javascript:;" onclick="aviso('eliminarSucur.php?root=<?php echo $row_elimiSucur['IDSUCURSAL']; ?>'); return false;">Eliminar</a></td>
   <td><?php echo $row_elimiSucur['IDSUCURSAL']; ?></td>
   <td><?php echo $row_elimiSucur['NOMBRESUCURSAL']; ?></td>
   <td><?php echo $row_elimiSucur['DIRECCIONSUCURSAL']; ?></td>
