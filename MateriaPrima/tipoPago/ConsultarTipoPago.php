@@ -14,25 +14,17 @@ body {
 <script type="text/javascript">
 function OnSubmitForm()
 {
-  if(document.consultaproducto.radiosearch[0].checked == true)
+  if(document.ConsultarTipoPago.radiosearch[0].checked == true)
   {
-    document.consultaproducto.action ="consultaid.php?q=";
+    document.ConsultarTipoPago.action ="consultIdTipoPago.php?q=";
   }
-  if(document.consultaproducto.radiosearch[1].checked == true)
+   if(document.ConsultarTipoPago.radiosearch[1].checked == true)
   {
-    document.consultaproducto.action ="consultacaducidad.php?q=";
+    document.ConsultarTipoPago.action ="consulnombreTipoPago.php?root=" ;
   }
-   if(document.consultaproducto.radiosearch[2].checked == true)
+   if(document.ConsultarTipoPago.radiosearch[2].checked == true)
   {
-    document.consultaproducto.action ="consultacosto.php?q=";
-  }
-   if(document.consultaproducto.radiosearch[3].checked == true)
-  {
-    document.consultaproducto.action ="consultanombre.php?q=" ;
-  }
-   if(document.consultaproducto.radiosearch[4].checked == true)
-  {
-    document.consultaproducto.action ="consultatodos.php";
+    document.ConsultarTipoPago.action ="consultTodoTipoPago.php";
   }
   return true;
 }
@@ -42,7 +34,7 @@ function OnSubmitForm()
 </head>
 
 <body>
-<form id="form1" name="consultaproducto" onsubmit="return OnSubmitForm();" target="conte">
+<form id="form1" name="ConsultarTipoPago" onsubmit="return OnSubmitForm();" target="conte">
 <table width="600" border="0">
   <tr>
     <td bgcolor="#999999"><h1>Consultar Productos</h1></td>
@@ -50,8 +42,8 @@ function OnSubmitForm()
   <tr>
     <td><div id="radiosearch">
       <p>
-        <label for="q"></label>
-        <input type="text" name="q" id="q" />
+        <label for="root"></label>
+        <input type="text" name="root" id="root" />
         <input type="submit" name="enviar" id="enviar" value="Enviar" />
       </p>
       <table width="820px" border="0" cellspacing="0" cellpadding="0">
@@ -66,22 +58,8 @@ function OnSubmitForm()
         </tr>
         <tr>
           <td>&nbsp;</td>
-          <td><input type="radio" name="radiosearch" id="id6" value="id" />
-            Dias de Caducidad</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td><input type="radio" name="radiosearch" id="id7" value="id" />
-            Precio de Costo</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
           <td><input type="radio" name="radiosearch" id="id8" value="id" />
-            Nombre de Producto</td>
+            Tipo de Pago</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
