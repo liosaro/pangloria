@@ -98,7 +98,7 @@ return true;
     </tr>
     <?php do { ?>
     <tr>
-      <td><a href="javascript:;" onclick="aviso('eliminar_proveedor.php'); return false;">Eliminar</a></td>
+      <td><a href="javascript:;" onclick="aviso('eliminar_proveedor.php?root=<?php echo $row_eliminarPorvee['IDPROVEEDOR']; ?>'); return false;">Eliminar</a></td>
       <td><?php echo $row_eliminarPorvee['IDPROVEEDOR']; ?></td>
       <td><?php echo $row_eliminarPorvee['IDPAIS']; ?></td>
       <td><?php echo $row_eliminarPorvee['NOMBREPROVEEDOR']; ?></td>

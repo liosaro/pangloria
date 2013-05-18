@@ -90,7 +90,7 @@ return true;
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="javascript:;" onclick="aviso('eliminar_proveedor.php'); return false;">Eliminar</a></td>
+      <td><a href="javascript:;" onclick="aviso('eliminar_proveedor.php?root=<?php echo $row_filtroElimiProve['IDPROVEEDOR']; ?>'); return false;">Eliminar</a></td>
       <td><?php echo $row_filtroElimiProve['IDPROVEEDOR']; ?></td>
       <td><?php echo $row_filtroElimiProve['IDPAIS']; ?></td>
       <td><?php echo $row_filtroElimiProve['NOMBREPROVEEDOR']; ?></td>
