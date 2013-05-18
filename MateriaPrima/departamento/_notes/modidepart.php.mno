@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:IDDEPTO;datatype:int,name:DEPARTAMENTO;datatype:blob,name:NUMEROTELEFONO;datatype:blob" />
+	<infoitem key="UD_modidepar" value="name:IDDEPTO;datatype:int,name:DEPARTAMENTO;datatype:blob,name:NUMEROTELEFONO;datatype:blob" />
+	<infoitem key="UD_modifidept" value="name:IDDEPTO;datatype:int,name:DEPARTAMENTO;datatype:blob,name:NUMEROTELEFONO;datatype:blob" />
+</info>
