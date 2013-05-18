@@ -49,7 +49,7 @@ if (isset($_GET['IDORDEN'])) {
   $colname_consuldetaorprod = $_GET['IDORDEN'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_consuldetaorprod = sprintf("SELECT IDMATPRIMA, IDORDEN IDUNIDAD, CANTPRODUCTO, PRECIOUNITARIO FROM TRNDETALLEORDENCOMPRA WHERE IDORDEN = %s", GetSQLValueString($colname_consuldetaorprod, "int"));
+$query_consuldetaorprod = sprintf("SELECT IDMATPRIMA, IDORDEN, IDUNIDAD, CANTPRODUCTO, PRECIOUNITARIO FROM TRNDETALLEORDENCOMPRA WHERE IDORDEN = %s", GetSQLValueString($colname_consuldetaorprod, "int"));
 $query_limit_consuldetaorprod = sprintf("%s LIMIT %d, %d", $query_consuldetaorprod, $startRow_consuldetaorprod, $maxRows_consuldetaorprod);
 $consuldetaorprod = mysql_query($query_limit_consuldetaorprod, $basepangloria) or die(mysql_error());
 $row_consuldetaorprod = mysql_fetch_assoc($consuldetaorprod);
@@ -97,7 +97,7 @@ do {
     </select></td>
   </tr>
   <tr>
-    <td><form action="" method="post">
+    <td><form action="scriptcompra.php" method="post" target="_self">
       <table border="1">
         <tr>
           <td>Agregar</td>
@@ -132,10 +132,14 @@ $totalRows_consulunipeso = mysql_num_rows($consulunipeso);
           <td><?php echo $row_consuldetaorprod['PRECIOUNITARIO']; ?></td>
           <td><label for="desc[]"></label>
             <input type="text" name="desc[]2" id="desc[]" /></td>
-          <td><?php echo $row_consuldetaorprod['PRECIOUNITARIO'] *  $row_consuldetaorprod['CANTPRODUCTO']; ?></td>
+          <td><label for="costo"></label>
+            <input type="text" name="costo" id="costo" /></td>
         </tr>
         <?php } while ($row_consuldetaorprod = mysql_fetch_assoc($consuldetaorprod)); ?>
       </table>
+      <p>
+        <input type="submit" name="sender" id="sender" value="Enviar" />
+      </p>
     </form></td>
   </tr>
   <tr>
