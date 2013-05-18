@@ -126,9 +126,11 @@ and open the template in the editor.
 
     </head>
     <body>
-    <table style="font-family: verdana; font-size: 0.9em;">
-        <form name="principal" id="principal" enctype="multipart/form-data" method="post" autocomplete="off" action="guardar_ejemplo.php">   
-        <h1 style="font-family: verdana; font-size: 0.9em; font-weight: bold; text-align: center;">Ingreso de Cotizaci&oacute;n</h1>
+    <table width="820" style="font-family: verdana; font-size: 0.9em;">
+        <td align="center" bgcolor="#999999"><form name="principal" id="principal" enctype="multipart/form-data" method="post" autocomplete="off" action="guardar_ejemplo.php">
+          <h1>&nbsp;</h1>
+           
+        <h1 style="font-family: verdana; font-size: 0.9em; font-weight: bold; text-align: center;"><h1>Ingreso de Cotizaci&oacute;n</h1>
         </table>
         <table style="font-family: verdana; font-size: 0.9em;">
             <tr>

@@ -70,21 +70,21 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_consultacargo = sprintf("&totalRows_consultacargo=%d%s", $totalRows_consultacargo, $queryString_consultacargo);
 
-$queryString_consultaProducto = "";
+$queryString_consultacargo = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
   $params = explode("&", $_SERVER['QUERY_STRING']);
   $newParams = array();
   foreach ($params as $param) {
-    if (stristr($param, "pageNum_consultaProducto") == false && 
-        stristr($param, "totalRows_consultaProducto") == false) {
+    if (stristr($param, "pageNum_consultacargo") == false && 
+        stristr($param, "totalRows_consultacargo") == false) {
       array_push($newParams, $param);
     }
   }
   if (count($newParams) != 0) {
-    $queryString_consultaProducto = "&" . htmlentities(implode("&", $newParams));
+    $queryString_consultacargo = "&" . htmlentities(implode("&", $newParams));
   }
 }
-$queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $totalRows_consultaProducto, $queryString_consultaProducto);
+$queryString_consultacargo = sprintf("&totalRows_consultacargo=%d%s", $totalRows_consultacargo, $queryString_consultacargo);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -99,17 +99,15 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
   <table width="844" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="844" align="center"><div class="cont">
-        <form action="filtromodificaproducto.php" method="post" name="envioproductomodifica" target="modiprodu" id="envioproductomodifica">
+        <form action="filtromodificacargo.php" method="post" name="envioproductomodifica" target="modiprodu" id="envioproductomodifica">
           <table width="1026" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="800" colspan="6" align="left">&nbsp;
-                <iframe src="cmodproducto.php" name="modiprodu" width="830" height="400" align="middle" scrolling="auto" frameborder="0" id="modiprodu"></iframe>
+                <iframe src="modificadorcargo.php" name="modiprodu" width="830" height="400" align="middle" scrolling="auto" frameborder="0" id="modiprodu"></iframe>
                 <p><a href="<?php printf("%s?pageNum_consultacargo=%d%s", $currentPage, 0, $queryString_consultacargo); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacargo=%d%s", $currentPage, max(0, $pageNum_consultacargo - 1), $queryString_consultacargo); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacargo=%d%s", $currentPage, min($totalPages_consultacargo, $pageNum_consultacargo + 1), $queryString_consultacargo); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacargo=%d%s", $currentPage, $totalPages_consultacargo, $queryString_consultacargo); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></p>
                 <table width="830" border="1">
                   <tr>
-                    <td colspan="3">Ingrese el Nombre del Producto a Modificar:
-                      <input type="text" name="filtroprod" id="filtroprod" />
-                      <input type="submit" name="filtrar" id="filtrar" value="Filtrar" /></td>
+                    <td colspan="3">&nbsp;</td>
                     </tr>
                   <tr>
                     <td>Modificar</td>
@@ -118,7 +116,7 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
                     </tr>
                   <?php do { ?>
                     <tr>
-                      <td><a href="cmodproducto.php?root=<?php echo $row_consultacargo['IDCARGO']; ?>" target="modiprodu">Modificar</a></td>
+                      <td><a href="modificadorcargo.php?root=<?php echo $row_consultacargo['IDCARGO']; ?>" target="modiprodu">Modificar</a></td>
                       <td><?php echo $row_consultacargo['IDCARGO']; ?></td>
                       <td><?php echo $row_consultacargo['CARGO']; ?></td>
                       </tr>
@@ -137,5 +135,4 @@ $queryString_consultaProducto = sprintf("&totalRows_consultaProducto=%d%s", $tot
 <?php
 mysql_free_result($consultacargo);
 
-mysql_free_result($consultaProducto);
 ?>
