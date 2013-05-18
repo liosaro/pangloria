@@ -93,7 +93,7 @@ return true;
         </tr>
       <?php do { ?>
       <tr>
-        <td><a href="javascript:;" onclick="aviso('eliminarCargo.php?root="<?php echo $row_filtradocargo['IDCARGO'];?>');return false;">Eliminar</a></td>
+        <td><a href="javascript:;" onclick="aviso('eliminarCargo.php?root=<?php echo $row_filtradocargo['IDCARGO'];?>');return false;">Eliminar</a></td>
         <td><?php echo $row_filtradocargo['IDCARGO']; ?></td>
         <td><?php echo $row_filtradocargo['CARGO']; ?></td>
         </tr>

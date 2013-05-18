@@ -33,7 +33,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 $currentPage = $_SERVER["PHP_SELF"];
 
-$maxRows_consultacargo = 5;
+$maxRows_consultacargo = 10;
 $pageNum_consultacargo = 0;
 if (isset($_GET['pageNum_consultacargo'])) {
   $pageNum_consultacargo = $_GET['pageNum_consultacargo'];
@@ -128,7 +128,7 @@ return true;
                     </tr>
                   <?php do { ?>
                     <tr>
-                      <td><a href="javascript:;" onclick="aviso('eliminarCargo.php?root=<?php echo $row_consultacargo['ID_ATRIB'];?>'); return false;">Eliminar</a></td>
+                      <td><a href="javascript:;" onclick="aviso('eliminarCargo.php?root=<?php echo $row_consultacargo['IDCARGO'];?>'); return false;">Eliminar</a></td>
                       <td><?php echo $row_consultacargo['IDCARGO']; ?></td>
                       <td><?php echo $row_consultacargo['CARGO']; ?></td>
                       </tr>
