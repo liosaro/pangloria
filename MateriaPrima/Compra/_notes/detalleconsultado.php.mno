@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
 	<infoitem key="UD_selecclaOrd" value="name:IDORDEN;datatype:int,name:FECHAENTREGA;datatype:date" />
-	<infoitem key="UD_consuldetaorprod" value="name:IDMATPRIMA;datatype:int,name:IDUNIDAD;datatype:int,name:CANTPRODUCTO;datatype:int,name:PRECIOUNITARIO;datatype:real" />
+	<infoitem key="UD_consuldetaorprod" value="name:IDDETALLECOMP;datatype:int,name:IDORDEN;datatype:int,name:IDMATPRIMA;datatype:int,name:IDUNIDAD;datatype:int,name:CANTPRODUCTO;datatype:int,name:PRECIOUNITARIO;datatype:real" />
 	<infoitem key="UD_consulunipeso" value="name:IDUNIDAD;datatype:int,name:TIPOUNIDAD;datatype:blob" />
 	<infoitem key="UD_consulmatpri" value="name:IDMATPRIMA;datatype:int,name:DESCRIPCION;datatype:blob" />
 	<infoitem key="UD_consunidad" value="name:TIPOUNIDAD;datatype:blob" />

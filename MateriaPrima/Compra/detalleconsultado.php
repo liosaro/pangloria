@@ -49,7 +49,7 @@ if (isset($_GET['IDORDEN'])) {
   $colname_consuldetaorprod = $_GET['IDORDEN'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_consuldetaorprod = sprintf("SELECT IDMATPRIMA, IDORDEN, IDUNIDAD, CANTPRODUCTO, PRECIOUNITARIO FROM TRNDETALLEORDENCOMPRA WHERE IDORDEN = %s", GetSQLValueString($colname_consuldetaorprod, "int"));
+$query_consuldetaorprod = sprintf("SELECT IDDETALLECOMP, IDORDEN, IDMATPRIMA, IDUNIDAD, CANTPRODUCTO, PRECIOUNITARIO FROM TRNDETALLEORDENCOMPRA WHERE IDORDEN = %s", GetSQLValueString($colname_consuldetaorprod, "int"));
 $query_limit_consuldetaorprod = sprintf("%s LIMIT %d, %d", $query_consuldetaorprod, $startRow_consuldetaorprod, $maxRows_consuldetaorprod);
 $consuldetaorprod = mysql_query($query_limit_consuldetaorprod, $basepangloria) or die(mysql_error());
 $row_consuldetaorprod = mysql_fetch_assoc($consuldetaorprod);
@@ -97,10 +97,11 @@ do {
     </select></td>
   </tr>
   <tr>
-    <td><form action="scriptcompra.php" method="post" target="_self">
+    <td><form action="scriptcompra.php" method="post" target="_self" id="detil">
       <table border="1">
         <tr>
           <td>Agregar</td>
+          <td>Detalle</td>
           <td>Unidad de Peso</td>
           <td>Materia Prima</td>
           <td>Cantidad de Producto</td>
@@ -121,22 +122,46 @@ $query_consulunipeso = "SELECT * FROM CATUNIDADES where IDUNIDAD='$conunidad' ";
 $consulunipeso = mysql_query($query_consulunipeso, $basepangloria) or die(mysql_error());
 $row_consulunipeso = mysql_fetch_assoc($consulunipeso);
 $totalRows_consulunipeso = mysql_num_rows($consulunipeso);
+$subcosto =($row_consuldetaorprod['CANTPRODUCTO']*$row_consuldetaorprod['PRECIOUNITARIO']);
+$coste = ($row_consuldetaorprod['CANTPRODUCTO']*$row_consuldetaorprod['PRECIOUNITARIO']*0.35)
  
 		?>
         <tr>
-          <td><input type="checkbox" name="very[]2" id="very[]2" value="<?php echo $row_consuldetaorprod['IDORDEN']; ?>" checked="checked" />
+          <td height="33"><input type="checkbox" name="very[]2" id="very[]2" value="<?php echo $row_consuldetaorprod['IDDETALLECOMP']; ?>" checked="checked" />
             <label for="very[]2"></label></td>
+          <td><?php echo $row_consuldetaorprod['IDDETALLECOMP']; ?></td>
           <td><?php echo $row_consulunipeso['TIPOUNIDAD']; ?></td>
           <td><?php echo $row_consulmatpri['DESCRIPCION']; ?></td>
           <td><?php echo $row_consuldetaorprod['CANTPRODUCTO']; ?></td>
           <td><?php echo $row_consuldetaorprod['PRECIOUNITARIO']; ?></td>
+          
           <td><label for="desc[]"></label>
-            <input type="text" name="desc[]2" id="desc[]" /></td>
+            <input type="text" name="desc[]" id="desc[]" onblur="document.this.detil.costo[].value;" /></td>
           <td><label for="costo"></label>
-            <input type="text" name="costo" id="costo" /></td>
+            <input name="costo[]" type="text" id="costo[]" value="<?php echo (($subcosto)-($coste)); ?>" /></td>
         </tr>
         <?php } while ($row_consuldetaorprod = mysql_fetch_assoc($consuldetaorprod)); ?>
+    </table>
+      <table width="820">
+        <tr>
+          <td width="708" align="right">Sub-Total</td>
+          <td width="100"><?php 
+	$result = mysql_query("Select sum(CANTPRODUCTO * PRECIOUNITARIO ) as 'total' FROM TRNDETALLEORDENCOMPRA WHERE IDORDEN  = " . $_GET['IDORDEN']);
+	$row = mysql_fetch_array($result, MYSQL_ASSOC);
+	echo $row['total'];
+	$subto= ($row['total']*0.35);
+	 ?></td>
+        </tr>
+        <tr>
+          <td align="right">IVA</td> 
+          <td> <?php echo ('total'*0.13)  ?></td>
+        </tr>
+        <tr>
+          <td align="right">TOTAL</td>
+          <td>&nbsp;</td>
+        </tr>
       </table>
+      <p>&nbsp;        </p>
       <p>
         <input type="submit" name="sender" id="sender" value="Enviar" />
       </p>
