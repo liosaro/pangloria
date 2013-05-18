@@ -76,7 +76,7 @@ body {
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="<?php echo $row_filtradocargo['IDCARGO']; ?>?root=<?php echo $row_filtradocargo['IDCARGO'']; ?>" target="modiprodu">Modificar</a></td>
+      <td><a href="modificadorcargo.php?>?root=<?php echo $row_filtradocargo['IDCARGO']; ?>" target="modiprodu">Modificar</a></td>
       <td><?php echo $row_filtradocargo['IDCARGO']; ?></td>
       <td><?php echo $row_filtradocargo['CARGO']; ?></td>
     </tr>

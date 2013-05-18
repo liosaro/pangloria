@@ -103,7 +103,7 @@ $queryString_consultacargo = sprintf("&totalRows_consultacargo=%d%s", $totalRows
           <table width="1026" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="800" colspan="6" align="left">&nbsp;
-                <iframe src="modificadorcargo.php" name="modiprodu" width="830" height="400" align="middle" scrolling="auto" frameborder="0" id="modiprodu"></iframe>
+                <iframe src="modificadorcargo.php" name="modiprodu" width="830" height="250" align="middle" scrolling="auto" frameborder="0" id="modiprodu"></iframe>
                 <p><a href="<?php printf("%s?pageNum_consultacargo=%d%s", $currentPage, 0, $queryString_consultacargo); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacargo=%d%s", $currentPage, max(0, $pageNum_consultacargo - 1), $queryString_consultacargo); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacargo=%d%s", $currentPage, min($totalPages_consultacargo, $pageNum_consultacargo + 1), $queryString_consultacargo); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacargo=%d%s", $currentPage, $totalPages_consultacargo, $queryString_consultacargo); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></p>
                 <table width="830" border="1">
                   <tr>

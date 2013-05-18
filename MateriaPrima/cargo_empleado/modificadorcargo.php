@@ -37,9 +37,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE CATPERMISOS SET DESCRIPCION=%s WHERE IDPERMISO=%s",
-                       GetSQLValueString($_POST['DESCRIPCION'], "text"),
-                       GetSQLValueString($_POST['IDPERMISO'], "int"));
+  $updateSQL = sprintf("UPDATE CARGO SET CARGO=%s WHERE IDCARGO=%s",
+                       GetSQLValueString($_POST['CARGO'], "text"),
+                       GetSQLValueString($_POST['IDCARGO'], "int"));
 
   mysql_select_db($database_basepangloria, $basepangloria);
   $Result1 = mysql_query($updateSQL, $basepangloria) or die(mysql_error());
@@ -50,7 +50,7 @@ if (isset($_GET['root'])) {
   $colname_Recordset1 = $_GET['root'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_Recordset1 = sprintf("SELECT * FROM CATPERMISOS WHERE IDPERMISO = %s", GetSQLValueString($colname_Recordset1, "int"));
+$query_Recordset1 = sprintf("SELECT IDCARGO, CARGO FROM CATCARGO WHERE IDCARGO = %s ORDER BY IDCARGO ASC", GetSQLValueString($colname_Recordset1, "int"));
 $Recordset1 = mysql_query($query_Recordset1, $basepangloria) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
@@ -74,12 +74,12 @@ body {
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
   <table align="center">
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Codigo de Pemiso:</td>
-      <td><?php echo $row_Recordset1['IDPERMISO']; ?></td>
+      <td nowrap="nowrap" align="right">Codigo de Cargo:</td>
+      <td><?php echo $row_Recordset1['IDCARGO']; ?></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Permiso:</td>
-      <td><input type="text" name="DESCRIPCION" value="<?php echo htmlentities($row_Recordset1['DESCRIPCION'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td nowrap="nowrap" align="right">Cargo:</td>
+      <td><input type="text" name="CARGO" value="<?php echo htmlentities($row_Recordset1['CARGO']); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -87,7 +87,7 @@ body {
     </tr>
   </table>
   <input type="hidden" name="MM_update" value="form1" />
-  <input type="hidden" name="IDPERMISO" value="<?php echo $row_Recordset1['IDPERMISO']; ?>" />
+  <input type="hidden" name="IDCARGO" value="<?php echo $row_Recordset1['IDCARGO']; ?>" />
 </form>
 <p>&nbsp;</p>
 </body>
