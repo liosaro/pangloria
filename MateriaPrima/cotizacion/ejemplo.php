@@ -187,7 +187,7 @@ and open the template in the editor.
             </tr>
         </table></br>
 
-        <input type="submit" value="GUARDAR COTIZACION">
+        <input type="submit" value="GUARDAR COTIZACION"> 
         </form> 
         <?php
            // put your code here
