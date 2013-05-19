@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_moditipoPago" value="name:IDCONDICION;datatype:int,name:TIPO;datatype:blob" />
+	<infoitem key="UD_combotipo" value="name:IDCONDICION;datatype:int,name:TIPO;datatype:blob" />
+</info>

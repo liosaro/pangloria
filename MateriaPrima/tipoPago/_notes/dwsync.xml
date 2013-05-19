@@ -5,4 +5,10 @@
 <file name="consultTodoTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133107396884093" remote="130133181600000000" />
 <file name="ConsultarTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133109068379697" remote="130133181600000000" />
 <file name="consulnombreTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133104860399014" remote="130133181600000000" />
+<file name="mdiTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133248846427410" remote="130133320800000000" />
+<file name="modificacionTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133246170994384" remote="130133320800000000" />
+<file name="filtroModiTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133245911149522" remote="130133318400000000" />
+<file name="filtroelimiTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133263884357531" remote="130133336400000000" />
+<file name="elimiTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133253120041847" remote="130133336400000000" />
+<file name="eliminacionTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133262797295354" remote="130133337000000000" />
 </dwsync>

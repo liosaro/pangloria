@@ -66,7 +66,7 @@ body {
 </head>
 
 <body>
-<iframe src="cmodproducto.php" name="modiprodu" width="780" height="250" align="middle" scrolling="No" frameborder="0" id="modiproducs"></iframe>
+<iframe src="modificadorcargo.php" name="modiprodu" width="780" height="250" align="middle" scrolling="No" frameborder="0" id="modiproducs"></iframe>
 <p>&nbsp;</p>
 <table width="830" border="1" cellpadding="0" cellspacing="0">
   <tr>
@@ -76,7 +76,7 @@ body {
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="<?php echo $row_filtradocargo['IDCARGO']; ?>?root=<?php echo $row_filtradocargo['IDPRODUCTO']; ?>" target="modiprodu">Modificar</a></td>
+      <td><a href="<?php echo $row_filtradocargo['IDCARGO']; ?>?root=<?php echo $row_filtradocargo['IDCARGO'']; ?>" target="modiprodu">Modificar</a></td>
       <td><?php echo $row_filtradocargo['IDCARGO']; ?></td>
       <td><?php echo $row_filtradocargo['CARGO']; ?></td>
     </tr>
