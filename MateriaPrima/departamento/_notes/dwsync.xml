@@ -7,4 +7,7 @@
 <file name="modificaciondepar.php" server="www.liosarpc.info//public_html/pan/" local="130132949430797353" remote="130133064600000000" />
 <file name="modidepart.php" server="www.liosarpc.info//public_html/pan/" local="130132955605530527" remote="130133027400000000" />
 <file name="filtromodiDepto.php" server="www.liosarpc.info//public_html/pan/" local="130132952515183769" remote="130133024400000000" />
+<file name="filtroeliminadepar.php" server="www.liosarpc.info//public_html/pan/" local="130134055901562500" remote="130133263800000000" />
+<file name="eliminacionDepartamento.php" server="www.liosarpc.info//public_html/pan/" local="130134050902968750" remote="130133263800000000" />
+<file name="eliminarDepartamento.php" server="www.liosarpc.info//public_html/pan/" local="130134025656093750" remote="130133260800000000" />
 </dwsync>

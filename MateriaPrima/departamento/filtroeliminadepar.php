@@ -83,6 +83,9 @@ return true;
 <body>
 <table border="1">
   <tr>
+    <td colspan="4" align="center" bgcolor="#999999"><h1>Eliminar Departamento de Empresa</h1></td>
+  </tr>
+  <tr>
     <td>Modificacion</td>
     <td>IDDEPTO</td>
     <td>DEPARTAMENTO</td>
@@ -90,7 +93,7 @@ return true;
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="javascript:;" onclick="aviso('eliminarDepartamento.php?root=<?php echo $row_filtrodepar['IDDEPTO']; ?>; return false;">Eliminar</a></td>
+      <td><a href="javascript:;" onclick="aviso('eliminarDepartamento.php?root=<?php echo $row_filtrodepar['IDDEPTO'];?>'); return false;">Eliminar</a></td>
       <td><?php echo $row_filtrodepar['IDDEPTO']; ?></td>
       <td><?php echo $row_filtrodepar['DEPARTAMENTO']; ?></td>
       <td><?php echo $row_filtrodepar['NUMEROTELEFONO']; ?></td>
