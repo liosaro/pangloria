@@ -149,16 +149,21 @@ $coste = ($row_consuldetaorprod['CANTPRODUCTO']*$row_consuldetaorprod['PRECIOUNI
 	$result = mysql_query("Select sum(CANTPRODUCTO * PRECIOUNITARIO ) as 'total' FROM TRNDETALLEORDENCOMPRA WHERE IDORDEN  = " . $_GET['IDORDEN']);
 	$row = mysql_fetch_array($result, MYSQL_ASSOC);
 	echo $row['total'];
-	$subto= ($row['total']*0.35);
 	 ?></td>
         </tr>
         <tr>
           <td align="right">IVA</td> 
-          <td> <?php echo ('total'*0.13)  ?></td>
+          <td> <?php 
+	$result = mysql_query("Select sum(CANTPRODUCTO * PRECIOUNITARIO ) as 'total' FROM TRNDETALLEORDENCOMPRA WHERE IDORDEN  = " . $_GET['IDORDEN']);
+	$row2 = mysql_fetch_array($result, MYSQL_ASSOC);
+	$subto= ($row2['total']*0.35);
+	$tot = ($subto + $row2['total']);
+	echo $subto;
+	 ?></td>
         </tr>
         <tr>
           <td align="right">TOTAL</td>
-          <td>&nbsp;</td>
+          <td><?php echo "$tot" ?></td>
         </tr>
       </table>
       <p>&nbsp;        </p>
