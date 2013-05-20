@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_ingreemple" value="name:IDEMPLEADO;datatype:int,name:IDDEPTO;datatype:int,name:IDCARGO;datatype:int,name:IDSUCURSAL;datatype:int,name:NOMBREEMPLEADO;datatype:blob,name:EDADEMPLEADO;datatype:date,name:DIRECCION;datatype:blob,name:NIT;datatype:blob,name:NUP;datatype:blob,name:NSEGURO;datatype:blob,name:DUI;datatype:blob,name:CUENTABANCARIA;datatype:blob,name:CORREOEMPLEADO;datatype:blob,name:MOVILEMPLEADO;datatype:blob,name:FIJO;datatype:blob" />
+</info>

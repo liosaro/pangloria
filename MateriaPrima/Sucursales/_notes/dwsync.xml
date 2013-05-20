@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="IngresarSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132056204948370" remote="130132128000000000" />
-<file name="consulSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132068655370494" remote="130132141200000000" />
+<file name="IngresarSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130133723901789445" remote="130133853600000000" />
+<file name="consulSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132444746094535" remote="130133798400000000" />
 <file name="consulTodoSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132067857234843" remote="130132141200000000" />
 <file name="consulNombreSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132064700774304" remote="130132141200000000" />
 <file name="consulIdSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132061500251244" remote="130132141200000000" />
 <file name="filtroModiSucur.php" server="www.liosarpc.info//public_html/pan/" local="130132872643915040" remote="130132944600000000" />
 <file name="modiSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132840114254450" remote="130133062200000000" />
 <file name="modificacionSucur.php" server="www.liosarpc.info//public_html/pan/" local="130132826266072379" remote="130132944600000000" />
-<file name="filtroelimiSucur.php" server="www.liosarpc.info//public_html/pan/" local="130132989861089833" remote="130133061600000000" />
-<file name="eliminacionSucur.php" server="www.liosarpc.info//public_html/pan/" local="130132989822577630" remote="130133062800000000" />
+<file name="filtroelimiSucur.php" server="www.liosarpc.info//public_html/pan/" local="130133779887493286" remote="130133851800000000" />
+<file name="eliminacionSucur.php" server="www.liosarpc.info//public_html/pan/" local="130133737110734954" remote="130133854200000000" />
+<file name="eliminarSucur.php" server="www.liosarpc.info//public_html/pan/" local="130133738076340183" remote="130133851800000000" />
 </dwsync>

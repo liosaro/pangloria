@@ -81,6 +81,8 @@ body {
 	margin-bottom: 0px;
 }
 </style>
+<script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -105,7 +107,9 @@ body {
       <td>Direccion Scursal:</td>
       <td><input type="text" name="DIRECCIONSUCURSAL" value="" size="32" /></td>
       <td>Telefono Sucursal:</td>
-      <td><input type="text" name="TELEFONOSUCURSAL" value="" size="32" /></td>
+      <td><span id="sprytextfield1">
+      <input type="text" name="TELEFONOSUCURSAL" value="" size="32" />
+      <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -139,6 +143,9 @@ body {
 </p>
 </form>
 <p>&nbsp;</p>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "phone_number", {format:"phone_custom", pattern:"0000-0000", useCharacterMasking:true, validateOn:["blur"]});
+</script>
 </body>
 </html>
 <?php
