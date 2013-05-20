@@ -87,6 +87,17 @@ $totalRows_consulEmple = mysql_num_rows($consulEmple);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
 <link href="../../css/forms.css" rel="stylesheet" type="text/css" />
+<script language="javascript">
+
+        function modiframe(destino)
+
+{
+
+document.frames.detacomp.location=destino
+
+}
+
+</script>
 </head>
 
 <body>
@@ -130,11 +141,11 @@ $totalRows_consulEmple = mysql_num_rows($consulEmple);
   </tr>
   <tr>
     <td>Esta Orden no posee orden de Compra: 
-      <input type="checkbox" name="chequeo" id="chequeo" />
+      <input type="checkbox" name="chequeo" id="chequeo"  onchange="modiframe('adios.htm');"/>
     <label for="chequeo"></label></td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
+    <td><iframe src="detalleconsultado.php" name="detacomp" width="820" height="500" scrolling="auto" frameborder="0"></iframe>&nbsp;</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
