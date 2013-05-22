@@ -52,7 +52,7 @@ if (isset($_GET['totalRows_consultacontrol'])) {
   $all_consultacontrol = mysql_query($query_consultacontrol);
   $totalRows_consultacontrol = mysql_num_rows($all_consultacontrol);
 }
-$totalPages_consultacontrol = ceil($totalRows_consultacontrol/$maxRows_consultacontrol = 5;
+$totalPages_consultacontrol = ceil($totalRows_consultacontrol/$maxRows_consultacontrol-1; $maxRows_consultacontrol= 5;
 $pageNum_consultacontrol = 0;
 if (isset($_GET['pageNum_consultacontrol'])) {
   $pageNum_consultacontrol = $_GET['pageNum_consultacontrol'];
@@ -129,12 +129,12 @@ return true;
   <table width="844" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="844" align="center"><div class="cont">
-        <form action="filtroeliminaproducto.php" method="post" name="envioproductomodifica" target="modiprodu" id="envioproductomodifica">
+        <form action="filtroeliminamatprima.php" method="post" name="envioproductomodifica" target="modiprodu" id="envioproductomodifica">
           <table width="1026" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="800" colspan="6" align="left">&nbsp;
-                <iframe src="filtroeliminaproducto.php" name="modiprodu" width="830" height="200" align="middle" scrolling="Auto" frameborder="0" id="modiprodu"></iframe>
-<p><a href="<?php printf("%s?pageNum_consultacontrol=%d%s", $currentPage, 0, $queryString_consultacontrol); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacontrol=%d%s", $currentPage, max(0, $pageNum_consultacontrol - 1), $queryString_consultacontrol); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacontrol=%d%s", $currentPage, min($totalPages_consultacontrol, $pageNum_consultacontrol + 1), $queryString_consultacontrol); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacontrol=%d%s", $currentPage, $totalPages_consultacontrol, $queryString_consultacontrol); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></p>
+                <iframe src="filtroeliminamatprima.php" name="modiprodu" width="830" height="200" align="middle" scrolling="Auto" frameborder="0" id="modiprodu"></iframe>
+<p><a href="<?php printf("%s?pageNum_consultacontrol=%d%s", $currentPage, 0, $queryString_consultacontrol); ?>"><img src="../../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacontrol=%d%s", $currentPage, max(0, $pageNum_consultacontrol - 1), $queryString_consultacontrol); ?>"><img src="../../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacontrol=%d%s", $currentPage, min($totalPages_consultacontrol, $pageNum_consultacontrol + 1), $queryString_consultacontrol); ?>"><img src="../../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultacontrol=%d%s", $currentPage, $totalPages_consultacontrol, $queryString_consultacontrol); ?>"><img src="../../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></p>
                 <table width="830" border="1">
                   <tr>
                     <td colspan="2"><input type="text" name="filtroprod" id="filtroprod" />
@@ -160,7 +160,7 @@ return true;
                     </tr>
                   <?php do { ?>
                     <tr>
-                      <td><a href="javascript:;" onclick="<?php echo $row_consultacontrol['ID_CONTROLMAT']; ?>?root=<?php echo $row_consultacontrol['IDPRODUCTO'];?>'); return false;">Eliminar</a></td>
+                      <td><a href="javascript:;" onclick=""aviso('eliminarMatprima.php?root=<?php echo $row_consultaproducto['ID_CONTROLMAT'];?>'); return false;">Eliminar</a></td>
                       <td><?php echo $row_consultacontrol['ID_CONTROLMAT']; ?></td>
                       <td><?php echo $row_consultacontrol['IDMATPRIMA']; ?></td>
                       <td><?php echo $row_consultacontrol['ID_SALIDA']; ?></td>
