@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_modiEntreProd" value="name:ID_ENTREGA;datatype:int,name:FECHAHORA;datatype:datetime,name:CANT_PRODUCTORECIBIDO;datatype:int,name:PRODUCTOENTRPROD;datatype:int,name:IDENCAENTREPROD;datatype:int,name:ID_MEDIDA;datatype:int,name:USUARIOENTREPRODUCTO;datatype:int,name:USUARIOFECHAYHORA;datatype:datetime,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+</info>
