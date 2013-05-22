@@ -99,10 +99,6 @@ mysql_select_db($database_basepangloria, $basepangloria);
 $query_ultregis = "SELECT IDENCABEORDPROD FROM TRNENCABEZADOORDENPROD ORDER BY IDENCABEORDPROD DESC";
 $ultregis = mysql_query($query_ultregis, $basepangloria) or die(mysql_error());
 $row_ultregis = mysql_fetch_assoc($ultregis);
-$totalRows_ultregis = mysql_num_rows($ultregis);mysql_select_db($database_basepangloria, $basepangloria);
-$query_ultregis = "SELECT IDENCABEORDPROD FROM TRNENCABEZADOORDENPROD ORDER BY IDENCABEORDPROD DESC";
-$ultregis = mysql_query($query_ultregis, $basepangloria) or die(mysql_error());
-$row_ultregis = mysql_fetch_assoc($ultregis);
 $totalRows_ultregis = mysql_num_rows($ultregis);
 
 mysql_select_db($database_basepangloria, $basepangloria);
