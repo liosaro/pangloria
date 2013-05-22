@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_combounidad" value="name:IDUNIDAD;datatype:int,name:TIPOUNIDAD;datatype:blob" />
+	<infoitem key="UD_combomatprima" value="name:IDMATPRIMA;datatype:int,name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_compmatprima" value="name:ID_CONTROLMAT;datatype:int" />
+</info>
