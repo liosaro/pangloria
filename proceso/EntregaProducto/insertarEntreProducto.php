@@ -4,6 +4,7 @@
 href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 
 </Head>
+
 <?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -43,75 +44,78 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO TRNENCABEZADOENTREPROD (IDENCAENTREPROD, IDORDENPRODUCCION, IDEMPLEADO, FECHA, FECHAHORAUSUA, ELIMINA, EDITA) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO TRNENCABEZADOENTREPROD (IDENCAENTREPROD, IDORDENPRODUCCION, IDEMPLEADO, FECHA, FECHAHORAUSUA) VALUES (%s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['IDENCAENTREPROD'], "int"),
                        GetSQLValueString($_POST['IDORDENPRODUCCION'], "int"),
                        GetSQLValueString($_POST['IDEMPLEADO'], "int"),
                        GetSQLValueString($_POST['FECHA'], "date"),
-                       GetSQLValueString($_POST['FECHAHORAUSUA'], "date"),
-                       GetSQLValueString($_POST['ELIMINA'], "int"),
-                       GetSQLValueString($_POST['EDITA'], "int"));
+                       GetSQLValueString($_POST['FECHAHORAUSUA'], "date"));
 
   mysql_select_db($database_basepangloria, $basepangloria);
   $Result1 = mysql_query($insertSQL, $basepangloria) or die(mysql_error());
 }
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_encabEntreProd = "SELECT IDENCAENTREPROD FROM TRNENCABEZADOENTREPROD";
-$encabEntreProd = mysql_query($query_encabEntreProd, $basepangloria) or die(mysql_error());
-$row_encabEntreProd = mysql_fetch_assoc($encabEntreProd);
-$totalRows_encabEntreProd = mysql_num_rows($encabEntreProd);
-
-$colname_usuariIngre = "-1";
-if (isset($_SESSION['MM_Username'])) {
-  $colname_usuariIngre = $_SESSION['MM_Username'];
-}
-mysql_select_db($database_basepangloria, $basepangloria);
-$query_usuariIngre = sprintf("SELECT IDUSUARIO FROM CATUSUARIO WHERE NOMBREUSUARIO = %s", GetSQLValueString($colname_usuariIngre, "text"));
-$usuariIngre = mysql_query($query_usuariIngre, $basepangloria) or die(mysql_error());
-$row_usuariIngre = mysql_fetch_assoc($usuariIngre);
-$totalRows_usuariIngre = mysql_num_rows($usuariIngre);
+$query_IngrEncEntrPro = "SELECT IDENCAENTREPROD FROM TRNENCABEZADOENTREPROD ORDER BY IDENCAENTREPROD DESC";
+$IngrEncEntrPro = mysql_query($query_IngrEncEntrPro, $basepangloria) or die(mysql_error());
+$row_IngrEncEntrPro = mysql_fetch_assoc($IngrEncEntrPro);
+$totalRows_IngrEncEntrPro = mysql_num_rows($IngrEncEntrPro);
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_comboOrdePro = "SELECT IDPRODUCTO, DESCRIPCIONPRODUC FROM CATPRODUCTO";
-$comboOrdePro = mysql_query($query_comboOrdePro, $basepangloria) or die(mysql_error());
-$row_comboOrdePro = mysql_fetch_assoc($comboOrdePro);
-$totalRows_comboOrdePro = mysql_num_rows($comboOrdePro);
+$query_comboOrdenPro = "SELECT IDPRODUCTO, DESCRIPCIONPRODUC FROM CATPRODUCTO";
+$comboOrdenPro = mysql_query($query_comboOrdenPro, $basepangloria) or die(mysql_error());
+$row_comboOrdenPro = mysql_fetch_assoc($comboOrdenPro);
+$totalRows_comboOrdenPro = mysql_num_rows($comboOrdenPro);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_comboOrdenProd = "SELECT IDORDENPRODUCCION FROM TRNDETORDENPRODUCCION";
+$comboOrdenProd = mysql_query($query_comboOrdenProd, $basepangloria) or die(mysql_error());
+$row_comboOrdenProd = mysql_fetch_assoc($comboOrdenProd);
+$totalRows_comboOrdenProd = mysql_num_rows($comboOrdenProd);
 ?>
-<form method="post" name="form1" action="<?php echo $editFormAction; ?>">
+<form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
   <table width="820" border="0">
     <tr>
-      <td colspan="4" align="center" bgcolor="#999999"><h1>Insertar Encab. Entrega de Producto</h1></td>
+      <td colspan="4" align="center" bgcolor="#999999"><h1>Ingresar Entrega de Producto</h1></td>
     </tr>
     <tr>
-      <td>Id Encab. Entrega de Producto:</td>
-      <td><input name="IDENCAENTREPROD" type="text" value="<?php echo $row_encabEntreProd['IDENCAENTREPROD']+1; ?>" size="32" readonly></td>
-      <td>Orden de Poduccion:</td>
+      <td>&nbsp;</td>
+      <td>Id Encab.Entrega Producto:</td>
+      <td><input name="IDENCAENTREPROD" type="text" value="<?php echo $row_IngrEncEntrPro['IDENCAENTREPROD'] +1; ?>" size="32" readonly="readonly" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Id Orden Produccion:</td>
       <td><select name="IDORDENPRODUCCION">
         <?php
 do {  
 ?>
-        <option value="<?php echo $row_comboOrdePro['DESCRIPCIONPRODUC']?>"><?php echo $row_comboOrdePro['DESCRIPCIONPRODUC']?></option>
+        <option value="<?php echo $row_comboOrdenProd['IDORDENPRODUCCION']?>"><?php echo $row_comboOrdenProd['IDORDENPRODUCCION']?></option>
         <?php
-} while ($row_comboOrdePro = mysql_fetch_assoc($comboOrdePro));
-  $rows = mysql_num_rows($comboOrdePro);
+} while ($row_comboOrdenProd = mysql_fetch_assoc($comboOrdenProd));
+  $rows = mysql_num_rows($comboOrdenProd);
   if($rows > 0) {
-      mysql_data_seek($comboOrdePro, 0);
-	  $row_comboOrdePro = mysql_fetch_assoc($comboOrdePro);
+      mysql_data_seek($comboOrdenProd, 0);
+	  $row_comboOrdenProd = mysql_fetch_assoc($comboOrdenProd);
   }
 ?>
       </select></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td>Empleado:</td>
-      <td>
-      <input name="textfield" type="text" value="<?php echo $row_usuariIngre['IDUSUARIO'] ?>" readonly></td>
+      <td><input type="text" name="IDEMPLEADO" value="" size="32" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
       <td>Fecha:</td>
       <td><script type="text/javascript"
 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
@@ -127,7 +131,7 @@ src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-date
 </script> <div id="datetimepicker4" class="input-append">
 
 
-<input name="FECHA" type="text" id="FECHA" data-format="yyyy-MM-dd"></input>
+<input name="FECHAENTREGA" type="text" id="FECHAENTREGA" data-format="yyyy-MM-dd"></input>
 <span class="add-on"><script type="text/javascript"
 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 </script>
@@ -143,7 +147,7 @@ src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-date
 
 <i data-time-icon="icon-time" data-date-icon="icon-calendar">
 </i>
-
+</span>
 </div>
 <script type="text/javascript">
 $(function() {
@@ -153,6 +157,8 @@ pickTime: false
 });
 </script>
 </td>
+      <td>Fecha y Hora del Usuario:</td>
+      <td><input type="text" name="FECHAHORAUSUA" value="<?php echo date("Y-m-d H:i:s");;?>" size="32" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -161,45 +167,23 @@ pickTime: false
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>Elimina:</td>
-      <td><input type="text" name="ELIMINA" value="" size="32"></td>
-      <td>Fecha y Hora Usuario:</td>
-      <td><input name="FECHAHORAUSUA" type="text" value="<?php echo date("Y-m-d H:i:s");;?>" size="32" readonly></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>Edita:</td>
-      <td><input type="text" name="EDITA" value="" size="32"></td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td><input type="submit" value="Insertar registro"></td>
+      <td><input type="submit" value="Insertar registro" /></td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
     </tr>
   </table>
+  <p>&nbsp;</p>
+  <p><iframe src="insertDetalleEntrProd.php" name="conten" width="820" height="400" scrolling="No"></iframe></p>
   <p>
-    <input type="hidden" name="MM_insert" value="form1">
+    <input type="hidden" name="MM_insert" value="form1" />
 </p>
 </form>
 <p>&nbsp;</p>
 <?php
-mysql_free_result($encabEntreProd);
+mysql_free_result($IngrEncEntrPro);
 
-mysql_free_result($usuariIngre);
+mysql_free_result($comboOrdenPro);
 
-mysql_free_result($comboOrdePro);
+mysql_free_result($comboOrdenProd);
 ?>
