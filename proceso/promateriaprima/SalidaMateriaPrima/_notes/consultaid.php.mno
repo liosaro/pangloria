@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
 	<infoitem key="UD_id" value="name:ID_SALIDA;datatype:int,name:CANTMAT_PRIMA;datatype:int,name:ID_MATPRIMA;datatype:int,name:IDENCABEZADOSALMATPRI;datatype:int,name:IDUNIDAD;datatype:int,name:IDDEPTO;datatype:int,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+	<infoitem key="UD_depto" value="name:DEPARTAMENTO;datatype:blob" />
+	<infoitem key="UD_mate" value="name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_unidad" value="name:TIPOUNIDAD;datatype:blob" />
 </info>

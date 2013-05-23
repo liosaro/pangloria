@@ -71,6 +71,9 @@ $totalRows_modifidept = mysql_num_rows($modifidept);
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
   <table align="center">
     <tr valign="baseline">
+      <td colspan="2" align="right" nowrap bgcolor="#999999"><h1>Modificar Departamento de la Empresa</h1></td>
+    </tr>
+    <tr valign="baseline">
       <td nowrap align="right">Id Departemento:</td>
       <td><?php echo $row_modifidept['IDDEPTO']; ?></td>
     </tr>
