@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_justi" value="name:ID_SALIDA;datatype:int,name:CANTMAT_PRIMA;datatype:int,name:ID_MATPRIMA;datatype:int,name:IDENCABEZADOSALMATPRI;datatype:int,name:IDUNIDAD;datatype:int,name:IDDEPTO;datatype:int,name:FECHAYHORAUSUA;datatype:datetime,name:EMPLEADOSACA;datatype:int" />
-</info>

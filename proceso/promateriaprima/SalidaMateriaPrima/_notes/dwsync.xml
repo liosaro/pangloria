@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="eliminarSalidaMtePrima.php" server="www.liosarpc.info//public_html/pan/" local="130130333500294704" remote="130130425800000000" />
-<file name="ingresoSalidaMateriaPrima.php" server="www.liosarpc.info//public_html/pan/" local="130125268200000000" remote="130125268200000000" />
-<file name="ModificarSalidaMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130126084800000000" remote="130126084800000000" />
-<file name="SalidaMatPrima.php" server="www.liosarpc.info//public_html/pan/" local="130130333499964685" remote="130130425800000000" />
+<file name="Salida.php" server="www.liosarpc.info//public_html/pan/" local="130137423457500000" remote="130137528000000000" />
+<file name="consultaid.php" server="www.liosarpc.info//public_html/pan/" local="130137465654062500" remote="130137537600000000" />
+<file name="consultasalida.php" server="www.liosarpc.info//public_html/pan/" local="130137458618906250" remote="130137539400000000" />
+<file name="consultatodos.php" server="www.liosarpc.info//public_html/pan/" local="130137467371093750" remote="130137539400000000" />
 </dwsync>
