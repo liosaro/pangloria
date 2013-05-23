@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_conuslmatpri" value="name:ID_PED_MAT_PRIMA;datatype:int,name:ID_ENCAPEDIDO;datatype:int,name:IDUNIDAD;datatype:int,name:IDMATPRIMA;datatype:int,name:CANTIDADPEDMATPRI;datatype:real,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+</info>
