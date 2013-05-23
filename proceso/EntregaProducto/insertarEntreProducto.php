@@ -1,50 +1,10 @@
+<head>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen"
+href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 
+</Head>
 
-<?php
-if (!isset($_SESSION)) {
-  session_start();
-}
-$MM_authorizedUsers = "";
-$MM_donotCheckaccess = "true";
-
-// *** Restrict Access To Page: Grant or deny access to this page
-function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
-  // For security, start by assuming the visitor is NOT authorized. 
-  $isValid = False; 
-
-  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
-  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
-  if (!empty($UserName)) { 
-    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
-    // Parse the strings into arrays. 
-    $arrUsers = Explode(",", $strUsers); 
-    $arrGroups = Explode(",", $strGroups); 
-    if (in_array($UserName, $arrUsers)) { 
-      $isValid = true; 
-    } 
-    // Or, you may restrict access to only certain users based on their username. 
-    if (in_array($UserGroup, $arrGroups)) { 
-      $isValid = true; 
-    } 
-    if (($strUsers == "") && true) { 
-      $isValid = true; 
-    } 
-  } 
-  return $isValid; 
-}
-
-$MM_restrictGoTo = "../../seguridad.php";
-if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
-  $MM_qsChar = "?";
-  $MM_referrer = $_SERVER['PHP_SELF'];
-  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
-  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
-  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
-  header("Location: ". $MM_restrictGoTo); 
-  exit;
-}
-?>
 <?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -96,68 +56,66 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 }
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_txtempleado = "SELECT IDEMPLEADO FROM CATEMPLEADO";
-$txtempleado = mysql_query($query_txtempleado, $basepangloria) or die(mysql_error());
-$row_txtempleado = mysql_fetch_assoc($txtempleado);
-$totalRows_txtempleado = mysql_num_rows($txtempleado);
+$query_IngrEncEntrPro = "SELECT IDENCAENTREPROD FROM TRNENCABEZADOENTREPROD ORDER BY IDENCAENTREPROD DESC";
+$IngrEncEntrPro = mysql_query($query_IngrEncEntrPro, $basepangloria) or die(mysql_error());
+$row_IngrEncEntrPro = mysql_fetch_assoc($IngrEncEntrPro);
+$totalRows_IngrEncEntrPro = mysql_num_rows($IngrEncEntrPro);
 
-$colname_usuarioentra = "-1";
-if (isset($_GET['MM_Username'])) {
-  $colname_usuarioentra = $_GET['MM_Username'];
-}
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_usuarioentra = sprintf("SELECT IDUSUARIO FROM CATUSUARIO WHERE IDUSUARIO = %s", GetSQLValueString($colname_usuarioentra, "int"));
-$usuarioentra = mysql_query($query_usuarioentra, $basepangloria) or die(mysql_error());
-$row_usuarioentra = mysql_fetch_assoc($usuarioentra);
-$totalRows_usuarioentra = mysql_num_rows($usuarioentra);
+$query_comboOrdenPro = "SELECT IDPRODUCTO, DESCRIPCIONPRODUC FROM CATPRODUCTO";
+$comboOrdenPro = mysql_query($query_comboOrdenPro, $basepangloria) or die(mysql_error());
+$row_comboOrdenPro = mysql_fetch_assoc($comboOrdenPro);
+$totalRows_comboOrdenPro = mysql_num_rows($comboOrdenPro);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_comboOrdenProd = "SELECT IDORDENPRODUCCION FROM TRNDETORDENPRODUCCION";
+$comboOrdenProd = mysql_query($query_comboOrdenProd, $basepangloria) or die(mysql_error());
+$row_comboOrdenProd = mysql_fetch_assoc($comboOrdenProd);
+$totalRows_comboOrdenProd = mysql_num_rows($comboOrdenProd);
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
-<style type="text/css">
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
-</style>
-
-<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen"
-href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
-<script src="../../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
-<link href="../../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-<table width="820" border="0">
-  <tr>
-    <td align="center" bgcolor="#999999"><h1>Insertar Entrega de Producto</h1></td>
-  </tr>
-</table>
-<form action="<?php echo $editFormAction; ?>" method="post" name="insertEntProd" id="insertEntProd">
+<form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
   <table width="820" border="0">
     <tr>
-      <td>Id Encabezado Entrega Producto:</td>
-      <td><input name="IDENCAENTREPROD" type="text" value="" size="32" readonly="readonly" /></td>
-      <td>Id Orden de Producción:</td>
+      <td colspan="4" align="center" bgcolor="#999999"><h1>Ingresar Entrega de Producto</h1></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>Id Encab.Entrega Producto:</td>
+      <td><input name="IDENCAENTREPROD" type="text" value="<?php echo $row_IngrEncEntrPro['IDENCAENTREPROD'] +1; ?>" size="32" readonly="readonly" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Id Orden Produccion:</td>
       <td><select name="IDORDENPRODUCCION">
-        <option value="menuitem1" >[ Etiqueta ]</option>
-        <option value="menuitem2" >[ Etiqueta ]</option>
+        <?php
+do {  
+?>
+        <option value="<?php echo $row_comboOrdenProd['IDORDENPRODUCCION']?>"><?php echo $row_comboOrdenProd['IDORDENPRODUCCION']?></option>
+        <?php
+} while ($row_comboOrdenProd = mysql_fetch_assoc($comboOrdenProd));
+  $rows = mysql_num_rows($comboOrdenProd);
+  if($rows > 0) {
+      mysql_data_seek($comboOrdenProd, 0);
+	  $row_comboOrdenProd = mysql_fetch_assoc($comboOrdenProd);
+  }
+?>
       </select></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td>Empleado:</td>
-      <td><input name="IDEMPLEADO" type="text" size="32" value="<?php echo $row_usuarioingresa['IDUSUARIO'];?>" readonly /></td>
+      <td><input type="text" name="IDEMPLEADO" value="" size="32" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
       <td>Fecha:</td>
       <td><script type="text/javascript"
 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
@@ -173,7 +131,7 @@ src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-date
 </script> <div id="datetimepicker4" class="input-append">
 
 
-<input name="FECHA" type="text" id="FECHA" data-format="yyyy-MM-dd"></input>
+<input name="FECHAENTREGA" type="text" id="FECHAENTREGA" data-format="yyyy-MM-dd"></input>
 <span class="add-on"><script type="text/javascript"
 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 </script>
@@ -182,7 +140,6 @@ src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"
 </script>
 <script type="text/javascript"
 src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-</span>
 </script>
 <script type="text/javascript"
 src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
@@ -190,9 +147,8 @@ src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-date
 
 <i data-time-icon="icon-time" data-date-icon="icon-calendar">
 </i>
-
+</span>
 </div>
-
 <script type="text/javascript">
 $(function() {
 $('#datetimepicker4').datetimepicker({
@@ -201,18 +157,14 @@ pickTime: false
 });
 </script>
 </td>
+      <td>Fecha y Hora del Usuario:</td>
+      <td><input type="text" name="FECHAHORAUSUA" value="<?php echo date("Y-m-d H:i:s");;?>" size="32" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>Fecha y Hora de Usuario:</td>
-      <td><input name="FECHAHORAUSUA" type="text" value="<?php echo date("Y-m-d H:i:s");;?> " size="32" readonly="readonly" /></td>
     </tr>
     <tr>
       <td><input type="submit" value="Insertar registro" /></td>
@@ -221,15 +173,17 @@ pickTime: false
       <td>&nbsp;</td>
     </tr>
   </table>
+  <p>&nbsp;</p>
+  <p><iframe src="insertDetalleEntrProd.php" name="conten" width="820" height="400" scrolling="No"></iframe></p>
   <p>
     <input type="hidden" name="MM_insert" value="form1" />
 </p>
 </form>
 <p>&nbsp;</p>
-</body>
-</html>
 <?php
-mysql_free_result($txtempleado);
+mysql_free_result($IngrEncEntrPro);
 
-mysql_free_result($usuarioentra);
+mysql_free_result($comboOrdenPro);
+
+mysql_free_result($comboOrdenProd);
 ?>

@@ -85,8 +85,6 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$currentPage = $_SERVER["PHP_SELF"];
-
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
@@ -130,64 +128,26 @@ $usuarioingresa = mysql_query($query_usuarioingresa, $basepangloria) or die(mysq
 $row_usuarioingresa = mysql_fetch_assoc($usuarioingresa);
 $totalRows_usuarioingresa = mysql_num_rows($usuarioingresa);
 
-$maxRows_encaOrdenProd = 10;
-$pageNum_encaOrdenProd = 0;
-if (isset($_GET['pageNum_encaOrdenProd'])) {
-  $pageNum_encaOrdenProd = $_GET['pageNum_encaOrdenProd'];
+$maxRows_encabOrdenProd = 10;
+$pageNum_encabOrdenProd = 0;
+if (isset($_GET['pageNum_encabOrdenProd'])) {
+  $pageNum_encabOrdenProd = $_GET['pageNum_encabOrdenProd'];
 }
-$startRow_encaOrdenProd = $pageNum_encaOrdenProd * $maxRows_encaOrdenProd;
+$startRow_encabOrdenProd = $pageNum_encabOrdenProd * $maxRows_encabOrdenProd;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_encaOrdenProd = "SELECT * FROM TRNENCABEZADOORDENPROD ORDER BY IDENCABEORDPROD DESC";
-$query_limit_encaOrdenProd = sprintf("%s LIMIT %d, %d", $query_encaOrdenProd, $startRow_encaOrdenProd, $maxRows_encaOrdenProd);
-$encaOrdenProd = mysql_query($query_limit_encaOrdenProd, $basepangloria) or die(mysql_error());
-$row_encaOrdenProd = mysql_fetch_assoc($encaOrdenProd);
+$query_encabOrdenProd = "SELECT * FROM TRNENCABEZADOORDENPROD";
+$query_limit_encabOrdenProd = sprintf("%s LIMIT %d, %d", $query_encabOrdenProd, $startRow_encabOrdenProd, $maxRows_encabOrdenProd);
+$encabOrdenProd = mysql_query($query_limit_encabOrdenProd, $basepangloria) or die(mysql_error());
+$row_encabOrdenProd = mysql_fetch_assoc($encabOrdenProd);
 
-if (isset($_GET['totalRows_encaOrdenProd'])) {
-  $totalRows_encaOrdenProd = $_GET['totalRows_encaOrdenProd'];
+if (isset($_GET['totalRows_encabOrdenProd'])) {
+  $totalRows_encabOrdenProd = $_GET['totalRows_encabOrdenProd'];
 } else {
-  $all_encaOrdenProd = mysql_query($query_encaOrdenProd);
-  $totalRows_encaOrdenProd = mysql_num_rows($all_encaOrdenProd);
+  $all_encabOrdenProd = mysql_query($query_encabOrdenProd);
+  $totalRows_encabOrdenProd = mysql_num_rows($all_encabOrdenProd);
 }
-$totalPages_encaOrdenProd = ceil($totalRows_encaOrdenProd/$maxRows_encaOrdenProd)-1;
-
-$maxRows_detOrdeProd = 10;
-$pageNum_detOrdeProd = 0;
-if (isset($_GET['pageNum_detOrdeProd'])) {
-  $pageNum_detOrdeProd = $_GET['pageNum_detOrdeProd'];
-}
-$startRow_detOrdeProd = $pageNum_detOrdeProd * $maxRows_detOrdeProd;
-
-mysql_select_db($database_basepangloria, $basepangloria);
-$query_detOrdeProd = "SELECT * FROM TRNDETORDENPRODUCCION ORDER BY IDORDENPRODUCCION DESC";
-$query_limit_detOrdeProd = sprintf("%s LIMIT %d, %d", $query_detOrdeProd, $startRow_detOrdeProd, $maxRows_detOrdeProd);
-$detOrdeProd = mysql_query($query_limit_detOrdeProd, $basepangloria) or die(mysql_error());
-$row_detOrdeProd = mysql_fetch_assoc($detOrdeProd);
-
-if (isset($_GET['totalRows_detOrdeProd'])) {
-  $totalRows_detOrdeProd = $_GET['totalRows_detOrdeProd'];
-} else {
-  $all_detOrdeProd = mysql_query($query_detOrdeProd);
-  $totalRows_detOrdeProd = mysql_num_rows($all_detOrdeProd);
-}
-$totalPages_detOrdeProd = ceil($totalRows_detOrdeProd/$maxRows_detOrdeProd)-1;
-
-$queryString_encaOrdenProd = "";
-if (!empty($_SERVER['QUERY_STRING'])) {
-  $params = explode("&", $_SERVER['QUERY_STRING']);
-  $newParams = array();
-  foreach ($params as $param) {
-    if (stristr($param, "pageNum_encaOrdenProd") == false && 
-        stristr($param, "totalRows_encaOrdenProd") == false) {
-      array_push($newParams, $param);
-    }
-  }
-  if (count($newParams) != 0) {
-    $queryString_encaOrdenProd = "&" . htmlentities(implode("&", $newParams));
-  }
-}
-$queryString_encaOrdenProd = sprintf("&totalRows_encaOrdenProd=%d%s", $totalRows_encaOrdenProd, $queryString_encaOrdenProd);
-?>
+$totalPages_encabOrdenProd = ceil($totalRows_encabOrdenProd/$maxRows_encabOrdenProd)-1;?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -200,11 +160,6 @@ $queryString_encaOrdenProd = sprintf("&totalRows_encaOrdenProd=%d%s", $totalRows
 
 <body>
 
-     </table>
-     <table width="820" border="0">
-       <tr>
-         <td align="center" bgcolor="#999999"><h1>Ingresar Orde de Produccion</h1></td>
-       </tr>
      </table>
 <table width="100%" border="0">
 </table>
@@ -288,51 +243,26 @@ do {
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
-  <table width="820" border="0">
+<table width="820" border="0">
   <tr>
     <td><iframe src="inserdetalle.php" name="conte" width="820" height="250" scrolling="auto" frameborder="0"></iframe>&nbsp;</td>
   </tr>
 </table>
-<form id="form2" name="form2" method="post" action="">
-    <label for="txtfiltro"><a href="<?php printf("%s?pageNum_encaOrdenProd=%d%s", $currentPage, 0, $queryString_encaOrdenProd); ?>"><img src="../../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_encaOrdenProd=%d%s", $currentPage, max(0, $pageNum_encaOrdenProd - 1), $queryString_encaOrdenProd); ?>"><img src="../../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_encaOrdenProd=%d%s", $currentPage, min($totalPages_encaOrdenProd, $pageNum_encaOrdenProd + 1), $queryString_encaOrdenProd); ?>"><img src="../../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_encaOrdenProd=%d%s", $currentPage, $totalPages_encaOrdenProd, $queryString_encaOrdenProd); ?>"><img src="../../../imagenes/icono/Next-32.png" width="32" height="32" /></a>  </label>
-</form>
-<table border="2" align="left">
+<table border="1">
   <tr>
-    <td width="100" height="24">Id Encab. Orden Produccion</td>
-    <td width="100">Id Empleado</td>
-    <td width="100">Id Sucursal</td>
-    <td width="103">Fecha</td>
+    <td>IDENCABEORDPROD</td>
+    <td>IDEMPLEADO</td>
+    <td>IDSUCURSAL</td>
+    <td>FECHA</td>
   </tr>
   <?php do { ?>
     <tr>
-      <td height="30"><?php echo $row_encaOrdenProd['IDENCABEORDPROD']; ?></td>
-      <td><?php echo $row_encaOrdenProd['IDEMPLEADO']; ?></td>
-      <td><?php echo $row_encaOrdenProd['IDSUCURSAL']; ?></td>
-      <td><?php echo $row_encaOrdenProd['FECHA']; ?></td>
+      <td><?php echo $row_encabOrdenProd['IDENCABEORDPROD']; ?></td>
+      <td><?php echo $row_encabOrdenProd['IDEMPLEADO']; ?></td>
+      <td><?php echo $row_encabOrdenProd['IDSUCURSAL']; ?></td>
+      <td><?php echo $row_encabOrdenProd['FECHA']; ?></td>
     </tr>
-    <?php } while ($row_encaOrdenProd = mysql_fetch_assoc($encaOrdenProd)); ?>
-</table>
-<table border="2" align="right">
-  <tr>
-    <td width="100" height="24">Id Det. Orde Produccion</td>
-    <td>Id Encab. Orden Produccion</td>
-    <td width="100">Cantidad Orden Produccion</td>
-    <td width="100">Id Medida</td>
-    <td width="100">Producto</td>
-    <td width="175">Fecha y Hora de Usario</td>
-    <td width="175">Usuario</td>
-  </tr>
-  <?php do { ?>
-    <tr>
-      <td><?php echo $row_detOrdeProd['IDORDENPRODUCCION']; ?></td>
-      <td><?php echo $row_detOrdeProd['IDENCABEORDPROD']; ?></td>
-      <td><?php echo $row_detOrdeProd['CANTIDADORPROD']; ?></td>
-      <td><?php echo $row_detOrdeProd['ID_MEDIDA']; ?></td>
-      <td><?php echo $row_detOrdeProd['PRODUCTOORDPRODUC']; ?></td>
-      <td><?php echo $row_detOrdeProd['FECHAHORAUSUA']; ?></td>
-      <td><?php echo $row_detOrdeProd['USUARIO']; ?></td>
-    </tr>
-    <?php } while ($row_detOrdeProd = mysql_fetch_assoc($detOrdeProd)); ?>
+    <?php } while ($row_encabOrdenProd = mysql_fetch_assoc($encabOrdenProd)); ?>
 </table>
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "custom", {validateOn:["blur"]});
@@ -350,9 +280,7 @@ mysql_free_result($textboxempleados);
 
 mysql_free_result($usuarioingresa);
 
-mysql_free_result($encaOrdenProd);
-
-mysql_free_result($detOrdeProd);
+mysql_free_result($encabOrdenProd);
 
 mysql_free_result($comboproducto);
 

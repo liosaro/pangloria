@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_txtempleado" value="name:IDEMPLEADO;datatype:int" />
+	<infoitem key="UD_usuarioentra" value="name:IDUSUARIO;datatype:int" />
+	<infoitem key="UD_comboOrdenProd" value="name:IDORDENPRODUCCION;datatype:int" />
+	<infoitem key="UD_encabEntreProd" value="name:IDENCAENTREPROD;datatype:int" />
+	<infoitem key="UD_usuariIngre" value="name:IDUSUARIO;datatype:int" />
+	<infoitem key="UD_comboOrdePro" value="name:IDPRODUCTO;datatype:int,name:DESCRIPCIONPRODUC;datatype:string" />
+	<infoitem key="UD_ultiregis" value="name:IDENCAENTREPROD;datatype:int" />
+	<infoitem key="UD_empleadoIngre" value="name:IDEMPLEADO;datatype:int" />
+	<infoitem key="UD_IngrEncEntrPro" value="name:IDENCAENTREPROD;datatype:int" />
+	<infoitem key="UD_comboOrdenPro" value="name:IDPRODUCTO;datatype:int,name:DESCRIPCIONPRODUC;datatype:string" />
+</info>

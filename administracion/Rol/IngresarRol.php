@@ -1,3 +1,4 @@
+
 <?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -42,6 +43,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
   $insertSQL = sprintf("INSERT INTO CATROL (IDROL, DESCRIPCION) VALUES (%s, %s)",
                        GetSQLValueString($_POST['IDROL'], "int"),
                        GetSQLValueString($_POST['DESCRIPCION'], "text"));
+					   
 
   mysql_select_db($database_basepangloria, $basepangloria);
   $Result1 = mysql_query($insertSQL, $basepangloria) or die(mysql_error());
@@ -97,6 +99,7 @@ body {
 	margin-bottom: 0px;
 }
 </style>
+
 </head>
 
 <body>
@@ -123,7 +126,9 @@ body {
           </tr>
           <tr>
             <td colspan="4" align="center"><input type="submit" value="Insertar registro" /></td>
-          </tr>
+              
+       </tr>
+          
         </table>
         <p>
           <input type="hidden" name="MM_insert" value="form2" />

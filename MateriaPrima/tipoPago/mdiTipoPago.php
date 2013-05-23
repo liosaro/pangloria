@@ -1,3 +1,26 @@
+
+<form method="post" name="form1" action="<?php echo $editFormAction; ?>">
+  <table align="center">
+    <tr valign="baseline">
+      <td colspan="2" align="center" nowrap bgcolor="#999999"><h1>Modificar Tipo de Pago</h1></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap align="right">Id Condicion:</td>
+      <td><?php echo $row_moditipo['IDCONDICION']; ?></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap align="right">Tipo:</td>
+      <td><input type="text" name="TIPO" value="<?php echo htmlentities($row_moditipo['TIPO'], ENT_COMPAT, ''); ?>" size="32"></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap align="right">&nbsp;</td>
+      <td><input type="submit" value="Actualizar registro"></td>
+    </tr>
+  </table>
+  <input type="hidden" name="MM_update" value="form1">
+  <input type="hidden" name="IDCONDICION" value="<?php echo $row_moditipo['IDCONDICION']; ?>">
+</form>
+<p>&nbsp;</p>
 <?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -45,70 +68,15 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
   $Result1 = mysql_query($updateSQL, $basepangloria) or die(mysql_error());
 }
 
-$colname_moditipoPago = "-1";
+$colname_moditipo = "-1";
 if (isset($_GET['root'])) {
-  $colname_moditipoPago = $_GET['root'];
+  $colname_moditipo = $_GET['root'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_moditipoPago = sprintf("SELECT * FROM CATCONDICIONPAGO WHERE IDCONDICION = %s ORDER BY IDCONDICION ASC", GetSQLValueString($colname_moditipoPago, "int"));
-$moditipoPago = mysql_query($query_moditipoPago, $basepangloria) or die(mysql_error());
-$row_moditipoPago = mysql_fetch_assoc($moditipoPago);
-$totalRows_moditipoPago = mysql_num_rows($moditipoPago);
+$query_moditipo = sprintf("SELECT * FROM CATCONDICIONPAGO WHERE IDCONDICION = %s ORDER BY IDCONDICION ASC", GetSQLValueString($colname_moditipo, "int"));
+$moditipo = mysql_query($query_moditipo, $basepangloria) or die(mysql_error());
+$row_moditipo = mysql_fetch_assoc($moditipo);
+$totalRows_moditipo = mysql_num_rows($moditipo);
 
-mysql_select_db($database_basepangloria, $basepangloria);
-$query_combotipo = "SELECT * FROM CATCONDICIONPAGO";
-$combotipo = mysql_query($query_combotipo, $basepangloria) or die(mysql_error());
-$row_combotipo = mysql_fetch_assoc($combotipo);
-$totalRows_combotipo = mysql_num_rows($combotipo);
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
-
-</head>
-
-<body>
-<form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-  <table align="center">
-    <tr valign="baseline">
-      <td colspan="2" align="center" nowrap="nowrap" bgcolor="#999999"><h1>Modificar Tipo de Pago</h1></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Id Condicion:</td>
-      <td><?php echo $row_moditipoPago['IDCONDICION']; ?></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Tipo:</td>
-      <td><select name="TIPO">
-        <?php
-do {  
-?>
-        <option value="<?php echo $row_combotipo['TIPO']?>"<?php if (!(strcmp($row_combotipo['TIPO'], htmlentities($row_moditipoPago['TIPO'], ENT_COMPAT, 'utf-8')))) {echo "selected=\"selected\"";} ?>><?php echo $row_combotipo['TIPO']?></option>
-        <?php
-} while ($row_combotipo = mysql_fetch_assoc($combotipo));
-  $rows = mysql_num_rows($combotipo);
-  if($rows > 0) {
-      mysql_data_seek($combotipo, 0);
-	  $row_combotipo = mysql_fetch_assoc($combotipo);
-  }
-?>
-      </select></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">&nbsp;</td>
-      <td><input type="submit" value="Actualizar registro" /></td>
-    </tr>
-  </table>
-  <input type="hidden" name="MM_update" value="form1" />
-  <input type="hidden" name="IDCONDICION" value="<?php echo $row_moditipoPago['IDCONDICION']; ?>" />
-</form>
-<p>&nbsp;</p>
-</body>
-</html>
-<?php
-mysql_free_result($moditipoPago);
-
-mysql_free_result($combotipo);
+mysql_free_result($moditipo);
 ?>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_materia" value="name:IDMATPRIMA;datatype:int,name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_encabeza" value="name:IDENCABEZADOSALMATPRI;datatype:int" />
+	<infoitem key="UD_unidad" value="name:IDUNIDAD;datatype:int,name:TIPOUNIDAD;datatype:blob" />
+	<infoitem key="UD_depto" value="name:IDDEPTO;datatype:int,name:DEPARTAMENTO;datatype:blob" />
+	<infoitem key="UD_empleado" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
+</info>

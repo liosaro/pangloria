@@ -61,7 +61,7 @@ mysql_select_db($database_basepangloria, $basepangloria);
 $query_compmatprima = sprintf("SELECT ID_CONTROLMAT FROM TRNCONTROL_MAT_PRIMA WHERE ID_CONTROLMAT = %s ORDER BY ID_CONTROLMAT DESC", GetSQLValueString($colname_compmatprima, "int"));
 $compmatprima = mysql_query($query_compmatprima, $basepangloria) or die(mysql_error());
 $row_compmatprima = mysql_fetch_assoc($compmatprima);
-$totalRows_compmatprima = mysql_num_rows($compmatprima);mysql_select_db($database_basepangloria, $basepangloria);
+$totalRows_compmatprima = mysql_num_rows($compmatprima);
 $query_compmatprima = "SELECT ID_CONTROLMAT FROM TRNCONTROL_MAT_PRIMA ORDER BY ID_CONTROLMAT DESC";
 $compmatprima = mysql_query($query_compmatprima, $basepangloria) or die(mysql_error());
 $row_compmatprima = mysql_fetch_assoc($compmatprima);
@@ -72,13 +72,13 @@ $row_compmatprima = mysql_fetch_assoc($compmatprima);
 $totalRows_compmatprima = mysql_num_rows($compmatprima);
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_combomatprima = "SELECT IDMATPRIMA, IDTIPO FROM CATMATERIAPRIMA";
+$query_combomatprima = "SELECT IDMATPRIMA, DESCRIPCION FROM CATMATERIAPRIMA ORDER BY IDMATPRIMA DESC";
 $combomatprima = mysql_query($query_combomatprima, $basepangloria) or die(mysql_error());
 $row_combomatprima = mysql_fetch_assoc($combomatprima);
 $totalRows_combomatprima = mysql_num_rows($combomatprima);
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_combounidad = "SELECT IDUNIDAD, TIPOUNIDAD FROM CATUNIDADES";
+$query_combounidad = "SELECT IDUNIDAD, TIPOUNIDAD FROM CATUNIDADES ORDER BY IDUNIDAD DESC";
 $combounidad = mysql_query($query_combounidad, $basepangloria) or die(mysql_error());
 $row_combounidad = mysql_fetch_assoc($combounidad);
 $totalRows_combounidad = mysql_num_rows($combounidad);
@@ -138,7 +138,7 @@ do {
               <?php
 do {  
 ?>
-              <option value="<?php echo $row_combomatprima['IDMATPRIMA']?>"><?php echo $row_combomatprima['IDTIPO']?></option>
+              <option value="<?php echo $row_combomatprima['IDMATPRIMA']?>"><?php echo $row_combomatprima['DESCRIPCION']?></option>
               <?php
 } while ($row_combomatprima = mysql_fetch_assoc($combomatprima));
   $rows = mysql_num_rows($combomatprima);

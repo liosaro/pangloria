@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_ultiregis" value="name:IDENCAENTREPROD;datatype:int" />
+	<infoitem key="UD_comboProd" value="name:IDPRODUCTO;datatype:int,name:DESCRIPCIONPRODUC;datatype:string" />
+	<infoitem key="UD_comboMedida" value="name:ID_MEDIDA;datatype:int,name:MEDIDA;datatype:blob" />
+	<infoitem key="UD_usuarioEntrega" value="name:IDUSUARIO;datatype:int" />
+	<infoitem key="UD_encabEntreProd" value="name:IDENCAENTREPROD;datatype:int" />
+	<infoitem key="UD_usuariIngre" value="name:IDUSUARIO;datatype:int" />
+	<infoitem key="UD_comboOrdePro" value="name:IDPRODUCTO;datatype:int,name:DESCRIPCIONPRODUC;datatype:string" />
+	<infoitem key="UD_ultiRegis" value="name:IDENCAENTREPROD;datatype:int" />
+	<infoitem key="UD_usuarioEntre" value="name:IDUSUARIO;datatype:int" />
+</info>

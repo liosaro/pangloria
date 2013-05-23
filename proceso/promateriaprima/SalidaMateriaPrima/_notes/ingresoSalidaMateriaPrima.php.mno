@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_combocantidadMp" value="name:CANTMAT_PRIMA;datatype:int" />
-	<infoitem key="UD_Recordset1" value="name:IDMATPRIMA;datatype:int" />
-	<infoitem key="UD_comboencabe" value="name:IDENCABEZADOSALMATPRI;datatype:int,name:IDEMPLEADO;datatype:int" />
-	<infoitem key="UD_Recordset4" value="name:IDUNIDAD;datatype:int,name:TIPOUNIDAD;datatype:blob" />
-	<infoitem key="UD_Recordset3" value="name:IDDEPTO;datatype:int,name:DEPARTAMENTO;datatype:blob" />
-	<infoitem key="UD_Recordset2" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
-</info>
