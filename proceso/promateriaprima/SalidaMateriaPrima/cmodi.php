@@ -99,14 +99,6 @@ $totalRows_modisalida = mysql_num_rows($modisalida);
       <td><input type="text" name="IDDEPTO" value="<?php echo htmlentities($row_modisalida['IDDEPTO'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">ELIMIN:</td>
-      <td><input type="text" name="ELIMIN" value="<?php echo htmlentities($row_modisalida['ELIMIN'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">EDITA:</td>
-      <td><input type="text" name="EDITA" value="<?php echo htmlentities($row_modisalida['EDITA'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
-    </tr>
-    <tr valign="baseline">
       <td nowrap="nowrap" align="right">&nbsp;</td>
       <td><input type="submit" value="Actualizar registro" /></td>
     </tr>

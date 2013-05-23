@@ -55,6 +55,24 @@ if (isset($_GET['totalRows_id'])) {
   $totalRows_id = mysql_num_rows($all_id);
 }
 $totalPages_id = ceil($totalRows_id/$maxRows_id)-1;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_depto = "SELECT DEPARTAMENTO FROM CATDEPARTAMENEMPRESA";
+$depto = mysql_query($query_depto, $basepangloria) or die(mysql_error());
+$row_depto = mysql_fetch_assoc($depto);
+$totalRows_depto = mysql_num_rows($depto);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_mate = "SELECT DESCRIPCION FROM CATMATERIAPRIMA";
+$mate = mysql_query($query_mate, $basepangloria) or die(mysql_error());
+$row_mate = mysql_fetch_assoc($mate);
+$totalRows_mate = mysql_num_rows($mate);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_unidad = "SELECT TIPOUNIDAD FROM CATUNIDADES";
+$unidad = mysql_query($query_unidad, $basepangloria) or die(mysql_error());
+$row_unidad = mysql_fetch_assoc($unidad);
+$totalRows_unidad = mysql_num_rows($unidad);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -70,20 +88,20 @@ $totalPages_id = ceil($totalRows_id/$maxRows_id)-1;
   </tr>
   <tr>
     <td>ID_SALIDA</td>
-    <td>CANTMAT_PRIMA</td>
-    <td>ID_MATPRIMA</td>
+    <td>Cantidad de Materia Prima</td>
+    <td>Materia Prima</td>
     <td>IDENCABEZADOSALMATPRI</td>
-    <td>IDUNIDAD</td>
+    <td>Unidad</td>
     <td>IDDEPTO</td>
   </tr>
   <?php do { ?>
     <tr>
       <td><?php echo $row_id['ID_SALIDA']; ?></td>
       <td><?php echo $row_id['CANTMAT_PRIMA']; ?></td>
-      <td><?php echo $row_id['ID_MATPRIMA']; ?></td>
+      <td><?php echo $row_mate['DESCRIPCION']; ?></td>
       <td><?php echo $row_id['IDENCABEZADOSALMATPRI']; ?></td>
-      <td><?php echo $row_id['IDUNIDAD']; ?></td>
-      <td><?php echo $row_id['IDDEPTO']; ?></td>
+      <td><?php echo $row_unidad['TIPOUNIDAD']; ?></td>
+      <td><?php echo $row_depto['DEPARTAMENTO']; ?></td>
     </tr>
     <?php } while ($row_id = mysql_fetch_assoc($id)); ?>
 </table>
@@ -91,4 +109,10 @@ $totalPages_id = ceil($totalRows_id/$maxRows_id)-1;
 </html>
 <?php
 mysql_free_result($id);
+
+mysql_free_result($depto);
+
+mysql_free_result($mate);
+
+mysql_free_result($unidad);
 ?>
