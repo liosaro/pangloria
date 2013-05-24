@@ -10,4 +10,5 @@
 	<infoitem key="UD_ultiRegis" value="name:IDENCAENTREPROD;datatype:int" />
 	<infoitem key="UD_usuarioEntre" value="name:IDUSUARIO;datatype:int" />
 	<infoitem key="UD_comboProduc" value="name:IDPRODUCTO;datatype:int,name:DESCRIPCIONPRODUC;datatype:string" />
+	<infoitem key="UD_usuarioentra" value="name:IDUSUARIO;datatype:int" />
 </info>

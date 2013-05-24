@@ -1,5 +1,50 @@
 <?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "";
+$MM_donotCheckaccess = "true";
+
+// *** Restrict Access To Page: Grant or deny access to this page
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+  // For security, start by assuming the visitor is NOT authorized. 
+  $isValid = False; 
+
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
+  if (!empty($UserName)) { 
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
+    // Parse the strings into arrays. 
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+    // Or, you may restrict access to only certain users based on their username. 
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && true) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+
+$MM_restrictGoTo = "../../seguridad.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
+?>
+<?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -61,7 +106,24 @@ $query_comboMedida = "SELECT ID_MEDIDA, MEDIDA FROM CATMEDIDAS";
 $comboMedida = mysql_query($query_comboMedida, $basepangloria) or die(mysql_error());
 $row_comboMedida = mysql_fetch_assoc($comboMedida);
 $totalRows_comboMedida = mysql_num_rows($comboMedida);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_ultiregis = "SELECT IDENCAENTREPROD FROM TRNENCABEZADOENTREPROD ORDER BY IDENCAENTREPROD DESC";
+$ultiregis = mysql_query($query_ultiregis, $basepangloria) or die(mysql_error());
+$row_ultiregis = mysql_fetch_assoc($ultiregis);
+$totalRows_ultiregis = mysql_num_rows($ultiregis);
+
+$colname_usuarioentra = "-1";
+if (isset($_SESSION['MM_Username'])) {
+  $colname_usuarioentra = $_SESSION['MM_Username'];
+}
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_usuarioentra = sprintf("SELECT IDUSUARIO FROM CATUSUARIO WHERE NOMBREUSUARIO = %s", GetSQLValueString($colname_usuarioentra, "text"));
+$usuarioentra = mysql_query($query_usuarioentra, $basepangloria) or die(mysql_error());
+$row_usuarioentra = mysql_fetch_assoc($usuarioentra);
+$totalRows_usuarioentra = mysql_num_rows($usuarioentra);
 ?>
+
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
   <table width="820" border="0">
     <tr>
@@ -72,9 +134,9 @@ $totalRows_comboMedida = mysql_num_rows($comboMedida);
     </tr>
     <tr>
       <td>Id Entrega:</td>
-      <td><input type="text" name="ID_ENTREGA" value="" size="32" /></td>
+      <td><input name="ID_ENTREGA" type="text" disabled="disabled" value="" size="32" /></td>
       <td>Id Encab. Entrega Producto:</td>
-      <td><input type="text" name="IDENCAENTREPROD" value="" size="32" /></td>
+      <td><input name="IDENCAENTREPROD" type="text" value="<?php echo $row_ultiregis['IDENCAENTREPROD']; ?>" size="32" readonly="readonly" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -124,13 +186,13 @@ do {
 ?>
       </select></td>
       <td>Usuario que Entrega Producto :</td>
-      <td><input type="text" name="USUARIOENTREPRODUCTO" value="" size="32" /></td>
+      <td><input value="<?php echo $row_usuarioentra['IDUSUARIO']; ?>" name="USUARIOENTREPRODUCTO" type="text" size="32" readonly="readonly" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>Fecha y Hora del Usuario:</td>
-      <td><input type="text" name="USUARIOFECHAYHORA" value="" size="32" /></td>
+      <td><input name="USUARIOFECHAYHORA" type="text" value="<?php echo date("Y-m-d H:i:s");;?> " size="32" readonly="readonly" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -154,4 +216,8 @@ do {
 mysql_free_result($comboProduc);
 
 mysql_free_result($comboMedida);
+
+mysql_free_result($ultiregis);
+
+mysql_free_result($usuarioentra);
 ?>

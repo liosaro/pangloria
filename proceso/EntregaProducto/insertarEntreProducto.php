@@ -59,6 +59,33 @@ $query_comboOrdenProd = "SELECT IDORDENPRODUCCION, PRODUCTOORDPRODUC FROM TRNDET
 $comboOrdenProd = mysql_query($query_comboOrdenProd, $basepangloria) or die(mysql_error());
 $row_comboOrdenProd = mysql_fetch_assoc($comboOrdenProd);
 $totalRows_comboOrdenProd = mysql_num_rows($comboOrdenProd);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_encabEntreProd = "SELECT IDENCAENTREPROD FROM TRNENCABEZADOENTREPROD ORDER BY IDENCAENTREPROD DESC";
+$encabEntreProd = mysql_query($query_encabEntreProd, $basepangloria) or die(mysql_error());
+$row_encabEntreProd = mysql_fetch_assoc($encabEntreProd);
+$totalRows_encabEntreProd = mysql_num_rows($encabEntreProd);
+
+$maxRows_detalleEntreProd = 10;
+$pageNum_detalleEntreProd = 0;
+if (isset($_GET['pageNum_detalleEntreProd'])) {
+  $pageNum_detalleEntreProd = $_GET['pageNum_detalleEntreProd'];
+}
+$startRow_detalleEntreProd = $pageNum_detalleEntreProd * $maxRows_detalleEntreProd;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_detalleEntreProd = "SELECT * FROM TRNENTREGAPRODUCTO";
+$query_limit_detalleEntreProd = sprintf("%s LIMIT %d, %d", $query_detalleEntreProd, $startRow_detalleEntreProd, $maxRows_detalleEntreProd);
+$detalleEntreProd = mysql_query($query_limit_detalleEntreProd, $basepangloria) or die(mysql_error());
+$row_detalleEntreProd = mysql_fetch_assoc($detalleEntreProd);
+
+if (isset($_GET['totalRows_detalleEntreProd'])) {
+  $totalRows_detalleEntreProd = $_GET['totalRows_detalleEntreProd'];
+} else {
+  $all_detalleEntreProd = mysql_query($query_detalleEntreProd);
+  $totalRows_detalleEntreProd = mysql_num_rows($all_detalleEntreProd);
+}
+$totalPages_detalleEntreProd = ceil($totalRows_detalleEntreProd/$maxRows_detalleEntreProd)-1;
 ?>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
   <table width="820" border="0">
@@ -67,7 +94,7 @@ $totalRows_comboOrdenProd = mysql_num_rows($comboOrdenProd);
     </tr>
     <tr>
       <td>Id Encab. Entrega de Producto:</td>
-      <td><input type="text" name="IDENCAENTREPROD" value="" size="32" /></td>
+      <td><input type="text" name="IDENCAENTREPROD" value="<?php echo $row_encabEntreProd['IDENCAENTREPROD']+1; ?>" size="32" /></td>
       <td>Id Orden de Produccion:</td>
       <td><select name="IDORDENPRODUCCION">
         <?php
@@ -92,7 +119,7 @@ do {
     </tr>
     <tr>
       <td>Empleado:</td>
-      <td><input name="IDEMPLEADO" type="text" value="<?php echo $row_idemple['IDEMPLEADO']; ?>" size="32" readonly="readonly" /></td>
+      <td><input name="IDEMPLEADO" type="text" size="32" /></td>
       <td>Fecha:</td>
       <td><script type="text/javascript"
 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
@@ -156,6 +183,24 @@ pickTime: false
   </table>
   <p>&nbsp;</p>
   <p><iframe src="insertDetalleEntrProd.php" name="conte" width="820" height="400" scrolling="auto"></iframe>&nbsp;</p>
+  <table border="1">
+    <tr>
+      <td>Cantidad de Producto Entregado</td>
+      <td>Producto entregado</td>
+      <td>Medida</td>
+      <td>Usuario Entrega Producto</td>
+    </tr>
+    <?php do { ?>
+    <tr>
+      <td><?php echo $row_detalleEntreProd['CANT_PRODUCTORECIBIDO']; ?></td>
+      <td><?php echo $row_detalleEntreProd['PRODUCTOENTRPROD']; ?></td>
+      <td><?php echo $row_detalleEntreProd['ID_MEDIDA']; ?></td>
+      <td><?php echo $row_detalleEntreProd['USUARIOENTREPRODUCTO']; ?></td>
+      </tr>
+    <?php } while ($row_detalleEntreProd = mysql_fetch_assoc($detalleEntreProd)); ?>
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
   <p>
     <input type="hidden" name="MM_insert" value="form1" />
 </p>
@@ -163,4 +208,8 @@ pickTime: false
 <p>&nbsp;</p>
 <?php
 mysql_free_result($comboOrdenProd);
+
+mysql_free_result($encabEntreProd);
+
+mysql_free_result($detalleEntreProd);
 ?>
