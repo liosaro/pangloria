@@ -53,18 +53,31 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+<script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<script src="../../SpryAssets/SpryValidationPassword.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen"
+href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
+<link href="../../SpryAssets/SpryValidationPassword.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-<table width="820" border="1">
+<table width="100%" border="1">
   <tr>
     <td><form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
-        <table width="820%" border="1">
+        <table width="820" border="0">
+          <tr>
+            <td colspan="4" align="center" bgcolor="#999999"><h1>Ingreso de Usuario</h1></td>
+          </tr>
           <tr>
             <td>Id Usuario</td>
-            <td><input type="text" name="IDUSUARIO" value="" size="32" /></td>
+            <td><input name="IDUSUARIO" type="text" disabled="disabled" value="<?php echo $row_idusu['IDUSUARIO']+1; ?>" size="32" readonly="readonly" /></td>
             <td>Nombre de Usuario</td>
-            <td><input type="text" name="NOMBREUSUARIO" value="" size="32" /></td>
+            <td><span id="sprytextfield1">
+              <input type="text" name="NOMBREUSUARIO" value="" size="32" />
+            <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -74,7 +87,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
           </tr>
           <tr>
             <td colspan="4" align="center">Contrasena
-              <input type="text" name="CONTRASENA" value="" size="32" /></td>
+              <span id="sprypassword1">
+              <input type="password" name="CONTRASENA" value="" size="32" />
+              <span class="passwordRequiredMsg">Se necesita un valor.</span></span></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -84,7 +99,46 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
           </tr>
           <tr>
             <td>Primer Inicio</td>
-            <td><input type="text" name="PRIMERINICIO" value="" size="32" /></td>
+            <td><script type="text/javascript"
+src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+<script type="text/javascript"
+src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+</script> <div id="datetimepicker4" class="input-append">
+
+
+<input name="FECHAENTREGA" type="text" id="FECHAENTREGA" data-format="yyyy-MM-dd"></input>
+<span class="add-on"><script type="text/javascript"
+src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+<script type="text/javascript"
+src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+</script> <div id="datetimepicker4" class="input-append">
+
+<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+</i>
+</span>
+</div>
+<script type="text/javascript">
+$(function() {
+$('#datetimepicker4').datetimepicker({
+pickTime: false
+});
+});
+</script>
+</td>
             <td>Ultimo Inicio</td>
             <td><input type="text" name="ULTIMOINICIO" value="" size="32" /></td>
           </tr>
@@ -102,5 +156,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
     <p>&nbsp;</p></td>
   </tr>
 </table>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
+var sprypassword1 = new Spry.Widget.ValidationPassword("sprypassword1");
+</script>
 </body>
 </html>
