@@ -60,6 +60,18 @@ $query_modisalida = sprintf("SELECT * FROM TRNSALIDA_MAT_PRIM WHERE ID_SALIDA = 
 $modisalida = mysql_query($query_modisalida, $basepangloria) or die(mysql_error());
 $row_modisalida = mysql_fetch_assoc($modisalida);
 $totalRows_modisalida = mysql_num_rows($modisalida);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_matePri = "SELECT DESCRIPCION FROM CATMATERIAPRIMA";
+$matePri = mysql_query($query_matePri, $basepangloria) or die(mysql_error());
+$row_matePri = mysql_fetch_assoc($matePri);
+$totalRows_matePri = mysql_num_rows($matePri);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_unidad = "SELECT TIPOUNIDAD FROM CATUNIDADES";
+$unidad = mysql_query($query_unidad, $basepangloria) or die(mysql_error());
+$row_unidad = mysql_fetch_assoc($unidad);
+$totalRows_unidad = mysql_num_rows($unidad);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -75,28 +87,24 @@ $totalRows_modisalida = mysql_num_rows($modisalida);
       <td colspan="2" align="right" nowrap="nowrap" bgcolor="#999999"><h1>Modificacion de Salida de Materia Prima</h1></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">ID_SALIDA:</td>
+      <td nowrap="nowrap" align="right">Id Salida:</td>
       <td><?php echo $row_modisalida['ID_SALIDA']; ?></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">CANTMAT_PRIMA:</td>
+      <td nowrap="nowrap" align="right">Cantidad de Materia Prima:</td>
       <td><input type="text" name="CANTMAT_PRIMA" value="<?php echo htmlentities($row_modisalida['CANTMAT_PRIMA'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">ID_MATPRIMA:</td>
-      <td><input type="text" name="ID_MATPRIMA" value="<?php echo htmlentities($row_modisalida['ID_MATPRIMA'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td nowrap="nowrap" align="right">Materia Prima:</td>
+      <td><input type="text" name="ID_MATPRIMA" value="<?php echo $row_matePri['DESCRIPCION']; ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">IDENCABEZADOSALMATPRI:</td>
+      <td nowrap="nowrap" align="right">Id Encabezado de Materia Prima:</td>
       <td><input type="text" name="IDENCABEZADOSALMATPRI" value="<?php echo htmlentities($row_modisalida['IDENCABEZADOSALMATPRI'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">IDUNIDAD:</td>
-      <td><input type="text" name="IDUNIDAD" value="<?php echo htmlentities($row_modisalida['IDUNIDAD'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">IDDEPTO:</td>
-      <td><input type="text" name="IDDEPTO" value="<?php echo htmlentities($row_modisalida['IDDEPTO'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td nowrap="nowrap" align="right">Unidad:</td>
+      <td><input type="text" name="IDUNIDAD" value="<?php echo $row_unidad['TIPOUNIDAD']; ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -111,4 +119,8 @@ $totalRows_modisalida = mysql_num_rows($modisalida);
 </html>
 <?php
 mysql_free_result($modisalida);
+
+mysql_free_result($matePri);
+
+mysql_free_result($unidad);
 ?>
