@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_disponibl" value="name:IDENCABEORDPROD;datatype:int,name:IDEMPLEADO;datatype:int,name:IDSUCURSAL;datatype:int,name:FECHA;datatype:date,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
-</info>
