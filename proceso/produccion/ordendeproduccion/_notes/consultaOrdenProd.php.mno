@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_encabOrdenProd" value="name:IDENCAENTREPROD;datatype:int,name:IDORDENPRODUCCION;datatype:int,name:IDEMPLEADO;datatype:int,name:FECHA;datatype:date,name:FECHAHORAUSUA;datatype:datetime" />
-</info>
