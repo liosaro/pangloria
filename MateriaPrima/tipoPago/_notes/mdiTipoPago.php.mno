@@ -2,4 +2,5 @@
 <info>
 	<infoitem key="UD_moditipoPago" value="name:IDCONDICION;datatype:int,name:TIPO;datatype:blob" />
 	<infoitem key="UD_combotipo" value="name:IDCONDICION;datatype:int,name:TIPO;datatype:blob" />
+	<infoitem key="UD_moditipo" value="name:IDCONDICION;datatype:int,name:TIPO;datatype:blob" />
 </info>
