@@ -3,4 +3,6 @@
 	<infoitem key="UD_control" value="name:ID_CONTROLPRODUCCION;datatype:int" />
 	<infoitem key="UD_producto" value="name:IDPRODUCTO;datatype:int,name:DESCRIPCIONPRODUC;datatype:string" />
 	<infoitem key="UD_medidas" value="name:ID_MEDIDA;datatype:int,name:MEDIDA;datatype:blob" />
+	<infoitem key="UD_justifi" value="name:ID_JUSTIFICACION;datatype:int" />
+	<infoitem key="UD_justificacion" value="name:ID_JUSTIFICACION;datatype:int,name:IDCONTROLPRODUCCION;datatype:int,name:CANTIDA_FALTANTE;datatype:real,name:IDPRODUCTOFALTA;datatype:int,name:ID_MEDIDA;datatype:int,name:FECHAINGRESOJUSFAPROD;datatype:date,name:JUSTIFICACIONFALTAPROD;datatype:string,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
 </info>

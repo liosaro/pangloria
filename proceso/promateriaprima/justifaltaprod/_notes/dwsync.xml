@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="IngresoJustiFalta.php" server="www.liosarpc.info//public_html/pan/" local="130138911610000000" remote="130138983600000000" />
-<file name="ModificarJustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130129848600000000" />
 <file name="elimarJustificacionFaltaProd.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130129848600000000" />
-<file name="modificacion.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130129848600000000" />
-<file name="ConsultaJustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130129848600000000" />
 <file name="EliminarJustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130129848600000000" remote="130129848600000000" />
-<file name="Modificando.php" server="www.liosarpc.info//public_html/pan/" local="130138824585181014" remote="130138950000000000" />
-<file name="frmmodificar.php" server="www.liosarpc.info//public_html/pan/" local="130130170164687500" remote="130130242200000000" />
+<file name="filtrojustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130138990200000000" remote="130138994400000000" />
+<file name="consultajustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130137217200000000" remote="130137217200000000" />
+<file name="ConsultaJustificacion.php" server="www.liosarpc.info//public_html/pan/" local="130137217200000000" remote="130138993200000000" />
 </dwsync>

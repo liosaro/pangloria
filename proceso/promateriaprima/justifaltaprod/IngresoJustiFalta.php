@@ -31,6 +31,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$currentPage = $_SERVER["PHP_SELF"];
+
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
@@ -54,7 +56,7 @@ mysql_select_db($database_basepangloria, $basepangloria);
 $query_justifi = "SELECT ID_JUSTIFICACION FROM TRNJUSTIFICACIONFALTAPRODUCTO";
 $justifi = mysql_query($query_justifi, $basepangloria) or die(mysql_error());
 $row_justifi = mysql_fetch_assoc($justifi);
-$totalRows_justifi = mysql_num_rows($justifi);mysql_select_db($database_basepangloria, $basepangloria);
+$totalRows_justifi = mysql_num_rows($justifi);
 $query_justifi = "SELECT ID_JUSTIFICACION FROM TRNJUSTIFICACIONFALTAPRODUCTO ORDER BY ID_JUSTIFICACION DESC";
 $justifi = mysql_query($query_justifi, $basepangloria) or die(mysql_error());
 $row_justifi = mysql_fetch_assoc($justifi);
@@ -77,6 +79,43 @@ $query_medidas = "SELECT * FROM CATMEDIDAS";
 $medidas = mysql_query($query_medidas, $basepangloria) or die(mysql_error());
 $row_medidas = mysql_fetch_assoc($medidas);
 $totalRows_medidas = mysql_num_rows($medidas);
+
+$maxRows_justificacion = 10;
+$pageNum_justificacion = 0;
+if (isset($_GET['pageNum_justificacion'])) {
+  $pageNum_justificacion = $_GET['pageNum_justificacion'];
+}
+$startRow_justificacion = $pageNum_justificacion * $maxRows_justificacion;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_justificacion = "SELECT * FROM TRNJUSTIFICACIONFALTAPRODUCTO";
+$query_limit_justificacion = sprintf("%s LIMIT %d, %d", $query_justificacion, $startRow_justificacion, $maxRows_justificacion);
+$justificacion = mysql_query($query_limit_justificacion, $basepangloria) or die(mysql_error());
+$row_justificacion = mysql_fetch_assoc($justificacion);
+
+if (isset($_GET['totalRows_justificacion'])) {
+  $totalRows_justificacion = $_GET['totalRows_justificacion'];
+} else {
+  $all_justificacion = mysql_query($query_justificacion);
+  $totalRows_justificacion = mysql_num_rows($all_justificacion);
+}
+$totalPages_justificacion = ceil($totalRows_justificacion/$maxRows_justificacion)-1;
+
+$queryString_justificacion = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_justificacion") == false && 
+        stristr($param, "totalRows_justificacion") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_justificacion = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_justificacion = sprintf("&totalRows_justificacion=%d%s", $totalRows_justificacion, $queryString_justificacion);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -100,16 +139,12 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
       </table>
     </form>
       <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
         <table align="center">
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">ID_JUSTIFICACION:</td>
             <td nowrap="nowrap"><input name="ID_JUSTIFICACION" type="text" disabled="disabled"  value="<?php echo $row_justifi['ID_JUSTIFICACION']+1; ?>" size="32" readonly="readonly" /></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">ID CONTROL PRODUCCION:</td>
-            <td><select name="IDCONTROLPRODUCCION">
+            <td nowrap="nowrap">ID CONTROL PRODUCCION</td>
+            <td nowrap="nowrap"><select name="IDCONTROLPRODUCCION">
               <?php
 do {  
 ?>
@@ -123,15 +158,23 @@ do {
   }
 ?>
             </select></td>
+            <td nowrap="nowrap">&nbsp;</td>
+            <td nowrap="nowrap">&nbsp;</td>
+          </tr>
+          <tr valign="baseline">
+            <td nowrap="nowrap" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
           </tr>
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">CANTIDAD FALTANTE:</td>
             <td><span id="sprytextfield1">
               <input type="text" name="CANTIDA_FALTANTE" value="" size="32" />
             <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
-          </tr>
-          <tr valign="baseline">
-            <td nowrap="nowrap" align="right">PRODUCTO FALTANTE:</td>
+            <td>PRODUCTO FALTANTE:</td>
             <td><select name="IDPRODUCTOFALTA" id="IDPRODUCTOFALTA">
               <?php
 do {  
@@ -146,6 +189,16 @@ do {
   }
 ?>
             </select></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr valign="baseline">
+            <td nowrap="nowrap" align="right">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
           </tr>
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">MEDIDA:</td>
@@ -163,71 +216,74 @@ do {
   }
 ?>
             </select></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
           </tr>
           <tr valign="baseline">
-            <td nowrap="nowrap" align="right"><p>FECHA DE INGRESO:</p></td>
-            <td><script type="text/javascript"
+            <td colspan="4" align="right" nowrap="nowrap"><p>FECHA DE INGRESO:</p>              <script type="text/javascript"
 
 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 
 </script>
-
-<script type="text/javascript"
+              
+              <script type="text/javascript"
 
 src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
 
 </script>
-
-<script type="text/javascript"
+              
+              <script type="text/javascript"
 
 src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
 
 </script>
-
-<script type="text/javascript"
+              
+              <script type="text/javascript"
 
 src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
 
 </script> <div id="datetimepicker4" class="input-append">
-
-
-
-<input name="FECHAINGRESOJUSFAPROD" type="text" id="FECHAINGRESOJUSFAPROD" data-format="yyyy-MM-dd"></input>
-
-<span class="add-on"><script type="text/javascript"
+              
+              
+              
+              <input name="FECHAINGRESOJUSFAPROD" type="text" id="FECHAINGRESOJUSFAPROD" data-format="yyyy-MM-dd"></input>
+              
+              <span class="add-on"><script type="text/javascript"
 
 src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
 
 </script>
-
-<script type="text/javascript"
+              
+              <script type="text/javascript"
 
 src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
 
 </script>
-
-<script type="text/javascript"
+              
+              <script type="text/javascript"
 
 src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
 
 </script>
-
-<script type="text/javascript"
+              
+              <script type="text/javascript"
 
 src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
 
 </script> <div id="datetimepicker4" class="input-append">
-
-
-<i data-time-icon="icon-time" data-date-icon="icon-calendar">
-
-</i>
-
-
-
-</div>
-
-<script type="text/javascript">
+  
+  
+  <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+    
+    </i>
+  
+  
+  
+  </div>
+              
+            <script type="text/javascript">
 
 $(function() {
 
@@ -239,6 +295,8 @@ pickTime: false
 
 });
 </script></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
         
             <td>&nbsp;</td>
           </tr>
@@ -249,13 +307,47 @@ pickTime: false
               <label for="text1"></label>
               <textarea name="text1" id="text1"></textarea>
             <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
           </tr>
           <tr valign="baseline">
             <td nowrap="nowrap" align="right">&nbsp;</td>
             <td><input type="submit" value="Insertar registro" /></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
           </tr>
         </table>
-        <input type="hidden" name="MM_insert" value="form2" />
+        <p>
+          <input type="hidden" name="MM_insert" value="form2" />
+        </p>
+        <p><a href="<?php printf("%s?pageNum_justificacion=%d%s", $currentPage, 0, $queryString_justificacion); ?>"><img src="../../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_justificacion=%d%s", $currentPage, max(0, $pageNum_justificacion - 1), $queryString_justificacion); ?>"><img src="../../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_justificacion=%d%s", $currentPage, min($totalPages_justificacion, $pageNum_justificacion + 1), $queryString_justificacion); ?>"><img src="../../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_justificacion=%d%s", $currentPage, $totalPages_justificacion, $queryString_justificacion); ?>"><img src="../../../imagenes/icono/Next-32.png" width="32" height="32" /></a></p>
+        <table border="1">
+          <tr>
+            <td colspan="6" align="center" bgcolor="#999999"><h1>Detalle</h1></td>
+          </tr>
+          <tr>
+            <td>Id Justificacion</td>
+            <td>Control de Produccion</td>
+            <td>Cantidad Faltante</td>
+            <td>Producto Faltante</td>
+            <td>Medida</td>
+            <td>Fecha de Ingreso</td>
+          </tr>
+          <?php do { ?>
+            <tr>
+              <td><?php echo $row_justificacion['ID_JUSTIFICACION']; ?></td>
+              <td><?php echo $row_justificacion['IDCONTROLPRODUCCION']; ?></td>
+              <td><?php echo $row_justificacion['CANTIDA_FALTANTE']; ?></td>
+              <td><?php echo $row_producto['DESCRIPCIONPRODUC']; ?></td>
+              <td><?php echo $row_medidas['MEDIDA']; ?></td>
+              <td><?php echo $row_justificacion['FECHAINGRESOJUSFAPROD']; ?></td>
+            </tr>
+            <?php } while ($row_justificacion = mysql_fetch_assoc($justificacion)); ?>
+        </table>
       </form>
     <p>&nbsp;</p></td>
   </tr>
@@ -274,4 +366,6 @@ mysql_free_result($control);
 mysql_free_result($producto);
 
 mysql_free_result($medidas);
+
+mysql_free_result($justificacion);
 ?>
