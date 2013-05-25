@@ -119,7 +119,7 @@ body {
 </head>
 
 <body>
-<table border="1" cellpadding="0" cellspacing="0">
+<table width="100%" border="1" cellpadding="0" cellspacing="0">
   <tr>
     <td colspan="8" bgcolor="#999999">Detalle de Consulta de Atribucion por Id</td>
   </tr>
