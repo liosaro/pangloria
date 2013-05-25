@@ -31,26 +31,26 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$maxRows_usuario = 10;
-$pageNum_usuario = 0;
-if (isset($_GET['pageNum_usuario'])) {
-  $pageNum_usuario = $_GET['pageNum_usuario'];
+$maxRows_todos = 10;
+$pageNum_todos = 0;
+if (isset($_GET['pageNum_todos'])) {
+  $pageNum_todos = $_GET['pageNum_todos'];
 }
-$startRow_usuario = $pageNum_usuario * $maxRows_usuario;
+$startRow_todos = $pageNum_todos * $maxRows_todos;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_usuario = "SELECT * FROM CATUSUARIO";
-$query_limit_usuario = sprintf("%s LIMIT %d, %d", $query_usuario, $startRow_usuario, $maxRows_usuario);
-$usuario = mysql_query($query_limit_usuario, $basepangloria) or die(mysql_error());
-$row_usuario = mysql_fetch_assoc($usuario);
+$query_todos = "SELECT * FROM CATUSUARIO ORDER BY IDUSUARIO ASC";
+$query_limit_todos = sprintf("%s LIMIT %d, %d", $query_todos, $startRow_todos, $maxRows_todos);
+$todos = mysql_query($query_limit_todos, $basepangloria) or die(mysql_error());
+$row_todos = mysql_fetch_assoc($todos);
 
-if (isset($_GET['totalRows_usuario'])) {
-  $totalRows_usuario = $_GET['totalRows_usuario'];
+if (isset($_GET['totalRows_todos'])) {
+  $totalRows_todos = $_GET['totalRows_todos'];
 } else {
-  $all_usuario = mysql_query($query_usuario);
-  $totalRows_usuario = mysql_num_rows($all_usuario);
+  $all_todos = mysql_query($query_todos);
+  $totalRows_todos = mysql_num_rows($all_todos);
 }
-$totalPages_usuario = ceil($totalRows_usuario/$maxRows_usuario)-1;
+$totalPages_todos = ceil($totalRows_todos/$maxRows_todos)-1;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -62,8 +62,12 @@ $totalPages_usuario = ceil($totalRows_usuario/$maxRows_usuario)-1;
 <body>
 <table border="1">
   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td colspan="5" align="center" bgcolor="#999999"><h1>Detalle</h1></td>
+  </tr>
+  <tr>
+    <td colspan="5"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></td>
+  </tr>
+  <tr>
     <td>IDUSUARIO</td>
     <td>NOMBREUSUARIO</td>
     <td>CONTRASENA</td>
@@ -72,18 +76,16 @@ $totalPages_usuario = ceil($totalRows_usuario/$maxRows_usuario)-1;
   </tr>
   <?php do { ?>
     <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td><?php echo $row_usuario['IDUSUARIO']; ?></td>
-      <td><?php echo $row_usuario['NOMBREUSUARIO']; ?></td>
-      <td><?php echo $row_usuario['CONTRASENA']; ?></td>
-      <td><?php echo $row_usuario['PRIMERINICIO']; ?></td>
-      <td><?php echo $row_usuario['ULTIMOINICIO']; ?></td>
+      <td><?php echo $row_todos['IDUSUARIO']; ?></td>
+      <td><?php echo $row_todos['NOMBREUSUARIO']; ?></td>
+      <td><?php echo $row_todos['CONTRASENA']; ?></td>
+      <td><?php echo $row_todos['PRIMERINICIO']; ?></td>
+      <td><?php echo $row_todos['ULTIMOINICIO']; ?></td>
     </tr>
-    <?php } while ($row_usuario = mysql_fetch_assoc($usuario)); ?>
+    <?php } while ($row_todos = mysql_fetch_assoc($todos)); ?>
 </table>
 </body>
 </html>
 <?php
-mysql_free_result($usuario);
+mysql_free_result($todos);
 ?>

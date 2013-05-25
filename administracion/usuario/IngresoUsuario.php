@@ -131,7 +131,7 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
           
           <tr>
             <td>Ultimo Inicio de Sesion:</td>
-            <td><script type="text/javascript"
+           <td><script type="text/javascript"
      src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
     </script> 
     <script type="text/javascript"
@@ -143,8 +143,9 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
     <script type="text/javascript"
      src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
     </script>
-   <div class="wels2">
-  <div id="datetimepicker2" class="input-append date"></input>
+   <div class="welsl">
+  <div id="datetimepicker2" class="input-append date">
+    <input data-format="yyyy-MM-dd hh:mm:ss" type="text"></input>
     <span class="add-on">
       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
       </i>

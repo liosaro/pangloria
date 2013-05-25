@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_id" value="name:IDUSUARIO;datatype:int,name:NOMBREUSUARIO;datatype:blob,name:CONTRASENA;datatype:blob,name:PRIMERINICIO;datatype:datetime,name:ULTIMOINICIO;datatype:datetime" />
+</info>
