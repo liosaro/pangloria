@@ -16,19 +16,15 @@ function OnSubmitForm()
 {
   if(document.consultaproducto.radiosearch[0].checked == true)
   {
-    document.consultaproducto.action ="consulta_atribuid.php?q=";
+    document.consultaproducto.action ="consulta_matprimaid.php?q=";
   }
   if(document.consultaproducto.radiosearch[1].checked == true)
   {
-    document.consultaproducto.action ="consulta_atribuusuario.php?q=";
+    document.consultaproducto.action ="consulta_matprimamp.php?q=";
   }
   if(document.consultaproducto.radiosearch[2].checked == true)
   {
-    document.consultaproducto.action ="consulta_atriburol.php?q=";
-  }
-   if(document.consultaproducto.radiosearch[3].checked == true)
-  {
-    document.consultaproducto.action ="consulta_atributodo.php?q=";
+    document.consultaproducto.action ="consulta_matprimatodo.php?q=";
   }
   return true;
 }
@@ -41,7 +37,7 @@ function OnSubmitForm()
 <form id="form1" name="consultaproducto" onsubmit="return OnSubmitForm();" target="conte">
 <table width="600" border="0">
   <tr>
-    <td bgcolor="#999999"><h1>Consultar Atribuciones</h1></td>
+    <td bgcolor="#999999"><h1>Consultar Control de Materia Prima</h1></td>
   </tr>
   <tr>
     <td><div id="radiosearch">
@@ -55,27 +51,20 @@ function OnSubmitForm()
           <td width="186">Seleccione tipo de Consulta:</td>
           <td width="188">
           <input name="radiosearch" type="radio" value="1" checked>
-          Codigo De Atribucion</td>
+          CodigoControl Materia Prima</td>
           <td width="39">&nbsp;</td>
           <td width="200">&nbsp;</td>
         </tr>
         <tr>
           <td>&nbsp;</td>
           <td><input type="radio" name="radiosearch" id="id6" value="id" />
-            Usuario</td>
+            Materia Prima</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td>&nbsp;</td>
           <td><input type="radio" name="radiosearch" id="id7" value="id" />
-            Rol</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td><input type="radio" name="radiosearch" id="id8" value="id" />
             Todos</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>

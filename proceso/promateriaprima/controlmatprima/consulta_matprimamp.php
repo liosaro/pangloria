@@ -33,46 +33,46 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 $currentPage = $_SERVER["PHP_SELF"];
 
-$maxRows_conatribu = 10;
-$pageNum_conatribu = 0;
-if (isset($_GET['pageNum_conatribu'])) {
-  $pageNum_conatribu = $_GET['pageNum_conatribu'];
+$maxRows_conmatpri = 10;
+$pageNum_conmatpri = 0;
+if (isset($_GET['pageNum_conmatpri'])) {
+  $pageNum_conmatpri = $_GET['pageNum_conmatpri'];
 }
-$startRow_conatribu = $pageNum_conatribu * $maxRows_conatribu;
+$startRow_conmatpri = $pageNum_conmatpri * $maxRows_conmatpri;
 
-$colname_conatribu = "-1";
+$colname_conmatpri = "-1";
 if (isset($_GET['q'])) {
-  $colname_conatribu = $_GET['q'];
+  $colname_conmatpri = $_GET['q'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_conatribu = sprintf("SELECT * FROM CATATRIBUCIONES WHERE IDUSUARIO = %s", GetSQLValueString($colname_conatribu, "int"));
-$query_limit_conatribu = sprintf("%s LIMIT %d, %d", $query_conatribu, $startRow_conatribu, $maxRows_conatribu);
-$conatribu = mysql_query($query_limit_conatribu, $basepangloria) or die(mysql_error());
-$row_conatribu = mysql_fetch_assoc($conatribu);
+$query_conmatpri = sprintf("SELECT * FROM TRNCONTROL_MAT_PRIMA WHERE IDMATPRIMA = %s", GetSQLValueString($colname_conmatpri, "int"));
+$query_limit_conmatpri = sprintf("%s LIMIT %d, %d", $query_conmatpri, $startRow_conmatpri, $maxRows_conmatpri);
+$conmatpri = mysql_query($query_limit_conmatpri, $basepangloria) or die(mysql_error());
+$row_conmatpri = mysql_fetch_assoc($conmatpri);
 
-if (isset($_GET['totalRows_conatribu'])) {
-  $totalRows_conatribu = $_GET['totalRows_conatribu'];
+if (isset($_GET['totalRows_conmatpri'])) {
+  $totalRows_conmatpri = $_GET['totalRows_conmatpri'];
 } else {
-  $all_conatribu = mysql_query($query_conatribu);
-  $totalRows_conatribu = mysql_num_rows($all_conatribu);
+  $all_conmatpri = mysql_query($query_conmatpri);
+  $totalRows_conmatpri = mysql_num_rows($all_conmatpri);
 }
-$totalPages_conatribu = ceil($totalRows_conatribu/$maxRows_conatribu)-1;
+$totalPages_conmatpri = ceil($totalRows_conmatpri/$maxRows_conmatpri)-1;
 
-$queryString_conatribu = "";
+$queryString_conmatpri = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
   $params = explode("&", $_SERVER['QUERY_STRING']);
   $newParams = array();
   foreach ($params as $param) {
-    if (stristr($param, "pageNum_conatribu") == false && 
-        stristr($param, "totalRows_conatribu") == false) {
+    if (stristr($param, "pageNum_conmatpri") == false && 
+        stristr($param, "totalRows_conmatpri") == false) {
       array_push($newParams, $param);
     }
   }
   if (count($newParams) != 0) {
-    $queryString_conatribu = "&" . htmlentities(implode("&", $newParams));
+    $queryString_conmatpri = "&" . htmlentities(implode("&", $newParams));
   }
 }
-$queryString_conatribu = sprintf("&totalRows_conatribu=%d%s", $totalRows_conatribu, $queryString_conatribu);
+$queryString_conmatpri = sprintf("&totalRows_conmatpri=%d%s", $totalRows_conmatpri, $queryString_conmatpri);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -93,34 +93,34 @@ body {
     <td colspan="8" bgcolor="#999999">Detalle de Consulta de Atribucion por Usuario</td>
   </tr>
   <tr>
-    <td colspan="8"><a href="<?php printf("%s?pageNum_conatribu=%d%s", $currentPage, 0, $queryString_conatribu); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_conatribu=%d%s", $currentPage, max(0, $pageNum_conatribu - 1), $queryString_conatribu); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_conatribu=%d%s", $currentPage, min($totalPages_conatribu, $pageNum_conatribu + 1), $queryString_conatribu); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_conatribu=%d%s", $currentPage, $totalPages_conatribu, $queryString_conatribu); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></td>
+    <td colspan="8"><a href="<?php printf("%s?pageNum_conmatpri=%d%s", $currentPage, 0, $queryString_conmatpri); ?>"><img src="../../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_conmatpri=%d%s", $currentPage, max(0, $pageNum_conmatpri - 1), $queryString_conmatpri); ?>"><img src="../../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_conmatpri=%d%s", $currentPage, min($totalPages_conmatpri, $pageNum_conmatpri + 1), $queryString_conmatpri); ?>"><img src="../../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_conmatpri=%d%s", $currentPage, $totalPages_conmatpri, $queryString_conmatpri); ?>"><img src="../../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></td>
   </tr>
   <tr>
-    <td>Codigo de Atribucion</td>
+    <td>Codigo Control Materia Prima</td>
     <td>Usuario</td>
-    <td>Rol</td>
-    <td>Permisos</td>
-    <td>C</td>
-    <td>R</td>
-    <td>U</td>
-    <td>D</td>
+    <td>Salida</td>
+    <td>Unidad</td>
+    <td>Cantida Entregado</td>
+    <td>Cantida Devuelta</td>
+    <td>Cantidad Utiliada</td>
+    <td>Fecha</td>
   </tr>
   <?php do { ?>
     <tr>
-      <td><?php echo $row_conatribu['ID_ATRIB']; ?></td>
-      <td><?php echo $row_conatribu['IDUSUARIO']; ?></td>
-      <td><?php echo $row_conatribu['IDROL']; ?></td>
-      <td><?php echo $row_conatribu['IDPERMISO']; ?></td>
-      <td><?php echo $row_conatribu['C']; ?></td>
-      <td><?php echo $row_conatribu['R']; ?></td>
-      <td><?php echo $row_conatribu['U']; ?></td>
-      <td><?php echo $row_conatribu['D']; ?></td>
+      <td><?php echo $row_conmatpri['ID_CONTROLMAT']; ?></td>
+      <td><?php echo $row_conmatpri['IDMATPRIMA']; ?></td>
+      <td><?php echo $row_conmatpri['ID_SALIDA']; ?></td>
+      <td><?php echo $row_conmatpri['IDUNIDAD']; ?></td>
+      <td><?php echo $row_conmatpri['CANT_ENTREGA']; ?></td>
+      <td><?php echo $row_conmatpri['CANT_DEVUELTA']; ?></td>
+      <td><?php echo $row_conmatpri['CANT_UTILIZADA']; ?></td>
+      <td><?php echo $row_conmatpri['FECHA_CONTROL']; ?></td>
     </tr>
-    <?php } while ($row_conatribu = mysql_fetch_assoc($conatribu)); ?>
+    <?php } while ($row_conmatpri = mysql_fetch_assoc($conmatpri)); ?>
 </table>
 <p>&nbsp;</p>
 </body>
 </html>
 <?php
-mysql_free_result($conatribu);
+mysql_free_result($conmatpri);
 ?>
