@@ -32,13 +32,13 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 if ((isset($_GET['root'])) && ($_GET['root'] != "")) {
-  $deleteSQL = sprintf("DELETE FROM TRNCONTROL_MAT_PRIMA WHERE ID_CONTROLMAT=%s",
+  $deleteSQL = sprintf("DELETE FROM CATATRIBUCIONES WHERE ID_ATRIB=%s",
                        GetSQLValueString($_GET['root'], "int"));
 
   mysql_select_db($database_basepangloria, $basepangloria);
   $Result1 = mysql_query($deleteSQL, $basepangloria) or die(mysql_error());
 
-  $deleteGoTo = "eliminacionMatprima.php";
+  $deleteGoTo = "eliminacionatribu.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $deleteGoTo .= (strpos($deleteGoTo, '?')) ? "&" : "?";
     $deleteGoTo .= $_SERVER['QUERY_STRING'];
