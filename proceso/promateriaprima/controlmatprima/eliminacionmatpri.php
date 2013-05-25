@@ -52,6 +52,25 @@ if (isset($_GET['totalRows_consultamatpri'])) {
   $all_consultamatpri = mysql_query($query_consultamatpri);
   $totalRows_consultamatpri = mysql_num_rows($all_consultamatpri);
 }
+$totalPages_consultamatpri = ceil($totalRows_consultamatpri/$maxRows_consultamatpri)-1;$maxRows_consultamatpri = 5;
+$pageNum_consultamatpri = 0;
+if (isset($_GET['pageNum_consultamatpri'])) {
+  $pageNum_consultamatpri = $_GET['pageNum_consultamatpri'];
+}
+$startRow_consultamatpri = $pageNum_consultamatpri * $maxRows_consultamatpri;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_consultamatpri = "SELECT * FROM TRNCONTROL_MAT_PRIMA";
+$query_limit_consultamatpri = sprintf("%s LIMIT %d, %d", $query_consultamatpri, $startRow_consultamatpri, $maxRows_consultamatpri);
+$consultamatpri = mysql_query($query_limit_consultamatpri, $basepangloria) or die(mysql_error());
+$row_consultamatpri = mysql_fetch_assoc($consultamatpri);
+
+if (isset($_GET['totalRows_consultamatpri'])) {
+  $totalRows_consultamatpri = $_GET['totalRows_consultamatpri'];
+} else {
+  $all_consultamatpri = mysql_query($query_consultamatpri);
+  $totalRows_consultamatpri = mysql_num_rows($all_consultamatpri);
+}
 $totalPages_consultamatpri = ceil($totalRows_consultamatpri/$maxRows_consultamatpri)-1;
 
 $queryString_consultamatpri = "";
@@ -140,7 +159,7 @@ return true;
                     </tr>
                   <?php do { ?>
                     <tr>
-                      <td><a href="javascript:;" onclick="aviso('eliminarAtribu.php?root=<?php echo $row_consultamatpri['ID_CONTROLMAT'];?>'); return false;">Eliminar</a></td>
+                      <td><a href="javascript:;" onclick="aviso('eliminarMatpri.php?root=<?php echo $row_consultamatpri['ID_CONTROLMAT'];?>'); return false;">Eliminar</a></td>
                       <td><?php echo $row_consultamatpri['ID_CONTROLMAT']; ?></td>
                       <td><?php echo $row_consultamatpri['IDMATPRIMA']; ?></td>
                       <td><?php echo $row_consultamatpri['ID_SALIDA']; ?></td>

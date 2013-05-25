@@ -31,26 +31,26 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$maxRows_filtradoatribu = 15;
-$pageNum_filtradoatribu = 0;
-if (isset($_GET['pageNum_filtradoatribu'])) {
-  $pageNum_filtradoatribu = $_GET['pageNum_filtradoatribu'];
+$maxRows_filtradomatpri = 15;
+$pageNum_filtradomatpri = 0;
+if (isset($_GET['pageNum_filtradomatpri'])) {
+  $pageNum_filtradomatpri = $_GET['pageNum_filtradomatpri'];
 }
-$startRow_filtradoatribu = $pageNum_filtradoatribu * $maxRows_filtradoatribu;
+$startRow_filtradomatpri = $pageNum_filtradomatpri * $maxRows_filtradomatpri;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_filtradoatribu = "SELECT * FROM CATATRIBUCIONES";
-$query_limit_filtradoatribu = sprintf("%s LIMIT %d, %d", $query_filtradoatribu, $startRow_filtradoatribu, $maxRows_filtradoatribu);
-$filtradoatribu = mysql_query($query_limit_filtradoatribu, $basepangloria) or die(mysql_error());
-$row_filtradoatribu = mysql_fetch_assoc($filtradoatribu);
+$query_filtradomatpri = "SELECT * FROM TRNCONTROL_MAT_PRIMA";
+$query_limit_filtradomatpri = sprintf("%s LIMIT %d, %d", $query_filtradomatpri, $startRow_filtradomatpri, $maxRows_filtradomatpri);
+$filtradomatpri = mysql_query($query_limit_filtradomatpri, $basepangloria) or die(mysql_error());
+$row_filtradomatpri = mysql_fetch_assoc($filtradomatpri);
 
-if (isset($_GET['totalRows_filtradoatribu'])) {
-  $totalRows_filtradoatribu = $_GET['totalRows_filtradoatribu'];
+if (isset($_GET['totalRows_filtradomatpri'])) {
+  $totalRows_filtradomatpri = $_GET['totalRows_filtradomatpri'];
 } else {
-  $all_filtradoatribu = mysql_query($query_filtradoatribu);
-  $totalRows_filtradoatribu = mysql_num_rows($all_filtradoatribu);
+  $all_filtradomatpri = mysql_query($query_filtradomatpri);
+  $totalRows_filtradomatpri = mysql_num_rows($all_filtradomatpri);
 }
-$totalPages_filtradoatribu = ceil($totalRows_filtradoatribu/$maxRows_filtradoatribu)-1;
+$totalPages_filtradomatpri = ceil($totalRows_filtradomatpri/$maxRows_filtradomatpri)-1;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -79,7 +79,7 @@ return true;
 <body>
 <table width="821" border="1">
   <tr>
-    <td colspan="10" align="center" bgcolor="#999999"><h1>Eliminar Atribuciones</h1></td>
+    <td colspan="10" align="center" bgcolor="#999999"><h1>Eliminar Control Materia Prima</h1></td>
   </tr>
   <tr>
     <td colspan="10"><table width="830" border="1" cellpadding="0" cellspacing="0">
@@ -93,34 +93,34 @@ return true;
         <td>&nbsp;</td>
       </tr>
       <tr>
-        <td>Modificacion</td>
-        <td>Id Atribucion</td>
-        <td>Id Usuario</td>
-        <td>Id Rol</td>
-        <td>Id Permiso</td>
-        <td>C</td>
-        <td>R</td>
-        <td>U</td>
-        <td>D</td>
+        <td>Eliminación</td>
+        <td>Id Control Materia Prima</td>
+        <td> Usuario</td>
+        <td>Salida</td>
+        <td>Unidad</td>
+        <td>Cantidad Entregada</td>
+        <td>Cantidad Devuelta</td>
+        <td>Cantidad Utilizada</td>
+        <td>Fecha</td>
       </tr>
       <?php do { ?>
       <tr>
-        <td><a href="javascript:;" onclick="aviso('eliminarAtribu.php?root=<?php echo $row_filtradoatribu['ID_ATRIB'];?>'); return false;">Eliminar</a></td>
-        <td><?php echo $row_filtradoatribu['ID_ATRIB']; ?></td>
-        <td><?php echo $row_filtradoatribu['IDUSUARIO']; ?></td>
-        <td><?php echo $row_filtradoatribu['IDROL']; ?></td>
-        <td><?php echo $row_filtradoatribu['IDPERMISO']; ?></td>
-        <td><?php echo $row_filtradoatribu['C']; ?></td>
-        <td><?php echo $row_filtradoatribu['R']; ?></td>
-        <td><?php echo $row_filtradoatribu['U']; ?></td>
-        <td><?php echo $row_filtradoatribu['D']; ?></td>
+        <td><a href="javascript:;" onclick="aviso('eliminarAtribu.php?root=<?php echo $row_filtradomatpri['ID_CONTROLMAT'];?>'); return false;">Eliminar</a></td>
+        <td><?php echo $row_filtradomatpri['ID_CONTROLMAT']; ?></td>
+        <td><?php echo $row_filtradomatpri['IDMATPRIMA']; ?></td>
+        <td><?php echo $row_filtradomatpri['ID_SALIDA']; ?></td>
+        <td><?php echo $row_filtradomatpri['IDUNIDAD']; ?></td>
+        <td><?php echo $row_filtradomatpri['CANT_ENTREGA']; ?></td>
+        <td><?php echo $row_filtradomatpri['CANT_DEVUELTA']; ?></td>
+        <td><?php echo $row_filtradomatpri['CANT_UTILIZADA']; ?></td>
+        <td><?php echo $row_filtradomatpri['FECHA_CONTROL']; ?></td>
       </tr>
-      <?php } while ($row_filtradoatribu = mysql_fetch_assoc($filtradoatribu)); ?>
+      <?php } while ($row_filtradomatpri = mysql_fetch_assoc($filtradomatpri)); ?>
     </table></td>
   </tr>
 </table>
 </body>
 </html>
 <?php
-mysql_free_result($filtradoatribu);
+mysql_free_result($filtradomatpri);
 ?>
