@@ -33,42 +33,61 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 $currentPage = $_SERVER["PHP_SELF"];
 
-$maxRows_MODCORDENCOMPRA = 10;
-$pageNum_MODCORDENCOMPRA = 0;
-if (isset($_GET['pageNum_MODCORDENCOMPRA'])) {
-  $pageNum_MODCORDENCOMPRA = $_GET['pageNum_MODCORDENCOMPRA'];
+$maxRows_modmatpri = 10;
+$pageNum_modmatpri = 0;
+if (isset($_GET['pageNum_modmatpri'])) {
+  $pageNum_modmatpri = $_GET['pageNum_modmatpri'];
 }
-$startRow_MODCORDENCOMPRA = $pageNum_MODCORDENCOMPRA * $maxRows_MODCORDENCOMPRA;
+$startRow_modmatpri = $pageNum_modmatpri * $maxRows_modmatpri;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_MODCORDENCOMPRA = "SELECT * FROM TRNCONTROL_MAT_PRIMA ORDER BY ID_CONTROLMAT ASC";
-$query_limit_MODCORDENCOMPRA = sprintf("%s LIMIT %d, %d", $query_MODCORDENCOMPRA, $startRow_MODCORDENCOMPRA, $maxRows_MODCORDENCOMPRA);
-$MODCORDENCOMPRA = mysql_query($query_limit_MODCORDENCOMPRA, $basepangloria) or die(mysql_error());
-$row_MODCORDENCOMPRA = mysql_fetch_assoc($MODCORDENCOMPRA);
+$query_modmatpri = "SELECT * FROM TRNCONTROL_MAT_PRIMA ORDER BY ID_CONTROLMAT ASC";
+$query_limit_modmatpri = sprintf("%s LIMIT %d, %d", $query_modmatpri, $startRow_modmatpri, $maxRows_modmatpri);
+$modmatpri = mysql_query($query_limit_modmatpri, $basepangloria) or die(mysql_error());
+$row_modmatpri = mysql_fetch_assoc($modmatpri);
 
-if (isset($_GET['totalRows_MODCORDENCOMPRA'])) {
-  $totalRows_MODCORDENCOMPRA = $_GET['totalRows_MODCORDENCOMPRA'];
+if (isset($_GET['totalRows_modmatpri'])) {
+  $totalRows_modmatpri = $_GET['totalRows_modmatpri'];
 } else {
-  $all_MODCORDENCOMPRA = mysql_query($query_MODCORDENCOMPRA);
-  $totalRows_MODCORDENCOMPRA = mysql_num_rows($all_MODCORDENCOMPRA);
+  $all_modmatpri = mysql_query($query_modmatpri);
+  $totalRows_modmatpri = mysql_num_rows($all_modmatpri);
 }
-$totalPages_MODCORDENCOMPRA = ceil($totalRows_MODCORDENCOMPRA/$maxRows_MODCORDENCOMPRA)-1;
+$totalPages_modmatpri = ceil($totalRows_modmatpri/$maxRows_modmatpri)-1;$maxRows_modmatpri = 10;
+$pageNum_modmatpri = 0;
+if (isset($_GET['pageNum_modmatpri'])) {
+  $pageNum_modmatpri = $_GET['pageNum_modmatpri'];
+}
+$startRow_modmatpri = $pageNum_modmatpri * $maxRows_modmatpri;
 
-$queryString_MODCORDENCOMPRA = "";
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_modmatpri = "SELECT * FROM TRNCONTROL_MAT_PRIMA ORDER BY ID_CONTROLMAT ASC";
+$query_limit_modmatpri = sprintf("%s LIMIT %d, %d", $query_modmatpri, $startRow_modmatpri, $maxRows_modmatpri);
+$modmatpri = mysql_query($query_limit_modmatpri, $basepangloria) or die(mysql_error());
+$row_modmatpri = mysql_fetch_assoc($modmatpri);
+
+if (isset($_GET['totalRows_modmatpri'])) {
+  $totalRows_modmatpri = $_GET['totalRows_modmatpri'];
+} else {
+  $all_modmatpri = mysql_query($query_modmatpri);
+  $totalRows_modmatpri = mysql_num_rows($all_modmatpri);
+}
+$totalPages_modmatpri = ceil($totalRows_modmatpri/$maxRows_modmatpri)-1;
+
+$queryString_modmatpri = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
   $params = explode("&", $_SERVER['QUERY_STRING']);
   $newParams = array();
   foreach ($params as $param) {
-    if (stristr($param, "pageNum_MODCORDENCOMPRA") == false && 
-        stristr($param, "totalRows_MODCORDENCOMPRA") == false) {
+    if (stristr($param, "pageNum_modmatpri") == false && 
+        stristr($param, "totalRows_modmatpri") == false) {
       array_push($newParams, $param);
     }
   }
   if (count($newParams) != 0) {
-    $queryString_MODCORDENCOMPRA = "&" . htmlentities(implode("&", $newParams));
+    $queryString_modmatpri = "&" . htmlentities(implode("&", $newParams));
   }
 }
-$queryString_MODCORDENCOMPRA = sprintf("&totalRows_MODCORDENCOMPRA=%d%s", $totalRows_MODCORDENCOMPRA, $queryString_MODCORDENCOMPRA);
+$queryString_modmatpri = sprintf("&totalRows_modmatpri=%d%s", $totalRows_modmatpri, $queryString_modmatpri);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -102,7 +121,7 @@ body {
     </form></td>
   </tr>
   <tr>
-    <td><a href="<?php printf("%s?pageNum_MODCORDENCOMPRA=%d%s", $currentPage, 0, $queryString_MODCORDENCOMPRA); ?>"><img src="../../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_MODCORDENCOMPRA=%d%s", $currentPage, max(0, $pageNum_MODCORDENCOMPRA - 1), $queryString_MODCORDENCOMPRA); ?>"><img src="../../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_MODCORDENCOMPRA=%d%s", $currentPage, min($totalPages_MODCORDENCOMPRA, $pageNum_MODCORDENCOMPRA + 1), $queryString_MODCORDENCOMPRA); ?>"><img src="../../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_MODCORDENCOMPRA=%d%s", $currentPage, $totalPages_MODCORDENCOMPRA, $queryString_MODCORDENCOMPRA); ?>"><img src="../../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
+    <td><a href="<?php printf("%s?pageNum_modmatpri=%d%s", $currentPage, 0, $queryString_modmatpri); ?>"><img src="../../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modmatpri=%d%s", $currentPage, max(0, $pageNum_modmatpri - 1), $queryString_modmatpri); ?>"><img src="../../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modmatpri=%d%s", $currentPage, min($totalPages_modmatpri, $pageNum_modmatpri + 1), $queryString_modmatpri); ?>"><img src="../../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_modmatpri=%d%s", $currentPage, $totalPages_modmatpri, $queryString_modmatpri); ?>"><img src="../../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
   </tr>
   <tr>
     <td>&nbsp;
@@ -110,7 +129,7 @@ body {
         <tr>
           <td>Id Control de Matria</td>
           <td>Id Materia Prima</td>
-          <td>ID_SALIDA</td>
+          <td>Salida</td>
           <td>Unidad</td>
           <td>Cantidad Entregada</td>
           <td>Cantidad Devuelta</td>
@@ -120,17 +139,17 @@ body {
         </tr>
         <?php do { ?>
           <tr>
-            <td><?php echo $row_MODCORDENCOMPRA['ID_CONTROLMAT']; ?></td>
-            <td><?php echo $row_MODCORDENCOMPRA['IDMATPRIMA']; ?></td>
-            <td><?php echo $row_MODCORDENCOMPRA['ID_SALIDA']; ?></td>
-            <td><?php echo $row_MODCORDENCOMPRA['IDUNIDAD']; ?></td>
-            <td><?php echo $row_MODCORDENCOMPRA['CANT_ENTREGA']; ?></td>
-            <td><?php echo $row_MODCORDENCOMPRA['CANT_DEVUELTA']; ?></td>
-            <td><?php echo $row_MODCORDENCOMPRA['CANT_UTILIZADA']; ?></td>
-            <td><?php echo $row_MODCORDENCOMPRA['FECHA_CONTROL']; ?></td>
+            <td><?php echo $row_modmatpri['ID_CONTROLMAT']; ?></td>
+            <td><?php echo $row_modmatpri['IDMATPRIMA']; ?></td>
+            <td><?php echo $row_modmatpri['ID_SALIDA']; ?></td>
+            <td><?php echo $row_modmatpri['IDUNIDAD']; ?></td>
+            <td><?php echo $row_modmatpri['CANT_ENTREGA']; ?></td>
+            <td><?php echo $row_modmatpri['CANT_DEVUELTA']; ?></td>
+            <td><?php echo $row_modmatpri['CANT_UTILIZADA']; ?></td>
+            <td><?php echo $row_modmatpri['FECHA_CONTROL']; ?></td>
             <td><a href="encamodimatprima.php" target="contenedor">Modificar</a></td>
           </tr>
-          <?php } while ($row_MODCORDENCOMPRA = mysql_fetch_assoc($MODCORDENCOMPRA)); ?>
+          <?php } while ($row_modmatpri = mysql_fetch_assoc($modmatpri)); ?>
     </table></td>
   </tr>
 </table>
@@ -138,5 +157,5 @@ body {
 </body>
 </html>
 <?php
-mysql_free_result($MODCORDENCOMPRA);
+mysql_free_result($modmatpri);
 ?>
