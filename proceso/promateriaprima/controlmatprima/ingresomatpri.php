@@ -166,8 +166,10 @@ src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-date
 </script>
 <script type="text/javascript"
 src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-</script> <div id="datetimepicker4" class="input-append">
-<input name="FECHAENTREGA" type="text" id="FECHAENTREGA" data-format="yyyy-MM-dd"></input>
+</script> <span class="input-append">
+<input name="FECHAENTREGA" type="text" id="FECHAENTREGA" data-format="yyyy-MM-dd" />
+</span>
+<div id="datetimepicker4" class="input-append"></input>
 <span class="add-on">
 <i data-time-icon="icon-time" data-date-icon="icon-calendar">
 </i>
