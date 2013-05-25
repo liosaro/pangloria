@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_disponibl" value="name:ID_ENCAPEDIDO;datatype:int,name:IDEMPLEADO;datatype:int,name:IDORDENPRODUCCION;datatype:int,name:FECHA;datatype:date,name:USUARIO;datatype:int,name:FECHAHORAUSUA;datatype:datetime,name:ELIMINA;datatype:int,name:EDITA;datatype:int" />
+	<infoitem key="UD_sucur" value="name:NOMBRESUCURSAL;datatype:blob" />
+	<infoitem key="UD_combollen" value="name:ID_ENCAPEDIDO;datatype:int,name:IDEMPLEADO;datatype:int,name:IDORDENPRODUCCION;datatype:int,name:FECHA;datatype:date,name:USUARIO;datatype:int,name:FECHAHORAUSUA;datatype:datetime,name:ELIMINA;datatype:int,name:EDITA;datatype:int" />
+</info>
