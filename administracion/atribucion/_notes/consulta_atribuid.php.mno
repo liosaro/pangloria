@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_conpermiso" value="name:IDPERMISO;datatype:int,name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_conatribu" value="name:ID_ATRIB;datatype:int,name:IDUSUARIO;datatype:int,name:IDROL;datatype:int,name:IDPERMISO;datatype:int,name:C;datatype:int,name:R;datatype:int,name:U;datatype:int,name:D;datatype:int" />
+</info>

@@ -113,7 +113,7 @@ return true;
         <form action="filtroeliminaatribu.php" method="post" name="envioproductomodifica" target="modiprodu" id="envioproductomodifica">
           <table width="1026" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="800" colspan="6" align="left">&nbsp;
+              <td width="800" colspan="6" align="left" bgcolor="#CCCCCC">&nbsp;
                 <iframe src="filtroeliminaatribu.php" name="modiprodu" width="830" height="90" align="middle" scrolling="no" frameborder="0" id="modiprodu"></iframe>
 <p><a href="<?php printf("%s?pageNum_consultaatribucion=%d%s", $currentPage, 0, $queryString_consultaatribucion); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribucion=%d%s", $currentPage, max(0, $pageNum_consultaatribucion - 1), $queryString_consultaatribucion); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribucion=%d%s", $currentPage, min($totalPages_consultaatribucion, $pageNum_consultaatribucion + 1), $queryString_consultaatribucion); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_consultaatribucion=%d%s", $currentPage, $totalPages_consultaatribucion, $queryString_consultaatribucion); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></p>
                 <table width="820" border="1">

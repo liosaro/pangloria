@@ -88,6 +88,23 @@ body {
 	margin-bottom: 0px;
 }
 </style>
+
+
+<script language="JavaScript">
+function aviso(url){
+if (!confirm("OK!! se ha ha almacenado con exito el nuevo registro")) {
+return false;
+}
+else {
+document.location = url;
+return true;
+}
+}
+</script>
+
+
+
+
 </head>
 
 <body>

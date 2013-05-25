@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_comborol" value="name:IDROL;datatype:int,name:DESCRIPCION;datatype:blob" />
+	<infoitem key="UD_combousuario" value="name:IDUSUARIO;datatype:int,name:NOMBREUSUARIO;datatype:blob" />
+	<infoitem key="UD_combopermiso" value="name:IDPERMISO;datatype:int,name:DESCRIPCION;datatype:blob" />
+</info>
