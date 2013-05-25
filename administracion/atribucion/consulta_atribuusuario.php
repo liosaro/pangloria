@@ -45,7 +45,7 @@ if (isset($_GET['q'])) {
   $colname_conatribu = $_GET['q'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_conatribu = sprintf("SELECT * FROM CATATRIBUCIONES WHERE ID_ATRIB = %s", GetSQLValueString($colname_conatribu, "int"));
+$query_conatribu = sprintf("SELECT * FROM CATATRIBUCIONES WHERE IDUSUARIO = %s", GetSQLValueString($colname_conatribu, "int"));
 $query_limit_conatribu = sprintf("%s LIMIT %d, %d", $query_conatribu, $startRow_conatribu, $maxRows_conatribu);
 $conatribu = mysql_query($query_limit_conatribu, $basepangloria) or die(mysql_error());
 $row_conatribu = mysql_fetch_assoc($conatribu);
@@ -90,7 +90,7 @@ body {
 <body>
 <table border="1" cellpadding="0" cellspacing="0">
   <tr>
-    <td colspan="8" bgcolor="#999999">Detalle de Consulta de Atribucion por Id</td>
+    <td colspan="8" bgcolor="#999999">Detalle de Consulta de Atribucion por Usuario</td>
   </tr>
   <tr>
     <td colspan="8"><a href="<?php printf("%s?pageNum_conatribu=%d%s", $currentPage, 0, $queryString_conatribu); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_conatribu=%d%s", $currentPage, max(0, $pageNum_conatribu - 1), $queryString_conatribu); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_conatribu=%d%s", $currentPage, min($totalPages_conatribu, $pageNum_conatribu + 1), $queryString_conatribu); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_conatribu=%d%s", $currentPage, $totalPages_conatribu, $queryString_conatribu); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></td>

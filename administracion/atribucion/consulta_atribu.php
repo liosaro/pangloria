@@ -16,17 +16,17 @@ function OnSubmitForm()
 {
   if(document.consultaproducto.radiosearch[0].checked == true)
   {
-    document.consultaproducto.action ="consultaperid.php?q=";
+    document.consultaproducto.action ="consulta_atribuid.php?q=";
   }
   if(document.consultaproducto.radiosearch[1].checked == true)
   {
     document.consultaproducto.action ="consulta_atribuusuario.php?q=";
   }
-  if(document.consultaproducto.radiosearch[1].checked == true)
+  if(document.consultaproducto.radiosearch[2].checked == true)
   {
     document.consultaproducto.action ="consulta_atriburol.php?q=";
   }
-   if(document.consultaproducto.radiosearch[2].checked == true)
+   if(document.consultaproducto.radiosearch[3].checked == true)
   {
     document.consultaproducto.action ="consulta_atributodo.php?q=";
   }

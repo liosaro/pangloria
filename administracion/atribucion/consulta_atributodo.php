@@ -95,7 +95,7 @@ body {
     <td>Codigo de Atribucion</td>
     <td>Usuario</td>
     <td>Rol</td>
-    <td>Permiso</td>
+    <td>Permisos</td>
     <td>C</td>
     <td>R</td>
     <td>U</td>
