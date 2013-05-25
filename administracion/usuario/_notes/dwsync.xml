@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="IngresarUsuario.php" server="www.liosarpc.info//public_html/pan/" local="130138868791018063" remote="130138940400000000" />
-<file name="IngresoUsuario.php" server="www.liosarpc.info//public_html/pan/" local="130139162816250000" remote="130139235000000000" />
-<file name="consultaid.php" server="www.liosarpc.info//public_html/pan/" local="130139168781093750" remote="130139249400000000" />
-<file name="consultanombre.php" server="www.liosarpc.info//public_html/pan/" local="130139172612968750" remote="130139249400000000" />
-<file name="consultatodos.php" server="www.liosarpc.info//public_html/pan/" local="130139175630312500" remote="130139250000000000" />
-<file name="consultausuario.php" server="www.liosarpc.info//public_html/pan/" local="130139178491562500" remote="130139250600000000" />
-<file name="filtrousuario.php" server="www.liosarpc.info//public_html/pan/" local="130139203211718750" remote="130139279400000000" />
-<file name="eliminacionusuario.php" server="www.liosarpc.info//public_html/pan/" local="130139207160156250" remote="130139279400000000" />
-<file name="eliminarconsulta.php" server="www.liosarpc.info//public_html/pan/" local="130139199762187500" remote="130139279400000000" />
+<file name="IngresarUsuario.php" server="www.liosarpc.info//public_html/pan/" local="130139356800000000" remote="130139356800000000" />
+<file name="IngresoUsuario.php" server="www.liosarpc.info//public_html/pan/" local="130139307000000000" remote="130139307000000000" />
+<file name="consultaid.php" server="www.liosarpc.info//public_html/pan/" local="130139321400000000" remote="130139321400000000" />
+<file name="consultanombre.php" server="www.liosarpc.info//public_html/pan/" local="130139321400000000" remote="130139321400000000" />
+<file name="consultatodos.php" server="www.liosarpc.info//public_html/pan/" local="130139322000000000" remote="130139322000000000" />
+<file name="consultausuario.php" server="www.liosarpc.info//public_html/pan/" local="130139322600000000" remote="130139322600000000" />
+<file name="filtrousuario.php" server="www.liosarpc.info//public_html/pan/" local="130139351400000000" remote="130139351400000000" />
+<file name="eliminacionusuario.php" server="www.liosarpc.info//public_html/pan/" local="130139351400000000" remote="130139351400000000" />
+<file name="eliminarconsulta.php" server="www.liosarpc.info//public_html/pan/" local="130139351400000000" remote="130139351400000000" />
+<file name="ConsultarUsuario.php" server="www.liosarpc.info//public_html/pan/" local="130132414800000000" remote="130132414800000000" />
+<file name="ModificarUsuario.php" server="www.liosarpc.info//public_html/pan/" local="130138443000000000" remote="130138443000000000" />
 </dwsync>
