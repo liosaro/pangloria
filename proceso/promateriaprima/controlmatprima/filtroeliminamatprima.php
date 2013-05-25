@@ -31,30 +31,30 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$maxRows_filtradocontrol = 15;
-$pageNum_filtradocontrol = 0;
-if (isset($_GET['pageNum_filtradocontrol'])) {
-  $pageNum_filtradocontrol = $_GET['pageNum_filtradocontrol'];
+$maxRows_filtradomatpri = 10;
+$pageNum_filtradomatpri = 0;
+if (isset($_GET['pageNum_filtradomatpri'])) {
+  $pageNum_filtradomatpri = $_GET['pageNum_filtradomatpri'];
 }
-$startRow_filtradocontrol = $pageNum_filtradocontrol * $maxRows_filtradocontrol;
+$startRow_filtradomatpri = $pageNum_filtradomatpri * $maxRows_filtradomatpri;
 
-$colname_filtradocontrol = "-1";
+$colname_filtradomatpri = "-1";
 if (isset($_POST['root'])) {
-  $colname_filtradocontrol = $_POST['root'];
+  $colname_filtradomatpri = $_POST['root'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_filtradocontrol = sprintf("SELECT * FROM TRNCONTROL_MAT_PRIMA WHERE ID_CONTROLMAT LIKE %s", GetSQLValueString("%" . $colname_filtradocontrol . "%", "text"));
-$query_limit_filtradocontrol = sprintf("%s LIMIT %d, %d", $query_filtradocontrol, $startRow_filtradocontrol, $maxRows_filtradocontrol);
-$filtradocontrol = mysql_query($query_limit_filtradocontrol, $basepangloria) or die(mysql_error());
-$row_filtradocontrol = mysql_fetch_assoc($filtradocontrol);
+$query_filtradomatpri = sprintf("SELECT * FROM TRNCONTROL_MAT_PRIMA WHERE ID_CONTROLMAT LIKE %s", GetSQLValueString("%" . $colname_filtradomatpri . "%", "text"));
+$query_limit_filtradomatpri = sprintf("%s LIMIT %d, %d", $query_filtradomatpri, $startRow_filtradomatpri, $maxRows_filtradomatpri);
+$filtradomatpri = mysql_query($query_limit_filtradomatpri, $basepangloria) or die(mysql_error());
+$row_filtradomatpri = mysql_fetch_assoc($filtradomatpri);
 
-if (isset($_GET['totalRows_filtradocontrol'])) {
-  $totalRows_filtradocontrol = $_GET['totalRows_filtradocontrol'];
+if (isset($_GET['totalRows_filtradomatpri'])) {
+  $totalRows_filtradomatpri = $_GET['totalRows_filtradomatpri'];
 } else {
-  $all_filtradocontrol = mysql_query($query_filtradocontrol);
-  $totalRows_filtradocontrol = mysql_num_rows($all_filtradocontrol);
+  $all_filtradomatpri = mysql_query($query_filtradomatpri);
+  $totalRows_filtradomatpri = mysql_num_rows($all_filtradomatpri);
 }
-$totalPages_filtradocontrol = ceil($totalRows_filtradocontrol/$maxRows_filtradocontrol)-1;
+$totalPages_filtradomatpri = ceil($totalRows_filtradomatpri/$maxRows_filtradomatpri)-1;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -95,20 +95,20 @@ return true;
   </tr>
   <?php do { ?>
     <tr>
-      <td><a href="javascript:;" onclick="aviso('eliminarMatprima.php?root=<?php echo $row_filtradocontrol['ID_CONTROLMAT']; ?>'); return false;">Eliminar</a></td>
-      <td><?php echo $row_filtradocontrol['ID_CONTROLMAT']; ?></td>
-      <td><?php echo $row_filtradocontrol['IDMATPRIMA']; ?></td>
-      <td><?php echo $row_filtradocontrol['ID_SALIDA']; ?></td>
-      <td><?php echo $row_filtradocontrol['IDUNIDAD']; ?></td>
-      <td><?php echo $row_filtradocontrol['CANT_ENTREGA']; ?></td>
-      <td><?php echo $row_filtradocontrol['CANT_DEVUELTA']; ?></td>
-      <td><?php echo $row_filtradocontrol['CANT_UTILIZADA']; ?></td>
-      <td><?php echo $row_filtradocontrol['FECHA_CONTROL']; ?></td>
+      <td><a href="javascript:;" onclick="<?php echo $row_filtradomatpri['']; ?>?root=<?php echo $row_filtradomatpri['ID_CONTROLMAT']; ?>'); return false;">Eliminar</a></td>
+      <td><?php echo $row_filtradomatpri['ID_CONTROLMAT']; ?></td>
+      <td><?php echo $row_filtradomatpri['IDMATPRIMA']; ?></td>
+      <td><?php echo $row_filtradomatpri['ID_SALIDA']; ?></td>
+      <td><?php echo $row_filtradomatpri['IDUNIDAD']; ?></td>
+      <td><?php echo $row_filtradomatpri['CANT_ENTREGA']; ?></td>
+      <td><?php echo $row_filtradomatpri['CANT_DEVUELTA']; ?></td>
+      <td><?php echo $row_filtradomatpri['CANT_UTILIZADA']; ?></td>
+      <td><?php echo $row_filtradomatpri['FECHA_CONTROL']; ?></td>
     </tr>
-    <?php } while ($row_filtradocontrol = mysql_fetch_assoc($filtradocontrol)); ?>
+    <?php } while ($row_filtradomatpri = mysql_fetch_assoc($filtradomatpri)); ?>
 </table>
 </body>
 </html>
 <?php
-mysql_free_result($filtradocontrol);
+mysql_free_result($filtradomatpri);
 ?>

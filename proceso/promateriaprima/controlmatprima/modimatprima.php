@@ -110,7 +110,7 @@ body {
     <td align="center" bgcolor="#999999"><h1>Modificar Control de Orden de Compra</h1></td>
   </tr>
   <tr>
-    <td><iframe src="encamodimatprima.php" target="contenedor" width="820" height="200" scrolling="no"></iframe>&nbsp;</td>
+    <td><iframe src="encamodimatprima.php" width="820" height="200" scrolling="no"></iframe>&nbsp;</td>
   </tr>
   <tr>
     <td><form id="form1" name="form1" method="post" action="">
