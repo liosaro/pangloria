@@ -129,10 +129,10 @@ Registros <?php echo ($startRow_disponibl + 1) ?> a <?php echo min($startRow_dis
   <tr>
     <td colspan="2"><table border="1" cellpadding="0" cellspacing="0">
       <tr>
-        <td bgcolor="#000000" class="retabla"><span class="retabla">Pedido de Materia Prima No.</span></td>
-        <td bgcolor="#000000" class="retabla"><span class="retabla">Orden de Produccion No.</span></td>
-        <td bgcolor="#000000" class="retabla"><span class="retabla">Codigo de Empleado</span></td>
-        <td bgcolor="#000000" class="retabla"><span class="retabla">Fecha</span></td>
+        <td bgcolor="#999999" class="retabla"><span class="retabla">Pedido de Materia Prima No.</span></td>
+        <td bgcolor="#999999" class="retabla"><span class="retabla">Orden de Produccion No.</span></td>
+        <td bgcolor="#999999" class="retabla"><span class="retabla">Codigo de Empleado</span></td>
+        <td bgcolor="#999999" class="retabla"><span class="retabla">Fecha</span></td>
         <td><p>Eliminar</p></td>
       </tr>
       <?php do { ?>

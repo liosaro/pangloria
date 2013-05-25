@@ -307,10 +307,10 @@ return true;
         <td>
           <table width="100%" border="1" align="left" cellpadding="0" cellspacing="0">
             <tr class="retabla">
-              <td width="10%" align="center" bgcolor="#000000">Codigo</td>
-              <td width="10%" align="center" bgcolor="#000000">Cantidad</td>
-              <td width="20%" align="center" bgcolor="#000000">Medida</td>
-              <td width="70%" align="center" bgcolor="#000000">Producto</td>
+              <td width="10%" align="center" bgcolor="#999999">Codigo</td>
+              <td width="10%" align="center" bgcolor="#999999">Cantidad</td>
+              <td width="20%" align="center" bgcolor="#999999">Medida</td>
+              <td width="70%" align="center" bgcolor="#999999">Producto</td>
               </tr>
             <?php do { ?>
             <?php 
