@@ -48,24 +48,17 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 
   mysql_select_db($database_basepangloria, $basepangloria);
   $Result1 = mysql_query($updateSQL, $basepangloria) or die(mysql_error());
-
-  $updateGoTo = "Modificando.php";
-  if (isset($_SERVER['QUERY_STRING'])) {
-    $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
-    $updateGoTo .= $_SERVER['QUERY_STRING'];
-  }
-  header(sprintf("Location: %s", $updateGoTo));
 }
 
-$colname_modificacion = "-1";
+$colname_modi = "-1";
 if (isset($_GET['root'])) {
-  $colname_modificacion = $_GET['root'];
+  $colname_modi = $_GET['root'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_modificacion = sprintf("SELECT * FROM TRNJUSTIFICACIONFALTAPRODUCTO WHERE ID_JUSTIFICACION = %s", GetSQLValueString($colname_modificacion, "int"));
-$modificacion = mysql_query($query_modificacion, $basepangloria) or die(mysql_error());
-$row_modificacion = mysql_fetch_assoc($modificacion);
-$totalRows_modificacion = mysql_num_rows($modificacion);
+$query_modi = sprintf("SELECT * FROM TRNJUSTIFICACIONFALTAPRODUCTO WHERE ID_JUSTIFICACION = %s", GetSQLValueString($colname_modi, "int"));
+$modi = mysql_query($query_modi, $basepangloria) or die(mysql_error());
+$row_modi = mysql_fetch_assoc($modi);
+$totalRows_modi = mysql_num_rows($modi);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -76,35 +69,37 @@ $totalRows_modificacion = mysql_num_rows($modificacion);
 
 <body>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-  <p>&nbsp;</p>
   <table align="center">
     <tr valign="baseline">
+      <td colspan="2" align="center" nowrap="nowrap" bgcolor="#999999"><h1>Modifiacion de Justificacion de Falta de Producto</h1></td>
+    </tr>
+    <tr valign="baseline">
       <td nowrap="nowrap" align="right">ID_JUSTIFICACION:</td>
-      <td><?php echo $row_modificacion['ID_JUSTIFICACION']; ?></td>
+      <td><?php echo $row_modi['ID_JUSTIFICACION']; ?></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">IDCONTROLPRODUCCION:</td>
-      <td><input type="text" name="IDCONTROLPRODUCCION" value="<?php echo htmlentities($row_modificacion['IDCONTROLPRODUCCION'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td><input type="text" name="IDCONTROLPRODUCCION" value="<?php echo htmlentities($row_modi['IDCONTROLPRODUCCION'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">CANTIDA_FALTANTE:</td>
-      <td><input type="text" name="CANTIDA_FALTANTE" value="<?php echo htmlentities($row_modificacion['CANTIDA_FALTANTE'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td><input type="text" name="CANTIDA_FALTANTE" value="<?php echo htmlentities($row_modi['CANTIDA_FALTANTE'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">IDPRODUCTOFALTA:</td>
-      <td><input type="text" name="IDPRODUCTOFALTA" value="<?php echo htmlentities($row_modificacion['IDPRODUCTOFALTA'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td><input type="text" name="IDPRODUCTOFALTA" value="<?php echo htmlentities($row_modi['IDPRODUCTOFALTA'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">ID_MEDIDA:</td>
-      <td><input type="text" name="ID_MEDIDA" value="<?php echo htmlentities($row_modificacion['ID_MEDIDA'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td><input type="text" name="ID_MEDIDA" value="<?php echo htmlentities($row_modi['ID_MEDIDA'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">FECHAINGRESOJUSFAPROD:</td>
-      <td><input type="text" name="FECHAINGRESOJUSFAPROD" value="<?php echo htmlentities($row_modificacion['FECHAINGRESOJUSFAPROD'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td><input type="text" name="FECHAINGRESOJUSFAPROD" value="<?php echo htmlentities($row_modi['FECHAINGRESOJUSFAPROD'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">JUSTIFICACIONFALTAPROD:</td>
-      <td><input type="text" name="JUSTIFICACIONFALTAPROD" value="<?php echo htmlentities($row_modificacion['JUSTIFICACIONFALTAPROD'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td><input type="text" name="JUSTIFICACIONFALTAPROD" value="<?php echo htmlentities($row_modi['JUSTIFICACIONFALTAPROD'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -112,11 +107,11 @@ $totalRows_modificacion = mysql_num_rows($modificacion);
     </tr>
   </table>
   <input type="hidden" name="MM_update" value="form1" />
-  <input type="hidden" name="ID_JUSTIFICACION" value="<?php echo $row_modificacion['ID_JUSTIFICACION']; ?>" />
+  <input type="hidden" name="ID_JUSTIFICACION" value="<?php echo $row_modi['ID_JUSTIFICACION']; ?>" />
 </form>
 <p>&nbsp;</p>
 </body>
 </html>
 <?php
-mysql_free_result($modificacion);
+mysql_free_result($modi);
 ?>

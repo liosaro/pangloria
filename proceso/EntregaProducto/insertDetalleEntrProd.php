@@ -1,3 +1,4 @@
+<?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!isset($_SESSION)) {
   session_start();
@@ -42,13 +43,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   header("Location: ". $MM_restrictGoTo); 
   exit;
 }
-?><head>
- <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" media="screen"
-href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
- </Head>
-
-<?php require_once('../../Connections/basepangloria.php'); ?>
+?>
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -87,9 +82,8 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO TRNENTREGAPRODUCTO (ID_ENTREGA, FECHAHORA, CANT_PRODUCTORECIBIDO, PRODUCTOENTRPROD, IDENCAENTREPROD, ID_MEDIDA, USUARIOENTREPRODUCTO, USUARIOFECHAYHORA) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO TRNENTREGAPRODUCTO (ID_ENTREGA, CANT_PRODUCTORECIBIDO, PRODUCTOENTRPROD, IDENCAENTREPROD, ID_MEDIDA, USUARIOENTREPRODUCTO, USUARIOFECHAYHORA) VALUES (%s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['ID_ENTREGA'], "int"),
-                       GetSQLValueString($_POST['FECHAHORA'], "date"),
                        GetSQLValueString($_POST['CANT_PRODUCTORECIBIDO'], "int"),
                        GetSQLValueString($_POST['PRODUCTOENTRPROD'], "int"),
                        GetSQLValueString($_POST['IDENCAENTREPROD'], "int"),
@@ -102,66 +96,72 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 }
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_ultiRegis = "SELECT IDENCAENTREPROD FROM TRNENCABEZADOENTREPROD ORDER BY IDENCAENTREPROD DESC";
-$ultiRegis = mysql_query($query_ultiRegis, $basepangloria) or die(mysql_error());
-$row_ultiRegis = mysql_fetch_assoc($ultiRegis);
-$totalRows_ultiRegis = mysql_num_rows($ultiRegis);
+$query_comboProduc = "SELECT IDPRODUCTO, DESCRIPCIONPRODUC FROM CATPRODUCTO";
+$comboProduc = mysql_query($query_comboProduc, $basepangloria) or die(mysql_error());
+$row_comboProduc = mysql_fetch_assoc($comboProduc);
+$totalRows_comboProduc = mysql_num_rows($comboProduc);
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_comboMedida = "SELECT * FROM CATMEDIDAS";
+$query_comboMedida = "SELECT ID_MEDIDA, MEDIDA FROM CATMEDIDAS";
 $comboMedida = mysql_query($query_comboMedida, $basepangloria) or die(mysql_error());
 $row_comboMedida = mysql_fetch_assoc($comboMedida);
 $totalRows_comboMedida = mysql_num_rows($comboMedida);
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_comboProd = "SELECT IDPRODUCTO, DESCRIPCIONPRODUC FROM CATPRODUCTO";
-$comboProd = mysql_query($query_comboProd, $basepangloria) or die(mysql_error());
-$row_comboProd = mysql_fetch_assoc($comboProd);
-$totalRows_comboProd = mysql_num_rows($comboProd);
+$query_ultiregis = "SELECT IDENCAENTREPROD FROM TRNENCABEZADOENTREPROD ORDER BY IDENCAENTREPROD DESC";
+$ultiregis = mysql_query($query_ultiregis, $basepangloria) or die(mysql_error());
+$row_ultiregis = mysql_fetch_assoc($ultiregis);
+$totalRows_ultiregis = mysql_num_rows($ultiregis);
 
-$colname_usuarioEntre = "-1";
+$colname_usuarioentra = "-1";
 if (isset($_SESSION['MM_Username'])) {
-  $colname_usuarioEntre = $_SESSION['MM_Username'];
+  $colname_usuarioentra = $_SESSION['MM_Username'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_usuarioEntre = sprintf("SELECT IDUSUARIO FROM CATUSUARIO WHERE IDUSUARIO = %s", GetSQLValueString($colname_usuarioEntre, "int"));
-$usuarioEntre = mysql_query($query_usuarioEntre, $basepangloria) or die(mysql_error());
-$row_usuarioEntre = mysql_fetch_assoc($usuarioEntre);
-$totalRows_usuarioEntre = mysql_num_rows($usuarioEntre);
+$query_usuarioentra = sprintf("SELECT IDUSUARIO FROM CATUSUARIO WHERE NOMBREUSUARIO = %s", GetSQLValueString($colname_usuarioentra, "text"));
+$usuarioentra = mysql_query($query_usuarioentra, $basepangloria) or die(mysql_error());
+$row_usuarioentra = mysql_fetch_assoc($usuarioentra);
+$totalRows_usuarioentra = mysql_num_rows($usuarioentra);
 ?>
- 
+
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
   <table width="820" border="0">
     <tr>
       <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
       <td>Id Entrega:</td>
       <td><input name="ID_ENTREGA" type="text" disabled="disabled" value="" size="32" /></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
       <td>Id Encab. Entrega Producto:</td>
-      <td><input name="IDENCAENTREPROD" type="text" value="<?php echo $row_ultiRegis['IDENCAENTREPROD']; ?>" size="32" readonly="readonly" /></td>
-      <td>Producto Entragado:</td>
+      <td><input name="IDENCAENTREPROD" type="text" value="<?php echo $row_ultiregis['IDENCAENTREPROD']; ?>" size="32" readonly="readonly" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Producto:</td>
       <td><select name="PRODUCTOENTRPROD">
         <?php
 do {  
 ?>
-        <option value="<?php echo $row_comboProd['IDPRODUCTO']?>"><?php echo $row_comboProd['DESCRIPCIONPRODUC']?></option>
+        <option value="<?php echo $row_comboProduc['IDPRODUCTO']?>"><?php echo $row_comboProduc['DESCRIPCIONPRODUC']?></option>
         <?php
-} while ($row_comboProd = mysql_fetch_assoc($comboProd));
-  $rows = mysql_num_rows($comboProd);
+} while ($row_comboProduc = mysql_fetch_assoc($comboProduc));
+  $rows = mysql_num_rows($comboProduc);
   if($rows > 0) {
-      mysql_data_seek($comboProd, 0);
-	  $row_comboProd = mysql_fetch_assoc($comboProd);
+      mysql_data_seek($comboProduc, 0);
+	  $row_comboProduc = mysql_fetch_assoc($comboProduc);
   }
 ?>
       </select></td>
+      <td>Cantidad Producto Recibido:</td>
+      <td><input type="text" name="CANT_PRODUCTORECIBIDO" value="" size="32" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -170,7 +170,7 @@ do {
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>Id Medida:</td>
+      <td>Medida:</td>
       <td><select name="ID_MEDIDA">
         <?php
 do {  
@@ -185,59 +185,20 @@ do {
   }
 ?>
       </select></td>
-      <td>Cantidad Producto Recibido:</td>
-      <td><input type="text" name="CANT_PRODUCTORECIBIDO" value="" size="32" /></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>Usuario Entrega Producto:</td>
-      <td><input name="USUARIOENTREPRODUCTO" type="text" value="<?php echo $row_usuarioEntre['IDUSUARIO']; ?>" size="32" readonly="readonly" /></td>
-      <td>Fecha y Hora:</td>
-      <td><script type="text/javascript"
-     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-    </script> 
-    <script type="text/javascript"
-     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-    </script>
-    <script type="text/javascript"
-     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-    </script>
-    <script type="text/javascript"
-     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-    </script>
-   <div class="welsl">
-  <div id="datetimepicker1" class="input-append date">
-    <input data-format="yyyy-MM-dd hh:mm:ss" type="text"></input>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-    </span>
-  </div>
-</div>
-<script type="text/javascript">
-  $(function() {
-    $('#datetimepicker1').datetimepicker({
-      language: 'pt-BR'
-    });
-  });
-</script></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td>Usuario que Entrega Producto :</td>
+      <td><input value="<?php echo $row_usuarioentra['IDUSUARIO']; ?>" name="USUARIOENTREPRODUCTO" type="text" size="32" readonly="readonly" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>Fecha y Hora del Usuario:</td>
-      <td><input type="text" name="USUARIOFECHAYHORA" value="<?php echo date("Y-m-d H:i:s");;?>" size="32" /></td>
+      <td><input name="USUARIOFECHAYHORA" type="text" value="<?php echo date("Y-m-d H:i:s");;?> " size="32" readonly="readonly" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td><input type="submit" value="Insertar registro" /></td>
@@ -252,11 +213,11 @@ do {
 </form>
 <p>&nbsp;</p>
 <?php
-mysql_free_result($ultiRegis);
+mysql_free_result($comboProduc);
 
 mysql_free_result($comboMedida);
 
-mysql_free_result($comboProd);
+mysql_free_result($ultiregis);
 
-mysql_free_result($usuarioEntre);
+mysql_free_result($usuarioentra);
 ?>

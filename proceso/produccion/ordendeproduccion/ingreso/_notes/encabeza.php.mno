@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_sucur" value="name:IDSUCURSAL;datatype:int,name:NOMBRESUCURSAL;datatype:blob" />
+	<infoitem key="UD_Recordset1" value="name:NOMBREEMPLEADO;datatype:blob" />
+	<infoitem key="UD_empleado" value="name:NOMBREEMPLEADO;datatype:blob" />
+	<infoitem key="UD_ultimoenca" value="name:IDENCABEORDPROD;datatype:int" />
+	<infoitem key="UD_idemple" value="name:IDEMPLEADO;datatype:int" />
+	<infoitem key="UD_idusuario" value="name:IDUSUARIO;datatype:int" />
+	<infoitem key="UD_emplenomb" value="name:NOMBREEMPLEADO;datatype:blob" />
+</info>
