@@ -128,19 +128,19 @@ $queryString_devolulu = sprintf("&totalRows_devolulu=%d%s", $totalRows_devolulu,
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen"
+href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
 </head>
 
 <body>
-<table width="820" border="0">
+<table width="1255" border="0">
   <tr>
-    <td><br />
-      <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
-        <p>&nbsp;</p>
-      </form>
-      <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-        <table width="820" border="0">
+    <td width="1249"><form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+      <table width="820" border="0">
           <tr>
-            <td colspan="4">&nbsp;</td>
+            <td colspan="4" align="center" bgcolor="#999999"><h2>Ingreso de Devolcion de Compra </h2></td>
           </tr>
           <tr>
             <td>Id Devolucion</td>
@@ -168,10 +168,8 @@ do {
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>ID_DETENCCOM</td>
-            <td></td>
-            <td>Documento a devolver:</td>
-            <td><label for="DOCADEVOLVER"></label>
+            <td colspan="4" align="center">Documento a devolver:
+              <label for="DOCADEVOLVER"></label>
             <input type="text" name="DOCADEVOLVER" id="DOCADEVOLVER" /></td>
           </tr>
           <tr>
@@ -182,7 +180,46 @@ do {
           </tr>
           <tr>
             <td>Fecha de Devolucion:</td>
-            <td><input type="text" name="FECHADEVOLUCION" value="" size="32" /></td>
+            <td><script type="text/javascript"
+src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+<script type="text/javascript"
+src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+</script> <div id="datetimepicker4" class="input-append">
+
+
+<input name="FECHADEVOLUCION" type="text" id="FECHADEVOLUCION" data-format="yyyy-MM-dd"></input>
+<span class="add-on"><script type="text/javascript"
+src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+<script type="text/javascript"
+src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+</script>
+<script type="text/javascript"
+src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+</script> <div id="datetimepicker4" class="input-append">
+
+<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+</i>
+</span>
+</div>
+<script type="text/javascript">
+$(function() {
+$('#datetimepicker4').datetimepicker({
+pickTime: false
+});
+});
+</script>
+</td>
             <td>IMPORTE:</td>
             <td><input type="text" name="IMPORTE" value="" size="32" /></td>
           </tr>
@@ -199,22 +236,19 @@ do {
             <td><input type="text" name="OBSERVACION" value="" size="32" /></td>
           </tr>
           <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td><input type="submit" value="Insertar registro" /></td>
-            <td>&nbsp;</td>
+            <td colspan="4" align="center"><input type="submit" value="Insertar registro" /></td>
           </tr>
         </table>
         <table border="1">
-          <tr>
+          <tr align="center">
             <td colspan="7" bgcolor="#999999"><a href="<?php printf("%s?pageNum_devolulu=%d%s", $currentPage, 0, $queryString_devolulu); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_devolulu=%d%s", $currentPage, max(0, $pageNum_devolulu - 1), $queryString_devolulu); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_devolulu=%d%s", $currentPage, min($totalPages_devolulu, $pageNum_devolulu + 1), $queryString_devolulu); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_devolulu=%d%s", $currentPage, $totalPages_devolulu, $queryString_devolulu); ?>"><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
           </tr>
-          <tr>
-            <td colspan="7" align="center" bgcolor="#999999"><h2>Detalle </h2></td>
+          <tr align="center">
+            <td colspan="7" bgcolor="#999999"><h2>Detalle </h2></td>
           </tr>
           <tr>
-            <td>Id Devolucion</td>
-            <td>Empleado que devolvio:</td>
+            <td align="center">Id Devolucion</td>
+            <td>Id Empleado que devolvio:</td>
             <td>Documento a devolver:</td>
             <td>Fecha</td>
             <td>IMPORTE</td>
@@ -223,7 +257,7 @@ do {
           </tr>
           <?php do { ?>
             <tr>
-              <td><?php echo $row_devolulu['IDDEVOLUCION']; ?></td>
+              <td align="center"><?php echo $row_devolulu['IDDEVOLUCION']; ?></td>
               <td><?php echo $row_devolulu['IDEMPLEADO']; ?></td>
               <td><?php echo $row_devolulu['DOCADEVOLVER']; ?></td>
               <td><?php echo $row_devolulu['FECHADEVOLUCION']; ?></td>

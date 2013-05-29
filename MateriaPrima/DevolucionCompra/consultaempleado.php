@@ -30,6 +30,36 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
+}if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
 
 $maxRows_fecha = 10;
 $pageNum_fecha = 0;
@@ -39,11 +69,11 @@ if (isset($_GET['pageNum_fecha'])) {
 $startRow_fecha = $pageNum_fecha * $maxRows_fecha;
 
 $colname_fecha = "-1";
-if (isset($_GET['root'])) {
-  $colname_fecha = $_GET['root'];
+if (isset($_GET['FECHADEVOLUCION'])) {
+  $colname_fecha = $_GET['FECHADEVOLUCION'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_fecha = sprintf("SELECT * FROM TRNDEVOLUCIONCOMPRA WHERE IDDEVOLUCION LIKE %s ORDER BY FECHADEVOLUCION ASC", GetSQLValueString("%" . $colname_fecha . "%", "text"));
+$query_fecha = sprintf("SELECT * FROM TRNDEVOLUCIONCOMPRA WHERE FECHADEVOLUCION LIKE %s ORDER BY IDDEVOLUCION ASC", GetSQLValueString("%" . $colname_fecha . "%", "date"));
 $query_limit_fecha = sprintf("%s LIMIT %d, %d", $query_fecha, $startRow_fecha, $maxRows_fecha);
 $fecha = mysql_query($query_limit_fecha, $basepangloria) or die(mysql_error());
 $row_fecha = mysql_fetch_assoc($fecha);

@@ -80,7 +80,6 @@ $totalPages_id = ceil($totalRows_id/$maxRows_id)-1;
   <tr>
     <td>IDDEVOLUCION</td>
     <td>IDEMPLEADO</td>
-    <td>ID_DETENCCOM</td>
     <td>DOCADEVOLVER</td>
     <td>FECHADEVOLUCION</td>
     <td>IMPORTE</td>
@@ -91,7 +90,6 @@ $totalPages_id = ceil($totalRows_id/$maxRows_id)-1;
     <tr>
       <td><?php echo $row_id['IDDEVOLUCION']; ?></td>
       <td><?php echo $row_id['IDEMPLEADO']; ?></td>
-      <td><?php echo $row_id['ID_DETENCCOM']; ?></td>
       <td><?php echo $row_id['DOCADEVOLVER']; ?></td>
       <td><?php echo $row_id['FECHADEVOLUCION']; ?></td>
       <td><?php echo $row_id['IMPORTE']; ?></td>
