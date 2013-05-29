@@ -45,7 +45,7 @@ if (isset($_GET['q'])) {
   $colname_registro = $_GET['q'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_registro = sprintf("SELECT * FROM CATCARGO WHERE IDCARGO = %s", GetSQLValueString($colname_registro, "int"));
+$query_registro = sprintf("SELECT * FROM TRNCABEZACOTIZACION WHERE IDENCABEZADO = %s", GetSQLValueString($colname_registro, "int"));
 $query_limit_registro = sprintf("%s LIMIT %d, %d", $query_registro, $startRow_registro, $maxRows_registro);
 $registro = mysql_query($query_limit_registro, $basepangloria) or die(mysql_error());
 $row_registro = mysql_fetch_assoc($registro);
@@ -76,7 +76,7 @@ $queryString_registro = sprintf("&totalRows_registro=%d%s", $totalRows_registro,
 ?>
 <table border="1" cellpadding="0" cellspacing="0" width="820">
   <tr>
-    <td colspan="2" align="center" bgcolor="#999999"><h1>Detalle</h1></td>
+    <td colspan="2" align="center" bgcolor="#999999"><h1>Cotización</h1></td>
   </tr>
   <tr>
     <td colspan="2"><a href="<?php printf("%s?pageNum_registro=%d%s", $currentPage, 0, $queryString_registro); ?>"><img src="../../imagenes/icono/Back-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_registro=%d%s", $currentPage, max(0, $pageNum_registro - 1), $queryString_registro); ?>"><img src="../../imagenes/icono/Backward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_registro=%d%s", $currentPage, min($totalPages_registro, $pageNum_registro + 1), $queryString_registro); ?>"><img src="../../imagenes/icono/Forward-32.png" alt="" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_registro=%d%s", $currentPage, $totalPages_registro, $queryString_registro); ?>"><img src="../../imagenes/icono/Next-32.png" alt="" width="32" height="32" /></a></td>
