@@ -20,7 +20,7 @@ function OnSubmitForm()
   }
   if(document.consultadevolucion.radiosearch[1].checked == true)
   {
-    document.consultadevolucion.action ="consultaempleado.php?root=" ;
+    document.consultadevolucion.action ="consultafecha.php?root=" ;
   }
    if(document.consultadevolucion.radiosearch[2].checked == true)
   {
