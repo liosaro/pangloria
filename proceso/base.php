@@ -135,7 +135,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                   <ul>
                     <li><a href="promateriaprima/controlmatprima/ingresomatpri.php" target="contenedor">Ingreso</a></li>
                     <li><a href="promateriaprima/controlmatprima/modimatprima.php" target="contenedor">Modificar</a></li>
-                    <li><a href="#">Consultar</a></li>
+                    <li><a href="promateriaprima/controlmatprima/consulta_matprima.php" target="contenedor">Consultar</a></li>
                     <li><a href="promateriaprima/controlmatprima/eliminacionmatpri.php" target="contenedor">Eliminar</a></li>
                   </ul>
                 </li>
@@ -159,7 +159,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <li><a href="#" class="MenuBarItemSubmenu">Cargos</a>
   <ul>
     <li><a href="../MateriaPrima/cargo_empleado/Ingreso_cargo.php" target="contenedor">Ingreso de Cargos</a></li>
-    <li><a href="#">Consultar Cargos</a></li>
+    <li><a href="../MateriaPrima/cargo_empleado/consulta_cargos.php" target="contenedor">Consultar Cargos</a></li>
     <li><a href="../MateriaPrima/cargo_empleado/modificarcargo.php" target="contenedor">Modificar Cargos</a></li>
     <li><a href="../MateriaPrima/cargo_empleado/eliminacioncargo.php" target="contenedor">Eliminar Cargos</a></li>
   </ul>

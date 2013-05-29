@@ -80,6 +80,12 @@ $query_ConsulOrd = "SELECT IDORDEN FROM TRNENCAORDCOMPRA ORDER BY IDORDEN DESC";
 $ConsulOrd = mysql_query($query_ConsulOrd, $basepangloria) or die(mysql_error());
 $row_ConsulOrd = mysql_fetch_assoc($ConsulOrd);
 $totalRows_ConsulOrd = mysql_num_rows($ConsulOrd);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_conuslencabcompra = "SELECT ID_DETENCCOM FROM TRNENCABEZADOCOMPRA ORDER BY ID_DETENCCOM DESC";
+$conuslencabcompra = mysql_query($query_conuslencabcompra, $basepangloria) or die(mysql_error());
+$row_conuslencabcompra = mysql_fetch_assoc($conuslencabcompra);
+$totalRows_conuslencabcompra = mysql_num_rows($conuslencabcompra);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -96,7 +102,10 @@ $totalRows_ConsulOrd = mysql_num_rows($ConsulOrd);
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="left">Codigo de Compra:</td>
-      <td><input type="text" name="ID_DETENCCOM" value="" size="32" /></td>
+      <td><input type="text" disabled="disabled" name="ID_DETENCCOM" value="<?php echo $row_conuslencabcompra['ID_DETENCCOM']; ?>" size="32" /></td>
+      
+      
+      
       <td align="right">Proveedor</td>
       <td><select name="IDPROVEEDOR">
         <?php 
@@ -204,4 +213,6 @@ mysql_free_result($consutipF);
 mysql_free_result($consulprovee);
 
 mysql_free_result($ConsulOrd);
+
+mysql_free_result($conuslencabcompra);
 ?>

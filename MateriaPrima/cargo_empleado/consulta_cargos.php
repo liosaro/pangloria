@@ -22,7 +22,7 @@ function OnSubmitForm()
   {
     document.consultaproducto.action ="consulta_cargonombre.php?q=" ;
   }
-   if(document.consultaproducto.radiosearch[4].checked == true)
+   if(document.consultaproducto.radiosearch[2].checked == true)
   {
     document.consultaproducto.action ="consulta_cargotodos.php";
   }

@@ -40,8 +40,12 @@ if (isset($_GET['pageNum_registro'])) {
 }
 $startRow_registro = $pageNum_registro * $maxRows_registro;
 
+$colname_registro = "-1";
+if (isset($_GET['q'])) {
+  $colname_registro = $_GET['q'];
+}
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_registro = "SELECT * FROM CATCARGO";
+$query_registro = sprintf("SELECT * FROM CATCARGO WHERE CARGO = %s", GetSQLValueString($colname_registro, "text"));
 $query_limit_registro = sprintf("%s LIMIT %d, %d", $query_registro, $startRow_registro, $maxRows_registro);
 $registro = mysql_query($query_limit_registro, $basepangloria) or die(mysql_error());
 $row_registro = mysql_fetch_assoc($registro);
