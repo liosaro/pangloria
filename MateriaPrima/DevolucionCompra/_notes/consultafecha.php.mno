@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_fecha" value="name:IDDEVOLUCION;datatype:int,name:IDEMPLEADO;datatype:int,name:ID_DETENCCOM;datatype:int,name:DOCADEVOLVER;datatype:blob,name:FECHADEVOLUCION;datatype:date,name:IMPORTE;datatype:real,name:GASTOGENERADO;datatype:real,name:OBSERVACION;datatype:blob,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+</info>
