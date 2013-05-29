@@ -98,6 +98,8 @@ $totalRows_usuarioentra = mysql_num_rows($usuarioentra);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
+<script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -173,7 +175,9 @@ do {
       <td>Nombre del Empleado:</td>
       <td><input type="text" name="NOMBREEMPLEADO" value="" size="32" /></td>
       <td>Edad del Empleado:</td>
-      <td><input type="text" name="EDADEMPLEADO" value="" size="32" /></td>
+      <td><span id="sprytextfield4">
+      <input type="text" name="EDADEMPLEADO" value="" size="32" />
+      <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -185,7 +189,9 @@ do {
       <td>Direccion:</td>
       <td><input type="text" name="DIRECCION" value="" size="32" /></td>
       <td>NIT:</td>
-      <td><input type="text" name="NIT" value="" size="32" /></td>
+      <td><span id="sprytextfield5">
+      <input type="text" name="NIT" value="" size="32" />
+      <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -195,9 +201,13 @@ do {
     </tr>
     <tr>
       <td>NUP</td>
-      <td><input type="text" name="NUP" value="" size="32" /></td>
+      <td><span id="sprytextfield1">
+      <input type="text" name="NUP" value="" size="32" />
+      <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
       <td>Numero de Seguro:</td>
-      <td><input type="text" name="NSEGURO" value="" size="32" /></td>
+      <td><span id="sprytextfield6">
+      <input type="text" name="NSEGURO" value="" size="32" />
+      <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -207,9 +217,13 @@ do {
     </tr>
     <tr>
       <td>DUI:</td>
-      <td><input type="text" name="DUI" value="" size="32" /></td>
+      <td><span id="sprytextfield2">
+      <input type="text" name="DUI" value="" size="32" />
+      <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
       <td>Cuenta Bancaria:</td>
-      <td><input type="text" name="CUENTABANCARIA" value="" size="32" /></td>
+      <td><span id="sprytextfield7">
+      <input type="text" name="CUENTABANCARIA" value="" size="32" />
+      <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -219,9 +233,13 @@ do {
     </tr>
     <tr>
       <td>Correo del Empleado:</td>
-      <td><input type="text" name="CORREOEMPLEADO" value="" size="32" /></td>
+      <td><span id="sprytextfield3">
+      <input type="text" name="CORREOEMPLEADO" value="" size="32" />
+      <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
       <td>Movil del Empleado:</td>
-      <td><input type="text" name="MOVILEMPLEADO" value="" size="32" /></td>
+      <td><span id="sprytextfield8">
+      <input type="text" name="MOVILEMPLEADO" value="" size="32" />
+      <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -231,7 +249,9 @@ do {
     </tr>
     <tr>
       <td>Fijo: </td>
-      <td><input type="text" name="FIJO" value="" size="32" /></td>
+      <td><span id="sprytextfield9">
+      <input type="text" name="FIJO" value="" size="32" />
+      <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
       <td>Usuario:</td>
       <td><input name="IDUSUARIO" type="text" value="<?php echo $row_usuarioentra['IDUSUARIO']; ?>" size="32" readonly="readonly" /></td>
     </tr>
@@ -247,6 +267,17 @@ do {
 </p>
 </form>
 <p>&nbsp;</p>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "social_security_number", {format:"ssn_custom", validateOn:["blur"], useCharacterMasking:true, pattern:"000000000000"});
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "social_security_number", {validateOn:["blur"], useCharacterMasking:true, format:"ssn_custom", pattern:"00000000-0"});
+var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3", "email", {validateOn:["blur"], useCharacterMasking:true, hint:"ejemple@dominio.com"});
+var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4", "custom", {validateOn:["blur"], useCharacterMasking:true, pattern:"00"});
+var sprytextfield5 = new Spry.Widget.ValidationTextField("sprytextfield5", "custom", {validateOn:["blur"], useCharacterMasking:true, pattern:"0000-000000-00-0"});
+var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "social_security_number", {validateOn:["blur"], useCharacterMasking:true, format:"ssn_custom", pattern:"000000000"});
+var sprytextfield7 = new Spry.Widget.ValidationTextField("sprytextfield7", "custom", {validateOn:["blur"], useCharacterMasking:true, pattern:"000000000"});
+var sprytextfield8 = new Spry.Widget.ValidationTextField("sprytextfield8", "phone_number", {format:"phone_custom", validateOn:["blur"], useCharacterMasking:true, pattern:"000000-00"});
+var sprytextfield9 = new Spry.Widget.ValidationTextField("sprytextfield9", "phone_number", {format:"phone_custom", validateOn:["blur"], useCharacterMasking:true, pattern:"000000-00"});
+</script>
 </body>
 </html>
 <?php
