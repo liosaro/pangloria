@@ -41,7 +41,7 @@ if (isset($_GET['pageNum_todos'])) {
 $startRow_todos = $pageNum_todos * $maxRows_todos;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_todos = "SELECT * FROM CATPROVEEDOR ORDER BY IDPROVEEDOR ASC";
+$query_todos = "SELECT * FROM CATPROVEEDOR WHERE IDPROVEEDOR AND ELIMIN = '0'  ORDER BY IDPROVEEDOR ASC";
 $query_limit_todos = sprintf("%s LIMIT %d, %d", $query_todos, $startRow_todos, $maxRows_todos);
 $todos = mysql_query($query_limit_todos, $basepangloria) or die(mysql_error());
 $row_todos = mysql_fetch_assoc($todos);
