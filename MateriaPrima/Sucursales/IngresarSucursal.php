@@ -83,6 +83,17 @@ body {
 </style>
 <script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 <link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+
+<script>
+function Confirm(form){
+
+alert("Se ha agregado un nuevo registro!"); 
+
+form.submit();
+
+}
+
+</script>
 </head>
 
 <body>
@@ -93,7 +104,7 @@ body {
     </tr>
     <tr>
       <td>Id Sucursal:</td>
-      <td><input name="IDSUCURSAL" type="text" value="Automaticamente" size="32" readonly="readonly" /></td>
+      <td><input name="IDSUCURSAL" type="text" value="<?php echo $row_ingreSucur['IDSUCURSAL']+1; ?>" size="32" readonly="readonly" /></td>
       <td>Nombre Sucursal:</td>
       <td><input type="text" name="NOMBRESUCURSAL" value="" size="32" /></td>
     </tr>
@@ -118,7 +129,7 @@ body {
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td colspan="4"><input type="submit" value="Insertar registro" /></td>
+      <td colspan="4"><input type="submit" name="SEND" id="SEND" value="Insertar registro" onClick="Confirm(this.form)" /></td>
     </tr>
   </table>
   <p>&nbsp;</p>

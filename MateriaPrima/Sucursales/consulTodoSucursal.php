@@ -41,7 +41,7 @@ if (isset($_GET['pageNum_todo'])) {
 $startRow_todo = $pageNum_todo * $maxRows_todo;
 
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_todo = "SELECT * FROM CATSUCURSAL ORDER BY IDSUCURSAL ASC";
+$query_todo = "SELECT * FROM CATSUCURSAL WHERE IDSUCURSAL AND ELIMIN = '0' ORDER BY IDSUCURSAL ASC";
 $query_limit_todo = sprintf("%s LIMIT %d, %d", $query_todo, $startRow_todo, $maxRows_todo);
 $todo = mysql_query($query_limit_todo, $basepangloria) or die(mysql_error());
 $row_todo = mysql_fetch_assoc($todo);

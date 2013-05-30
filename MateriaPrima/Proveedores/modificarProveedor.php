@@ -1,5 +1,38 @@
 <?php require_once('../../Connections/basepangloria.php'); ?>
+<?php require_once('../../Connections/basepangloria.php'); ?>
+<?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -67,7 +100,7 @@ if (isset($_GET['root'])) {
   $colname_modiProvee = $_GET['root'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_modiProvee = sprintf("SELECT * FROM CATPROVEEDOR WHERE IDPROVEEDOR = %s", GetSQLValueString($colname_modiProvee, "int"));
+$query_modiProvee = sprintf("SELECT * FROM CATPROVEEDOR WHERE IDPROVEEDOR = %s" , GetSQLValueString($colname_modiProvee, "int"));
 $modiProvee = mysql_query($query_modiProvee, $basepangloria) or die(mysql_error());
 $row_modiProvee = mysql_fetch_assoc($modiProvee);
 $totalRows_modiProvee = mysql_num_rows($modiProvee);
@@ -83,7 +116,14 @@ $query_combdepPais = "SELECT * FROM CATDEPTOPAIS";
 $combdepPais = mysql_query($query_combdepPais, $basepangloria) or die(mysql_error());
 $row_combdepPais = mysql_fetch_assoc($combdepPais);
 $totalRows_combdepPais = mysql_num_rows($combdepPais);
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_modiprovee = "SELECT * FROM CATPROVEEDOR ORDER BY IDPROVEEDOR DESC";
+$modiprovee = mysql_query($query_modiprovee, $basepangloria) or die(mysql_error());
+$row_modiprovee = mysql_fetch_assoc($modiprovee);
+$totalRows_modiprovee = mysql_num_rows($modiprovee);
 ?>
+
 
 <style type="text/css">
 body {
@@ -99,6 +139,8 @@ mysql_free_result($modiProvee);
 mysql_free_result($combpais);
 
 mysql_free_result($combdepPais);
+
+mysql_free_result($modiprovee);
 ?>
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
   <table width="820" border="0">
@@ -113,7 +155,8 @@ mysql_free_result($combdepPais);
     </tr>
     <tr>
       <td>Id Proveedor:</td>
-      <td><?php echo $row_modiProvee['IDPROVEEDOR']; ?></td>
+      <td><label for="textfield"></label>
+      <input name="textfield" type="text" id="textfield" value="<?php echo $row_modiprovee['IDPROVEEDOR']+1; ?>" readonly="readonly" /></td>
       <td>Direccion del Proveedor:</td>
       <td><input type="text" name="DIRECCIONPROVEEDOR" value="<?php echo htmlentities($row_modiProvee['DIRECCIONPROVEEDOR'], ENT_COMPAT, ''); ?>" size="32"></td>
     </tr>

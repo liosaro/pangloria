@@ -43,7 +43,7 @@ if (isset($_GET['root'])) {
   $colname_id = $_GET['root'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_id = sprintf("SELECT * FROM CATPROVEEDOR WHERE IDPROVEEDOR = %s ORDER BY IDPROVEEDOR ASC", GetSQLValueString($colname_id, "int"));
+$query_id = sprintf("SELECT * FROM CATPROVEEDOR WHERE IDPROVEEDOR = %s AND ELIMIN = '0' ORDER BY IDPROVEEDOR ASC", GetSQLValueString($colname_id, "int"));
 $query_limit_id = sprintf("%s LIMIT %d, %d", $query_id, $startRow_id, $maxRows_id);
 $id = mysql_query($query_limit_id, $basepangloria) or die(mysql_error());
 $row_id = mysql_fetch_assoc($id);

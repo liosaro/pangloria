@@ -86,6 +86,12 @@ if (isset($_GET['totalRows_ingeProvee'])) {
   $totalRows_ingeProvee = mysql_num_rows($all_ingeProvee);
 }
 $totalPages_ingeProvee = ceil($totalRows_ingeProvee/$maxRows_ingeProvee)-1;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_provee = "SELECT IDPROVEEDOR FROM CATPROVEEDOR ORDER BY IDPROVEEDOR DESC";
+$provee = mysql_query($query_provee, $basepangloria) or die(mysql_error());
+$row_provee = mysql_fetch_assoc($provee);
+$totalRows_provee = mysql_num_rows($provee);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -106,6 +112,17 @@ body {
 <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" media="screen"
 href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
+<script>
+function Confirm(form){
+
+alert("Se ha agregado un nuevo registro!"); 
+
+form.submit();
+
+}
+
+</script>
 </head>
 
 <body>
@@ -118,7 +135,7 @@ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-da
           </tr>
         <tr valign="baseline">
           <td >Id Proveedor:</td>
-          <td ><input name="IDPROVEEDOR" type="text" value="" size="32" readonly="readonly" /></td>
+          <td ><input name="IDPROVEEDOR" type="text" value="<?php echo $row_provee['IDPROVEEDOR']+1; ?>" size="32" readonly="readonly" /></td>
           <td >Direccion del Porveedor:</td>
           <td><input type="text" name="DIRECCIONPROVEEDOR" value="" size="32" /></td>
         </tr>
@@ -248,7 +265,7 @@ pickTime: false
           <td>&nbsp;</td>
         </tr>
         <tr valign="baseline">
-          <td nowrap="nowrap" align="right"><input type="submit" value="Insertar registro" /></td>
+          <td nowrap="nowrap" align="right"><input type="submit" name="SEND" id="SEND"  value="Insertar registro" onClick="Confirm(this.form)" /></td>
           <td nowrap="nowrap" align="right">&nbsp;</td>
           <td nowrap="nowrap" align="right">&nbsp;</td>
           <td>&nbsp;</td>
@@ -267,30 +284,18 @@ pickTime: false
 <table border="1">
   <tr>
     <td>IDPROVEEDOR</td>
-    <td>IDPAIS</td>
     <td>NOMBREPROVEEDOR</td>
     <td>DIRECCIONPROVEEDOR</td>
     <td>TELEFONOPROVEEDOR</td>
-    <td>CORREOPROVEEDOR</td>
-    <td>FECHAINGRESOPROVE</td>
     <td>GIRO</td>
-    <td>NUMEROREGISTRO</td>
-    <td>WEB</td>
-    <td>DEPTOPAISPROVEEDOR</td>
   </tr>
   <?php do { ?>
     <tr>
       <td><?php echo $row_ingeProvee['IDPROVEEDOR']; ?></td>
-      <td><?php echo $row_ingeProvee['IDPAIS']; ?></td>
       <td><?php echo $row_ingeProvee['NOMBREPROVEEDOR']; ?></td>
       <td><?php echo $row_ingeProvee['DIRECCIONPROVEEDOR']; ?></td>
       <td><?php echo $row_ingeProvee['TELEFONOPROVEEDOR']; ?></td>
-      <td><?php echo $row_ingeProvee['CORREOPROVEEDOR']; ?></td>
-      <td><?php echo $row_ingeProvee['FECHAINGRESOPROVE']; ?></td>
       <td><?php echo $row_ingeProvee['GIRO']; ?></td>
-      <td><?php echo $row_ingeProvee['NUMEROREGISTRO']; ?></td>
-      <td><?php echo $row_ingeProvee['WEB']; ?></td>
-      <td><?php echo $row_ingeProvee['DEPTOPAISPROVEEDOR']; ?></td>
     </tr>
     <?php } while ($row_ingeProvee = mysql_fetch_assoc($ingeProvee)); ?>
 </table>
@@ -307,4 +312,6 @@ mysql_free_result($pais);
 mysql_free_result($depPais);
 
 mysql_free_result($ingeProvee);
+
+mysql_free_result($provee);
 ?>

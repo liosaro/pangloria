@@ -45,7 +45,7 @@ if (isset($_GET['root'])) {
   $colname_nombres = $_GET['root'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_nombres = sprintf("SELECT * FROM CATPROVEEDOR WHERE NOMBREPROVEEDOR LIKE %s ORDER BY IDPROVEEDOR ASC", GetSQLValueString("%" . $colname_nombres . "%", "text"));
+$query_nombres = sprintf("SELECT * FROM CATPROVEEDOR WHERE NOMBREPROVEEDOR LIKE %s AND ELIMIN = '0' ORDER BY IDPROVEEDOR ASC", GetSQLValueString("%" . $colname_nombres . "%", "text"));
 $query_limit_nombres = sprintf("%s LIMIT %d, %d", $query_nombres, $startRow_nombres, $maxRows_nombres);
 $nombres = mysql_query($query_limit_nombres, $basepangloria) or die(mysql_error());
 $row_nombres = mysql_fetch_assoc($nombres);
