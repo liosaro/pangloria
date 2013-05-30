@@ -31,6 +31,8 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$currentPage = $_SERVER["PHP_SELF"];
+
 $maxRows_devo = 10;
 $pageNum_devo = 0;
 if (isset($_GET['pageNum_devo'])) {
@@ -51,6 +53,22 @@ if (isset($_GET['totalRows_devo'])) {
   $totalRows_devo = mysql_num_rows($all_devo);
 }
 $totalPages_devo = ceil($totalRows_devo/$maxRows_devo)-1;
+
+$queryString_devo = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_devo") == false && 
+        stristr($param, "totalRows_devo") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_devo = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_devo = sprintf("&totalRows_devo=%d%s", $totalRows_devo, $queryString_devo);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -76,6 +94,9 @@ return true;
     <td><form action="filtroeliminar.php" method="post" name="eliminadevo" target="eliminar" id="eliminadevo"><iframe src="filtroeliminar.php" name="eliminar" width="820" height="300" scrolling="Auto" id="eliminar"></iframe>
       <p>&nbsp;</p>
       <table border="1">
+        <tr>
+          <td colspan="8"><a href="<?php printf("%s?pageNum_devo=%d%s", $currentPage, 0, $queryString_devo); ?>"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_devo=%d%s", $currentPage, max(0, $pageNum_devo - 1), $queryString_devo); ?>"><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_devo=%d%s", $currentPage, min($totalPages_devo, $pageNum_devo + 1), $queryString_devo); ?>"><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /></a><a href="<?php printf("%s?pageNum_devo=%d%s", $currentPage, $totalPages_devo, $queryString_devo); ?>"><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></a></td>
+        </tr>
         <tr>
           <td colspan="8"><label for="textfield"></label>
             <input type="text" name="filtrodevolu" id="filtrodevolu" />

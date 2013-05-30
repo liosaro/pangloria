@@ -39,11 +39,11 @@ if (isset($_GET['pageNum_filtrodevo'])) {
 $startRow_filtrodevo = $pageNum_filtrodevo * $maxRows_filtrodevo;
 
 $colname_filtrodevo = "-1";
-if (isset($_GET['filtrodevolu'])) {
-  $colname_filtrodevo = $_GET['filtrodevolu'];
+if (isset($_POST['filtrodevolu'])) {
+  $colname_filtrodevo = $_POST['filtrodevolu'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_filtrodevo = sprintf("SELECT * FROM TRNDEVOLUCIONCOMPRA WHERE IDEMPLEADO LIKE %s ORDER BY IDDEVOLUCION ASC", GetSQLValueString("%" . $colname_filtrodevo . "%", "text"));
+$query_filtrodevo = sprintf("SELECT * FROM TRNDEVOLUCIONCOMPRA WHERE FECHADEVOLUCION LIKE %s ORDER BY IDDEVOLUCION ASC", GetSQLValueString("%" . $colname_filtrodevo . "%", "date"));
 $query_limit_filtrodevo = sprintf("%s LIMIT %d, %d", $query_filtrodevo, $startRow_filtrodevo, $maxRows_filtrodevo);
 $filtrodevo = mysql_query($query_limit_filtrodevo, $basepangloria) or die(mysql_error());
 $row_filtrodevo = mysql_fetch_assoc($filtrodevo);

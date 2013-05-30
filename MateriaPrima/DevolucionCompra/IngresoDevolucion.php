@@ -132,6 +132,8 @@ $queryString_devolulu = sprintf("&totalRows_devolulu=%d%s", $totalRows_devolulu,
 <link rel="stylesheet" type="text/css" media="screen"
 href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 
+<script src="../../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -170,7 +172,9 @@ do {
           <tr>
             <td colspan="4" align="center">Documento a devolver:
               <label for="DOCADEVOLVER"></label>
-            <input type="text" name="DOCADEVOLVER" id="DOCADEVOLVER" /></td>
+              <span id="sprytextfield1">
+              <input type="text" name="DOCADEVOLVER" id="DOCADEVOLVER" />
+              <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -221,7 +225,9 @@ pickTime: false
 </script>
 </td>
             <td>IMPORTE:</td>
-            <td><input type="text" name="IMPORTE" value="" size="32" /></td>
+            <td><span id="sprytextfield2">
+              <input type="text" name="IMPORTE" value="" size="32" />
+            <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
@@ -231,12 +237,16 @@ pickTime: false
           </tr>
           <tr>
             <td>Gasto Generado:</td>
-            <td><input type="text" name="GASTOGENERADO" value="" size="32" /></td>
+            <td><span id="sprytextfield3">
+              <input type="text" name="GASTOGENERADO" value="" size="32" />
+            <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
             <td>Observacion:</td>
             <td><input type="text" name="OBSERVACION" value="" size="32" /></td>
           </tr>
           <tr>
-            <td colspan="4" align="center"><input type="submit" value="Insertar registro" /></td>
+            <td colspan="4" align="center">
+
+					 <input type="submit" value="Insertar registro" />
           </tr>
         </table>
         <table border="1">
@@ -276,6 +286,11 @@ pickTime: false
   </tr>
 </table>
 <p>&nbsp;</p>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2");
+var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3");
+</script>
 </body>
 </html>
 <?php
