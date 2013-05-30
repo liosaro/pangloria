@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_consulprovee" value="name:IDPROVEEDOR;datatype:int,name:IDPAIS;datatype:int,name:NOMBREPROVEEDOR;datatype:blob,name:DIRECCIONPROVEEDOR;datatype:blob,name:TELEFONOPROVEEDOR;datatype:blob,name:CORREOPROVEEDOR;datatype:blob,name:FECHAINGRESOPROVE;datatype:date,name:GIRO;datatype:blob,name:NUMEROREGISTRO;datatype:blob,name:WEB;datatype:blob,name:DEPTOPAISPROVEEDOR;datatype:int,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+	<infoitem key="UD_consulemple" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
+	<infoitem key="UD_ConsulOrd" value="name:IDORDEN;datatype:int" />
+	<infoitem key="UD_consutipF" value="name:ID_TIPO_FACTURA;datatype:int,name:TIPOFACTURA;datatype:blob" />
+	<infoitem key="UD_consulestadoF" value="name:IDESTAFACTURA;datatype:int,name:ESTADO;datatype:blob" />
+</info>
