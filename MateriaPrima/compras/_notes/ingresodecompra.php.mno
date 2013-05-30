@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_ComboOrdendeCompra" value="name:IDORDEN;datatype:int" />
-	<infoitem key="UD_ComboTipodeFactura" value="name:ID_TIPO_FACTURA;datatype:int,name:TIPOFACTURA;datatype:blob" />
-</info>
