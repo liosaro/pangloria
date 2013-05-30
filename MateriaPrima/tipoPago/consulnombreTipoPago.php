@@ -45,7 +45,7 @@ if (isset($_GET['root'])) {
   $colname_nombre = $_GET['root'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_nombre = sprintf("SELECT * FROM CATCONDICIONPAGO WHERE TIPO LIKE %s ORDER BY IDCONDICION ASC", GetSQLValueString("%" . $colname_nombre . "%", "text"));
+$query_nombre = sprintf("SELECT * FROM CATCONDICIONPAGO WHERE TIPO LIKE %s AND ELIMIN = '0' ORDER BY IDCONDICION ASC", GetSQLValueString("%" . $colname_nombre . "%", "text"));
 $query_limit_nombre = sprintf("%s LIMIT %d, %d", $query_nombre, $startRow_nombre, $maxRows_nombre);
 $nombre = mysql_query($query_limit_nombre, $basepangloria) or die(mysql_error());
 $row_nombre = mysql_fetch_assoc($nombre);

@@ -3,4 +3,6 @@
 	<infoitem key="UD_ingreTipoPago" value="name:IDCONDICION;datatype:int,name:TIPO;datatype:blob" />
 	<infoitem key="UD_tipodepago" value="name:IDCONDICION;datatype:int" />
 	<infoitem key="UD_comboTipo" value="name:IDCONDICION;datatype:int,name:TIPO;datatype:blob" />
+	<infoitem key="UD_tabladinamica" value="name:IDCONDICION;datatype:int,name:TIPO;datatype:blob" />
+	<infoitem key="UD_tabladina" value="name:IDCONDICION;datatype:int,name:TIPO;datatype:blob" />
 </info>
