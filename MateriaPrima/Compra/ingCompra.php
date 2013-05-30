@@ -141,7 +141,7 @@ document.frames.detacomp.location=destino
   </tr>
   <tr>
     <td>Esta Orden no posee orden de Compra: 
-      <input type="checkbox" name="chequeo" id="chequeo"  onchange="modiframe('adios.htm');"/>
+      <input type="checkbox" name="chequeo" id="chequeo"  onchange="modiframe('detalleconsultado.php');"/>
     <label for="chequeo"></label></td>
   </tr>
   <tr>
