@@ -43,7 +43,7 @@ if (isset($_GET['root'])) {
   $colname_Id = $_GET['root'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_Id = sprintf("SELECT * FROM CATSUCURSAL WHERE IDSUCURSAL = %s ORDER BY IDSUCURSAL ASC", GetSQLValueString($colname_Id, "int"));
+$query_Id = sprintf("SELECT * FROM CATSUCURSAL WHERE IDSUCURSAL = %s  AND ELIMIN = '0' ORDER BY IDSUCURSAL ASC", GetSQLValueString($colname_Id, "int"));
 $query_limit_Id = sprintf("%s LIMIT %d, %d", $query_Id, $startRow_Id, $maxRows_Id);
 $Id = mysql_query($query_limit_Id, $basepangloria) or die(mysql_error());
 $row_Id = mysql_fetch_assoc($Id);
