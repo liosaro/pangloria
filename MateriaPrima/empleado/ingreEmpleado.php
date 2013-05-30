@@ -88,7 +88,7 @@ if (isset($_SESSION['MM_Username'])) {
   $colname_usuarioentra = $_SESSION['MM_Username'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_usuarioentra = sprintf("SELECT IDUSUARIO FROM CATUSUARIO WHERE NOMBREUSUARIO = %s", GetSQLValueString($colname_usuarioentra, "text"));
+$query_usuarioentra = sprintf("SELECT IDUSUARIO, NOMBREUSUARIO FROM CATUSUARIO WHERE NOMBREUSUARIO = %s ORDER BY NOMBREUSUARIO ASC", GetSQLValueString($colname_usuarioentra, "text"));
 $usuarioentra = mysql_query($query_usuarioentra, $basepangloria) or die(mysql_error());
 $row_usuarioentra = mysql_fetch_assoc($usuarioentra);
 $totalRows_usuarioentra = mysql_num_rows($usuarioentra);
@@ -253,7 +253,21 @@ do {
       <input type="text" name="FIJO" value="" size="32" />
       <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></td>
       <td>Usuario:</td>
-      <td><input name="IDUSUARIO" type="text" value="<?php echo $row_usuarioentra['IDUSUARIO']; ?>" size="32" readonly="readonly" /></td>
+      <td><label for="usuario"></label>
+        <select name="usuario" id="usuario">
+          <?php
+do {  
+?>
+          <option value="<?php echo $row_usuarioentra['IDUSUARIO']?>"><?php echo $row_usuarioentra['NOMBREUSUARIO']?></option>
+          <?php
+} while ($row_usuarioentra = mysql_fetch_assoc($usuarioentra));
+  $rows = mysql_num_rows($usuarioentra);
+  if($rows > 0) {
+      mysql_data_seek($usuarioentra, 0);
+	  $row_usuarioentra = mysql_fetch_assoc($usuarioentra);
+  }
+?>
+      </select></td>
     </tr>
     <tr>
       <td><input type="submit" value="Insertar registro" /></td>
