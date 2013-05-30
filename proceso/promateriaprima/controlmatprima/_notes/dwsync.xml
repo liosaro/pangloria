@@ -5,4 +5,7 @@
 <file name="eliminacionmatpri.php" server="www.liosarpc.info//public_html/pan/" local="130139496626639955" remote="130139568600000000" Dst="0" />
 <file name="eliminarMatpri.php" server="www.liosarpc.info//public_html/pan/" local="130139498526258607" remote="130139570400000000" Dst="0" />
 <file name="filtroeliminamatpri.php" server="www.liosarpc.info//public_html/pan/" local="130136861911261516" remote="130139563200000000" Dst="0" />
+<file name="consulta_matprimaid.php" server="www.liosarpc.info//public_html/pan/" local="130139518650369640" remote="130139590800000000" Dst="0" />
+<file name="consulta_matprima.php" server="www.liosarpc.info//public_html/pan/" local="130139539585847081" remote="130139611200000000" Dst="0" />
+<file name="consulta_matprimatodo.php" server="www.liosarpc.info//public_html/pan/" local="130139624228448361" remote="130139878800000000" Dst="0" />
 </dwsync>

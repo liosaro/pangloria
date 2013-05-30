@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_empleado" value="name:IDEMPLEADO;datatype:int,name:NOMBREEMPLEADO;datatype:blob" />
+	<infoitem key="UD_devolulu" value="name:IDDEVOLUCION;datatype:int,name:IDEMPLEADO;datatype:int,name:ID_DETENCCOM;datatype:int,name:DOCADEVOLVER;datatype:blob,name:FECHADEVOLUCION;datatype:date,name:IMPORTE;datatype:real,name:GASTOGENERADO;datatype:real,name:OBSERVACION;datatype:blob,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+	<infoitem key="UD_proveedor" value="name:IDPROVEEDOR;datatype:int,name:NOMBREPROVEEDOR;datatype:blob" />
+	<infoitem key="UD_factura" value="name:ID_TIPO_FACTURA;datatype:int,name:TIPOFACTURA;datatype:blob" />
+	<infoitem key="UD_compra" value="name:ID_DETENCCOM;datatype:int" />
+</info>
