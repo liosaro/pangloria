@@ -140,7 +140,7 @@ do {
             <?php
 do {  
 ?>
-            <option value="<?php echo $row_combousuario['IDUSUARIO']?>"><?php echo $row_combousuario['NOMBREUSUARIO']?></option>
+	      <option value="<?php echo $row_combousuario['IDUSUARIO']?>"><?php echo  $row_combousuario['IDUSUARIO']?>---<?php echo $row_combousuario['NOMBREUSUARIO']?></option>
             <?php
 } while ($row_combousuario = mysql_fetch_assoc($combousuario));
   $rows = mysql_num_rows($combousuario);

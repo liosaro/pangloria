@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:ID_CONTROLMAT;datatype:int,name:IDMATPRIMA;datatype:int,name:ID_SALIDA;datatype:int,name:IDUNIDAD;datatype:int,name:CANT_ENTREGA;datatype:real,name:CANT_DEVUELTA;datatype:real,name:CANT_UTILIZADA;datatype:real,name:FECHA_CONTROL;datatype:date,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+	<infoitem key="UD_combomateprima" value="name:IDMATPRIMA;datatype:int,name:IDTIPO;datatype:int" />
+	<infoitem key="UD_Recordset2" value="name:IDUNIDAD;datatype:int,name:TIPOUNIDAD;datatype:blob" />
+</info>
