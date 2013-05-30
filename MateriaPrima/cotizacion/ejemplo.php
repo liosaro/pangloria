@@ -180,6 +180,8 @@ and open the template in the editor.
                 <!--<td><input type="text" id="seq"  name="seq[]" readonly></td>-->
                 <!--<td><input type="text" id="mp"   name="mp[]"></td>-->
                 <td align="center"><?php echo $cmb_matpri ?></td>
+                <!--<td align="center"><?php echo $cmb_um ?></td> --> 
+                              
                 <td align="center"><input type="text" id="um"   name="um[]"></td>
                 <td align="center"><input type="text" id="qtde" name="qtde[]"></td>
                 <td align="center"><input type="text" id="pu"   name="pu[]"></td>

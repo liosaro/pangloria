@@ -45,11 +45,47 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
   $Result1 = mysql_query($insertSQL, $basepangloria) or die(mysql_error());
 }
 
+$maxRows_codigocargo = 10;
+$pageNum_codigocargo = 0;
+if (isset($_GET['pageNum_codigocargo'])) {
+  $pageNum_codigocargo = $_GET['pageNum_codigocargo'];
+}
+$startRow_codigocargo = $pageNum_codigocargo * $maxRows_codigocargo;
+
 mysql_select_db($database_basepangloria, $basepangloria);
 $query_codigocargo = "SELECT IDCARGO FROM CATCARGO ORDER BY IDCARGO DESC";
-$codigocargo = mysql_query($query_codigocargo, $basepangloria) or die(mysql_error());
+$query_limit_codigocargo = sprintf("%s LIMIT %d, %d", $query_codigocargo, $startRow_codigocargo, $maxRows_codigocargo);
+$codigocargo = mysql_query($query_limit_codigocargo, $basepangloria) or die(mysql_error());
 $row_codigocargo = mysql_fetch_assoc($codigocargo);
-$totalRows_codigocargo = mysql_num_rows($codigocargo);
+
+if (isset($_GET['totalRows_codigocargo'])) {
+  $totalRows_codigocargo = $_GET['totalRows_codigocargo'];
+} else {
+  $all_codigocargo = mysql_query($query_codigocargo);
+  $totalRows_codigocargo = mysql_num_rows($all_codigocargo);
+}
+$totalPages_codigocargo = ceil($totalRows_codigocargo/$maxRows_codigocargo)-1;
+
+$maxRows_consulta = 1;
+$pageNum_consulta = 0;
+if (isset($_GET['pageNum_consulta'])) {
+  $pageNum_consulta = $_GET['pageNum_consulta'];
+}
+$startRow_consulta = $pageNum_consulta * $maxRows_consulta;
+
+mysql_select_db($database_basepangloria, $basepangloria);
+$query_consulta = "SELECT * FROM CATCARGO ORDER BY IDCARGO DESC";
+$query_limit_consulta = sprintf("%s LIMIT %d, %d", $query_consulta, $startRow_consulta, $maxRows_consulta);
+$consulta = mysql_query($query_limit_consulta, $basepangloria) or die(mysql_error());
+$row_consulta = mysql_fetch_assoc($consulta);
+
+if (isset($_GET['totalRows_consulta'])) {
+  $totalRows_consulta = $_GET['totalRows_consulta'];
+} else {
+  $all_consulta = mysql_query($query_consulta);
+  $totalRows_consulta = mysql_num_rows($all_consulta);
+}
+$totalPages_consulta = ceil($totalRows_consulta/$maxRows_consulta)-1;
 ?>
 <style type="text/css">
 body {
@@ -97,9 +133,23 @@ body {
         <p>&nbsp;</p>
         <input type="hidden" name="MM_insert" value="form2">
       </form>
-    <p>&nbsp;</p></td>
+    <p><strong>Ultimo Registro Ingresado:</strong></p>
+    <table border="1">
+      <tr>
+        <td>IDCARGO</td>
+        <td>CARGO</td>
+      </tr>
+      <?php do { ?>
+        <tr>
+          <td><?php echo $row_consulta['IDCARGO']; ?></td>
+          <td><?php echo $row_consulta['CARGO']; ?></td>
+        </tr>
+        <?php } while ($row_consulta = mysql_fetch_assoc($consulta)); ?>
+    </table></td>
   </tr>
-</table> 
+</table>
 <?php
 mysql_free_result($codigocargo);
+
+mysql_free_result($consulta);
 ?>

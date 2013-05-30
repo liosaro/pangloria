@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_registro" value="name:IDENCABEZADO;datatype:int,name:IDVENDEDOR;datatype:int,name:IDPROVEEDOR;datatype:int,name:IDEMPLEADO;datatype:int,name:IDCONDICION;datatype:int,name:FECHACOTIZACION;datatype:date,name:VALIDEZOFERTA;datatype:int,name:PLAZOENTREGA;datatype:int,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+</info>

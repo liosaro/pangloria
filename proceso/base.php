@@ -111,7 +111,15 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                     <li><a href="promateriaprima/SalidaMateriaPrima/ingresoSalidaMateriaPrima.php" target="contenedor">Ingreso de Salida de Materia Prima</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Elemento sin t&iacute;tulo</a></li>
+                <li><a href="#" class="MenuBarItemSubmenu">Cotizaciones</a>
+                  <ul>
+                    <li><a href="#" target="contenedor">Envio</a></li>
+                    <li><a href="../MateriaPrima/cotizacion/ejemplo.php" target="contenedor">Ingreso</a></li>
+                    <li><a href="#" target="contenedor">Consulta</a></li>
+                    <li><a href="#" target="contenedor">Modificar</a></li>
+                    <li><a href="#" target="contenedor">Eliminar</a></li>
+                  </ul>
+                </li>
                 <li><a href="#">Entrega de Materia Prima</a></li>
                 <li><a href="#" class="MenuBarItemSubmenu">Justificacion Perdia Materia Prima</a>
                   <ul>

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_codigocargo" value="name:IDCARGO;datatype:int" />
+	<infoitem key="UD_consulta" value="name:IDCARGO;datatype:int,name:CARGO;datatype:blob" />
+</info>
