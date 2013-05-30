@@ -108,7 +108,7 @@ $queryString_disponibl = sprintf("&totalRows_disponibl=%d%s", $totalRows_disponi
 <body>
 <p>Elija La Orden de Produccion que desea Modificar: 
   <label for="select"></label>
-  <select name="select" id="select"   onchange="window.location.href='modi.php?enca='+document.getElementById(this.id).value ;">
+  <select name="select" id="select"   onchange="window.location.href='modicontrolingresoproductohorno.php?enca='+document.getElementById(this.id).value ;">
     <?php
 do {  
 ?>
@@ -144,7 +144,7 @@ do {
             <td bgcolor="#999999"><?php echo $row_constabla['IDORDENPRODUCCION']; ?></td>
             <td bgcolor="#CCCCCC"><?php echo $row_constabla['FECHAYHORADEINGRESO']; ?></td>
             <td bgcolor="#999999"><?php echo $row_constabla['EMPLEADEREVISA']; ?></td>
-            <td align="center"><a href="../produccion/controlhorno/Modificacion/modi.php?enca=<?php echo $row_constabla['IDENCABEZADO']; ?>" target="_self"><img src="../../imagenes/icono/modi.png" width="32" height="32" /></a></td>
+            <td align="center"><a href="../produccion/controlhorno/Modificacion/modicontrolingresoproductohorno.php?enca=<?php echo $row_constabla['IDENCABEZADO']; ?>" target="_self"><img src="../../imagenes/icono/modi.png" width="32" height="32" /></a></td>
           </tr>
           <?php } while ($row_constabla = mysql_fetch_assoc($constabla)); ?>
     </table></td>

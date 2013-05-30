@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_departa" value="name:IDDEPTO;datatype:int,name:DEPARTAMENTO;datatype:blob" />
+	<infoitem key="UD_cargo" value="name:IDCARGO;datatype:int,name:CARGO;datatype:blob" />
+	<infoitem key="UD_sucursal" value="name:IDSUCURSAL;datatype:int,name:NOMBRESUCURSAL;datatype:blob" />
+	<infoitem key="UD_idemple" value="name:IDEMPLEADO;datatype:int" />
+	<infoitem key="UD_usuarioentra" value="name:IDUSUARIO;datatype:int" />
+</info>

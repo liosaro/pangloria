@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_disponibl" value="name:IDENCABEZADO;datatype:int" />
+	<infoitem key="UD_constabla" value="name:IDENCABEZADO;datatype:int,name:IDORDENPRODUCCION;datatype:int,name:FECHAYHORADEINGRESO;datatype:datetime,name:EMPLEADEREVISA;datatype:int,name:USUARIO;datatype:int,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+</info>
