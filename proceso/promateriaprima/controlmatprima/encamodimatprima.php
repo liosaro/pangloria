@@ -141,7 +141,7 @@ body {
           </tr>
           <tr>
             <td>Cantidad Utilizada:</td>
-            <td><input type="text" name="CANT_UTILIZADA" value="<?php echo htmlentities($row_Recordset1['CANT_UTILIZADA'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+            <td><input type="text" disable="disable" name="CANT_UTILIZADA" value="<?php echo htmlentities ($row_Recordset1['CANT_UTILIZADA'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
