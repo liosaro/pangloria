@@ -6,6 +6,7 @@
 <file name="scriptcompra.php" server="www.liosarpc.info//public_html/pan/" local="130133311200000000" remote="130133311200000000" />
 <file name="detalleingre.php" server="www.liosarpc.info//public_html/pan/" local="130133875800000000" remote="130143703800000000" />
 <file name="ingreso.php" server="www.liosarpc.info//public_html/pan/" local="130143559200000000" remote="130143559200000000" />
-<file name="modificarcompra.php" server="www.liosarpc.info//public_html/pan/" local="130133879400000000" remote="130143708000000000" />
+<file name="modificarcompra.php" server="www.liosarpc.info//public_html/pan/" local="130133879400000000" remote="130143835800000000" />
 <file name="ingresodecompra.php" server="www.liosarpc.info//public_html/pan/" local="130143558000000000" remote="130143558000000000" />
+<file name="consutalcompra.php" server="www.liosarpc.info//public_html/pan/" local="130143858527311789" remote="130143901200000000" />
 </dwsync>

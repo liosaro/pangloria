@@ -4,5 +4,5 @@
 	<infoitem key="UD_cargo" value="name:IDCARGO;datatype:int,name:CARGO;datatype:blob" />
 	<infoitem key="UD_sucursal" value="name:IDSUCURSAL;datatype:int,name:NOMBRESUCURSAL;datatype:blob" />
 	<infoitem key="UD_idemple" value="name:IDEMPLEADO;datatype:int" />
-	<infoitem key="UD_usuarioentra" value="name:IDUSUARIO;datatype:int" />
+	<infoitem key="UD_usuarioentra" value="name:IDUSUARIO;datatype:int,name:NOMBREUSUARIO;datatype:blob" />
 </info>
