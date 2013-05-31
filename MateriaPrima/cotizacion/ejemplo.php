@@ -77,20 +77,7 @@ and open the template in the editor.
    }
    $cmb_tipop .= '</select>';
    
-   
-   $q_tipop = "SELECT * FROM CATMEDIDAS";
-   mysql_select_db($database_basepangloria, $basepangloria);
-   $res6 = mysql_query($q_tipop, $basepangloria) or die(mysql_error());
-   //$row2 = mysql_fetch_assoc($res2);
-
-   $cmb_um = '<select id="medida"  name="medida">';
-   while ($fila = mysql_fetch_assoc($res6)) {
-        $cmb_um .= '<option value="'.$fila['ID_MEDIDA'].'">'.$fila['MEDIDA'].'</option>';
-   }
-   $cmb_um .= '</select>';
-   
-   
-
+ 
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +106,7 @@ and open the template in the editor.
 
                         coluna1 = linha.insertCell(2);
                         coluna1.align = "center";
-                        coluna1.innerHTML = '<td><?php echo $cmb_um[] ?></td>';
+                        coluna1.innerHTML = '<td><<input type="text" name="um[]"></td>';
 
                         coluna1 = linha.insertCell(3);
                         coluna1.align = "center";
@@ -194,10 +181,9 @@ and open the template in the editor.
                 <!--<td><input type="text" id="seq"  name="seq[]" readonly></td>-->
                 <!--<td><input type="text" id="mp"   name="mp[]"></td>-->
                 <td align="center"><?php echo $cmb_matpri ?></td>
-                <td align="center"><?php echo $cmb_um ?></td> 
+                <!--<td align="center"><?php echo $cmb_um ?></td> -->
                               
-                <!--<td align="center"><input type="text" id="um"   name="um[]"></td>-->
-                <td align="center"><input type="text" id="qtde" name="qtde[]"></td>
+                <td align="center"><input type="text" id="um"   name="um[]"></td>                <td align="center"><input type="text" id="qtde" name="qtde[]"></td>
                 <td align="center"><input type="text" id="pu"   name="pu[]"></td>
                 <td align="center"><input type="button" onClick="addLinha()" value="+"</td>
             </tr>
