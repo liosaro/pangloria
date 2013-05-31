@@ -73,16 +73,16 @@ return true;
 <body>
 <table border="1">
   <tr>
-    <td height="31" colspan="3"><iframe src="elimiTipoPago.php" name="eliminar" width="820" height="400" scrolling="Auto" id="eliminar"></iframe></td>
+    <td height="31" colspan="3"><iframe src="filtroelimiTipoPago.php" name="eliminar" width="820" height="400" scrolling="Auto" id="eliminar"></iframe></td>
   </tr>
   <tr>
     <td colspan="3"><img src="../../imagenes/icono/Back-32.png" width="32" height="32" /><img src="../../imagenes/icono/Backward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Forward-32.png" width="32" height="32" /><img src="../../imagenes/icono/Next-32.png" width="32" height="32" /></td>
   </tr>
   <tr>
     <td colspan="3"><form action="filtroelimiTipoPago.php" method="post" name="enviopago" target="eliminar" id="enviopago">
-      <label for="textfield"></label>
+      <label for="filtrotipago"></label>
       Ingrese el Tipo de Pago
-      <input type="text" name="textfield" id="textfield" />
+      <input type="text" name="filtrotipago" id="filtrotipago" />
       <input type="submit" name="button" id="button" value="Enviar" />
     </form></td>
   </tr>
