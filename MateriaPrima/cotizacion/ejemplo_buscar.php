@@ -88,7 +88,8 @@ and open the template in the editor.
         <td align="center" bgcolor="#999999"><form name="principal" id="principal" enctype="multipart/form-data" method="post" autocomplete="off" action="mostrar_busqueda.php">
           <h1>&nbsp;</h1>
            
-        <h1 style="font-family: verdana; font-size: 0.9em; font-weight: bold; text-align: center;"><h1>Busqueda de Cotizaci&oacute;n</h1>
+        <h1 style="font-family: verdana; font-size: 0.9em; font-weight: bold; text-align: center;">
+        <h1>Busqueda de Cotizaci&oacute;n a Eliminar</h1>
         </table>
         <table style="font-family: verdana; font-size: 0.9em;">
             <tr>
