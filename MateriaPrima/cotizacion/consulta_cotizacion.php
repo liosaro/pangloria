@@ -37,7 +37,7 @@ function OnSubmitForm()
 <form id="form1" name="consultaproducto" onsubmit="return OnSubmitForm();" target="conte">
 <table width="600" border="0">
   <tr>
-    <td align="center" bgcolor="#999999"><h1>Consultar Cargos</h1></td>
+    <td align="center" bgcolor="#999999"><h1>Consultar Cotizaciones</h1></td>
   </tr>
   <tr>
     <td><div id="radiosearch">
@@ -51,14 +51,14 @@ function OnSubmitForm()
           <td width="188">Seleccionar Consulta:</td>
           <td width="311">
           <input name="radiosearch" type="radio" value="1" checked>
-          Id Cargo</td>
+          Id Cotizacion</td>
           <td width="52">&nbsp;</td>
           <td width="269">&nbsp;</td>
         </tr>
         <tr>
           <td>&nbsp;</td>
           <td><input type="radio" name="radiosearch" id="id6" value="id" />
-            Cargo</td>
+          Empleados</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
