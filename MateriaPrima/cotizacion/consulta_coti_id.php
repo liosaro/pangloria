@@ -87,7 +87,7 @@ $queryString_registro = sprintf("&totalRows_registro=%d%s", $totalRows_registro,
   </tr>
   <?php do { ?>
     <tr>
-      <td><?php echo $row_registro['IDCARGO']; ?></td>
+      <td><?php echo $row_registro['IDENCABEZADO']; ?></td>
       <td><?php echo $row_registro['CARGO']; ?></td>
     </tr>
     <?php } while ($row_registro = mysql_fetch_assoc($registro)); ?>
