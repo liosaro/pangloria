@@ -1,4 +1,4 @@
-<?php 
+<?php
     require_once('../../Connections/basepangloria.php');
     $id_cotizacion  = $_POST['id_cotizacion'];
     $empleado       = $_POST['empleado'];
@@ -8,7 +8,7 @@
     $validez        = $_POST['validez'];
     $dia_entrega    = $_POST['dia_entrega'];
     $cot            = $_POST['cot'];
-    $seq            = $_POST['seq'];
+    //$seq            = $_POST['seq'];
     $mp             = $_POST['mp'];
     $dp             = $_POST['dp'];
     $um             = $_POST['um'];
@@ -46,7 +46,7 @@
             $q_encabezado_cotizacion = "INSERT 
                                         INTO TRNCABEZACOTIZACION
                                             (
-                                             IDENCABEZADO
+                                             IDENCABEZADO,
                                              IDVENDEDOR,
                                              IDPROVEEDOR,
                                              IDEMPLEADO,
@@ -66,18 +66,17 @@
                                               $dia_entrega
                                               )";
             
-            //mysql_select_db($database_basepangloria, $basepangloria);
-            //$execute1 = mysql_query($q_encabezado_cotizacion, $basepangloria) or die(mysql_error());
-            
-            echo $q_encabezado_cotizacion.'</br><hr>';
+            mysql_select_db($database_basepangloria, $basepangloria);
+            $execute1 = mysql_query($q_encabezado_cotizacion, $basepangloria) or die(mysql_error());
+
+            //echo $q_encabezado_cotizacion.'</br><hr>';
             
             for($c=0; $c<count($cot); $c++){
-                        
-                                
-                
+
+
                         if(!$cot[$c]){
                         
-                            echo 'NO REGISTRAR</br><hr>';
+                            //echo 'NO REGISTRAR</br><hr>';
                             
                         }else{
 
@@ -97,10 +96,10 @@
                                                             $pu[$c]
                                                             )";
 
-                            //mysql_select_db($database_basepangloria, $basepangloria);
-                            //$execute2 = mysql_query($q_detalle_cotizacion, $basepangloria) or die(mysql_error());
+                            mysql_select_db($database_basepangloria, $basepangloria);
+                            $execute2 = mysql_query($q_detalle_cotizacion, $basepangloria) or die(mysql_error());
                             
-                            echo $q_detalle_cotizacion.'</br><hr>';
+                            //echo $q_detalle_cotizacion.'</br><hr>';
                             
                             
                         }
@@ -108,7 +107,10 @@
             }
             
            
-            echo '<a href="ejemplo.php">Ingresar otra Cotización</a>';
+            echo '<a href="ejemplo.php">Ingresar otra Cotiacion</a>'; 
+			
+			echo '<td><tr><a href="www.liosarpc.info/pan/MateriaPrima/proceso/promateriaprima/base.php">Salir</a></tr></td>';
+			
             
         ?>
         
