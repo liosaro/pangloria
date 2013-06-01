@@ -285,7 +285,7 @@ do {
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "social_security_number", {format:"ssn_custom", validateOn:["blur"], useCharacterMasking:true, pattern:"000000000000"});
 var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "social_security_number", {validateOn:["blur"], useCharacterMasking:true, format:"ssn_custom", pattern:"00000000-0"});
 var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3", "email", {validateOn:["blur"], useCharacterMasking:true, hint:"ejemple@dominio.com"});
-var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4", "custom", {validateOn:["blur"], useCharacterMasking:true, pattern:"00"});
+var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4", "custom", {validateOn:["blur"], useCharacterMasking:true});
 var sprytextfield5 = new Spry.Widget.ValidationTextField("sprytextfield5", "custom", {validateOn:["blur"], useCharacterMasking:true, pattern:"0000-000000-00-0"});
 var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "social_security_number", {validateOn:["blur"], useCharacterMasking:true, format:"ssn_custom", pattern:"000000000"});
 var sprytextfield7 = new Spry.Widget.ValidationTextField("sprytextfield7", "custom", {validateOn:["blur"], useCharacterMasking:true, pattern:"000000000"});
