@@ -1,4 +1,15 @@
+<head>
+<script>
+function Confirm(form){
 
+alert("Se ha agregado un nuevo registro!"); 
+
+form.submit();
+
+}
+
+</script>
+</head>
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
   <table align="center">
     <tr valign="baseline">
@@ -14,7 +25,7 @@
     </tr>
     <tr valign="baseline">
       <td nowrap align="right">&nbsp;</td>
-      <td><input type="submit" value="Insertar registro"></td>
+      <td><input type="submit"  name="SEND" id="SEND"  value="Insertar registro" onClick="Confirm(this.form)"></td>
     </tr>
   </table>
   <input type="hidden" name="MM_insert" value="form1">
