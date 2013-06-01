@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_consultacargo" value="name:IDCARGO;datatype:int,name:CARGO;datatype:blob" />
+	<infoitem key="UD_consultaprovee" value="name:IDPROVEEDOR;datatype:int,name:IDPAIS;datatype:int,name:NOMBREPROVEEDOR;datatype:blob,name:DIRECCIONPROVEEDOR;datatype:blob,name:TELEFONOPROVEEDOR;datatype:blob,name:CORREOPROVEEDOR;datatype:blob,name:FECHAINGRESOPROVE;datatype:date,name:GIRO;datatype:blob,name:NUMEROREGISTRO;datatype:blob,name:WEB;datatype:blob,name:DEPTOPAISPROVEEDOR;datatype:int,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+</info>
