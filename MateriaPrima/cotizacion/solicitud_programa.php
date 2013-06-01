@@ -1,4 +1,20 @@
+<?php
+require_once('../../Connections/basepangloria.php');
 
+ $q_prove = "SELECT * FROM CATPROVEEDOR";
+   mysql_select_db($database_basepangloria, $basepangloria);
+   $res4 = mysql_query($q_prove, $basepangloria) or die(mysql_error());
+   //$row2 = mysql_fetch_assoc($res2);
+
+   $cmb_prove = '<select id="proveedor"  name="proveedor">';
+   while ($fila = mysql_fetch_assoc($res4)) {
+        $cmb_prove .= '<option value="'.$fila['CORREOPROVEEDOR'].'">'.$fila['NOMBREPROVEEDOR'].'</option>';
+   }
+   $cmb_prove .= '</select>';
+
+
+
+ ?>
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -42,8 +58,8 @@ $datos = '<form id="sole" name="sole" enctype="multipart/form-data" action="envi
       <td colspan="1" align="right" valign="top" height="65px" ><font face="calibri" color="#808080" >Fecha: </font><big><font font face="Calibri" color="#808080"> '.$fecha_hoy.' </fecha></big><br></td>
       </tr>
       <tr>
-        <td width="315"><font face="calibri" color="#808080" >Departamento</font>:</td>
-        <td><input type="text" name="departamento" size="50" face="calibri" value="'.$depto.'" /></td>
+        <td width="315"><font face="calibri" color="#808080" >Enviado a:</font>:</td>
+        <td>'.$cmb_prove.'</td>
       </tr>
       <tr>
         <td><font face="calibri" color="#808080">Solicitante</font>:</td>

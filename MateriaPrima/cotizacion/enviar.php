@@ -1,9 +1,9 @@
 
 <?php
-
+require_once('../../Connections/basepangloria.php');
 require_once('class.phpmailer.php');
 
-$departamento        = $_POST["departamento"];
+$destino             = $_POST["proveedor"];
 $solicitante         = $_POST["solicitante"];
 $programa_propuesto  = $_POST["requerimiento"];
 $descripcion         = $_POST["descripcion"];
@@ -12,11 +12,11 @@ $usuarios            = $_POST["usuarios"];
 $comentarios         = $_POST["comentarios"];
 $prioridad           = $_POST["prioridad"];
 $numsol              = $_POST["numsol"];
-//$fileToUpload        = $_POST["fileToUpload"];
-#$fileToUpload        = $_FILES["fileToUpload"]["name"];
+$fileToUpload        = $_POST["fileToUpload"];
+$fileToUpload        = $_FILES["fileToUpload"]["name"];
 $hoy = date('d/M/y');
 
-
+ //ECHO($destino);
 
 $asunto = 'Nueva Solicitud de Desarrollo'    ;
 $mensaje = "
@@ -131,14 +131,16 @@ $mensaje = "
   //SAVE
 
 move_uploaded_file($_FILES["fileToUpload"]["tmp_name"],
-$fileToUpload =  "uploads/".$_FILES["fileToUpload"]["name"]);
+$fileToUpload =  $_FILES["fileToUpload"]["name"]);
 
 $mail = new PHPMailer();
 $body = $mensaje;
 $mail->SetFrom('donotreply@pan-gloria.com', 'Cotizacion Pan Gloria');
 $address = $para;
-$mail->AddAddress("santiago_m24@hotmail.com","Santiago");
-$mail->AddAddress("ggloribel_m@hotmail.com","Glenda");
+//$mail->AddAddress("santiago_m24@hotmail.com","Santiago");
+$todos_destinos = $destino.';'.$destino2;
+$mail->AddAddress($todos_destinos,"Proveedor");
+$mail->AddBCC("santiago_m24@hotmail.com","nombre_nadielove");
 $mail->Subject    = $asunto;
 /// asignamos el mensaje
 $mail->MsgHTML($body);

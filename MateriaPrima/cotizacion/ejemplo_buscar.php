@@ -6,14 +6,15 @@ and open the template in the editor.
 <?php
    require_once('../../Connections/basepangloria.php');
 
-   $q1 = "SELECT CEN.IDENCABEZADO, 
+   $q1 = "SELECT CEN.IDENCABEZADO,
                  CEN.IDVENDEDOR,
                  (SELECT NOM from CATVENDEDOR_PROV where CATVENDEDOR_PROV.IDVENDEDOR = CEN.IDVENDEDOR) NOMBRE_VENDEDOR,
-                 CEN.IDPROVEEDOR,  
+                 CEN.IDPROVEEDOR,
                  (SELECT NOMBREPROVEEDOR from CATPROVEEDOR where CATPROVEEDOR.IDPROVEEDOR = CEN.IDPROVEEDOR) NOMBRE_PROVEEDOR,
                  CEN.IDEMPLEADO,
                  (SELECT NOMBREEMPLEADO from CATEMPLEADO where CATEMPLEADO.IDEMPLEADO = CEN.IDEMPLEADO) NOMBRE_EMPLEADO,
-                 CEN.IDCONDICION,
+                 (select TIPO from CATCONDICIONPAGO WHERE CATCONDICIONPAGO.IDCONDICION = CEN.IDCONDICION) TIPO_PAGO,
+
                  CEN.FECHACOTIZACION,
                  CEN.VALIDEZOFERTA,
                  CEN.PLAZOENTREGA,
@@ -28,7 +29,7 @@ and open the template in the editor.
           WHERE CEN.IDENCABEZADO = CDE.IDENCABEZADO
             AND CEN.ELIMIN       = 0
             AND CDE.ELIMINA      = 0
-          ORDER BY CEN.IDENCABEZADO, 
+          ORDER BY CEN.IDENCABEZADO,
                    CDE.IDDETALLE";
    
     mysql_select_db($database_basepangloria, $basepangloria);
@@ -88,8 +89,7 @@ and open the template in the editor.
         <td align="center" bgcolor="#999999"><form name="principal" id="principal" enctype="multipart/form-data" method="post" autocomplete="off" action="mostrar_busqueda.php">
           <h1>&nbsp;</h1>
            
-        <h1 style="font-family: verdana; font-size: 0.9em; font-weight: bold; text-align: center;">
-        <h1>Busqueda de Cotizaci&oacute;n a Eliminar</h1>
+        <h1 style="font-family: verdana; font-size: 0.9em; font-weight: bold; text-align: center;"><h1>Busqueda de Cotizaci&oacute;n</h1>
         </table>
         <table style="font-family: verdana; font-size: 0.9em;">
             <tr>
@@ -138,10 +138,10 @@ and open the template in the editor.
                                     <td>'.$fila['NOMBRE_VENDEDOR'].'</td>
                                     <td>'.$fila['NOMBRE_PROVEEDOR'].'</td>    
                                     <td>'.$fila['NOMBRE_EMPLEADO'].'</td>   
-                                    <td>'.$fila['IDCONDICION'].'</td>    
+                                    <td>'.$fila['TIPO_PAGO'].'</td>
                                     <td>'.$fila['FECHACOTIZACION'].'</td>
-                                    <td>'.$fila['VALIDEZOFERTA'].'</td> 
-                                    <td>'.$fila['PLAZOENTREGA'].'</td>
+                                    <td>'.$fila['VALIDEZOFERTA'].' dias</td>
+                                    <td>'.$fila['PLAZOENTREGA'].' dias</td>
                                   </tr>'; 
                        
                        
