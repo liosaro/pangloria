@@ -113,11 +113,11 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                 </li>
                 <li><a href="#" class="MenuBarItemSubmenu">Cotizaciones</a>
                   <ul>
-                    <li><a href="#" target="contenedor">Envio</a></li>
+                    <li><a href="../MateriaPrima/cotizacion/solicitud_programa.php">Envio</a></li>
                     <li><a href="../MateriaPrima/cotizacion/ejemplo.php" target="contenedor">Ingreso</a></li>
                     <li><a href="#" target="contenedor">Consulta</a></li>
-                    <li><a href="#" target="contenedor">Modificar</a></li>
-                    <li><a href="#" target="contenedor">Eliminar</a></li>
+                    <li><a href="../MateriaPrima/cotizacion/update_buscar.php" target="contenedor">Modificar</a></li>
+                    <li><a href="../MateriaPrima/cotizacion/ejemplo_buscar.php" target="contenedor">Eliminar</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Entrega de Materia Prima</a></li>

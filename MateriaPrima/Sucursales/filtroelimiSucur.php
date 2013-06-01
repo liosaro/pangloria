@@ -11,6 +11,24 @@ return true;
 }
 </script>
 </head>
+<table border="1">
+  <tr>
+    <td>Eliminacion</td>
+    <td>IDSUCURSAL</td>
+    <td>NOMBRESUCURSAL</td>
+    <td>DIRECCIONSUCURSAL</td>
+    <td>TELEFONOSUCURSAL</td>
+  </tr>
+  <?php do { ?>
+    <tr>
+      <td><a href="javascript:;" onclick="aviso('eliminarSucur.php?root=<?php echo $row_filtrosucur['IDSUCURSAL']; ?>'); return false;">Eliminar</a></td>
+      <td><?php echo $row_filtrosucur['IDSUCURSAL']; ?></td>
+      <td><?php echo $row_filtrosucur['NOMBRESUCURSAL']; ?></td>
+      <td><?php echo $row_filtrosucur['DIRECCIONSUCURSAL']; ?></td>
+      <td><?php echo $row_filtrosucur['TELEFONOSUCURSAL']; ?></td>
+    </tr>
+    <?php } while ($row_filtrosucur = mysql_fetch_assoc($filtrosucur)); ?>
+</table>
 <?php require_once('../../Connections/basepangloria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -44,49 +62,30 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$maxRows_filtroelimiSucur = 10;
-$pageNum_filtroelimiSucur = 0;
-if (isset($_GET['pageNum_filtroelimiSucur'])) {
-  $pageNum_filtroelimiSucur = $_GET['pageNum_filtroelimiSucur'];
+$maxRows_filtrosucur = 10;
+$pageNum_filtrosucur = 0;
+if (isset($_GET['pageNum_filtrosucur'])) {
+  $pageNum_filtrosucur = $_GET['pageNum_filtrosucur'];
 }
-$startRow_filtroelimiSucur = $pageNum_filtroelimiSucur * $maxRows_filtroelimiSucur;
+$startRow_filtrosucur = $pageNum_filtrosucur * $maxRows_filtrosucur;
 
-$colname_filtroelimiSucur = "-1";
-if (isset($_POST['elimisucur'])) {
-  $colname_filtroelimiSucur = $_POST['elimisucur'];
+$colname_filtrosucur = "-1";
+if (isset($_POST['filtrosucu'])) {
+  $colname_filtrosucur = $_POST['filtrosucu'];
 }
 mysql_select_db($database_basepangloria, $basepangloria);
-$query_filtroelimiSucur = sprintf("SELECT * FROM CATSUCURSAL WHERE NOMBRESUCURSAL LIKE %s ORDER BY IDSUCURSAL ASC", GetSQLValueString("%" . $colname_filtroelimiSucur . "%", "text"));
-$query_limit_filtroelimiSucur = sprintf("%s LIMIT %d, %d", $query_filtroelimiSucur, $startRow_filtroelimiSucur, $maxRows_filtroelimiSucur);
-$filtroelimiSucur = mysql_query($query_limit_filtroelimiSucur, $basepangloria) or die(mysql_error());
-$row_filtroelimiSucur = mysql_fetch_assoc($filtroelimiSucur);
+$query_filtrosucur = sprintf("SELECT * FROM CATSUCURSAL WHERE NOMBRESUCURSAL LIKE %s ORDER BY IDSUCURSAL ASC", GetSQLValueString("%" . $colname_filtrosucur . "%", "text"));
+$query_limit_filtrosucur = sprintf("%s LIMIT %d, %d", $query_filtrosucur, $startRow_filtrosucur, $maxRows_filtrosucur);
+$filtrosucur = mysql_query($query_limit_filtrosucur, $basepangloria) or die(mysql_error());
+$row_filtrosucur = mysql_fetch_assoc($filtrosucur);
 
-if (isset($_GET['totalRows_filtroelimiSucur'])) {
-  $totalRows_filtroelimiSucur = $_GET['totalRows_filtroelimiSucur'];
+if (isset($_GET['totalRows_filtrosucur'])) {
+  $totalRows_filtrosucur = $_GET['totalRows_filtrosucur'];
 } else {
-  $all_filtroelimiSucur = mysql_query($query_filtroelimiSucur);
-  $totalRows_filtroelimiSucur = mysql_num_rows($all_filtroelimiSucur);
+  $all_filtrosucur = mysql_query($query_filtrosucur);
+  $totalRows_filtrosucur = mysql_num_rows($all_filtrosucur);
 }
-$totalPages_filtroelimiSucur = ceil($totalRows_filtroelimiSucur/$maxRows_filtroelimiSucur)-1;
+$totalPages_filtrosucur = ceil($totalRows_filtrosucur/$maxRows_filtrosucur)-1;
 
-mysql_free_result($filtroelimiSucur);
+mysql_free_result($filtrosucur);
 ?>
-
-<table border="1">
-  <tr>
-    <td>Eliminacion</td>
-    <td>IDSUCURSAL</td>
-    <td>NOMBRESUCURSAL</td>
-    <td>DIRECCIONSUCURSAL</td>
-    <td>TELEFONOSUCURSAL</td>
-  </tr>
-  <?php do { ?>
-    <tr>
-      <td><a href="javascript:;" onclick="aviso('eliminarSucur.php?root=<?php echo $row_filtroelimiSucur['IDSUCURSAL']; ?>'); return false;">Eliminar</a></td>
-      <td><?php echo $row_filtroelimiSucur['IDSUCURSAL']; ?></td>
-      <td><?php echo $row_filtroelimiSucur['NOMBRESUCURSAL']; ?></td>
-      <td><?php echo $row_filtroelimiSucur['DIRECCIONSUCURSAL']; ?></td>
-      <td><?php echo $row_filtroelimiSucur['TELEFONOSUCURSAL']; ?></td>
-    </tr>
-    <?php } while ($row_filtroelimiSucur = mysql_fetch_assoc($filtroelimiSucur)); ?>
-</table>

@@ -46,11 +46,26 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
   $Result1 = mysql_query($insertSQL, $basepangloria) or die(mysql_error());
 }
 
+$maxRows_depar = 10;
+$pageNum_depar = 0;
+if (isset($_GET['pageNum_depar'])) {
+  $pageNum_depar = $_GET['pageNum_depar'];
+}
+$startRow_depar = $pageNum_depar * $maxRows_depar;
+
 mysql_select_db($database_basepangloria, $basepangloria);
 $query_depar = "SELECT * FROM CATDEPARTAMENEMPRESA";
-$depar = mysql_query($query_depar, $basepangloria) or die(mysql_error());
+$query_limit_depar = sprintf("%s LIMIT %d, %d", $query_depar, $startRow_depar, $maxRows_depar);
+$depar = mysql_query($query_limit_depar, $basepangloria) or die(mysql_error());
 $row_depar = mysql_fetch_assoc($depar);
-$totalRows_depar = mysql_num_rows($depar);
+
+if (isset($_GET['totalRows_depar'])) {
+  $totalRows_depar = $_GET['totalRows_depar'];
+} else {
+  $all_depar = mysql_query($query_depar);
+  $totalRows_depar = mysql_num_rows($all_depar);
+}
+$totalPages_depar = ceil($totalRows_depar/$maxRows_depar)-1;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -99,7 +114,24 @@ $totalRows_depar = mysql_num_rows($depar);
           </tr>
         </table>
         <p>&nbsp;</p>
-        <input type="hidden" name="MM_insert" value="form2" />
+        <table border="1">
+          <tr>
+            <td colspan="3" align="center" bgcolor="#999999"><h2>Detalle</h2></td>
+          </tr>
+          <tr>
+            <td>IDDEPTO</td>
+            <td>DEPARTAMENTO</td>
+            <td>NUMEROTELEFONO</td>
+          </tr>
+          <?php do { ?>
+            <tr>
+              <td><?php echo $row_depar['IDDEPTO']; ?></td>
+              <td><?php echo $row_depar['DEPARTAMENTO']; ?></td>
+              <td><?php echo $row_depar['NUMEROTELEFONO']; ?></td>
+            </tr>
+            <?php } while ($row_depar = mysql_fetch_assoc($depar)); ?>
+        </table>
+<input type="hidden" name="MM_insert" value="form2" />
       </form>
     <p>&nbsp;</p></td>
   </tr>

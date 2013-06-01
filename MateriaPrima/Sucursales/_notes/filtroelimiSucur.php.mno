@@ -2,4 +2,5 @@
 <info>
 	<infoitem key="UD_filtrelimiSucur" value="name:IDSUCURSAL;datatype:int,name:NOMBRESUCURSAL;datatype:blob,name:DIRECCIONSUCURSAL;datatype:blob,name:TELEFONOSUCURSAL;datatype:blob" />
 	<infoitem key="UD_filtroelimiSucur" value="name:IDSUCURSAL;datatype:int,name:NOMBRESUCURSAL;datatype:blob,name:DIRECCIONSUCURSAL;datatype:blob,name:TELEFONOSUCURSAL;datatype:blob" />
+	<infoitem key="UD_filtrosucur" value="name:IDSUCURSAL;datatype:int,name:NOMBRESUCURSAL;datatype:blob,name:DIRECCIONSUCURSAL;datatype:blob,name:TELEFONOSUCURSAL;datatype:blob,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
 </info>

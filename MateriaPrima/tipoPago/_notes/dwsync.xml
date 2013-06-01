@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="ingresarTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130143517833084335" remote="130143589800000000" />
+<file name="ingresarTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130143522075767003" remote="130145517600000000" />
 <file name="consultIdTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130143626737210918" remote="130143699600000000" />
 <file name="consultTodoTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130143627355886304" remote="130143699600000000" />
 <file name="ConsultarTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130139929008489395" remote="130143700200000000" />
@@ -8,7 +8,7 @@
 <file name="mdiTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133248846427410" remote="130133320800000000" />
 <file name="modificacionTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133246170994384" remote="130133950200000000" />
 <file name="filtroModiTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133245911149522" remote="130133318400000000" />
-<file name="filtroelimiTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133263884357531" remote="130133336400000000" />
-<file name="elimiTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133253120041847" remote="130133336400000000" />
-<file name="eliminacionTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130133262797295354" remote="130133337000000000" />
+<file name="filtroelimiTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130139929008869416" remote="130144600800000000" />
+<file name="elimiTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130144530627852633" remote="130144602600000000" />
+<file name="eliminacionTipoPago.php" server="www.liosarpc.info//public_html/pan/" local="130144529627875437" remote="130145517600000000" />
 </dwsync>

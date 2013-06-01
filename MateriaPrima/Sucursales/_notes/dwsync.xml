@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="IngresarSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130143484531539596" remote="130143557400000000" />
+<file name="IngresarSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130143496263200608" remote="130145511600000000" />
 <file name="consulSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130139929006369273" remote="130143697800000000" />
 <file name="consulTodoSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130143614482319978" remote="130143687600000000" />
 <file name="consulNombreSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130143613903076848" remote="130143687000000000" />
@@ -8,7 +8,7 @@
 <file name="filtroModiSucur.php" server="www.liosarpc.info//public_html/pan/" local="130132872643915040" remote="130132944600000000" />
 <file name="modiSucursal.php" server="www.liosarpc.info//public_html/pan/" local="130132840114254450" remote="130133062200000000" />
 <file name="modificacionSucur.php" server="www.liosarpc.info//public_html/pan/" local="130132826266072379" remote="130133948400000000" />
-<file name="filtroelimiSucur.php" server="www.liosarpc.info//public_html/pan/" local="130133779887493286" remote="130133851800000000" />
-<file name="eliminacionSucur.php" server="www.liosarpc.info//public_html/pan/" local="130133737110734954" remote="130133854200000000" />
-<file name="eliminarSucur.php" server="www.liosarpc.info//public_html/pan/" local="130133738076340183" remote="130133851800000000" />
+<file name="filtroelimiSucur.php" server="www.liosarpc.info//public_html/pan/" local="130145438649266946" remote="130145515800000000" />
+<file name="eliminacionSucur.php" server="www.liosarpc.info//public_html/pan/" local="130145441232334689" remote="130145516400000000" />
+<file name="eliminarSucur.php" server="www.liosarpc.info//public_html/pan/" local="130145437883943172" remote="130145515800000000" />
 </dwsync>

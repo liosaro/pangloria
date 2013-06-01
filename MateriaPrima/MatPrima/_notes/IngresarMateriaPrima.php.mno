@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_tipo" value="name:IDTIPO;datatype:int,name:DESCRIPCIONPRODUCTO;datatype:blob" />
+	<infoitem key="UD_ubicacion" value="name:IDUBICACION;datatype:int,name:LUGAR;datatype:blob" />
+</info>

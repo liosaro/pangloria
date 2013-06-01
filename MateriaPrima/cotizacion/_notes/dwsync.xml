@@ -3,8 +3,12 @@
 <file name="cotizacion.php" server="www.liosarpc.info//public_html/pan/" local="130131745807105318" remote="130132054200000000" Dst="-1" />
 <file name="cotizacion2.php" server="www.liosarpc.info//public_html/pan/" local="130130333478893480" remote="130130422200000000" Dst="-1" />
 <file name="detalle_cotizacion.php" server="www.liosarpc.info//public_html/pan/" local="130130333478923482" remote="130130422200000000" Dst="-1" />
-<file name="guardar_ejemplo.php" server="www.liosarpc.info//public_html/pan/" local="130133115331028866" remote="130133190000000000" Dst="-1" />
-<file name="ejemplo.php" server="www.liosarpc.info//public_html/pan/" local="130143800099809074" remote="130143871800000000" Dst="0" />
+<file name="guardar_ejemplo.php" server="www.liosarpc.info//public_html/pan/" local="130145293089328410" remote="130145365200000000" Dst="0" />
+<file name="ejemplo.php" server="www.liosarpc.info//public_html/pan/" local="130145313945051289" remote="130145385600000000" Dst="0" />
 <file name="ejemplocoti.php" server="www.liosarpc.info//public_html/pan/" local="130133166033089745" remote="130133238000000000" Dst="-1" />
 <file name="consulta_coti_id.php" server="www.liosarpc.info//public_html/pan/" local="130143775672651921" remote="130143898200000000" Dst="0" />
+<file name="update_busqueda.php" server="www.liosarpc.info//public_html/pan/" local="130144522804868890" remote="130144705800000000" Dst="0" />
+<file name="update_buscar.php" server="www.liosarpc.info//public_html/pan/" local="130144522071796961" remote="130144706400000000" Dst="0" />
+<file name="mostrar_busqueda.php" server="www.liosarpc.info//public_html/pan/" local="130144520979324475" remote="130144709400000000" Dst="0" />
+<file name="ejemplo_buscar.php" server="www.liosarpc.info//public_html/pan/" local="130144521191266597" remote="130144709400000000" Dst="0" />
 </dwsync>
