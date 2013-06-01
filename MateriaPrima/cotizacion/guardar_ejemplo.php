@@ -107,7 +107,10 @@
             }
             
            
-            echo '<a href="ejemplo.php">Ingresar otra factura</a>';
+            echo '<a href="ejemplo.php">Ingresar otra Cotiacion</a>'; 
+			
+			echo '<td><tr><a href="www.liosarpc.info/pan/MateriaPrima/proceso/promateriaprima/base.php">Salir</a></tr></td>';
+			
             
         ?>
         
