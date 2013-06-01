@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="ingresar_proveedor.php" server="www.liosarpc.info//public_html/pan/" local="130143495019129451" remote="130144586400000000" />
-<file name="consultar_proveedores.php" server="www.liosarpc.info//public_html/pan/" local="130139929005879245" remote="130143661800000000" />
-<file name="eliminar_proveedor.php" server="www.liosarpc.info//public_html/pan/" local="130144508901869978" remote="130144582800000000" />
+<file name="ingresar_proveedor.php" server="www.liosarpc.info//public_html/pan/" local="130143495019129451" remote="130145495400000000" />
+<file name="consultar_proveedores.php" server="www.liosarpc.info//public_html/pan/" local="130139929005879245" remote="130145497200000000" />
 <file name="modificarProveedor.php" server="www.liosarpc.info//public_html/pan/" local="130143609497764878" remote="130143681600000000" />
-<file name="ModiProveedores.php" server="www.liosarpc.info//public_html/pan/" local="130132979690668118" remote="130133946600000000" />
+<file name="ModiProveedores.php" server="www.liosarpc.info//public_html/pan/" local="130139929005539226" remote="130145497800000000" />
 <file name="filtroProveedor.php" server="www.liosarpc.info//public_html/pan/" local="130132979925731563" remote="130133052000000000" />
 <file name="consproveTodo.php" server="www.liosarpc.info//public_html/pan/" local="130143586454016851" remote="130143686400000000" />
 <file name="consulProveId.php" server="www.liosarpc.info//public_html/pan/" local="130143589592816380" remote="130143661200000000" />
 <file name="consulProveNombre.php" server="www.liosarpc.info//public_html/pan/" local="130143586810000000" remote="130143658800000000" />
-<file name="filtroElimiProvee.php" server="www.liosarpc.info//public_html/pan/" local="130139929005969250" remote="130144585200000000" />
-<file name="eliminacionProvee.php" server="www.liosarpc.info//public_html/pan/" local="130139929005909247" remote="130144593000000000" />
+<file name="filtroeliminacionProve.php" server="www.liosarpc.info//public_html/pan/" local="130145422320973021" remote="130145494200000000" />
+<file name="eliminarpro.php" server="www.liosarpc.info//public_html/pan/" local="130145399007463560" remote="130145494200000000" />
+<file name="eliminacionProve.php" server="www.liosarpc.info//public_html/pan/" local="130145422214186913" remote="130145494800000000" />
 </dwsync>
