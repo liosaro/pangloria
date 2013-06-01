@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
 	<infoitem key="UD_elimiSucur" value="name:IDSUCURSAL;datatype:int,name:NOMBRESUCURSAL;datatype:blob,name:DIRECCIONSUCURSAL;datatype:blob,name:TELEFONOSUCURSAL;datatype:blob" />
+	<infoitem key="UD_elimisucur" value="name:IDSUCURSAL;datatype:int,name:NOMBRESUCURSAL;datatype:blob,name:DIRECCIONSUCURSAL;datatype:blob,name:TELEFONOSUCURSAL;datatype:blob,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
 </info>
