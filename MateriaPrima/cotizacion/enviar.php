@@ -138,9 +138,9 @@ $body = $mensaje;
 $mail->SetFrom('donotreply@pan-gloria.com', 'Cotizacion Pan Gloria');
 $address = $para;
 //$mail->AddAddress("santiago_m24@hotmail.com","Santiago");
-$todos_destinos = $destino.';'.$destino2;
-$mail->AddAddress($todos_destinos,"Proveedor");
-$mail->AddBCC("santiago_m24@hotmail.com","nombre_nadielove");
+//$todos_destinos = $destino.';'.$destino2;
+$mail->AddAddress($destino,"Proveedor");
+//$mail->AddBCC("santiago_m24@hotmail.com","nombre_nadielove");
 $mail->Subject    = $asunto;
 /// asignamos el mensaje
 $mail->MsgHTML($body);

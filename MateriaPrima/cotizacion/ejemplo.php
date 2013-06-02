@@ -31,22 +31,17 @@ and open the template in the editor.
    }
    $cmb_matpri .= '</select>';
 
-
-
    $q_uni = "SELECT * FROM CATUNIDADES";
    mysql_select_db($database_basepangloria, $basepangloria);
    $res3 = mysql_query($q_uni, $basepangloria) or die(mysql_error());
    //$row2 = mysql_fetch_assoc($res2);
 
-   $cmb_um = '<select id="unidad" name="unidad[]">';
+   $cmb_um = '<select id="uni" name="uni[]">';
    while ($fila = mysql_fetch_assoc($res3)) {
         $cmb_um .= '<option value="'.$fila['IDUNIDAD'].'">'.$fila['TIPOUNIDAD'].'</option>';
    }
    $cmb_um .= '</select>';
-
-
-
-
+   
 
    $q_emp = "SELECT * FROM CATEMPLEADO";
    mysql_select_db($database_basepangloria, $basepangloria);

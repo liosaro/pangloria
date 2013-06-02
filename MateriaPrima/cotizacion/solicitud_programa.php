@@ -1,7 +1,7 @@
 <?php
 require_once('../../Connections/basepangloria.php');
 
- $q_prove = "SELECT * FROM CATPROVEEDOR";
+ $q_prove = "SELECT * FROM CATPROVEEDOR where ELIMIN = 0";
    mysql_select_db($database_basepangloria, $basepangloria);
    $res4 = mysql_query($q_prove, $basepangloria) or die(mysql_error());
    //$row2 = mysql_fetch_assoc($res2);
