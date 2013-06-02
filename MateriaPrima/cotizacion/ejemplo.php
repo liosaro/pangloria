@@ -20,7 +20,7 @@ and open the template in the editor.
    }
    
    
-   $q_matpri = "SELECT * FROM CATMATERIAPRIMA";
+   $q_matpri = "SELECT * FROM CATMATERIAPRIMA where ELIMIN = 0";
    mysql_select_db($database_basepangloria, $basepangloria);
    $res2 = mysql_query($q_matpri, $basepangloria) or die(mysql_error());
    //$row2 = mysql_fetch_assoc($res2);
@@ -31,19 +31,19 @@ and open the template in the editor.
    }
    $cmb_matpri .= '</select>';
 
-   $q_uni = "SELECT * FROM CATUNIDADES";
+   $q_uni = "SELECT * FROM CATUNIDADES where ELIMIN = 0";
    mysql_select_db($database_basepangloria, $basepangloria);
    $res3 = mysql_query($q_uni, $basepangloria) or die(mysql_error());
    //$row2 = mysql_fetch_assoc($res2);
 
-   $cmb_um = '<select id="uni" name="uni[]">';
+   $cmb_um = '<select id="um" name="um[]">';
    while ($fila = mysql_fetch_assoc($res3)) {
         $cmb_um .= '<option value="'.$fila['IDUNIDAD'].'">'.$fila['TIPOUNIDAD'].'</option>';
    }
    $cmb_um .= '</select>';
    
 
-   $q_emp = "SELECT * FROM CATEMPLEADO";
+   $q_emp = "SELECT * FROM CATEMPLEADO where ELIMIN = 0";
    mysql_select_db($database_basepangloria, $basepangloria);
    $res4 = mysql_query($q_emp, $basepangloria) or die(mysql_error());
    //$row2 = mysql_fetch_assoc($res2);
@@ -54,7 +54,7 @@ and open the template in the editor.
    }
    $cmb_emp .= '</select>';
 
-    $q_prove = "SELECT * FROM CATPROVEEDOR";
+    $q_prove = "SELECT * FROM CATPROVEEDOR where ELIMIN = 0";
    mysql_select_db($database_basepangloria, $basepangloria);
    $res5 = mysql_query($q_prove, $basepangloria) or die(mysql_error());
    //$row2 = mysql_fetch_assoc($res2);
@@ -77,7 +77,7 @@ and open the template in the editor.
    $cmb_vend .= '</select>';
 
 
-     $q_tipop = "SELECT * FROM CATCONDICIONPAGO";
+     $q_tipop = "SELECT * FROM CATCONDICIONPAGO where ELIMIN = 0";
    mysql_select_db($database_basepangloria, $basepangloria);
    $res7 = mysql_query($q_tipop, $basepangloria) or die(mysql_error());
    //$row2 = mysql_fetch_assoc($res2);
