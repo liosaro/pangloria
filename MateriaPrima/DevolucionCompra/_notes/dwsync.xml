@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="filtrodevolucion.php" server="www.liosarpc.info//public_html/pan/" local="130133766600000000" remote="130133766600000000" />
-<file name="consultatodos.php" server="www.liosarpc.info//public_html/pan/" local="130133679000000000" remote="130133679000000000" />
-<file name="consultaid.php" server="www.liosarpc.info//public_html/pan/" local="130133681400000000" remote="130133681400000000" />
-<file name="consultadevolucion.php" server="www.liosarpc.info//public_html/pan/" local="130143504613120336" remote="130143843600000000" />
+<file name="filtrodevolucion.php" server="www.liosarpc.info//public_html/pan/" local="130133766600000000" remote="130133766600000000" Dst="-1" />
+<file name="consultatodos.php" server="www.liosarpc.info//public_html/pan/" local="130133679000000000" remote="130133679000000000" Dst="-1" />
+<file name="consultaid.php" server="www.liosarpc.info//public_html/pan/" local="130133681400000000" remote="130133681400000000" Dst="-1" />
+<file name="consultadevolucion.php" server="www.liosarpc.info//public_html/pan/" local="130143516931476400" remote="130146915600000000" Dst="0" />
+<file name="IngresoDevolucion.php" server="www.liosarpc.info//public_html/pan/" local="130143626021672764" remote="130146916200000000" Dst="0" />
+<file name="eliminacionDevolu.php" server="www.liosarpc.info//public_html/pan/" local="130143626021872775" remote="130146888600000000" Dst="0" />
+<file name="modiDevolu.php" server="www.liosarpc.info//public_html/pan/" local="130146831465264126" remote="130146914400000000" Dst="0" />
+<file name="modificarDevo.php" server="www.liosarpc.info//public_html/pan/" local="130146831655044981" remote="130144585200000000" Dst="0" />
+<file name="filtromodificar.php" server="www.liosarpc.info//public_html/pan/" local="130146835509555446" remote="130144561200000000" Dst="0" />
+<file name="DevCompra.php" server="www.liosarpc.info//public_html/pan/" local="130146196586848202" remote="130147053600000000" Dst="0" />
+<file name="DevoluCompra.php" server="www.liosarpc.info//public_html/pan/" local="130147010840391229" remote="130147082400000000" Dst="0" />
 </dwsync>

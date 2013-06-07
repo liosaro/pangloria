@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:IDCOMPRA;datatype:int,name:IDUNIDAD;datatype:int,name:ID_DETENCCOM;datatype:int,name:CANTIDADMATPRIMA;datatype:int,name:MATERIAPRIMA;datatype:int,name:PRECIOUNIDAD;datatype:real,name:ELIMINA;datatype:int,name:EDITA;datatype:int" />
+	<infoitem key="UD_Recordset2" value="name:IDDEVOLUCION;datatype:int,name:IDEMPLEADO;datatype:int,name:ID_DETENCCOM;datatype:int,name:DOCADEVOLVER;datatype:blob,name:FECHADEVOLUCION;datatype:date,name:IMPORTE;datatype:real,name:GASTOGENERADO;datatype:real,name:OBSERVACION;datatype:blob,name:ELIMIN;datatype:int,name:EDITA;datatype:int" />
+</info>
